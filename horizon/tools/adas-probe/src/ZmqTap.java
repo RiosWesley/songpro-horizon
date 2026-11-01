@@ -75,7 +75,8 @@ public final class ZmqTap {
                     if ((flags & 1) == 0) {
                         total++;
                         String topic = printable(parts.get(0), parts.size() > 1 ? 32 : 8);
-                        counts.merge(topic, 1, Integer::sum);
+                        Integer seen = counts.get(topic);
+                        counts.put(topic, seen == null ? 1 : seen + 1);
                         if (shown++ < SHOW) System.out.println(describe(total, parts, bytes));
                         parts.clear();
                     }
