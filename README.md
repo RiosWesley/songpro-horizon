@@ -13,6 +13,16 @@ O app tem cinco seções: **Início**, **Painel**, **Android Auto**, **Volante**
 > Projeto independente, sem relação com a BYD. Mexer no painel de instrumentos tem risco: instale,
 > troque ou remova o tema só com o carro **parado, em P e com freio de mão**.
 
+## Prévia
+
+Do simulador do repositório (`horizon/mock`), no tamanho do painel (1280x480). O mapa é sintético.
+
+| | |
+|---|---|
+| ![Instrumentos à noite](docs/imagens/instrumentos-noite.png) | ![Instrumentos de dia](docs/imagens/instrumentos-dia.png) |
+| ![Mapa na lateral](docs/imagens/mapa-lateral.png) | ![Mapa em tela cheia](docs/imagens/mapa-tela-cheia.png) |
+| ![Alerta de fábrica com o cartão do Horizon](docs/imagens/alerta.png) | ![Sensores de estacionamento](docs/imagens/sensores-estacionamento.png) |
+
 ## Documentação
 
 | | |
