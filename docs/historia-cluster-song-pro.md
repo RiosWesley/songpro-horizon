@@ -37,7 +37,7 @@ Documentos de apoio, com mais detalhes:
 | [estudos/tema-cluster-88.md](estudos/tema-cluster-88.md) | Estudo do tema em 5 rodadas: mecanismo, geometria, ADAS 3D, teclas, builder, ferramenta |
 | [estudos/aa-nativo-byd.md](estudos/aa-nativo-byd.md) | Por que o Android Auto nativo da BYD não serve para o mapa no painel |
 | [estudos/adas-dados.md](estudos/adas-dados.md) | De onde vêm os alvos do ADAS e como lê-los |
-| [estudos/lista-de-temas-e-alertas.md](estudos/lista-de-temas-e-alertas.md) | O Horizon na lista de temas do painel (só ocupando uma das duas vagas) e por que os alertas aparecem soltos |
+| [estudos/lista-de-temas-e-alertas.md](estudos/lista-de-temas-e-alertas.md) | O Horizon como tema oficial: vaga na lista de temas, alertas, menu do volante e as telas do centro, com o plano |
 | [../horizon/RECUPERACAO.md](../horizon/RECUPERACAO.md) | Recuperação passo a passo, payloads e matriz de falhas |
 | [../horizon/TESTE_NO_CARRO.md](../horizon/TESTE_NO_CARRO.md) | Plano de teste em fases usado no primeiro teste |
 
