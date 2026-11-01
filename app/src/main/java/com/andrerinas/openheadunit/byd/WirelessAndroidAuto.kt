@@ -9,6 +9,7 @@ import com.andrerinas.openheadunit.aap.AapService
 import com.andrerinas.openheadunit.connection.wifi.WifiLauncherMode
 import com.andrerinas.openheadunit.connection.wifi.modes.nativeaa.NativeStrategy
 import com.andrerinas.openheadunit.utils.AppLog
+import com.andrerinas.openheadunit.utils.BluetoothHelper
 import com.andrerinas.openheadunit.utils.Settings
 import com.andrerinas.openheadunit.utils.adb.AdbManager
 
@@ -40,6 +41,7 @@ object WirelessAndroidAuto {
         if (on) {
             // Android 10 tells only an app with fine location about the Wi-Fi Direct group it hosts.
             grantLocation(context)?.let { return it }
+            rememberCarAddress(context, settings)
             settings.nativeApStrategy = NativeStrategy.WIFI_DIRECT
             // An empty list already means every kind. With a list, Bluetooth auto-start reads a
             // missing Wi-Fi as "not wireless" and would try Self Mode instead.
@@ -65,6 +67,20 @@ object WirelessAndroidAuto {
     private fun startOnBluetooth(context: Context, settings: Settings, macs: Set<String>) {
         settings.autoStartBluetoothDeviceMacs = macs
         Settings.syncAutoStartBtMacsToDeviceStorage(context, macs)
+    }
+
+    /**
+     * The phone drops a wireless session about 3 s in unless the head unit announces its Bluetooth
+     * address (measured on the car: video focus granted, no frame, EOF, over and over). Android 10
+     * hides it from apps, so it is read once as the shell user into the setting the announcement
+     * reads first.
+     */
+    private suspend fun rememberCarAddress(context: Context, settings: Settings) {
+        if (settings.bluetoothAddress.isNotEmpty()) return
+        val (_, out) = AdbManager.exec(context, "settings get secure bluetooth_address")
+        val address = out.trim().uppercase()
+        if (BluetoothHelper.isValidMacAddress(address)) settings.bluetoothAddress = address
+        else AppLog.w("$TAG: could not read the head unit's Bluetooth address: $out")
     }
 
     private suspend fun grantLocation(context: Context): String? {

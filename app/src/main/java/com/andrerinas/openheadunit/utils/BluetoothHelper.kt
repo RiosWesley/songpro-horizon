@@ -429,7 +429,7 @@ object BluetoothHelper {
         )
     }
 
-    private fun isValidMacAddress(mac: String): Boolean {
+    fun isValidMacAddress(mac: String): Boolean {
         if (mac == "02:00:00:00:00:00" || mac == "00:00:00:00:00:00") return false
         val regex = Regex("^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$")
         return regex.matches(mac)
