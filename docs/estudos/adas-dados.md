@@ -67,3 +67,10 @@ faixas e os 7 slots (estado, x, y). A cada 5 s ele tenta duas saídas, porque ne
   o que mostra qual URL o painel alcançou).
 
 `"on": false` ou apagar o arquivo para a gravação (o último pedaço sai na hora).
+
+**No carro (2026-11-01, carrier `22c102f8…`): ligar o gravador derruba o painel.** Com o comando ligado (URLs
+`127.0.0.1`, IP do Wi-Fi e IP do `rmnet`, todas na porta 8765), o renderizador do painel caiu a cada ~8 s
+("ELKA OFF", `AutoContainerServiceNative died` no logcat), começando logo depois da primeira descarga (5 s).
+Nenhum pedaço foi gravado e nada chegou ao `AdasRecSink`. Apagar o arquivo de comando parou as quedas na hora;
+sem o arquivo o gravador fica parado e o tema é estável. Ainda não se sabe se quem derruba é o `PUT` ou o `POST`.
+**Não ligar o gravador com o carro andando.**
