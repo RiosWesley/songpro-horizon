@@ -24,6 +24,8 @@ Item {
     property string clock: "--:--"
     property alias mediaDirectory: car.mediaDirectory
     property alias powerHistorySeed: energy.historySeed
+    // The power gauge chosen in the wheel menu or the BYD panel (see EnergyCard).
+    property string powerStyle: menuFeed.powerStyle
 
     readonly property var layout: car.mapMode ? Geometry.map : Geometry.native
     // The factory Quick3D road. false keeps the native 2D ADAS instead (the root patch moves it
@@ -47,6 +49,7 @@ Item {
         theme: theme
         mapMode: car.mapMode
         hole: Geometry.map.hole
+        speed: car.speed
     }
 
     // ADAS: the whole road in the middle, or the factory's own window on the left in map mode.
@@ -103,6 +106,7 @@ Item {
         id: energy
         theme: theme
         car: car
+        style: horizon.powerStyle
         readonly property var r: horizon.layout.rightCard
         x: r.x; y: r.y; width: r.width; height: r.height
     }

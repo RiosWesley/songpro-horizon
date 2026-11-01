@@ -6,13 +6,20 @@ import "qrc:/common/singleton"
 QtObject {
     property bool night: true
 
-    // Backdrop: sky above the horizon, floor below it, the horizon's light and the edge shadow.
-    readonly property color skyTop:         night ? "#020407" : "#f5f8fb"
-    readonly property color skyHorizon:     night ? "#11202f" : "#dde7f0"
-    readonly property color floorHorizon:   night ? "#0c1825" : "#e7edf2"
-    readonly property color floorBottom:    night ? "#04080d" : "#d2dbe3"
-    readonly property color horizonLight:   night ? "#4a8fb8" : "#8fb6d0"
-    readonly property real vignette:        night ? 0.55 : 0.12
+    // Backdrop: sky above the horizon and the dome's light in it, floor below, the horizon's light,
+    // the mountains on it, the far glow at its ends and the edge shadow. Colours are opaque and strengths are
+    // separate numbers: a ShaderEffect premultiplies a colour's alpha.
+    readonly property color skyTop:         night ? "#070d17" : "#f1f5f9"
+    readonly property color skyHorizon:     night ? "#1e334b" : "#d4e0ec"
+    readonly property color dome:           night ? "#5a7898" : "#ffffff"
+    readonly property real domeStrength:    night ? 0.75 : 0.85
+    readonly property color floorHorizon:   night ? "#172a3f" : "#dce4ec"
+    readonly property color floorBottom:    night ? "#03060a" : "#c2cedb"
+    readonly property color horizonLight:   night ? "#a6d8ff" : "#ffffff"
+    readonly property color horizonDistant: night ? "#3d8fb0" : "#ffffff"
+    readonly property color mountainFar:    night ? "#1b2e45" : "#b4c5d7"
+    readonly property color mountainNear:   night ? "#09121e" : "#97abc0"
+    readonly property real vignette:        night ? 0.6 : 0.14
     readonly property color text:           night ? "#f1f4f7" : "#0d151e"
     readonly property color textDim:        night ? "#8692a0" : "#5a6878"
     readonly property color textFaint:      night ? "#46505c" : "#a3afbb"

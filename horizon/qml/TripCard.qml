@@ -25,7 +25,7 @@ Column {
                 anchors { left: parent.left; verticalCenter: parent.verticalCenter }
                 text: modelData.label
                 color: trip.theme.textDim
-                font { family: trip.theme.font; pixelSize: 26 }
+                font { family: trip.theme.font; pixelSize: 30 }
             }
             Row {
                 anchors { right: parent.right; verticalCenter: parent.verticalCenter }
@@ -34,13 +34,13 @@ Column {
                     id: value
                     text: modelData.value
                     color: trip.theme.text
-                    font { family: trip.theme.font; pixelSize: 50; weight: Font.Light }
+                    font { family: trip.theme.font; pixelSize: 57; weight: Font.Light }
                 }
                 Text {
                     anchors.baseline: value.baseline
                     text: modelData.unit
                     color: trip.theme.textDim
-                    font { family: trip.theme.font; pixelSize: 23 }
+                    font { family: trip.theme.font; pixelSize: 26 }
                 }
             }
         }

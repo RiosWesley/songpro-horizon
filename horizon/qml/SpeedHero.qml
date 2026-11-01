@@ -16,14 +16,14 @@ Item {
         y: -10
         text: hero.car.speed
         color: hero.overLimit ? hero.theme.alert : hero.theme.text
-        font { family: hero.theme.font; pixelSize: 124; weight: Font.Light }
+        font { family: hero.theme.font; pixelSize: 134; weight: Font.Light }
         Behavior on color { ColorAnimation { duration: 250 } }
     }
     Text {
         anchors { horizontalCenter: parent.horizontalCenter; top: speedText.baseline; topMargin: 10 }
         text: hero.car.speedUnit
         color: hero.theme.textDim
-        font { family: hero.theme.font; pixelSize: 24; letterSpacing: 1 }
+        font { family: hero.theme.font; pixelSize: 28; letterSpacing: 1 }
     }
 
     // Speed limit sign, as recognised by the camera.
@@ -51,7 +51,7 @@ Item {
                 readonly property bool engaged: modelData === hero.car.gear
                 text: modelData
                 color: engaged ? hero.theme.text : hero.theme.textFaint
-                font { family: hero.theme.font; pixelSize: 30; weight: engaged ? Font.DemiBold : Font.Normal }
+                font { family: hero.theme.font; pixelSize: 34; weight: engaged ? Font.DemiBold : Font.Normal }
             }
         }
     }

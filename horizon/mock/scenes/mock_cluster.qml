@@ -16,9 +16,12 @@ Item {
         leftPage: DataSource.mockLeftPage
         mediaDirectory: mockAssets + "/" + DataSource.mockMediaDir + "/"
         powerHistorySeed: DataSource.mockPowerHistory.split(",").map(Number)
+        powerStyle: DataSource.mockPowerStyle || "ring"
     }
+    // As on the car: with Horizon up, the telltales take BYD's full-navigation arrangement.
     Loader {
         anchors.fill: parent
         source: "../patched/WarinLightLayout.qml"
+        onLoaded: item.horizonActive = true
     }
 }

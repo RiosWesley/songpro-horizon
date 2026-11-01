@@ -32,13 +32,13 @@ Item {
         anchors { left: parent.left; bottom: parent.bottom }
         text: progress.clock(progress.positionMs)
         color: progress.theme.textFaint
-        font { family: progress.theme.font; pixelSize: 20 }
+        font { family: progress.theme.font; pixelSize: 23 }
     }
     Text {
         visible: progress.showTimes
         anchors { right: parent.right; bottom: parent.bottom }
         text: progress.clock(progress.durationMs)
         color: progress.theme.textFaint
-        font { family: progress.theme.font; pixelSize: 20 }
+        font { family: progress.theme.font; pixelSize: 23 }
     }
 }

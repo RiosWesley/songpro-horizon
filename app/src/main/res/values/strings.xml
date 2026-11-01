@@ -1234,4 +1234,12 @@
     <string name="byd_wheel_learned">Menu key: %1$s</string>
     <string name="byd_wheel_needs_on">Switch the menu on first.</string>
     <string name="byd_wheel_hint">A short press opens and closes the menu on the cluster; ◁ ▷ choose and the roller press changes. While the menu is closed, the keys work as always. Needs the Horizon theme.</string>
+    <string name="wheel_menu_power">Power gauge</string>
+    <string name="power_style_ring">Ring</string>
+    <string name="power_style_segments">Segments</string>
+    <string name="power_style_arc">Side arc</string>
+    <string name="power_style_column">Column</string>
+    <string name="power_style_wave">Bar and wave</string>
+    <string name="byd_power_style">Power gauge: %1$s</string>
+    <string name="byd_power_style_change">Change</string>
 </resources>

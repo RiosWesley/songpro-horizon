@@ -8,6 +8,7 @@ import android.view.KeyEvent
 import android.view.accessibility.AccessibilityEvent
 import com.andrerinas.openheadunit.R
 import com.andrerinas.openheadunit.aap.cluster.ClusterMapToggle
+import com.andrerinas.openheadunit.byd.theme.HorizonOptions
 import com.andrerinas.openheadunit.utils.AppLog
 import com.andrerinas.openheadunit.utils.Settings
 
@@ -82,9 +83,13 @@ class WheelMenuService : AccessibilityService() {
 
     private fun items(): List<WheelMenu.Item> {
         val card = settings.horizonLeftCard
+        val power = settings.horizonPowerStyle
         val list = mutableListOf(
-            WheelMenu.Item(getString(R.string.wheel_menu_left_card), getString(cardLabel(card))) {
-                settings.horizonLeftCard = CARDS[(CARDS.indexOf(card) + 1) % CARDS.size]
+            WheelMenu.Item(getString(R.string.wheel_menu_left_card), getString(HorizonOptions.find(HorizonOptions.LEFT_CARDS, card).label)) {
+                settings.horizonLeftCard = HorizonOptions.next(HorizonOptions.LEFT_CARDS, card)
+            },
+            WheelMenu.Item(getString(R.string.wheel_menu_power), getString(HorizonOptions.find(HorizonOptions.POWER_STYLES, power).label)) {
+                settings.horizonPowerStyle = HorizonOptions.next(HorizonOptions.POWER_STYLES, power)
             })
         // The map can only be switched while a phone is projecting.
         if (ClusterMapToggle.inSession()) {
@@ -98,7 +103,7 @@ class WheelMenuService : AccessibilityService() {
 
     private fun onChange(state: WheelMenu.State) {
         try {
-            file.write(state, settings.horizonLeftCard)
+            file.write(state, settings.horizonLeftCard, settings.horizonPowerStyle)
         } catch (e: Exception) {
             AppLog.w("WheelMenu: could not write the menu file: ${e.message}")
         }
@@ -106,15 +111,8 @@ class WheelMenuService : AccessibilityService() {
         if (state.open) handler.postDelayed(closeIdle, IDLE_CLOSE_MS)
     }
 
-    private fun cardLabel(card: String) = when (card) {
-        "music" -> R.string.wheel_menu_card_music
-        "trip" -> R.string.wheel_menu_card_trip
-        else -> R.string.wheel_menu_card_auto
-    }
-
     companion object {
         private const val IDLE_CLOSE_MS = 10_000L
-        private val CARDS = listOf("auto", "music", "trip")
 
         @Volatile private var running: WheelMenuService? = null
 

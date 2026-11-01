@@ -32,13 +32,13 @@ Item {
         anchors { right: range.left; rightMargin: 14; verticalCenter: parent.verticalCenter }
         text: bar.percent < 0 ? "--" : bar.percent + "%"
         color: bar.theme.text
-        font { family: bar.theme.font; pixelSize: 29 }
+        font { family: bar.theme.font; pixelSize: 33 }
     }
     Text {
         id: range
         anchors { right: parent.right; verticalCenter: parent.verticalCenter }
         text: (bar.rangeKm < 0 ? "--" : bar.rangeKm) + " km"
         color: bar.theme.textDim
-        font { family: bar.theme.font; pixelSize: 26 }
+        font { family: bar.theme.font; pixelSize: 30 }
     }
 }

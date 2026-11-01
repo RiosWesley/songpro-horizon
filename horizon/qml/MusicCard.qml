@@ -16,7 +16,7 @@ Item {
         anchors { left: parent.left; verticalCenter: parent.verticalCenter }
         text: "Sem mídia"
         color: music.theme.textFaint
-        font { family: music.theme.font; pixelSize: 26 }
+        font { family: music.theme.font; pixelSize: 30 }
     }
 
     Column {

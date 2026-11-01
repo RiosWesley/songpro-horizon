@@ -58,6 +58,7 @@ class BydPanelFragment : Fragment() {
         }
 
         wheel = BydWheelSection(view, viewLifecycleOwner.lifecycleScope, ::log)
+        BydPowerStyleRow(view)
         showAaState()
         refreshTheme()
     }

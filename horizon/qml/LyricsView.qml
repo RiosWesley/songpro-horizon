@@ -18,7 +18,7 @@ Column {
         visible: text.length > 0
         color: lyrics.theme.textFaint
         elide: Text.ElideRight
-        font { family: lyrics.theme.font; pixelSize: 24 }
+        font { family: lyrics.theme.font; pixelSize: 28 }
     }
     Text {
         id: currentLine
@@ -29,7 +29,7 @@ Column {
         maximumLineCount: 2
         elide: Text.ElideRight
         lineHeight: 1.08
-        font { family: lyrics.theme.font; pixelSize: 34; weight: Font.Medium }
+        font { family: lyrics.theme.font; pixelSize: 39; weight: Font.Medium }
     }
     Text {
         width: parent.width
@@ -37,7 +37,7 @@ Column {
         visible: text.length > 0
         color: lyrics.theme.textDim
         elide: Text.ElideRight
-        font { family: lyrics.theme.font; pixelSize: 25 }
+        font { family: lyrics.theme.font; pixelSize: 29 }
     }
 
     NumberAnimation {

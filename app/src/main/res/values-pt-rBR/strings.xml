@@ -1083,4 +1083,12 @@
     <string name="byd_wheel_learned">Botão do menu: %1$s</string>
     <string name="byd_wheel_needs_on">Ligue o menu primeiro.</string>
     <string name="byd_wheel_hint">Toque curto abre e fecha o menu no painel; ◁ ▷ escolhem e o clique do rolete muda. Com o menu fechado, os botões funcionam como sempre. Precisa do tema Horizon.</string>
+    <string name="wheel_menu_power">Medidor de potência</string>
+    <string name="power_style_ring">Anel</string>
+    <string name="power_style_segments">Segmentos</string>
+    <string name="power_style_arc">Arco lateral</string>
+    <string name="power_style_column">Coluna</string>
+    <string name="power_style_wave">Faixa e onda</string>
+    <string name="byd_power_style">Medidor de potência: %1$s</string>
+    <string name="byd_power_style_change">Trocar</string>
 </resources>

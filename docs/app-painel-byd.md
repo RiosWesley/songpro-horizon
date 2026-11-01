@@ -34,6 +34,9 @@ app, continua lá, mas fica escondido. Um toque longo em **Painel BYD** abre as 
 - **Voltar ao original:** o app move o tema para `/sdcard/.cluster/retired/` (não apaga nada) e
   pede para reiniciar. Sem o arquivo, o painel volta sozinho ao de fábrica. Este é o caminho de
   volta comprovado no carro. O "restaurar padrão" da BYD não funciona neste firmware.
+- **Medidor de potência:** o lado direito do Horizon tem 5 estilos — Anel, Segmentos, Arco lateral,
+  Coluna e Faixa e onda (com o gráfico do último minuto). Troque em **Painel BYD → Medidor de
+  potência → Trocar** ou pelo menu no volante; muda na hora, sem reiniciar o painel.
 - Ao instalar, o app já ajusta o mapa para a janela central do Horizon. Ao voltar ao original, o
   mapa volta à faixa livre do painel de fábrica.
 
@@ -51,8 +54,8 @@ volante.
 - **Com o menu fechado, nada muda:** ◁ ▷ continuam trocando a música, e o rolete o volume. O app só
   segura essas teclas com o menu aberto. O toque longo do botão programável vem com outro código e
   segue com a função de fábrica.
-- **Itens:** card da esquerda (Automático: música quando tem música, senão viagem; Música; Viagem)
-  e, com o celular conectado, mapa no painel.
+- **Itens:** card da esquerda (Automático: música quando tem música, senão viagem; Música; Viagem),
+  medidor de potência e, com o celular conectado, mapa no painel.
 
 > Não confirmado no carro: qual código cada botão manda, e se a BYD deixa segurar o botão
 > programável antes de girar a tela. Com o menu ligado, o registro do app mostra cada tecla

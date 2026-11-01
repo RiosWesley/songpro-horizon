@@ -20,14 +20,14 @@ Item {
             id: clockText
             text: bottom.clock
             color: bottom.theme.text
-            font { family: bottom.theme.font; pixelSize: 32 }
+            font { family: bottom.theme.font; pixelSize: 37 }
         }
         Text {
             visible: bottom.car.tempKnown
             anchors.baseline: clockText.baseline
             text: bottom.car.outsideTemp
             color: bottom.theme.textDim
-            font { family: bottom.theme.font; pixelSize: 28 }
+            font { family: bottom.theme.font; pixelSize: 32 }
         }
     }
 
@@ -59,12 +59,12 @@ Item {
             text: bottom.car.driveMode
             color: bottom.car.driveMode === "SPORT" ? bottom.theme.power
                  : bottom.car.driveMode === "ECO" ? bottom.theme.regen : bottom.theme.textDim
-            font { family: bottom.theme.font; pixelSize: 26; letterSpacing: 1; weight: Font.Medium }
+            font { family: bottom.theme.font; pixelSize: 30; letterSpacing: 1; weight: Font.Medium }
         }
         Text {
             text: bottom.car.odometer !== "" ? bottom.car.odometer + " km" : ""
             color: bottom.theme.textDim
-            font { family: bottom.theme.font; pixelSize: 26 }
+            font { family: bottom.theme.font; pixelSize: 30 }
         }
     }
 }

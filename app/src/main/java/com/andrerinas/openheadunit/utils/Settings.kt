@@ -188,6 +188,11 @@ class Settings(private val context: Context) {
         get() = prefs.getString("horizon_left_card", "auto") ?: "auto"
         set(value) { prefs.edit().putString("horizon_left_card", value).apply() }
 
+    // The Horizon power gauge: "ring", "segments", "arc", "column" or "wave" (see HorizonOptions).
+    var horizonPowerStyle: String
+        get() = prefs.getString("horizon_power_style", "ring") ?: "ring"
+        set(value) { prefs.edit().putString("horizon_power_style", value).apply() }
+
     // Feed the cluster theme what the phone is playing (title, cover, progress) through
     // /sdcard/.cluster/horizon/, and the synced lyrics with it.
     var clusterNowPlaying: Boolean
