@@ -24,6 +24,21 @@ Levantamento de 2026-10-31, só leitura (nada foi escrito no carro).
 204/205/224/225 SR por Ethernet/CAN/projeção/mensagens reais · 218/219 gravação de tela.
 "SR" = reconstrução de cena (vários objetos); provavelmente exige uma central de ADAS por Ethernet.
 
+## Por onde o painel recebe e troca dados (libBydDataSource.so, 2026-11-01)
+
+- **CAN:** o painel lê os quadros do MCU por um **SPI dedicado**, `spidev_cluster`
+  (`/sys/devices/platform/soc/4a80000.spi/spi_master/spi0/spi0.0/spidev_cluster`, thread `CanReadThreadBase`).
+  Não se lê esse SPI pela multimídia: cada leitura consome dados que o painel não receberia.
+- **ZeroMQ:** um assinante que conecta em `tcp://192.168.195.2:8889` e `tcp://192.168.195.3:6666`, e um publicador
+  (`BydZmqPublisher`) em `tcp://127.0.0.1:49160`. A rede `192.168.195.x` parece ligar o lado painel ao lado
+  Android. O que trafega ainda não foi visto. O ouvinte `ZmqTap` (no dex do adas-probe) entra como mais um
+  assinante, só escuta, e lista os tópicos e os primeiros bytes de cada mensagem:
+  `CLASSPATH=/data/local/tmp/adas-probe.dex app_process / ZmqTap 192.168.195.3 6666 30`.
+- **Captura da tela do painel:** a biblioteca chama `fission_screencap -p -s cluster
+  /data/logs/cluster_fission_screencap_%s.png`. Falta ver se a multimídia tem esse comando.
+- **Filtro dos alvos:** ver acima: posição com `TYPE` fora de 1..4 é descartada antes do QML. O que a câmera
+  manda sem ACC só se vê no quadro `0x295` cru, que nem o QML nem o Android recebem.
+
 ## Leitura pela multimídia
 
 - O serviço nativo `autoservice` (`libbydautoservice.so`) **não restringe leitura por chamador**:
