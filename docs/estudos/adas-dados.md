@@ -40,7 +40,10 @@ Levantamento de 2026-10-31, só leitura (nada foi escrito no carro).
 - Caminho, se os dados existirem sem ACC: o open-headunit lê esses sinais (mesma leitura, sem permissão)
   e escreve um feed como o `now_playing.json`; o tema desenha os alvos a partir dele.
 
-## Próximo teste
+## Teste com o carro ligado (2026-11-01)
 
-Carro **ligado**: `tools/adas-probe/start_log.sh 1500` (registra 25 min, sobrevive ao adb desconectar),
-dirigir com ACC desligado e depois ligado, `adb pull /data/local/tmp/adas-probe-drive.log`.
+`tools/adas-probe/start_log.sh 3600` (sobreviveu ao adb desconectar, testado), 7,5 min rodando com o ACC ligado
+duas vezes; o painel mostrou um veículo nas duas. Resultado: **todos** os sinais de alvo `-10011` o tempo todo
+(FCW exceto o nível = 3, faróis, os 4 slots do `0x295`, o `0x374`), enquanto outros sinais leem normalmente
+(`0x13300023` = 2, `0x44100008` = 0, `0x4A50502C` = 22, `0x12D0002A` = 2). Os quadros do ADAS não chegam à
+multimídia: o painel os lê do seu lado. A leitura pela multimídia não serve para os alvos.

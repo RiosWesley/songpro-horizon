@@ -480,6 +480,16 @@ classes Java `BYDAuto*Device.getInstance`, e o `BYDAutoManager.getInt` não pass
 Se houver dados sem ACC, o plano é o open-headunit ler esses sinais e escrever um feed, como o `now_playing.json`,
 para o tema desenhar os alvos.
 
+**6. O teste com o carro ligado (2026-11-01): a multimídia não recebe esses sinais.** O adas-probe gravou 7,5 min
+rodando, com o ACC ligado duas vezes; o painel mostrou o carro da frente nas duas (um veículo só, como antes) e as
+faixas certas. No registro, **todos** os sinais de alvo deram `-10011` do começo ao fim: FCW (menos o nível, 3),
+faróis, os quatro slots do `0x295` (inclusive o slot 2 que o painel estava desenhando) e o `0x374`. Outros sinais
+leem normalmente pela mesma chamada (`LIGHT_KNOB_CURRENT_GEAR` = 2, `ENGINE_FRONT_MOTOR_SPEED` = 0,
+`INSTRUMENT_AVERAGE_SPEED` = 22, `BODYWORK_POWER_LEVEL` = 2). Conclusão: os quadros do ADAS vão para o painel, que os
+lê do seu lado, e não chegam ao `autoservice` da multimídia. O caminho "a multimídia lê e escreve um feed" está
+fechado. A única pista do lado do painel é o `DataSource.aheadDistance`, que o diagnóstico da v8diag já mostrava;
+nada útil foi anotado dele.
+
 **Becos sem saída:** os pacotes de log da BYD em `/sdcard/logs` são cifrados com AES. O argumento do dono de que o
 BYD King mostra o carro da frente sem ACC (mesmo chipset) **não foi verificado**.
 
