@@ -1050,7 +1050,7 @@
     <string name="byd_theme_install">Instalar Horizon</string>
     <string name="byd_theme_remove">Voltar ao original</string>
     <string name="byd_theme_hint">Montado no próprio carro, a partir dos arquivos de fábrica dele (só Song Pro 8,8\", firmware SX309). Aparece depois de reiniciar o painel e a multimídia (cerca de 1 minuto): só com o carro parado, em P e com freio de mão.</string>
-    <string name="byd_theme_install_confirm">O carro precisa estar parado, em P e com freio de mão. Montar o tema leva alguns segundos; o painel só muda depois do reinício, que você confirma em seguida.</string>
+    <string name="byd_theme_install_confirm">O carro precisa estar parado, em P e com freio de mão. Na primeira vez, o app guarda antes uma cópia do painel original em SongProHorizon/original (cerca de 290 MB, leva até alguns minutos). Montar o tema leva alguns segundos; o painel só muda depois do reinício, que você confirma em seguida.</string>
     <string name="byd_theme_unsupported">Esta multimídia não tem o firmware para o qual o Horizon foi feito (BYD Song Pro 8,8\", SX309), então a instalação está desligada.</string>
     <string name="byd_theme_factory">Tema de fábrica</string>
     <string name="byd_theme_installed">Horizon instalado (%1$s)</string>
@@ -1127,7 +1127,9 @@
     <string name="hz_theme_install">Instalar o Horizon</string>
     <string name="hz_theme_update">Atualizar</string>
     <string name="hz_theme_restart">Reiniciar o painel</string>
-    <string name="hz_theme_remove">Voltar ao original</string>
+    <string name="hz_theme_remove">Voltar à fábrica</string>
+    <string name="hz_factory_title">Voltar ao painel de fábrica?</string>
+    <string name="hz_factory_message">Apaga do painel tudo o que é do Horizon (o tema, as versões antigas, os arquivos e a ferramenta dele), religa o Android Auto da BYD e desliga o menu do volante. Depois de reiniciar (só com o carro em P), o painel volta a ser o de fábrica, sem nenhuma modificação. Ficam só este app e o backup do painel original em SongProHorizon/original.</string>
     <string name="hz_theme_installed">Horizon instalado</string>
     <string name="hz_theme_installed_hint">No menu do painel: voltar, Tema, Horizon · versão %1$s</string>
     <string name="hz_theme_factory">Painel de fábrica</string>

@@ -56,9 +56,13 @@ object HorizonOptions {
         ClusterDisplayOutput.relayout()
     }
 
-    /** Hands the current choices to the theme now, with the menu closed (a change made in the app). */
+    /**
+     * Hands the current choices to the theme now, with the menu closed (a change made in the app).
+     * Without Horizon on the car nothing is written: the factory panel never reads the file.
+     */
     fun publish(context: Context) {
         val settings = Settings(context)
+        if (!settings.horizonInstalled) return
         try {
             HorizonMenuFile().write(WheelMenu.State(false, 0, emptyList()), settings)
         } catch (e: Exception) {

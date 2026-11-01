@@ -91,6 +91,12 @@ internal object ClusterDisplayOutput {
         val ctx = appContext ?: return@post
         mapView?.let { place(it, Settings(ctx)) }
         onLayoutChanged?.invoke()
+        snapshot()
+    }
+
+    private fun snapshot() {
+        val ctx = appContext ?: return
+        presentation?.display?.let { ClusterMapSnapshot.schedule(ctx, it.displayId) }
     }
 
     /** Scales the picture from its top-left corner, then moves it. */
@@ -168,7 +174,10 @@ internal object ClusterDisplayOutput {
 
     private fun onMapSurface(surface: Surface?) {
         decoder.setSurface(surface)
-        if (surface != null) onSurfaceReady?.invoke()
+        if (surface != null) {
+            onSurfaceReady?.invoke()
+            snapshot()
+        }
     }
 
     private fun dismiss() {

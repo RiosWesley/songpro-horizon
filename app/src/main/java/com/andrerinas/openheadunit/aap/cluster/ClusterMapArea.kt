@@ -11,7 +11,8 @@ import com.andrerinas.openheadunit.utils.Settings
  *
  * The setting is "x,y,width,height". Blank or invalid means a centred box at 5:3 (the 800x480 stream)
  * covering 80% of the display height, which leaves the sides free for the native gauges or another
- * app's overlay. A box running off the display is clamped to it.
+ * app's overlay. A box running off the display is clamped to it, except that its bottom may run
+ * [HORIZON_OVERSCAN] px past it.
  */
 internal object ClusterMapArea {
 
@@ -20,13 +21,18 @@ internal object ClusterMapArea {
      * only where the picture sits ("scale,x,y": scaled from its top-left corner, then moved; see
      * parsePlacement) and the content insets change. The insets are the clear part of Horizon's
      * opening, mapped back into the phone's picture, so its cards land there; the car arrow, drawn
-     * low in the frame, lands inside the opening even if the phone ignores them.
+     * low in the frame, lands inside the opening even if the phone ignores them. The bottom inset
+     * ends where the opening does, not where it starts to fade: below it the picture may be black.
+     *
+     * The picture is asked [HORIZON_OVERSCAN] px taller than the display: on the car (2026-11-01)
+     * its bottom ~80 px arrived black in every layout, so that strip now falls below the panel.
      *
      * Full screen: the picture as is; the cards kept out of the band at the top (speed, gear,
-     * power) and the bottom bar (HorizonGeometry.js `full`, at 2/3).
+     * power).
      */
-    const val HORIZON_FULL = "0,0,1280,480"
-    const val HORIZON_FULL_INSETS = "0,100,0,84"
+    const val HORIZON_OVERSCAN = 80
+    const val HORIZON_FULL = "0,0,1280,560"
+    const val HORIZON_FULL_INSETS = "0,100,0,80"
 
     /**
      * Window: Horizon's centre opening (390,68,500,344; clear 450..830 x 108..383, from
@@ -34,14 +40,15 @@ internal object ClusterMapArea {
      * at full size, centred, with the arrow low in the opening.
      */
     const val HORIZON_WINDOW_PLACEMENT = "0.8,128,34"
-    const val HORIZON_WINDOW_INSETS = "402,92,402,44"
+    const val HORIZON_WINDOW_INSETS = "402,92,402,88"
 
     /**
-     * Side (the second layout): Horizon's opening on the right (827,67,341,333; clear 869..1144 x
-     * 104..371, from HorizonGeometry.js side.video and side.feather), the picture at 0.72.
+     * Side (the second layout): Horizon's opening on the right (879,79,289,313; clear 911..1161 x
+     * 107..373, from HorizonGeometry.js side.video and side.feather), the picture at 0.72 with its
+     * centre under the clear part's.
      */
-    const val HORIZON_SIDE_PLACEMENT = "0.72,536,56"
-    const val HORIZON_SIDE_INSETS = "463,66,435,43"
+    const val HORIZON_SIDE_PLACEMENT = "0.72,575,56"
+    const val HORIZON_SIDE_INSETS = "466,70,466,93"
 
     /** Without a theme, the whole band above the factory 8.8" bottom bar. */
     const val FACTORY_FREE_BAND = "0,0,1280,420"
@@ -88,8 +95,9 @@ internal object ClusterMapArea {
         return Rect(n[0], n[1], n[0] + n[2], n[1] + n[3])
     }
 
-    private fun clamp(r: Rect, w: Int, h: Int) =
-        Rect(r.left.coerceAtMost(w), r.top.coerceAtMost(h), r.right.coerceAtMost(w), r.bottom.coerceAtMost(h))
+    // The bottom may run past the display by the overscan, where the phone's black strip goes.
+    private fun clamp(r: Rect, w: Int, h: Int) = Rect(r.left.coerceAtMost(w), r.top.coerceAtMost(h),
+        r.right.coerceAtMost(w), r.bottom.coerceAtMost(h + HORIZON_OVERSCAN))
 
     private fun centred(w: Int, h: Int): Rect {
         val boxH = h * 8 / 10

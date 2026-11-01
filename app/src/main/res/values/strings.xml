@@ -1201,7 +1201,7 @@
     <string name="byd_theme_install">Install Horizon</string>
     <string name="byd_theme_remove">Back to factory</string>
     <string name="byd_theme_hint">Built on the car from its own factory files (Song Pro 8.8\", firmware SX309 only). It shows after a restart of the cluster and the head unit (about 1 minute): only with the car stopped, in P, parking brake on.</string>
-    <string name="byd_theme_install_confirm">The car must be stopped, in P, with the parking brake on. Building the theme takes a few seconds; the cluster changes only after the restart you confirm next.</string>
+    <string name="byd_theme_install_confirm">The car must be stopped, in P, with the parking brake on. The first time, the app first keeps a copy of the original cluster in SongProHorizon/original (about 290 MB, up to a few minutes). Building the theme takes a few seconds; the cluster changes only after the restart you confirm next.</string>
     <string name="byd_theme_unsupported">This head unit is not the firmware Horizon was made for (BYD Song Pro 8.8\", SX309), so installing is off.</string>
     <string name="byd_theme_factory">Factory theme</string>
     <string name="byd_theme_installed">Horizon installed (%1$s)</string>
@@ -1279,6 +1279,8 @@
     <string name="hz_theme_update">Update</string>
     <string name="hz_theme_restart">Restart the cluster</string>
     <string name="hz_theme_remove">Back to factory</string>
+    <string name="hz_factory_title">Back to the factory cluster?</string>
+    <string name="hz_factory_message">Deletes everything of Horizon\'s from the cluster (the theme, its older versions, its files and its tool), turns BYD\'s Android Auto back on and the wheel menu off. After the restart (only with the car in P), the cluster is the factory one again, without any change. Only this app and the backup of the original cluster in SongProHorizon/original stay.</string>
     <string name="hz_theme_installed">Horizon installed</string>
     <string name="hz_theme_installed_hint">On the cluster menu: back, Theme, Horizon · version %1$s</string>
     <string name="hz_theme_factory">Factory cluster</string>

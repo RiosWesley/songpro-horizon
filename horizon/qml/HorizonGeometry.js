@@ -33,13 +33,14 @@ var map = {
 }
 
 // Map mode, second layout: the map takes the right side instead of the energy card, the ADAS road
-// stays in the middle (narrower, so it ends before the map) and power is a bar at the top, as on
-// the full-screen map. `video` is opened over the phone's picture and faded by `feather` (left,
-// top, right, bottom) towards the clear part; the app scales and moves the picture into it.
+// stays under the speed (narrower, so it ends before the map) and power is a bar at the top, as on
+// the full-screen map. The map's clear part mirrors the left card (x 1366-1742, y 160-560); `video`
+// is opened over the phone's picture and faded by `feather` (left, top, right, bottom) towards it.
+// The app scales and moves the picture into it.
 var side = {
-    video:     { x: 1240, y: 100, width: 512, height: 500 },
-    feather:   [64, 56, 36, 44],
-    stage:     { x: 400,  y: 150, width: 820, height: 450 }
+    video:     { x: 1318, y: 118, width: 434, height: 470 },
+    feather:   [48, 42, 10, 28],
+    stage:     { x: 554,  y: 150, width: 812, height: 450 }
 }
 
 // Full-screen map: the phone's picture under the whole panel. Horizon keeps a band across the top

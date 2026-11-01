@@ -12,9 +12,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.andrerinas.openheadunit.R
 import com.andrerinas.openheadunit.byd.BydClusterMap
+import com.andrerinas.openheadunit.byd.BydNativeAndroidAuto
+import com.andrerinas.openheadunit.byd.theme.FactoryRestore
 import com.andrerinas.openheadunit.byd.theme.HorizonCarrier
 import com.andrerinas.openheadunit.byd.theme.HorizonInstaller
 import com.andrerinas.openheadunit.byd.theme.HorizonOptions
+import com.andrerinas.openheadunit.byd.wheel.WheelMenuSwitch
 import com.andrerinas.openheadunit.utils.Settings
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -23,7 +26,9 @@ import kotlinx.coroutines.launch
 /**
  * Painel: the Horizon cluster theme (install or update, restart the cluster, back to factory) and
  * what Horizon shows: the Simples slot, the power gauge, the left card and the map layout. Every
- * choice reaches the cluster at once through menu.json.
+ * choice reaches the cluster at once through menu.json. The first time it finds the car without
+ * Horizon, it offers to install it; "back to factory" undoes everything the app changed
+ * ([FactoryRestore]). Only here: the app's own screen, not the cluster's menu.
  */
 class BydPanelFragment : Fragment() {
 
@@ -54,7 +59,7 @@ class BydPanelFragment : Fragment() {
         install.setOnClickListener {
             confirm(R.string.byd_theme_install, R.string.byd_theme_install_confirm) { runTheme { installer.install() } }
         }
-        remove.setOnClickListener { runTheme { installer.remove() } }
+        remove.setOnClickListener { confirmFactoryRestore() }
         restart.setOnClickListener { offerRestart() }
 
         val publish = { HorizonOptions.publish(requireContext().applicationContext) }
@@ -72,6 +77,13 @@ class BydPanelFragment : Fragment() {
         }
         showPowerTiles(view.findViewById(R.id.hz_power_tiles))
         refreshTheme()
+    }
+
+    private fun confirmFactoryRestore() {
+        val context = requireContext().applicationContext
+        confirm(R.string.hz_factory_title, R.string.hz_factory_message) {
+            runTheme { FactoryRestore(context) { line -> lastMessage.post { log(line) } }.run() }
+        }
     }
 
     /** The five power gauges as Horizon draws them; the chosen one is raised. */
@@ -115,9 +127,16 @@ class BydPanelFragment : Fragment() {
                     if (name == null) showTheme(R.string.hz_theme_factory, getString(R.string.hz_theme_factory_hint), installed = false)
                     else showTheme(R.string.hz_theme_installed, getString(R.string.hz_theme_installed_hint,
                         name.removePrefix(HorizonCarrier.NAME_PREFIX).take(8)), installed = true)
+                    if (name == null && !settings.horizonSetupOffered) offerFirstInstall()
                 },
                 onFailure = { showTheme(R.string.hz_theme_no_adb, getString(R.string.byd_adb_unavailable), installed = false) })
         }
+    }
+
+    /** The app's first time on a car without Horizon: the install, asked once. */
+    private fun offerFirstInstall() {
+        settings.horizonSetupOffered = true
+        install.performClick()
     }
 
     private fun showTheme(status: Int, hint: String, installed: Boolean) {
@@ -125,7 +144,11 @@ class BydPanelFragment : Fragment() {
         themeHint.text = hint
         install.setText(if (installed) R.string.hz_theme_update else R.string.hz_theme_install)
         restart.visibility = if (installed) View.VISIBLE else View.GONE
-        remove.visibility = if (installed) View.VISIBLE else View.GONE
+        // Also without Horizon, while the app still has BYD's Android Auto off or the wheel menu on.
+        val context = requireContext()
+        val undo = installed || WheelMenuSwitch.isOn(context) ||
+            BydNativeAndroidAuto.state(context) == BydNativeAndroidAuto.State.DISABLED
+        remove.visibility = if (undo) View.VISIBLE else View.GONE
         requireView().findViewById<View>(R.id.hz_theme_picture).alpha = if (installed) 1f else 0.4f
     }
 

@@ -573,7 +573,8 @@ class CommManager(
                     // Switches the car's cluster to the projection (or leaves it native) as the
                     // wheel menu's map switch was last left.
                     ClusterMapToggle.onSessionStart(context)
-                    if (settings.clusterNowPlaying) {
+                    // Only Horizon reads the feed; the factory panel never does.
+                    if (settings.clusterNowPlaying && settings.horizonInstalled) {
                         ClusterNowPlaying.start(context, settings.clusterLyrics)
                     }
                     // Tells the cluster theme the current choices (map layout, power gauge, card).

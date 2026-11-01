@@ -17,6 +17,7 @@ import com.andrerinas.openheadunit.aap.AapNavigation
 import com.andrerinas.openheadunit.ssl.ConscryptInitializer
 import com.andrerinas.openheadunit.utils.AppLog
 import com.andrerinas.openheadunit.utils.AppThemeManager
+import com.andrerinas.openheadunit.byd.BydClusterMap
 import com.andrerinas.openheadunit.utils.Settings
 import android.os.SystemClock
 import java.io.File
@@ -125,6 +126,10 @@ class App : Application() {
         // Apply app theme (runs the live manager when dynamic, or when a saved place
         // can force the app theme even over a static base).
         AppThemeManager.reapply(this, settings)
+
+        // The cluster map's fit is the app's, so an update that changes it applies from its first
+        // connection, not only once the Painel section is opened.
+        if (settings.showClusterOnClusterDisplay) BydClusterMap.fitTo(settings, settings.horizonInstalled)
     }
 
     private var unlockedInitDone = false

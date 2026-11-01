@@ -20,6 +20,7 @@ import android.os.Build
 import androidx.fragment.app.Fragment
 import androidx.core.content.ContextCompat
 import com.andrerinas.openheadunit.byd.BydNativeAndroidAuto
+import com.andrerinas.openheadunit.byd.theme.HorizonCarrier
 import com.andrerinas.openheadunit.byd.wheel.WheelMenuSwitch
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -213,6 +214,10 @@ class HomeFragment : Fragment() {
         view.findViewById<View>(R.id.hz_status_wheel).setOnClickListener { sidebar(R.id.wheelFragment) }
         view.findViewById<View>(R.id.hz_status_map).setOnClickListener { sidebar(R.id.androidAutoFragment) }
         showHorizonState()
+        // The app's first time on a supported car without Horizon: Painel offers the install.
+        val settings = App.provide(view.context).settings
+        if (!settings.horizonSetupOffered && !settings.horizonInstalled && Build.FINGERPRINT == HorizonCarrier.SUPPORTED_FINGERPRINT)
+            view.post { sidebar(R.id.bydPanelFragment) }
     }
 
     private fun showHorizonState() {

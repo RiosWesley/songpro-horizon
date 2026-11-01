@@ -231,6 +231,11 @@ class Settings(private val context: Context) {
         get() = prefs.getBoolean("horizon_installed", false)
         set(value) { prefs.edit().putBoolean("horizon_installed", value).apply() }
 
+    // Whether the app already offered to install Horizon on its own, the first time it opened.
+    var horizonSetupOffered: Boolean
+        get() = prefs.getBoolean("horizon_setup_offered", false)
+        set(value) { prefs.edit().putBoolean("horizon_setup_offered", value).apply() }
+
     // Where the map goes on the cluster display: "x,y,width,height" in display pixels. Blank means
     // centred; see ClusterMapArea.
     var clusterDisplayRect: String

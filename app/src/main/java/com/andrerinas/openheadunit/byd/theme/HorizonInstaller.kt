@@ -13,11 +13,14 @@ import java.io.File
 /**
  * Installs and removes the Horizon cluster theme, the way it was proven on the car
  * (horizon/RECUPERACAO.md): the carrier goes into /sdcard/.cluster/translate/, the theme tool
- * selects it, and the theme shows after one "reboot fission-all". Removing it means moving the file
- * to retired/ and restarting: with the selected file gone, the cluster falls back to factory.
+ * selects it, and the theme shows after one "reboot fission-all". An update moves the previous
+ * carrier to retired/. Removing takes every file of Horizon's off the car and restarts: with the
+ * selected file gone, the cluster saves its default selection and shows the factory panel.
+ * The first install backs the original panel up before anything goes in ([OriginalBackup]); the
+ * rest of what the app changes on the car is undone by [FactoryRestore].
  *
  * Shell steps run through Self-ADB (uid shell): the theme tool must run as shell, and the reboot
- * needs adbd. Files are moved, never deleted.
+ * needs adbd.
  */
 class HorizonInstaller(private val context: Context, private val log: (String) -> Unit) {
 
@@ -54,6 +57,13 @@ class HorizonInstaller(private val context: Context, private val log: (String) -
         if (present == listOf(carrier.name) && selection == ThemeToolOutput.Selection.HORIZON && query.contains(carrier.name))
             return@guarded Outcome.NothingToDo("Esta versão do Horizon já está instalada e selecionada.")
 
+        // The panel as it was goes aside before anything of Horizon's goes in.
+        try {
+            OriginalBackup({ command, timeout -> shell(command, timeout) }, staging, log).ensure(query)
+        } catch (e: OriginalBackup.Failed) {
+            throw Stop("backup do painel original: ${e.message}; nada foi instalado")
+        }
+
         retire(present)
         expectSha(shell("cp '${staging.path}/${carrier.name}' $INCOMING && sha256sum $INCOMING"), carrier.sha256, "tema copiado")
         shell("mv $INCOMING $TRANSLATE${carrier.name}")
@@ -70,20 +80,42 @@ class HorizonInstaller(private val context: Context, private val log: (String) -
         Outcome.RestartNeeded("Horizon selecionado. Ele aparece depois de reiniciar o painel.")
     }
 
-    /** Takes every Horizon carrier out of the lookup directory. */
-    suspend fun remove(): Outcome = guarded {
-        val horizon = rccFiles().filter { it.startsWith(HorizonCarrier.NAME_PREFIX) }
-        if (horizon.isEmpty()) return@guarded Outcome.NothingToDo("Nenhum Horizon instalado: o painel já usa o tema de fábrica.")
-        retire(horizon)
+    /**
+     * Takes every file of Horizon's off the car, as it was before the first install: the carrier in
+     * use and the retired ones, the files the app writes for the theme, the theme tool, and the
+     * cluster folders once nothing else is in them (the car came without /sdcard/.cluster). The
+     * factory files were never written to; the backup of the original panel ([OriginalBackup]) stays.
+     * Horizon stays on the cluster until the restart, which then shows the factory panel.
+     */
+    suspend fun removeEverything(): Outcome = guarded {
+        val installed = rccFiles().any { it.startsWith(HorizonCarrier.NAME_PREFIX) }
+        log("Apagando o Horizon do painel")
+        val horizon = "${HorizonCarrier.NAME_PREFIX}*.rcc"
+        shell("rm -f $TRANSLATE$horizon $RETIRED$horizon; rm -rf $INCOMING_DIR; rm -f $TOOL $TOOL_STATE; " +
+            "rmdir $TRANSLATE $RETIRED $CLUSTER_DIR 2>/dev/null; true")
+        val left = shell("ls $TRANSLATE $RETIRED $INCOMING_DIR 2>/dev/null; true")
+        if (left.contains(HorizonCarrier.NAME_PREFIX) || left.contains(".incoming")) throw Stop("ficaram arquivos do Horizon no painel")
         BydClusterMap.fitTo(Settings(context), horizon = false)
-        Outcome.RestartNeeded("Horizon removido. O painel de fábrica volta depois de reiniciar.")
+        if (installed) Outcome.RestartNeeded("Horizon apagado. O painel de fábrica volta depois de reiniciar.")
+        else Outcome.NothingToDo("O painel já usa o tema de fábrica; não sobrou nenhum arquivo do Horizon.")
     }
 
     /** The installed Horizon carrier, or null; throws when Self-ADB is not reachable. */
     suspend fun installed(): String? = rccFiles().firstOrNull { it.startsWith(HorizonCarrier.NAME_PREFIX) }
 
-    /** Restarts the cluster host and the head unit; only with the car parked. */
-    suspend fun restartPanel(): Boolean = AdbManager.openService(context, "reboot:fission-all")
+    /**
+     * Restarts the cluster host and the head unit; only with the car parked. Without Horizon on the
+     * car, the theme's files a connection may have written since go first, and the cluster folder
+     * with them once it is empty.
+     */
+    suspend fun restartPanel(): Boolean = withContext(Dispatchers.IO + NonCancellable) {
+        try {
+            if (installed() == null) shell("rm -rf $INCOMING_DIR; rmdir $TRANSLATE $RETIRED $CLUSTER_DIR 2>/dev/null; true")
+            AdbManager.openService(context, "reboot:fission-all")
+        } catch (e: Stop) {
+            false
+        }
+    }
 
     /**
      * Runs off the main thread (hashing 256 MB, Self-ADB), to the end even if the screen goes away
@@ -134,10 +166,12 @@ class HorizonInstaller(private val context: Context, private val log: (String) -
         const val STOCK_DIR = "/system/lib64"
         const val TRANSLATE = "/sdcard/.cluster/translate/"
         const val RETIRED = "/sdcard/.cluster/retired/"
+        private const val CLUSTER_DIR = "/sdcard/.cluster"
         private const val INCOMING_DIR = "/sdcard/.cluster/horizon"
         private const val INCOMING = "$INCOMING_DIR/.incoming.rcc"
         private const val TOOL_NAME = "horizon-theme-tool.dex"
         private const val TOOL = "/data/local/tmp/$TOOL_NAME"
+        private const val TOOL_STATE = "/data/local/tmp/horizon-theme-tool.state"
         private const val QML_ASSETS = "horizon/qml"
     }
 }

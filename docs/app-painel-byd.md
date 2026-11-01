@@ -4,7 +4,8 @@ O Song Pro Horizon é feito para o **BYD Song Pro com DiLink 3.0 e painel de 8,8
 (firmware SX309)**. Ela faz três coisas:
 
 1. **Android Auto pelo cabo**, com o mapa do celular (Waze/Maps) no painel de instrumentos.
-2. **Instala o tema de painel Horizon** e **volta ao painel original** com um toque.
+2. **Instala o tema de painel Horizon** (com backup do painel original antes) e **volta ao painel de
+   fábrica**, sem nenhuma modificação, com um toque.
 3. **Escolhe quem atende o celular no cabo:** o Song Pro Horizon ou o Android Auto nativo da BYD.
 
 O app tem cinco seções numa barra à esquerda:
@@ -12,7 +13,7 @@ O app tem cinco seções numa barra à esquerda:
 | Seção | O que tem |
 |---|---|
 | **Início** | O estado (esperando o celular ou conectado), o botão de conectar ou de abrir o Android Auto, três linhas de estado e o painel como fica com o Horizon |
-| **Painel** | Instalar, atualizar ou tirar o Horizon, reiniciar o painel, a vaga Simples, o medidor de potência, o card da esquerda e o formato do mapa |
+| **Painel** | Instalar ou atualizar o Horizon, voltar à fábrica, reiniciar o painel, a vaga Simples, o medidor de potência, o card da esquerda e o formato do mapa |
 | **Android Auto** | Quem atende o cabo (este app ou o da BYD), abrir sozinho, mapa e letra no painel, qualidade da imagem e tamanho dos elementos |
 | **Volante** | O menu do Horizon no volante, o botão que abre o menu e o que cada tecla faz |
 | **Sobre** | Versão, créditos e **Ajustes avançados**, com todos os ajustes herdados do Open Headunit |
@@ -38,13 +39,31 @@ próprio painel como o momento de cor.
 
 ### Tema do painel (Horizon)
 
+- **Primeira abertura:** num carro sem o Horizon, o app abre a seção Painel e oferece a instalação
+  uma vez.
 - **Instalar Horizon:** o app monta o tema **no próprio carro**, a partir dos arquivos de fábrica
-  dele. Nada da BYD vem dentro do app. Depois de montar, o app coloca o tema em
-  `/sdcard/.cluster/translate/` e o seleciona. Por último, pergunta se pode **reiniciar o painel**:
-  o painel e a multimídia apagam e voltam em cerca de 1 minuto, já com o Horizon.
-- **Voltar ao original:** o app move o tema para `/sdcard/.cluster/retired/` (não apaga nada) e
-  pede para reiniciar. Sem o arquivo, o painel volta sozinho ao de fábrica. Este é o caminho de
-  volta comprovado no carro. O "restaurar padrão" da BYD não funciona neste firmware.
+  dele. Nada da BYD vem dentro do app. Na primeira instalação, antes de colocar qualquer coisa, o app
+  guarda o painel original em `/sdcard/SongProHorizon/original/` (cerca de 290 MB):
+  - os arquivos de fábrica do painel;
+  - o que havia na pasta de temas;
+  - o tema selecionado, o firmware, o estado do Android Auto da BYD e os serviços de acessibilidade;
+  - um `SHA256SUMS` de tudo, conferido com os originais.
+
+  Como há variações do Song Pro, cada carro guarda o seu. Depois o app coloca o tema em
+  `/sdcard/.cluster/translate/` (uma atualização move a versão anterior para `retired/`), o
+  seleciona e pergunta se pode **reiniciar o painel**: o painel e a multimídia apagam e voltam em
+  cerca de 1 minuto, já com o Horizon.
+- **Voltar à fábrica** (só no app, Painel): devolve o painel exatamente como veio, sem nenhuma
+  modificação:
+  - apaga tudo o que é do Horizon: o tema, as versões antigas em `retired/`, os arquivos que o app
+    escreve para ele e a ferramenta do tema;
+  - remove as pastas do painel que ficarem vazias (o carro veio sem `/sdcard/.cluster`);
+  - religa o Android Auto da BYD e desliga o menu do volante;
+  - pede para reiniciar.
+
+  Sem o arquivo do tema, o painel grava sozinho a seleção de fábrica e mostra o de fábrica: é o
+  caminho de volta comprovado no carro. O "restaurar padrão" da BYD não funciona neste firmware. Ficam
+  só o app e o backup do original.
 - **O Horizon no menu de tema do painel:** o Horizon ocupa a vaga do **Simples** no menu do próprio
   painel (botão voltar → Tema); o **Clássico** continua de fábrica. Trocar entre os dois por esse menu não
   precisa do app nem de reiniciar. Na troca, a BYD toca a animação dela e o Horizon espera ela acabar.
@@ -64,15 +83,19 @@ próprio painel como o momento de cor.
 - **Formato do mapa:** três formatos, trocados em **Painel → Mapa no painel** ou pelo menu no
   volante. Mudam **na hora**, também com o celular conectado e o carro andando.
   - **Janela:** o mapa no centro do Horizon, com o ADAS numa janela à esquerda e os cards em volta.
-  - **Lateral:** o mapa no lado direito, no lugar do medidor de potência; o ADAS continua no
-    centro e a potência vira uma barra horizontal em cima.
+  - **Lateral:** o mapa no lado direito, no lugar do medidor de potência, espelhando o card da
+    esquerda; o ADAS fica centralizado sob a velocidade e a potência vira uma barra horizontal em
+    cima.
   - **Tela cheia:** o mapa no painel inteiro. O Horizon guarda só uma faixa em cima (velocidade,
     marcha e potência), põe um fundo escuro atrás de cada grupo da barra de baixo e mostra o ADAS
     numa janelinha, como a de fábrica na navegação.
 
   O celular sempre desenha o mapa para o painel inteiro, a 200 dpi. Trocar o formato só muda onde a
   imagem fica (na Janela ela é reduzida a 0,8 e, na Lateral, a 0,72, para caber mais mapa), o
-  recorte do Horizon e o aviso ao celular de onde pôr os cartões.
+  recorte do Horizon e o aviso ao celular de onde pôr os cartões. A imagem é pedida 80 px mais alta
+  que o painel: no carro, as últimas ~80 linhas dela chegavam pretas, e agora essa faixa fica abaixo
+  do painel. No build de depuração, o app salva uma captura do painel alguns segundos depois de o
+  mapa aparecer ou mudar de formato (`/data/local/tmp/horizon-map-<formato>.png`).
 - **Ligar o mapa:** pelo menu no volante ("Mapa no painel"). Não há mais botão na tela.
 - O mapa é uma janela sobreposta, que precisa da permissão de sobreposição
   (`SYSTEM_ALERT_WINDOW`). Uma instalação nova começa sem ela, e sem ela o painel abre a projeção
@@ -114,8 +137,8 @@ volante.
 
 ## Se algo der errado
 
-- Painel estranho depois de instalar: **Painel → Voltar ao original**, e reiniciar o painel quando o app oferecer.
-- Sem o app, pelo PC, faça a mesma coisa à mão (detalhes em [../horizon/RECUPERACAO.md](../horizon/RECUPERACAO.md) §5):
+- Painel estranho depois de instalar: **Painel → Voltar à fábrica**, e reiniciar o painel quando o app oferecer.
+- Sem o app, pelo PC, tire o tema de cima à mão (detalhes em [../horizon/RECUPERACAO.md](../horizon/RECUPERACAO.md) §5):
 
   ```bash
   adb -s <ip-da-multimídia>:5555 shell 'mkdir -p /sdcard/.cluster/retired && mv /sdcard/.cluster/translate/*TranslateHorizon_*.rcc /sdcard/.cluster/retired/'
