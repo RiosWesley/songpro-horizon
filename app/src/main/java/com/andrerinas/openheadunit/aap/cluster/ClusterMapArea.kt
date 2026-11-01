@@ -19,22 +19,25 @@ internal object ClusterMapArea {
     /**
      * With Horizon the phone always draws for the whole display, so its three layouts switch live:
      * only where the picture sits ("scale,x,y": scaled from its top-left corner, then moved; see
-     * parsePlacement) and the content insets change. The insets are the clear part of Horizon's
-     * opening, mapped back into the phone's picture (1280x560, see below). Captured on the car: the
-     * phone centres the car arrow in that clear part and lays the turn card just above it and the
-     * arrival card just below; the arrow sits low in the frame when it has no insets.
+     * parsePlacement) and the content insets change. Measured on the car with a route (2026-11-01,
+     * ClusterLayoutProbe): the phone centres the car arrow in the content area, keeps the turn card's
+     * top and the arrival card's bottom about 98 px inside its top and bottom edges, and stretches the
+     * turn card to its width less about 36 px. A content area only as tall as Horizon's opening left
+     * the cards stuck to each other over the arrow (window, side) or on top of each other (full), and
+     * one 210 px tall hid them. So each layout's insets reach about 98 px above and below the
+     * opening, and its cards land on the opening's top and bottom edges.
      *
      * The picture is asked [HORIZON_OVERSCAN] px taller than the display: with a 1280x480 picture
      * its bottom ~80 px arrived black in every layout; at 1280x560 it is drawn to the bottom (seen in
      * the captures), and the extra rows fall below the panel.
      *
-     * Full screen: the picture as is. The clear part is under the speed band (y 113) and above the
+     * Full screen: the picture as is. The cards go under the speed band (y 113) and above the
      * bottom bar (y 393, the street name's place too), between equal side insets that keep the turn
-     * card (about 600 px wide) off the ADAS window (HorizonGeometry.js `full.adas`, from x 960).
+     * card (about 580 px wide) off the ADAS window (HorizonGeometry.js `full.adas`, from x 960).
      */
     const val HORIZON_OVERSCAN = 80
     const val HORIZON_FULL = "0,0,1280,560"
-    const val HORIZON_FULL_INSETS = "333,113,333,167"
+    const val HORIZON_FULL_INSETS = "333,25,333,79"
 
     /**
      * Window: Horizon's centre opening (390,68,500,344; clear 450..830 x 108..383, from
@@ -42,7 +45,7 @@ internal object ClusterMapArea {
      * at full size, centred, with the arrow low in the opening.
      */
     const val HORIZON_WINDOW_PLACEMENT = "0.8,128,34"
-    const val HORIZON_WINDOW_INSETS = "402,92,402,124"
+    const val HORIZON_WINDOW_INSETS = "402,6,402,38"
 
     /**
      * Side (the second layout): Horizon's opening on the right (863,69,305,324; clear 911..1161 x
@@ -50,7 +53,7 @@ internal object ClusterMapArea {
      * centre under the clear part's.
      */
     const val HORIZON_SIDE_PLACEMENT = "0.72,575,56"
-    const val HORIZON_SIDE_INSETS = "466,70,466,119"
+    const val HORIZON_SIDE_INSETS = "466,0,466,36"
 
     /** Without a theme, the whole band above the factory 8.8" bottom bar. */
     const val FACTORY_FREE_BAND = "0,0,1280,420"

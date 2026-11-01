@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.multidex.MultiDex
 import com.andrerinas.openheadunit.main.BackgroundNotification
 import com.andrerinas.openheadunit.aap.AapNavigation
+import com.andrerinas.openheadunit.aap.cluster.ClusterLayoutProbe
 import com.andrerinas.openheadunit.ssl.ConscryptInitializer
 import com.andrerinas.openheadunit.utils.AppLog
 import com.andrerinas.openheadunit.utils.AppThemeManager
@@ -131,6 +132,7 @@ class App : Application() {
         // The cluster map's fit is the app's, so an update that changes it applies from its first
         // connection, not only once the Painel section is opened.
         if (settings.showClusterOnClusterDisplay) BydClusterMap.fitTo(settings, settings.horizonInstalled)
+        ClusterLayoutProbe.register(this)
         // Horizon's parking sensors come from a reader on the head unit; the boot receiver gets here.
         ParkSensorsFeed.ensureRunning(this)
     }

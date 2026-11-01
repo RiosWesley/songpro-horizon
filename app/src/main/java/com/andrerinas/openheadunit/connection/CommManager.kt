@@ -945,6 +945,22 @@ class CommManager(
         sendClusterUiConfig()
     }
 
+    /**
+     * Debug probe (ClusterLayoutProbe): a cluster focus cycle as a new picture gets it (insets after),
+     * or with the insets sent while the focus is away and nothing after ([insetsFirst]).
+     */
+    fun probeClusterFocusCycle(insetsFirst: Boolean) {
+        _scope.launch {
+            if (!insetsFirst) return@launch requestClusterKeyframe()
+            val transport = _transport ?: return@launch
+            transport.send(VideoFocusEvent(gain = false, unsolicited = false, channel = Channel.ID_VID_CLUSTER))
+            delay(350)
+            sendClusterUiConfig()
+            delay(150)
+            transport.send(VideoFocusEvent(gain = true, unsolicited = true, channel = Channel.ID_VID_CLUSTER))
+        }
+    }
+
     /** A new cluster map layout mid-session: the phone is told where its cards go now. */
     private fun sendClusterUiConfig() {
         val transport = _transport ?: return
