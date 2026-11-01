@@ -33,13 +33,31 @@
         tools:text="WiFi Direct: OpenHU"
         tools:visibility="visible" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/main_content"
+    <!-- Song Pro Horizon's sections in a sidebar (HorizonSidebar), the screens next to it. The
+         sidebar hides on screens outside the five sections. -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/nav_graph"
-        app:defaultNavHost="true" />
+        android:background="@color/hz_page"
+        android:orientation="horizontal">
+
+        <include layout="@layout/layout_hz_sidebar" />
+
+        <View
+            android:id="@+id/hz_sidebar_edge"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/hz_hairline" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/main_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:navGraph="@navigation/nav_graph"
+            app:defaultNavHost="true" />
+    </LinearLayout>
 
     <!-- Why the last connection attempt failed, and what fixes it.
 
@@ -245,46 +263,30 @@
 
     </LinearLayout>
 
-    <!-- Splash Overlay for controlled delay and branding text -->
-    <RelativeLayout
+    <!-- Splash: the product's mark and name on the page colour -->
+    <LinearLayout
         android:id="@+id/splash_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_projection_blue"
+        android:background="@color/hz_page"
         android:clickable="true"
         android:focusable="true"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_horizon_mark" />
+
+        <TextView
+            style="@style/HzText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:src="@mipmap/ic_launcher_playstore" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-10dp"
-                android:text="OPEN"
-                android:textColor="@color/splash_text_white"
-                android:textSize="35sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-4dp"
-                android:text="Headunit"
-                android:textAllCaps="true"
-                android:textColor="@color/splash_text_revived"
-                android:textSize="35sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-    </RelativeLayout>
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/app_name"
+            android:textSize="32sp" />
+    </LinearLayout>
 </FrameLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Song Pro Horizon's mark in the adaptive icon's safe zone: a low arc of light over the horizon -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:strokeColor="@color/hz_accent" android:strokeWidth="5" android:strokeLineCap="round"
+        android:pathData="M35,60 Q54,40 73,60" />
+    <path android:strokeColor="@color/hz_text" android:strokeWidth="4" android:strokeLineCap="round"
+        android:pathData="M30,69 L78,69" />
+</vector>

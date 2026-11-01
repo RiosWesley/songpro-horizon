@@ -57,6 +57,7 @@ import java.io.File
 
 class MainActivity : BaseActivity() {
 
+    private var sidebar: HorizonSidebar? = null
     private var lastBackPressTime: Long = 0
     var keyListener: KeyListener? = null
 
@@ -176,6 +177,7 @@ class MainActivity : BaseActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_content) as androidx.navigation.fragment.NavHostFragment
         val navController = navHostFragment.navController
+        sidebar = HorizonSidebar(this, navController)
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -240,6 +242,11 @@ class MainActivity : BaseActivity() {
         }
 
         observeConnectionStateForOverlay()
+    }
+
+    /** Opens one of Song Pro Horizon's sections, as its sidebar row does. */
+    fun openSection(destination: Int) {
+        sidebar?.open(destination)
     }
 
     /**

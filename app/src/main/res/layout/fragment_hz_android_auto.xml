@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android Auto: who answers the USB cable and how a connection starts -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:theme="@style/ThemeOverlay.Horizon">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/hz_page_padding">
+
+        <TextView
+            style="@style/HzText.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hz_nav_aa" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/hz_card_bg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/byd_aa_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/hz_row_height"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/hz_card_padding"
+                android:paddingTop="16dp"
+                android:paddingEnd="@dimen/hz_card_padding"
+                android:paddingBottom="16dp">
+        
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+        
+                    <TextView
+                        style="@style/HzText.Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hz_aa_who" />
+                    <TextView
+                        style="@style/HzText.Hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/hz_aa_who_hint" />
+                </LinearLayout>
+        
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/byd_aa_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:selectionRequired="true"
+                    app:singleSelection="true" />
+            </LinearLayout>
+        
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/hz_card_padding"
+                android:layout_marginEnd="@dimen/hz_card_padding"
+                android:background="@color/hz_hairline" />
+        
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/hz_row_height"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/hz_card_padding"
+                android:paddingTop="16dp"
+                android:paddingEnd="@dimen/hz_card_padding"
+                android:paddingBottom="16dp">
+        
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+        
+                    <TextView
+                        style="@style/HzText.Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hz_aa_autostart" />
+                    <TextView
+                        style="@style/HzText.Hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/hz_aa_autostart_hint" />
+                </LinearLayout>
+        
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/hz_switch_autostart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/hz_card_padding"
+                android:layout_marginEnd="@dimen/hz_card_padding"
+                android:background="@color/hz_hairline" />
+        
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/hz_row_height"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/hz_card_padding"
+                android:paddingTop="16dp"
+                android:paddingEnd="@dimen/hz_card_padding"
+                android:paddingBottom="16dp">
+        
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+        
+                    <TextView
+                        style="@style/HzText.Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hz_aa_map" />
+                    <TextView
+                        style="@style/HzText.Hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/hz_aa_map_hint" />
+                </LinearLayout>
+        
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/hz_switch_map"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/hz_card_padding"
+                android:layout_marginEnd="@dimen/hz_card_padding"
+                android:background="@color/hz_hairline" />
+        
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/hz_row_height"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/hz_card_padding"
+                android:paddingTop="16dp"
+                android:paddingEnd="@dimen/hz_card_padding"
+                android:paddingBottom="16dp">
+        
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+        
+                    <TextView
+                        style="@style/HzText.Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hz_aa_lyrics" />
+                    <TextView
+                        style="@style/HzText.Hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/hz_aa_lyrics_hint" />
+                </LinearLayout>
+        
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/hz_switch_lyrics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/hz_card_padding"
+                android:layout_marginEnd="@dimen/hz_card_padding"
+                android:background="@color/hz_hairline" />
+        
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/hz_row_height"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/hz_card_padding"
+                android:paddingTop="16dp"
+                android:paddingEnd="@dimen/hz_card_padding"
+                android:paddingBottom="16dp">
+        
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+        
+                    <TextView
+                        style="@style/HzText.Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hz_aa_quality" />
+                    <TextView
+                        style="@style/HzText.Hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/hz_aa_next_connection" />
+                </LinearLayout>
+        
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/hz_quality_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:selectionRequired="true"
+                    app:singleSelection="true" />
+            </LinearLayout>
+        
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/hz_card_padding"
+                android:layout_marginEnd="@dimen/hz_card_padding"
+                android:background="@color/hz_hairline" />
+        
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/hz_row_height"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/hz_card_padding"
+                android:paddingTop="16dp"
+                android:paddingEnd="@dimen/hz_card_padding"
+                android:paddingBottom="16dp">
+        
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+        
+                    <TextView
+                        style="@style/HzText.Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hz_aa_density" />
+                    <TextView
+                        style="@style/HzText.Hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/hz_aa_density_hint" />
+                </LinearLayout>
+        
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/hz_density_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:selectionRequired="true"
+                    app:singleSelection="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/hz_aa_log"
+            style="@style/HzText.Meta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</ScrollView>

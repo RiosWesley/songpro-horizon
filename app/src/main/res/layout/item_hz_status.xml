@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One line of state on Início: a status dot, what it is, and its value in a right-aligned column.
+     A tap opens the section that changes it. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/hz_status_dot"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/hz_dot" />
+
+    <TextView
+        android:id="@+id/hz_status_label"
+        style="@style/HzText.Hint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/hz_status_value"
+        style="@style/HzText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:maxLines="1"
+        android:textSize="18sp" />
+</LinearLayout>

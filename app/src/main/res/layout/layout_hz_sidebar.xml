@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Song Pro Horizon's navigation: the five sections, and leaving the app. Each row is one tap
+     target of 64dp; the chosen one is a raised surface with the horizon tick at its edge. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/hz_sidebar"
+    android:layout_width="@dimen/hz_sidebar_width"
+    android:layout_height="match_parent"
+    android:background="@color/hz_deepest"
+    android:orientation="vertical"
+    android:paddingStart="16dp"
+    android:paddingTop="24dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
+    android:theme="@style/ThemeOverlay.Horizon">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_horizon_mark" />
+
+        <TextView
+            style="@style/HzText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/app_name"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <LinearLayout
+        android:id="@+id/hz_nav_home"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/hz_nav_row_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:layout_width="4dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="6dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_nav_tick" />
+
+        <ImageView
+            android:layout_width="@dimen/hz_icon"
+            android:layout_height="@dimen/hz_icon"
+            android:layout_marginStart="10dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_ic_home"
+            app:tint="@color/hz_nav_icon" />
+
+        <TextView
+            style="@style/HzText.Nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:duplicateParentState="true"
+            android:text="@string/hz_nav_home" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/hz_nav_cluster"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/hz_nav_row_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:layout_width="4dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="6dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_nav_tick" />
+
+        <ImageView
+            android:layout_width="@dimen/hz_icon"
+            android:layout_height="@dimen/hz_icon"
+            android:layout_marginStart="10dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_ic_gauge"
+            app:tint="@color/hz_nav_icon" />
+
+        <TextView
+            style="@style/HzText.Nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:duplicateParentState="true"
+            android:text="@string/hz_nav_cluster" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/hz_nav_aa"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/hz_nav_row_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:layout_width="4dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="6dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_nav_tick" />
+
+        <ImageView
+            android:layout_width="@dimen/hz_icon"
+            android:layout_height="@dimen/hz_icon"
+            android:layout_marginStart="10dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_ic_phone"
+            app:tint="@color/hz_nav_icon" />
+
+        <TextView
+            style="@style/HzText.Nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:duplicateParentState="true"
+            android:text="@string/hz_nav_aa" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/hz_nav_wheel"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/hz_nav_row_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:layout_width="4dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="6dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_nav_tick" />
+
+        <ImageView
+            android:layout_width="@dimen/hz_icon"
+            android:layout_height="@dimen/hz_icon"
+            android:layout_marginStart="10dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_ic_wheel"
+            app:tint="@color/hz_nav_icon" />
+
+        <TextView
+            style="@style/HzText.Nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:duplicateParentState="true"
+            android:text="@string/hz_nav_wheel" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/hz_nav_about"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/hz_nav_row_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:layout_width="4dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="6dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_nav_tick" />
+
+        <ImageView
+            android:layout_width="@dimen/hz_icon"
+            android:layout_height="@dimen/hz_icon"
+            android:layout_marginStart="10dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_ic_info"
+            app:tint="@color/hz_nav_icon" />
+
+        <TextView
+            style="@style/HzText.Nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:duplicateParentState="true"
+            android:text="@string/hz_nav_about" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/hz_nav_exit"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/hz_nav_row_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:layout_width="4dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="6dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_nav_tick" />
+
+        <ImageView
+            android:layout_width="@dimen/hz_icon"
+            android:layout_height="@dimen/hz_icon"
+            android:layout_marginStart="10dp"
+            android:duplicateParentState="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/hz_ic_exit"
+            app:tint="@color/hz_nav_icon" />
+
+        <TextView
+            style="@style/HzText.Nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:duplicateParentState="true"
+            android:text="@string/hz_nav_exit" />
+    </LinearLayout>
+</LinearLayout>

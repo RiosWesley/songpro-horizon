@@ -5,106 +5,128 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.andrerinas.openheadunit.R
 import com.andrerinas.openheadunit.byd.BydClusterMap
-import com.andrerinas.openheadunit.byd.BydNativeAndroidAuto
 import com.andrerinas.openheadunit.byd.theme.HorizonCarrier
 import com.andrerinas.openheadunit.byd.theme.HorizonInstaller
 import com.andrerinas.openheadunit.byd.theme.HorizonOptions
 import com.andrerinas.openheadunit.utils.Settings
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 
 /**
- * The BYD screen of the shared build: install or remove the Horizon cluster theme, the steering
- * wheel menu ([BydWheelSection]), and who answers the phone on the USB cable (this app or BYD's own
- * Android Auto).
+ * Painel: the Horizon cluster theme (install or update, restart the cluster, back to factory) and
+ * what Horizon shows: the Simples slot, the power gauge, the left card and the map layout. Every
+ * choice reaches the cluster at once through menu.json.
  */
 class BydPanelFragment : Fragment() {
 
     private lateinit var installer: HorizonInstaller
+    private lateinit var settings: Settings
     private lateinit var themeStatus: TextView
+    private lateinit var themeHint: TextView
     private lateinit var install: MaterialButton
+    private lateinit var restart: MaterialButton
     private lateinit var remove: MaterialButton
-    private lateinit var aaMode: MaterialButtonToggleGroup
-    private lateinit var logView: TextView
-    private var wheel: BydWheelSection? = null
-    private var showingAaState = false
+    private lateinit var lastMessage: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(R.layout.fragment_byd_panel, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<MaterialToolbar>(R.id.toolbar).setNavigationOnClickListener { findNavController().popBackStack() }
+        settings = Settings(requireContext().applicationContext)
         themeStatus = view.findViewById(R.id.byd_theme_status)
+        themeHint = view.findViewById(R.id.hz_theme_hint)
         install = view.findViewById(R.id.byd_theme_install)
+        restart = view.findViewById(R.id.hz_theme_restart)
         remove = view.findViewById(R.id.byd_theme_remove)
-        aaMode = view.findViewById(R.id.byd_aa_mode)
-        logView = view.findViewById(R.id.byd_log)
+        lastMessage = view.findViewById(R.id.byd_log)
         // The installer reports from a background thread.
-        installer = HorizonInstaller(requireContext().applicationContext) { line -> logView.post { log(line) } }
+        installer = HorizonInstaller(requireContext().applicationContext) { line -> lastMessage.post { log(line) } }
 
         install.setOnClickListener {
             confirm(R.string.byd_theme_install, R.string.byd_theme_install_confirm) { runTheme { installer.install() } }
         }
         remove.setOnClickListener { runTheme { installer.remove() } }
-        aaMode.addOnButtonCheckedListener { _, id, checked ->
-            if (checked && !showingAaState) switchAndroidAuto(id == R.id.byd_aa_this_app)
-        }
+        restart.setOnClickListener { offerRestart() }
 
-        wheel = BydWheelSection(view, viewLifecycleOwner.lifecycleScope, ::log)
-        val settings = Settings(requireContext().applicationContext)
-        BydOptionRow(view, R.id.byd_skin, R.id.byd_skin_change, R.string.wheel_menu_skin, R.string.byd_skin,
-            HorizonOptions.SKINS, { settings.horizonSkin }) { key ->
-            settings.horizonSkin = key
-            HorizonOptions.publish(requireContext().applicationContext)
+        val publish = { HorizonOptions.publish(requireContext().applicationContext) }
+        HzChoices.bind(view.findViewById(R.id.hz_skin_group), HorizonOptions.SKINS, settings.horizonSkin) {
+            settings.horizonSkin = it
+            publish()
         }
-        BydOptionRow(view, R.id.byd_power_style, R.id.byd_power_style_change, R.string.wheel_menu_power, R.string.byd_power_style,
-            HorizonOptions.POWER_STYLES, { settings.horizonPowerStyle }) { key ->
-            settings.horizonPowerStyle = key
-            HorizonOptions.publish(requireContext().applicationContext)
+        HzChoices.bind(view.findViewById(R.id.hz_card_group), HorizonOptions.LEFT_CARDS, settings.horizonLeftCard) {
+            settings.horizonLeftCard = it
+            publish()
         }
-        BydOptionRow(view, R.id.byd_map_layout, R.id.byd_map_layout_change, R.string.wheel_menu_map_layout, R.string.byd_map_layout,
-            HorizonOptions.MAP_LAYOUTS, { settings.horizonMapLayout }) { key ->
-            HorizonOptions.setMapLayout(requireContext().applicationContext, key)
-            HorizonOptions.publish(requireContext().applicationContext)
+        HzChoices.bind(view.findViewById(R.id.hz_map_group), HorizonOptions.MAP_LAYOUTS, settings.horizonMapLayout) {
+            HorizonOptions.setMapLayout(requireContext().applicationContext, it)
+            publish()
         }
-        showAaState()
+        showPowerTiles(view.findViewById(R.id.hz_power_tiles))
         refreshTheme()
     }
 
-    override fun onDestroyView() {
-        wheel?.release()
-        wheel = null
-        super.onDestroyView()
+    /** The five power gauges as Horizon draws them; the chosen one is raised. */
+    private fun showPowerTiles(row: LinearLayout) {
+        val pictures = mapOf("ring" to R.drawable.hz_gauge_ring, "segments" to R.drawable.hz_gauge_segments,
+            "arc" to R.drawable.hz_gauge_arc, "column" to R.drawable.hz_gauge_column, "wave" to R.drawable.hz_gauge_wave)
+        val inflater = LayoutInflater.from(row.context)
+        val tiles = HorizonOptions.POWER_STYLES.map { option ->
+            val tile = inflater.inflate(R.layout.item_hz_gauge_tile, row, false)
+            tile.findViewById<ImageView>(R.id.hz_tile_picture).setImageResource(pictures.getValue(option.key))
+            tile.findViewById<TextView>(R.id.hz_tile_label).setText(option.label)
+            tile.contentDescription = getString(option.label)
+            row.addView(tile)
+            option.key to tile
+        }
+        fun mark() = tiles.forEach { (key, tile) -> tile.isActivated = key == settings.horizonPowerStyle }
+        tiles.forEach { (key, tile) ->
+            tile.setOnClickListener {
+                settings.horizonPowerStyle = key
+                HorizonOptions.publish(requireContext().applicationContext)
+                mark()
+            }
+        }
+        mark()
     }
 
     private fun refreshTheme() {
         if (Build.FINGERPRINT != HorizonCarrier.SUPPORTED_FINGERPRINT) {
-            themeStatus.setText(R.string.byd_theme_unsupported)
+            showTheme(R.string.hz_theme_unsupported, getString(R.string.byd_theme_unsupported), installed = false)
             install.isEnabled = false
             return
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            val installed = runCatching { installer.installed() }
-            themeStatus.text = installed.fold(
+            val found = runCatching { installer.installed() }
+            if (view == null) return@launch
+            found.fold(
                 onSuccess = { name ->
                     // Keeps the map fitted to what is really installed (Horizon may have come from
                     // elsewhere, or have been removed by hand).
-                    BydClusterMap.fitTo(Settings(requireContext().applicationContext), horizon = name != null)
-                    if (name == null) getString(R.string.byd_theme_factory)
-                    else getString(R.string.byd_theme_installed, name.removePrefix(HorizonCarrier.NAME_PREFIX).take(8))
+                    BydClusterMap.fitTo(settings, horizon = name != null)
+                    if (name == null) showTheme(R.string.hz_theme_factory, getString(R.string.hz_theme_factory_hint), installed = false)
+                    else showTheme(R.string.hz_theme_installed, getString(R.string.hz_theme_installed_hint,
+                        name.removePrefix(HorizonCarrier.NAME_PREFIX).take(8)), installed = true)
                 },
-                onFailure = { getString(R.string.byd_adb_unavailable) })
+                onFailure = { showTheme(R.string.hz_theme_no_adb, getString(R.string.byd_adb_unavailable), installed = false) })
         }
+    }
+
+    private fun showTheme(status: Int, hint: String, installed: Boolean) {
+        themeStatus.setText(status)
+        themeHint.text = hint
+        install.setText(if (installed) R.string.hz_theme_update else R.string.hz_theme_install)
+        restart.visibility = if (installed) View.VISIBLE else View.GONE
+        remove.visibility = if (installed) View.VISIBLE else View.GONE
+        requireView().findViewById<View>(R.id.hz_theme_picture).alpha = if (installed) 1f else 0.4f
     }
 
     private fun runTheme(action: suspend () -> HorizonInstaller.Outcome) {
@@ -128,30 +150,10 @@ class BydPanelFragment : Fragment() {
         }
     }
 
-    private fun showAaState() {
-        val state = BydNativeAndroidAuto.state(requireContext())
-        requireView().findViewById<View>(R.id.byd_aa_section).visibility =
-            if (state == BydNativeAndroidAuto.State.ABSENT) View.GONE else View.VISIBLE
-        showingAaState = true
-        aaMode.check(if (state == BydNativeAndroidAuto.State.DISABLED) R.id.byd_aa_this_app else R.id.byd_aa_native)
-        showingAaState = false
-    }
-
-    private fun switchAndroidAuto(thisApp: Boolean) {
-        setBusy(true)
-        viewLifecycleOwner.lifecycleScope.launch {
-            val error = BydNativeAndroidAuto.useThisApp(requireContext().applicationContext, thisApp)
-            if (view == null) return@launch
-            log(error ?: getString(if (thisApp) R.string.byd_aa_now_this_app else R.string.byd_aa_now_native))
-            setBusy(false)
-            showAaState()
-        }
-    }
-
     private fun setBusy(busy: Boolean) {
         install.isEnabled = !busy && Build.FINGERPRINT == HorizonCarrier.SUPPORTED_FINGERPRINT
+        restart.isEnabled = !busy
         remove.isEnabled = !busy
-        for (i in 0 until aaMode.childCount) aaMode.getChildAt(i).isEnabled = !busy
     }
 
     private fun confirm(title: Int, message: Int, onYes: () -> Unit) {
@@ -163,7 +165,9 @@ class BydPanelFragment : Fragment() {
             .show()
     }
 
+    /** The installer's latest step, in one quiet line under the actions. */
     private fun log(line: String) {
-        logView.append(line + "\n")
+        lastMessage.text = line
+        lastMessage.visibility = View.VISIBLE
     }
 }

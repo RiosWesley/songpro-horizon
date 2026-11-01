@@ -613,7 +613,7 @@
     <string name="support_open_issues">Open the GitHub issues page</string>
     <string name="support_scan_qr">Or scan this QR code to open the issues list on another device.</string>
     <string name="support_github_account_warning">Note: you need a free GitHub account to create an issue.</string>
-    <string name="github_issues_url" translatable="false">https://github.com/andreknieriem/open-headunit/issues</string>
+    <string name="github_issues_url" translatable="false">https://github.com/RiosWesley/songpro-horizon/issues</string>
 
     <!-- Reporting rules modal (shown from a button under the QR on the Support screen) -->
     <string name="support_rules_button">Reporting rules</string>
@@ -1252,4 +1252,75 @@
     <string name="map_layout_full">Full screen</string>
     <string name="byd_map_layout">Map on the cluster: %1$s</string>
     <string name="byd_map_layout_hint">The map layout changes right away, also while the phone is connected.</string>
+    <!-- Song Pro Horizon's screens (Início, Painel, Android Auto, Volante, Sobre) -->
+    <string name="hz_nav_home">Home</string>
+    <string name="hz_nav_cluster">Cluster</string>
+    <string name="hz_nav_aa">Android Auto</string>
+    <string name="hz_nav_wheel">Wheel</string>
+    <string name="hz_nav_about">About</string>
+    <string name="hz_nav_exit">Exit</string>
+    <string name="hz_home_waiting">Waiting for the phone</string>
+    <string name="hz_home_waiting_lead">Plug the phone into the head unit\'s USB cable. Android Auto opens by itself.</string>
+    <string name="hz_home_connect">Connect over USB</string>
+    <string name="hz_home_connected">Android Auto connected</string>
+    <string name="hz_home_connected_lead">Over the USB cable. The cluster map turns on with the MAPA button or the wheel menu.</string>
+    <string name="hz_home_open_aa">Open Android Auto</string>
+    <string name="hz_status_aa">Android Auto on the cable</string>
+    <string name="hz_this_app">This app</string>
+    <string name="hz_byd_aa">BYD\'s</string>
+    <string name="hz_status_wheel">Wheel menu</string>
+    <string name="hz_status_map">Cluster map on connect</string>
+    <string name="hz_cluster_preview_description">The instrument cluster with the Horizon theme</string>
+    <string name="hz_home_cluster_horizon">Cluster with Horizon, in the Simple slot of the theme menu</string>
+    <string name="hz_home_cluster_skin_factory">Simple slot showing the factory theme; Horizon comes back from Cluster</string>
+    <string name="hz_home_cluster_factory">Factory cluster; Horizon installs from Cluster</string>
+    <string name="hz_nav_cluster_title">Instrument cluster</string>
+    <string name="hz_theme_install">Install Horizon</string>
+    <string name="hz_theme_update">Update</string>
+    <string name="hz_theme_restart">Restart the cluster</string>
+    <string name="hz_theme_remove">Back to factory</string>
+    <string name="hz_theme_installed">Horizon installed</string>
+    <string name="hz_theme_installed_hint">On the cluster menu: back, Theme, Horizon · version %1$s</string>
+    <string name="hz_theme_factory">Factory cluster</string>
+    <string name="hz_theme_factory_hint">Horizon takes the place of the Simple theme; Classic stays the factory\'s</string>
+    <string name="hz_theme_unsupported">Different firmware</string>
+    <string name="hz_theme_no_adb">No access to local ADB</string>
+    <string name="hz_skin_label">In the Simple slot</string>
+    <string name="hz_skin_hint">Original Simple brings back the factory theme without uninstalling Horizon</string>
+    <string name="hz_power_hint">Right side of Horizon, changes at once</string>
+    <string name="hz_map_label">Cluster map</string>
+    <string name="hz_aa_who">Who answers the USB cable</string>
+    <string name="hz_aa_who_hint">Only one stays on. After switching, plug the phone in again.</string>
+    <string name="hz_aa_autostart">Open on connect</string>
+    <string name="hz_aa_autostart_hint">As soon as the phone is plugged in</string>
+    <string name="hz_aa_map">Cluster map on connect</string>
+    <string name="hz_aa_map_hint">Off, the map turns on with the MAPA button or the wheel menu</string>
+    <string name="hz_aa_lyrics">Lyrics on the cluster</string>
+    <string name="hz_aa_lyrics_hint">Synced lyrics in Horizon\'s music card</string>
+    <string name="hz_aa_quality">Picture quality</string>
+    <string name="hz_aa_next_connection">From the next connection</string>
+    <string name="hz_aa_density">Element size</string>
+    <string name="hz_aa_density_hint">Android Auto\'s icons and text on the head unit; from the next connection</string>
+    <string name="hz_auto">Automatic</string>
+    <string name="hz_density_smaller">Smaller</string>
+    <string name="hz_density_default">Default</string>
+    <string name="hz_density_larger">Larger</string>
+    <string name="hz_wheel_title">Wheel menu</string>
+    <string name="hz_wheel_on">Horizon menu on the wheel</string>
+    <string name="hz_wheel_on_hint">A wheel key opens a menu on the cluster to change the card, gauge, map and theme</string>
+    <string name="hz_wheel_key">Key that opens the menu</string>
+    <string name="hz_wheel_key_hint">By default, BYD\'s programmable key</string>
+    <string name="hz_wheel_learn">Choose another</string>
+    <string name="hz_wheel_open_title">With the menu open</string>
+    <string name="hz_wheel_move">Move from one item to the next</string>
+    <string name="hz_key_roller">Roller</string>
+    <string name="hz_wheel_change">A click changes the item\'s value</string>
+    <string name="hz_key_menu">Menu</string>
+    <string name="hz_wheel_close">Closes the menu, or wait 10 s</string>
+    <string name="hz_wheel_items">In the menu: left card, power gauge, map layout, cluster map and cluster theme.</string>
+    <string name="hz_about_what">Android Auto over the USB cable and the Horizon theme on the BYD Song Pro\'s instrument cluster (DiLink 3, 8.8 inch cluster).</string>
+    <string name="hz_about_credits">Based on open-headunit, which grew out of Headunit Revived. Like them, the code is AGPL-3.0.</string>
+    <string name="hz_about_advanced">Advanced settings</string>
+    <string name="hz_about_advanced_hint">Every setting inherited from open-headunit: wireless, video, audio, keys and logs</string>
+    <string name="hz_about_open">Open</string>
 </resources>

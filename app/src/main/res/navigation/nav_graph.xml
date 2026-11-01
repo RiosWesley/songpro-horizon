@@ -227,7 +227,23 @@
     <fragment
         android:id="@+id/bydPanelFragment"
         android:name="com.andrerinas.openheadunit.main.BydPanelFragment"
-        android:label="@string/byd_panel" />
+        android:label="@string/hz_nav_cluster" />
+
+    <!-- Song Pro Horizon's other sections (HorizonSidebar) -->
+    <fragment
+        android:id="@+id/androidAutoFragment"
+        android:name="com.andrerinas.openheadunit.main.AndroidAutoFragment"
+        android:label="@string/hz_nav_aa" />
+
+    <fragment
+        android:id="@+id/wheelFragment"
+        android:name="com.andrerinas.openheadunit.main.WheelFragment"
+        android:label="@string/hz_nav_wheel" />
+
+    <fragment
+        android:id="@+id/horizonAboutFragment"
+        android:name="com.andrerinas.openheadunit.main.HorizonAboutFragment"
+        android:label="@string/hz_nav_about" />
 
     <fragment
         android:id="@+id/usbListFragment"

@@ -7,8 +7,19 @@ O Song Pro Horizon é feito para o **BYD Song Pro com DiLink 3.0 e painel de 8,8
 2. **Instala o tema de painel Horizon** e **volta ao painel original** com um toque.
 3. **Escolhe quem atende o celular no cabo:** o Song Pro Horizon ou o Android Auto nativo da BYD.
 
-A tela inicial tem só dois botões: **USB** e **Painel BYD**. O resto do Open Headunit, a base do
-app, continua lá, mas fica escondido. Um toque longo em **Painel BYD** abre as configurações completas.
+O app tem cinco seções numa barra à esquerda:
+
+| Seção | O que tem |
+|---|---|
+| **Início** | O estado (esperando o celular ou conectado), o botão de conectar ou de abrir o Android Auto, três linhas de estado e o painel como fica com o Horizon |
+| **Painel** | Instalar, atualizar ou tirar o Horizon, reiniciar o painel, a vaga Simples, o medidor de potência, o card da esquerda e o formato do mapa |
+| **Android Auto** | Quem atende o cabo (este app ou o da BYD), abrir sozinho, mapa e letra no painel, qualidade da imagem e tamanho dos elementos |
+| **Volante** | O menu do Horizon no volante, o botão que abre o menu e o que cada tecla faz |
+| **Sobre** | Versão, créditos e **Ajustes avançados**, com todos os ajustes herdados do Open Headunit |
+
+O visual segue um passe de design com a skill [unslop](https://github.com/heydamir/unslop) (Damir
+Sokolovsky, CC BY 4.0): fundo neutro escuro, o azul do Horizon como único destaque e a imagem do
+próprio painel como o momento de cor.
 
 > Projeto independente, sem relação com a BYD. Mexer no painel de instrumentos tem risco: siga os
 > passos com o carro **parado, em P e com freio de mão**. A história completa e os detalhes técnicos
@@ -37,7 +48,7 @@ app, continua lá, mas fica escondido. Um toque longo em **Painel BYD** abre as 
 - **O Horizon no menu de tema do painel:** o Horizon ocupa a vaga do **Simples** no menu do próprio
   painel (botão voltar → Tema); o **Clássico** continua de fábrica. Trocar entre os dois por esse menu não
   precisa do app nem de reiniciar. Na troca, a BYD toca a animação dela e o Horizon espera ela acabar.
-- **Tema na vaga Simples:** Painel BYD → Tema na vaga Simples → **Horizon** ou **Simples original**. O
+- **Tema na vaga Simples:** Painel → Na vaga Simples → **Horizon** ou **Simples original**. O
   "Simples original" devolve a vaga ao Simples de fábrica sem tirar o Horizon do carro. O menu no volante
   também tem essa opção ("Tema do painel"), mas, como o menu é desenhado pelo Horizon, a volta para o
   Horizon só pelo app.
@@ -48,11 +59,11 @@ app, continua lá, mas fica escondido. Um toque longo em **Painel BYD** abre as 
   ganham um cartão do Horizon atrás deles. A faixa de música de fábrica fica escondida, porque o Horizon
   mostra a música.
 - **Medidor de potência:** o lado direito do Horizon tem 5 estilos — Anel, Segmentos, Arco lateral,
-  Coluna e Faixa e onda (com o gráfico do último minuto). Troque em **Painel BYD → Medidor de
+  Coluna e Faixa e onda (com o gráfico do último minuto). Troque em **Painel → Medidor de
   potência → Trocar** ou pelo menu no volante; muda na hora, sem reiniciar o painel.
 - **Formato do mapa:** **Janela** (no centro do Horizon, com o ADAS e os cards em volta) ou **Tela
   cheia** (o mapa no painel inteiro; o Horizon vira só uma moldura com velocidade, marcha e
-  potência em cima e a barra de baixo). Troque em **Painel BYD → Mapa no painel → Trocar** ou pelo
+  potência em cima e a barra de baixo). Troque em **Painel → Mapa no painel** ou pelo
   menu no volante. Muda **na hora**, também com o celular conectado e o carro andando: com o Horizon,
   o vídeo do mapa é sempre combinado para o painel inteiro, e trocar o formato só move a imagem
   (66 px para cima na janela, para a seta do carro cair dentro dela), muda o recorte do Horizon e
@@ -73,7 +84,7 @@ Um botão do volante abre o menu do Horizon no painel, no lugar do card da esque
 recurso de remapear botões que o Electro usa: um serviço de acessibilidade que só lê os botões do
 volante.
 
-- **Ligar:** Painel BYD → Menu no volante. O app ativa o serviço sozinho, pelo ADB local.
+- **Ligar:** Volante → Menu do Horizon no volante. O app ativa o serviço sozinho, pelo ADB local.
 - **Botão:** por padrão é o botão programável da BYD (`AUTO_CUSTOM_KEY`). Para usar outro, toque
   **Escolher botão** e aperte o botão do volante que você quer.
 - **No painel:** toque curto abre e fecha o menu, ◁ ▷ escolhem o item e o clique do rolete muda o
@@ -97,7 +108,7 @@ volante.
 
 ## Se algo der errado
 
-- Painel estranho depois de instalar: **Painel BYD → Voltar ao original → Reiniciar**.
+- Painel estranho depois de instalar: **Painel → Voltar ao original**, e reiniciar o painel quando o app oferecer.
 - Sem o app, pelo PC, faça a mesma coisa à mão (detalhes em [../horizon/RECUPERACAO.md](../horizon/RECUPERACAO.md) §5):
 
   ```bash
@@ -118,7 +129,8 @@ volante.
 | Montagem do tema no carro (Kotlin) | `app/src/main/java/com/andrerinas/openheadunit/byd/theme/` |
 | Montagem do tema no PC (mesmo resultado, byte a byte) | [`horizon/tools/build_horizon_sx309_88.py`](../horizon/tools/build_horizon_sx309_88.py) |
 | Ferramenta que seleciona o tema (Binder, roda como shell) | [`horizon/tools/horizon-theme-tool/`](../horizon/tools/horizon-theme-tool) |
-| Tela Painel BYD | `app/src/main/java/com/andrerinas/openheadunit/main/BydPanelFragment.kt` |
+| Seções e barra lateral | `main/HorizonSidebar.kt`, `HomeFragment.kt` (Início), `BydPanelFragment.kt` (Painel), `AndroidAutoFragment.kt`, `WheelFragment.kt`, `HorizonAboutFragment.kt` |
+| Visual das seções | `res/values/horizon_ui.xml` (cores, textos, botões), `res/drawable/hz_*` (ícones, marca, medidores) |
 | Como criar um tema próprio | [guia-tema-cluster-song-pro.md](guia-tema-cluster-song-pro.md) |
 
 O teste `HorizonCarrierTest` confere que o tema montado pelo app é idêntico ao do builder em Python.

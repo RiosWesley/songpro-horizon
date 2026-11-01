@@ -19,6 +19,8 @@ import android.net.ConnectivityManager
 import android.os.Build
 import androidx.fragment.app.Fragment
 import androidx.core.content.ContextCompat
+import com.andrerinas.openheadunit.byd.BydNativeAndroidAuto
+import com.andrerinas.openheadunit.byd.wheel.WheelMenuSwitch
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -114,7 +116,7 @@ class HomeFragment : Fragment() {
         if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             constrainPortraitGridWidth(view)
         }
-        if (App.provide(requireContext()).settings.simpleHome) showSimpleHome(view)
+        bindHorizonHome(view)
 
         setupListeners()
         updateProjectionButtonText()
@@ -123,7 +125,10 @@ class HomeFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                commManager.connectionState.collect { updateProjectionButtonText() }
+                commManager.connectionState.collect {
+                    updateProjectionButtonText()
+                    showHorizonState()
+                }
             }
         }
 
@@ -195,19 +200,52 @@ class HomeFragment : Fragment() {
     }
 
     /**
-     * The shared BYD build: only USB and the BYD panel. Self mode and Wi-Fi stay in the app but are
-     * not shown, and the settings button opens the BYD panel instead.
+     * Song Pro Horizon's Início over the legacy home, which stays below, hidden, with its connection
+     * logic: the one action here presses its USB button, or its "back to Android Auto" one while a
+     * phone is connected. Each state line opens the section that changes it.
      */
-    private fun showSimpleHome(view: View) {
-        for (id in listOf(R.id.self_mode_button, R.id.self_mode_text, R.id.wifi_button, R.id.wifi_text)) {
-            view.findViewById<View>(id).visibility = View.GONE
+    private fun bindHorizonHome(view: View) {
+        view.findViewById<View>(R.id.hz_home_primary).setOnClickListener {
+            if (commManager.isConnected) self_mode_button.performClick() else usb.performClick()
         }
-        (settings as? MaterialButton)?.setIconResource(R.drawable.ic_directions_car)
-        view.findViewById<TextView>(R.id.settings_text).setText(R.string.byd_panel)
-        // Two buttons in half the row keep the size they have among four.
-        val row = view.findViewById<View>(R.id.main_buttons_layout)
-        (row.layoutParams as ConstraintLayout.LayoutParams).matchConstraintMaxWidth = (600 * resources.displayMetrics.density).toInt()
-        row.requestLayout()
+        val sidebar = { destination: Int -> (activity as? MainActivity)?.openSection(destination) }
+        view.findViewById<View>(R.id.hz_status_aa).setOnClickListener { sidebar(R.id.androidAutoFragment) }
+        view.findViewById<View>(R.id.hz_status_wheel).setOnClickListener { sidebar(R.id.wheelFragment) }
+        view.findViewById<View>(R.id.hz_status_map).setOnClickListener { sidebar(R.id.androidAutoFragment) }
+        showHorizonState()
+    }
+
+    private fun showHorizonState() {
+        val v = view ?: return
+        val ctx = context ?: return
+        val settings = App.provide(ctx).settings
+        val connected = commManager.isConnected
+        v.findViewById<TextView>(R.id.hz_home_title).setText(if (connected) R.string.hz_home_connected else R.string.hz_home_waiting)
+        v.findViewById<TextView>(R.id.hz_home_lead).setText(if (connected) R.string.hz_home_connected_lead else R.string.hz_home_waiting_lead)
+        v.findViewById<TextView>(R.id.hz_home_primary).setText(if (connected) R.string.hz_home_open_aa else R.string.hz_home_connect)
+
+        val thisApp = BydNativeAndroidAuto.state(ctx) != BydNativeAndroidAuto.State.ENABLED
+        status(v, R.id.hz_status_aa, R.string.hz_status_aa, if (thisApp) R.string.hz_this_app else R.string.hz_byd_aa, thisApp)
+        val wheel = WheelMenuSwitch.isOn(ctx)
+        status(v, R.id.hz_status_wheel, R.string.hz_status_wheel, if (wheel) R.string.wheel_menu_on else R.string.wheel_menu_off, wheel)
+        val map = settings.clusterMapEnabled
+        status(v, R.id.hz_status_map, R.string.hz_status_map, if (map) R.string.wheel_menu_on else R.string.wheel_menu_off, map)
+
+        val caption = when {
+            !settings.horizonInstalled -> R.string.hz_home_cluster_factory
+            settings.horizonSkin == "factory" -> R.string.hz_home_cluster_skin_factory
+            else -> R.string.hz_home_cluster_horizon
+        }
+        v.findViewById<TextView>(R.id.hz_home_cluster_caption).setText(caption)
+        v.findViewById<View>(R.id.hz_home_cluster).alpha = if (settings.horizonInstalled) 1f else 0.4f
+    }
+
+    private fun status(root: View, row: Int, label: Int, value: Int, good: Boolean) {
+        val line = root.findViewById<View>(row)
+        line.findViewById<TextView>(R.id.hz_status_label).setText(label)
+        line.findViewById<TextView>(R.id.hz_status_value).setText(value)
+        line.findViewById<ImageView>(R.id.hz_status_dot).imageTintList = ContextCompat.getColorStateList(
+            root.context, if (good) R.color.hz_positive else R.color.hz_text_muted)
     }
 
     private fun startSelfModeInternal() {
@@ -356,24 +394,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupListeners() {
-        exitButton.setOnClickListener {
-            val appSettings = App.provide(requireContext()).settings
-            val keepServiceAlive = appSettings.autoStartOnBoot ||
-                appSettings.autoStartOnScreenOn ||
-                (appSettings.autoStartOnUsb && appSettings.reopenOnReconnection)
-            if (keepServiceAlive) {
-                val disconnectIntent = Intent(requireContext(), AapService::class.java).apply {
-                    action = AapService.ACTION_DISCONNECT
-                }
-                ContextCompat.startForegroundService(requireContext(), disconnectIntent)
-            } else {
-                val stopServiceIntent = Intent(requireContext(), AapService::class.java).apply {
-                    action = AapService.ACTION_STOP_SERVICE
-                }
-                ContextCompat.startForegroundService(requireContext(), stopServiceIntent)
-            }
-            requireActivity().finishAffinity()
-        }
+        exitButton.setOnClickListener { AppExit.exit(requireActivity()) }
 
         self_mode_button.setOnClickListener {
             if (commManager.isConnected) {
@@ -647,6 +668,7 @@ class HomeFragment : Fragment() {
         super.onResume()
         AppLog.i("HomeFragment: onResume. isConnected=${commManager.isConnected}")
         updateProjectionButtonText()
+        showHorizonState()
         updateButtonStyle()
         updateButtonScale()
         updateTextColors()

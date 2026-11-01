@@ -507,7 +507,7 @@
     <string name="support_open_issues">Ouvrir la page des issues GitHub</string>
     <string name="support_scan_qr">Ou scanne ce code QR pour ouvrir la liste des issues sur un autre appareil.</string>
     <string name="support_github_account_warning">Remarque : tu as besoin d\'un compte GitHub gratuit pour créer une issue.</string>
-    <string name="github_issues_url" translatable="false">https://github.com/andreknieriem/open-headunit/issues</string>
+    <string name="github_issues_url" translatable="false">https://github.com/RiosWesley/songpro-horizon/issues</string>
 
     <!-- Reporting rules modal (shown from a button under the QR on the Support screen) -->
     <string name="support_rules_button">Règles de signalement</string>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Song Pro Horizon's own screens (Início, Painel, Android Auto, Volante, Sobre).
+  Direction: the instrument cluster at night. One ink ramp for every surface and text role, the
+  Horizon sky blue as the single accent (selection, key figure), an off-white primary button.
+  Sizes are the desktop tokens scaled for a screen read at arm's length while parked, touch rows
+  at least 64dp. Everything on a 4dp grid.
+  Design pass after unslop by Damir Sokolovsky (@heydamir), CC BY 4.0.
+-->
+<resources>
+    <!-- Ink ramp -->
+    <color name="hz_deepest">#07080D</color>
+    <color name="hz_page">#0B0D14</color>
+    <color name="hz_card">#11141C</color>
+    <color name="hz_raised">#1A1E28</color>
+    <color name="hz_hairline">#14EEF0F5</color>
+    <color name="hz_text">#EEF0F5</color>
+    <color name="hz_text_secondary">#A3A9B8</color>
+    <color name="hz_text_muted">#7A8296</color>
+    <!-- The one accent: Horizon's sky light -->
+    <color name="hz_accent">#7FD6FF</color>
+    <color name="hz_on_accent">#06121C</color>
+    <color name="hz_positive">#4CC38A</color>
+    <color name="hz_negative">#E5484D</color>
+    <!-- Power gauge thumbnails take the cluster's own power colour -->
+    <color name="hz_power">#F0B24C</color>
+
+    <dimen name="hz_page_padding">32dp</dimen>
+    <dimen name="hz_card_padding">24dp</dimen>
+    <dimen name="hz_gap">16dp</dimen>
+    <dimen name="hz_section_gap">32dp</dimen>
+    <dimen name="hz_row_height">88dp</dimen>
+    <dimen name="hz_control_height">56dp</dimen>
+    <dimen name="hz_radius_card">16dp</dimen>
+    <dimen name="hz_radius_control">10dp</dimen>
+    <dimen name="hz_sidebar_width">240dp</dimen>
+    <dimen name="hz_icon">24dp</dimen>
+
+    <!-- Text roles: hierarchy from size and colour, weights 400 and 500 only -->
+    <style name="HzText">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/hz_text</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="HzText.Title">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">34sp</item>
+    </style>
+    <style name="HzText.Lead">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/hz_text_secondary</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+    <style name="HzText.Label">
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="HzText.Hint">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/hz_text_secondary</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+    <style name="HzText.Meta">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/hz_text_muted</item>
+    </style>
+    <style name="HzText.Figure">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+    </style>
+    <style name="HzText.Nav">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/hz_nav_text</item>
+    </style>
+
+    <!-- Buttons: off-white primary with dark text, raised secondary with a hairline -->
+    <style name="HzButton" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/hz_control_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">@dimen/hz_radius_control</item>
+        <item name="backgroundTint">@color/hz_text</item>
+        <item name="android:textColor">@color/hz_page</item>
+        <item name="rippleColor">#1F0B0D14</item>
+    </style>
+    <style name="HzButton.Secondary">
+        <item name="backgroundTint">@color/hz_raised</item>
+        <item name="android:textColor">@color/hz_text</item>
+        <item name="strokeColor">@color/hz_hairline</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="rippleColor">#14EEF0F5</item>
+    </style>
+
+    <!-- One segment of a single-choice group: the choice is a raised surface with an accent hairline -->
+    <style name="HzSegment" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/hz_control_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">@dimen/hz_radius_control</item>
+        <item name="backgroundTint">@color/hz_segment_fill</item>
+        <item name="android:textColor">@color/hz_segment_text</item>
+        <item name="strokeColor">@color/hz_segment_stroke</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="rippleColor">#14EEF0F5</item>
+    </style>
+
+    <!-- Material components inside these screens resolve to the ramp -->
+    <style name="ThemeOverlay.Horizon" parent="ThemeOverlay.Material3.Dark">
+        <item name="colorPrimary">@color/hz_accent</item>
+        <item name="colorOnPrimary">@color/hz_on_accent</item>
+        <item name="colorPrimaryContainer">@color/hz_raised</item>
+        <item name="colorSurface">@color/hz_card</item>
+        <item name="colorOnSurface">@color/hz_text</item>
+        <item name="colorOnSurfaceVariant">@color/hz_text_secondary</item>
+        <item name="colorOutline">@color/hz_hairline</item>
+        <item name="android:colorBackground">@color/hz_page</item>
+    </style>
+
+    <!-- Corners: cards 16, a picture inside a card 16 - 24 padding, floored at 6 -->
+    <style name="HzShape.Card" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/hz_radius_card</item>
+    </style>
+    <style name="HzShape.Inner" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">6dp</item>
+    </style>
+</resources>

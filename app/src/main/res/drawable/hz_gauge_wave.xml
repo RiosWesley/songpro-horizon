@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp" android:height="40dp" android:viewportWidth="64" android:viewportHeight="40">
+    <path android:fillColor="@color/hz_power" android:pathData="M12,28 h3 v6 h-3 Z" />
+    <path android:fillColor="@color/hz_power" android:pathData="M17,24 h3 v10 h-3 Z" />
+    <path android:fillColor="@color/hz_power" android:pathData="M22,20 h3 v14 h-3 Z" />
+    <path android:fillColor="@color/hz_power" android:pathData="M27,24 h3 v10 h-3 Z" />
+    <path android:fillColor="@color/hz_power" android:pathData="M32,18 h3 v16 h-3 Z" />
+    <path android:fillColor="@color/hz_power" android:pathData="M37,12 h3 v22 h-3 Z" />
+    <path android:fillColor="@color/hz_power" android:pathData="M42,16 h3 v18 h-3 Z" />
+    <path android:fillColor="@color/hz_power" android:pathData="M47,8 h3 v26 h-3 Z" />
+    <path android:strokeColor="#33EEF0F5" android:strokeWidth="1" android:pathData="M10,35 L54,35" />
+</vector>

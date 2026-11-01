@@ -8,7 +8,7 @@ firmware SX309**. Ele junta três coisas num app só:
   partir dos arquivos de fábrica dele, e volta ao painel original com um toque.
 - **Quem atende o celular no cabo:** este app ou o Android Auto nativo da BYD.
 
-A tela inicial tem só **USB** e **Painel BYD**.
+O app tem cinco seções: **Início**, **Painel**, **Android Auto**, **Volante** e **Sobre**; os ajustes herdados do Open Headunit ficam em Sobre → Ajustes avançados.
 
 > Projeto independente, sem relação com a BYD. Mexer no painel de instrumentos tem risco: instale,
 > troque ou remova o tema só com o carro **parado, em P e com freio de mão**.
@@ -17,7 +17,7 @@ A tela inicial tem só **USB** e **Painel BYD**.
 
 | | |
 |---|---|
-| [Instalar e usar o app](docs/app-painel-byd.md) | requisitos, Painel BYD, como voltar ao original |
+| [Instalar e usar o app](docs/app-painel-byd.md) | requisitos, as cinco seções, como voltar ao original |
 | [História das descobertas](docs/historia-cluster-song-pro.md) | dos arquivos do painel até o estado atual |
 | [Criar um tema de painel próprio](docs/guia-tema-cluster-song-pro.md) | passo a passo do básico |
 | [Estudos](docs/estudos/) | tema do painel, AA nativo da BYD, dados do ADAS |
