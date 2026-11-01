@@ -8,8 +8,14 @@ os pacotes são por chipset (13.1.33), não por modelo, e voltar de versão func
 
 - `BYDUpdatePackage/msm8953_64/UpdateFull.zip`, com o arquivo `config` = `qc+mcu+dsp+anc`: Android (Qualcomm), **MCU**,
   processador de som e cancelamento de ruído.
-- **MCU:** `mcu_18_3_5.xcd` (7 MB, MD5 `338fef6588feac55b8412a531662d862`). É cifrado, então a data de compilação não
-  aparece; só a família 18.3.5, a mesma do carro.
+- **MCU:** `mcu_18_3_5.xcd` (7 MB). É cifrado em blocos de 16 bytes independentes (uma região vazia de 1,3 MB repete o
+  mesmo bloco 81 738 vezes), então não há versão legível, só a família 18.3.5, a mesma do carro.
+- **Comparado com o pacote 2511** (`Di3.0_13.1.33.2511080.1.zip`, mesma estrutura, série SX309):
+  - os módulos de som (`dspres_e_*`) e de cancelamento de ruído (`anc/*`) são **idênticos**, byte a byte;
+  - o **MCU muda**: o arquivo é outro e o hash que o acompanha (`.xcd.txt`) também (2511 `4200d64d02bd…`,
+    2602 `338fef6588fe…`). Esse hash não é o MD5 do arquivo cifrado, mas é igual nos módulos que não mudaram, então
+    funciona como impressão digital do conteúdo;
+  - quanto o MCU muda não dá para medir: cada pacote é cifrado de um jeito, e nem a região vazia coincide entre os dois.
 - **Android:** `update.zip` é um OTA A/B **comum, sem cifra** (`payload.bin` de 3,2 GB). Compilação
   `eng.build.20260204.025317`, série **SX326**, Android 10. É o que permite comparar os arquivos do painel no PC.
 - Diferente do pacote do Dolphin SE (DiLink 100), em que todos os módulos vêm cifrados.
