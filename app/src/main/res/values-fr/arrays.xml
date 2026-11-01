@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="night_mode">
+        <item>Auto (Lever/Coucher du soleil)</item>
+        <item>Clair</item>
+        <item>Sombre</item>
+        <item>Heure manuelle</item>
+        <item>Capteur de luminosité</item>
+        <item>Luminosité de l\'écran</item>
+        <item>Signal des phares (ILL+)</item>
+        <item>Emplacement (par zone)</item>
+        <item>Système (suivre le thème sombre)</item>
+    </string-array>
+
+    <string-array name="app_theme">
+        <item>Automatique (Système)</item>
+        <item>Clair</item>
+        <item>Sombre</item>
+        <item>Noir absolu</item>
+        <item>Auto (Lever/Coucher du soleil)</item>
+        <item>Heure manuelle</item>
+        <item>Capteur de luminosité</item>
+        <item>Luminosité de l\'écran</item>
+        <item>Signal des phares (ILL+)</item>
+        <item>Emplacement (par zone)</item>
+    </string-array>
+
+    <string-array name="screen_orientation">
+        <item>@string/orientation_system_default</item>
+        <item>@string/orientation_auto_sensor</item>
+        <item>@string/orientation_landscape</item>
+        <item>@string/orientation_landscape_reverse</item>
+        <item>@string/orientation_portrait</item>
+        <item>@string/orientation_portrait_reverse</item>
+    </string-array>
+
+    <!-- Labels traduits (les résolutions restent neutres dans values/arrays.xml). -->
+    <string-array name="ms9120_color_formats">
+        <item>YUV422 (2 o/pix, le plus rapide)</item>
+        <item>RGB888 (3 o/pix, qualité)</item>
+        <item>RGB565 (expérimental)</item>
+    </string-array>
+</resources>
