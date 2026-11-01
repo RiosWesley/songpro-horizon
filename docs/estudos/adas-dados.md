@@ -47,3 +47,23 @@ duas vezes; o painel mostrou um veículo nas duas. Resultado: **todos** os sinai
 (FCW exceto o nível = 3, faróis, os 4 slots do `0x295`, o `0x374`), enquanto outros sinais leem normalmente
 (`0x13300023` = 2, `0x44100008` = 0, `0x4A50502C` = 22, `0x12D0002A` = 2). Os quadros do ADAS não chegam à
 multimídia: o painel os lê do seu lado. A leitura pela multimídia não serve para os alvos.
+
+## Gravador no próprio painel (Horizon)
+
+Como a multimídia não vê os alvos, o tema grava o que o painel recebe: `horizon/qml/AdasRecorder.qml`, desligado
+até o arquivo de comando `/sdcard/.cluster/horizon/adas-rec.json` pedir:
+
+```json
+{ "on": true, "id": "volta1", "urls": ["http://127.0.0.1:8765/lo", "http://<ip-da-multimídia>:8765/wlan"] }
+```
+
+4 vezes por segundo: velocidade, marcha, luzes do ACC/AEB, texto do ACC, alvo principal, `aheadDistance`, nível,
+faixas e os 7 slots (estado, x, y). A cada 5 s ele tenta duas saídas, porque nenhuma é garantida no painel:
+
+- `PUT` de um pedaço `adas-rec-<id>-NNNN.txt` ao lado do arquivo de comando. No Qt 5.15 do PC isso só gera um
+  aviso (`QML_XHR_ALLOW_FILE_WRITE`); falta ver se o painel deixa gravar nessa pasta.
+- `POST` para cada URL da lista, recebido na multimídia por `AdasRecSink` (no mesmo dex do adas-probe:
+  `app_process / AdasRecSink 8765 3600`, grava em `/data/local/tmp/adas-rec.log` com o caminho de cada pedido,
+  o que mostra qual URL o painel alcançou).
+
+`"on": false` ou apagar o arquivo para a gravação (o último pedaço sai na hora).

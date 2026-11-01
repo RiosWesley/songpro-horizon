@@ -27,7 +27,7 @@ Item {
     property alias powerHistorySeed: energy.historySeed
     // The power gauge chosen in the wheel menu or the BYD panel (see EnergyCard).
     property string powerStyle: menuFeed.powerStyle
-    // The map under the whole panel instead of in a window (chosen in the app, per connection).
+    // The map under the whole panel instead of in a window (chosen in the app; switches live).
     property bool fullMap: car.mapMode && menuFeed.mapLayout === "full"
 
     readonly property var layout: car.mapMode ? Geometry.map : Geometry.native
@@ -39,6 +39,8 @@ Item {
 
     HorizonData { id: car }
     HorizonMenuFeed { id: menuFeed; directory: car.mediaDirectory }
+    // Off unless asked over adb (see AdasRecorder): records the ADAS values the cluster receives.
+    AdasRecorder { directory: car.mediaDirectory }
     HorizonTheme { id: theme; night: car.night }
 
     Timer {
