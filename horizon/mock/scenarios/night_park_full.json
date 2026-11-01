@@ -1,0 +1,1 @@
+{"extends": ["base.json"], "datasource": {"mockProjection": "projection_full.png", "mockPlacement": "1,0,0", "naviType": 4, "mockMediaDir": "media/parkfull", "speed": 0}}

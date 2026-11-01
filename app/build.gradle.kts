@@ -31,10 +31,12 @@ android {
         into("${project.layout.buildDirectory.get().asFile}/generated/assets/root")
     }
 
-    // The Horizon cluster theme the BYD panel builds on the car: its QML and the theme tool (horizon/).
+    // The Horizon cluster theme the BYD panel builds on the car: its QML, the theme tool and the
+    // parking-sensor reader (horizon/; each tool's build.sh makes its dex).
     val copyHorizonAssets = tasks.register<Copy>("copyHorizonAssets") {
         from("${project.rootDir}/horizon/qml") { into("horizon/qml") }
         from("${project.rootDir}/horizon/tools/horizon-theme-tool/build/horizon-theme-tool.dex") { into("horizon") }
+        from("${project.rootDir}/horizon/tools/park-feed/build/horizon-park-feed.dex") { into("horizon") }
         into("${project.layout.buildDirectory.get().asFile}/generated/assets/horizon")
     }
 

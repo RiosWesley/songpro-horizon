@@ -88,7 +88,11 @@ próprio painel como o momento de cor.
     cima.
   - **Tela cheia:** o mapa no painel inteiro. O Horizon guarda só uma faixa em cima (velocidade,
     marcha e potência), põe um fundo escuro atrás de cada grupo da barra de baixo e mostra o ADAS
-    numa janelinha, como a de fábrica na navegação.
+    numa janelinha à direita, como a de fábrica na navegação.
+
+  Os cartões do Android Auto (manobra em cima, tempo e chegada embaixo) ficam em volta da seta, no
+  centro da parte livre de cada formato: o app diz ao celular onde ela está (insets de conteúdo) a
+  cada imagem nova e a cada troca de formato. Medido nas capturas do carro: o celular respeita.
 
   O celular sempre desenha o mapa para o painel inteiro, a 200 dpi. Trocar o formato só muda onde a
   imagem fica (na Janela ela é reduzida a 0,8 e, na Lateral, a 0,72, para caber mais mapa), o
@@ -101,11 +105,27 @@ próprio painel como o momento de cor.
   (`SYSTEM_ALERT_WINDOW`). Uma instalação nova começa sem ela, e sem ela o painel abre a projeção
   mas fica um quadro preto. Por isso o app a concede a si mesmo pelo ADB local quando o celular conecta.
 - Na Janela e na Lateral, a imagem do mapa passa da área livre e o Horizon esfuma por cima dessa
-  sobra; o app pede ao celular (insets de conteúdo do Android Auto) que mantenha os cartões de
-  manobra e de chegada na área livre, e repete o pedido a cada troca de formato. *Não confirmado no
-  carro:* se o Android Auto respeita esses insets no painel de instrumentos.
+  sobra.
+- *Em estudo:* com o mesmo Waze, o celular de outra pessoa mostrou no painel uma visão reta de cima
+  sem rota (a imersiva só voltava com rota), enquanto a tela da multimídia ficava normal. O app
+  manda o mesmo pedido para qualquer celular; a diferença deve estar na versão ou na exibição do
+  mapa (2D/3D) do Waze daquele celular.
 - Ao instalar, o app já ajusta o mapa para a janela central do Horizon. Ao voltar ao original, o
   mapa volta à faixa livre do painel de fábrica.
+
+### Sensores de estacionamento no painel
+
+Quando os sensores de estacionamento veem algo (na ré, por exemplo), o Horizon mostra o carro
+visto de cima no lugar da estrada do ADAS. Cada zona tem três faixas: verde longe, amarela, vermelha
+perto. Ao lado aparece a menor distância em cm. Quatro zonas na frente, cinco atrás. A estrada
+esmaece por trás e volta quando os sensores param de ver.
+
+Um app comum não pode ler os sensores (a permissão da BYD é de sistema). Por isso o app leva um
+leitor pequeno, só de leitura (`horizon/tools/park-feed`), que roda como shell pelo ADB local e
+grava `park.json` ao lado do arquivo da música. O app liga o leitor sempre que abre com o Horizon no
+carro (o app acorda no boot), ao instalar o Horizon e quando um celular conecta; "Voltar à fábrica"
+o desliga e apaga. *Medido no carro:* as cinco zonas de trás em R (docs/estudos/adas-em-p.md). As da
+frente ainda não foram testadas.
 
 ### Menu no volante (opcional, desligado por padrão)
 
@@ -158,6 +178,7 @@ volante.
 | Montagem do tema no carro (Kotlin) | `app/src/main/java/com/andrerinas/openheadunit/byd/theme/` |
 | Montagem do tema no PC (mesmo resultado, byte a byte) | [`horizon/tools/build_horizon_sx309_88.py`](../horizon/tools/build_horizon_sx309_88.py) |
 | Ferramenta que seleciona o tema (Binder, roda como shell) | [`horizon/tools/horizon-theme-tool/`](../horizon/tools/horizon-theme-tool) |
+| Leitor dos sensores de estacionamento (roda como shell) | [`horizon/tools/park-feed/`](../horizon/tools/park-feed) (o `build.sh` gera o dex que o app leva) |
 | Seções e barra lateral | `main/HorizonSidebar.kt`, `HomeFragment.kt` (Início), `BydPanelFragment.kt` (Painel), `AndroidAutoFragment.kt`, `WheelFragment.kt`, `HorizonAboutFragment.kt` |
 | Visual das seções | `res/values/horizon_ui.xml` (cores, textos, botões), `res/drawable/hz_*` (ícones, marca, medidores) |
 | Como criar um tema próprio | [guia-tema-cluster-song-pro.md](guia-tema-cluster-song-pro.md) |

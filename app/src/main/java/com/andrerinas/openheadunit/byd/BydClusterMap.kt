@@ -51,6 +51,9 @@ object BydClusterMap {
         settings.clusterVideoDpi = if (horizon) HORIZON_MAP_DPI else 0
     }
 
-    /** A connection began: the theme is told the current choices. */
-    fun onSessionStart(context: Context) = HorizonOptions.publish(context)
+    /** A connection began: the theme is told the current choices, and its parking sensors run. */
+    fun onSessionStart(context: Context) {
+        HorizonOptions.publish(context)
+        ParkSensorsFeed.ensureRunning(context)
+    }
 }

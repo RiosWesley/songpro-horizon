@@ -20,19 +20,21 @@ internal object ClusterMapArea {
      * With Horizon the phone always draws for the whole display, so its three layouts switch live:
      * only where the picture sits ("scale,x,y": scaled from its top-left corner, then moved; see
      * parsePlacement) and the content insets change. The insets are the clear part of Horizon's
-     * opening, mapped back into the phone's picture, so its cards land there; the car arrow, drawn
-     * low in the frame, lands inside the opening even if the phone ignores them. The bottom inset
-     * ends where the opening does, not where it starts to fade: below it the picture may be black.
+     * opening, mapped back into the phone's picture (1280x560, see below). Captured on the car: the
+     * phone centres the car arrow in that clear part and lays the turn card just above it and the
+     * arrival card just below; the arrow sits low in the frame when it has no insets.
      *
-     * The picture is asked [HORIZON_OVERSCAN] px taller than the display: on the car (2026-11-01)
-     * its bottom ~80 px arrived black in every layout, so that strip now falls below the panel.
+     * The picture is asked [HORIZON_OVERSCAN] px taller than the display: with a 1280x480 picture
+     * its bottom ~80 px arrived black in every layout; at 1280x560 it is drawn to the bottom (seen in
+     * the captures), and the extra rows fall below the panel.
      *
-     * Full screen: the picture as is; the cards kept out of the band at the top (speed, gear,
-     * power).
+     * Full screen: the picture as is. The clear part is under the speed band (y 113) and above the
+     * bottom bar (y 393, the street name's place too), between equal side insets that keep the turn
+     * card (about 600 px wide) off the ADAS window (HorizonGeometry.js `full.adas`, from x 960).
      */
     const val HORIZON_OVERSCAN = 80
     const val HORIZON_FULL = "0,0,1280,560"
-    const val HORIZON_FULL_INSETS = "0,100,0,80"
+    const val HORIZON_FULL_INSETS = "333,113,333,167"
 
     /**
      * Window: Horizon's centre opening (390,68,500,344; clear 450..830 x 108..383, from
@@ -40,15 +42,15 @@ internal object ClusterMapArea {
      * at full size, centred, with the arrow low in the opening.
      */
     const val HORIZON_WINDOW_PLACEMENT = "0.8,128,34"
-    const val HORIZON_WINDOW_INSETS = "402,92,402,88"
+    const val HORIZON_WINDOW_INSETS = "402,92,402,124"
 
     /**
-     * Side (the second layout): Horizon's opening on the right (879,79,289,313; clear 911..1161 x
+     * Side (the second layout): Horizon's opening on the right (863,69,305,324; clear 911..1161 x
      * 107..373, from HorizonGeometry.js side.video and side.feather), the picture at 0.72 with its
      * centre under the clear part's.
      */
     const val HORIZON_SIDE_PLACEMENT = "0.72,575,56"
-    const val HORIZON_SIDE_INSETS = "466,70,466,93"
+    const val HORIZON_SIDE_INSETS = "466,70,466,119"
 
     /** Without a theme, the whole band above the factory 8.8" bottom bar. */
     const val FACTORY_FREE_BAND = "0,0,1280,420"

@@ -47,6 +47,7 @@ Item {
 
     HorizonData { id: car }
     HorizonMenuFeed { id: menuFeed; directory: car.mediaDirectory }
+    ParkFeed { id: park; directory: car.mediaDirectory }
     HorizonTheme { id: theme; night: car.night; mode: car.driveMode }
     // The factory screens drawn above Horizon (menu, warnings, 0-100, charging...), see FactoryCentre.
     FactoryCentre { id: centre }
@@ -90,13 +91,26 @@ Item {
         use3d: horizon.adas3dEnabled
         windowed: horizon.windowMap || horizon.fullMap
         windowFeather: horizon.fullMap ? Qt.vector4d(24, 28, 24, 24) : Qt.vector4d(56, 70, 56, 62)
-        // The road steps back while a factory screen is in the centre over it.
-        opacity: centre.busy && !horizon.windowMap && !horizon.fullMap ? 0.12 : 1
+        // The road steps back while a factory screen is in the centre over it, and makes way for
+        // the parking sensors while they see something.
+        opacity: park.active ? 0.15 : centre.busy && !horizon.windowMap && !horizon.fullMap ? 0.12 : 1
         Behavior on opacity { NumberAnimation { duration: 250 } }
         readonly property var r: horizon.fullMap ? Geometry.full.adas
                                : horizon.sideMap ? Geometry.side.stage
                                : car.mapMode ? Geometry.map.adasMini : Geometry.native.stage
         x: r.x; y: r.y; width: r.width; height: r.height
+    }
+
+    // Parking sensors, in the ADAS road's place (centred, as wide as it needs).
+    ParkView {
+        theme: theme
+        feed: park
+        opacity: park.active ? 1 : 0
+        visible: opacity > 0
+        Behavior on opacity { NumberAnimation { duration: 250 } }
+        readonly property var r: stage.r
+        width: Math.min(r.width, r.height * 1.3); height: r.height
+        x: r.x + (r.width - width) / 2; y: r.y
     }
 
     SpeedHero {

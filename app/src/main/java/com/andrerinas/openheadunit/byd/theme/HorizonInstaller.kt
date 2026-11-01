@@ -2,6 +2,7 @@ package com.andrerinas.openheadunit.byd.theme
 
 import android.content.Context
 import com.andrerinas.openheadunit.byd.BydClusterMap
+import com.andrerinas.openheadunit.byd.ParkSensorsFeed
 import com.andrerinas.openheadunit.utils.AppLog
 import com.andrerinas.openheadunit.utils.Settings
 import com.andrerinas.openheadunit.utils.adb.AdbManager
@@ -77,12 +78,14 @@ class HorizonInstaller(private val context: Context, private val log: (String) -
         }
         BydClusterMap.fitTo(Settings(context), horizon = true)
         HorizonOptions.publish(context)
+        ParkSensorsFeed.ensureRunning(context)
         Outcome.RestartNeeded("Horizon selecionado. Ele aparece depois de reiniciar o painel.")
     }
 
     /**
      * Takes every file of Horizon's off the car, as it was before the first install: the carrier in
-     * use and the retired ones, the files the app writes for the theme, the theme tool, and the
+     * use and the retired ones, the files the app writes for the theme, the theme tool and the
+     * parking-sensor reader (stopped first), and the
      * cluster folders once nothing else is in them (the car came without /sdcard/.cluster). The
      * factory files were never written to; the backup of the original panel ([OriginalBackup]) stays.
      * Horizon stays on the cluster until the restart, which then shows the factory panel.
@@ -91,7 +94,7 @@ class HorizonInstaller(private val context: Context, private val log: (String) -
         val installed = rccFiles().any { it.startsWith(HorizonCarrier.NAME_PREFIX) }
         log("Apagando o Horizon do painel")
         val horizon = "${HorizonCarrier.NAME_PREFIX}*.rcc"
-        shell("rm -f $TRANSLATE$horizon $RETIRED$horizon; rm -rf $INCOMING_DIR; rm -f $TOOL $TOOL_STATE; " +
+        shell("${ParkSensorsFeed.STOP}; rm -f $TRANSLATE$horizon $RETIRED$horizon; rm -rf $INCOMING_DIR; rm -f $TOOL $TOOL_STATE; " +
             "rmdir $TRANSLATE $RETIRED $CLUSTER_DIR 2>/dev/null; true")
         val left = shell("ls $TRANSLATE $RETIRED $INCOMING_DIR 2>/dev/null; true")
         if (left.contains(HorizonCarrier.NAME_PREFIX) || left.contains(".incoming")) throw Stop("ficaram arquivos do Horizon no painel")

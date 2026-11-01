@@ -38,8 +38,8 @@ var map = {
 // is opened over the phone's picture and faded by `feather` (left, top, right, bottom) towards it.
 // The app scales and moves the picture into it.
 var side = {
-    video:     { x: 1318, y: 118, width: 434, height: 470 },
-    feather:   [48, 42, 10, 28],
+    video:     { x: 1294, y: 104, width: 458, height: 486 },
+    feather:   [72, 56, 10, 30],
     stage:     { x: 554,  y: 150, width: 812, height: 450 }
 }
 
@@ -53,7 +53,8 @@ var full = {
     topBand:   170,
     // Above the top-left telltale row (x 510-750, y 95-140) and clear of the speed limit sign.
     power:     { x: 470, y: 22, width: 300, height: 48 },
-    adas:      { x: 1400, y: 300, width: 330, height: 220 },
+    // Right of the phone's turn card (it ends near x 1410) and above the bottom bar.
+    adas:      { x: 1440, y: 250, width: 290, height: 200 },
     menu:      { x: 124, y: 190, width: 430, height: 330 }
 }
 

@@ -939,6 +939,10 @@ class CommManager(
         transport.send(VideoFocusEvent(gain = false, unsolicited = false, channel = Channel.ID_VID_CLUSTER))
         delay(350)
         transport.send(VideoFocusEvent(gain = true, unsolicited = true, channel = Channel.ID_VID_CLUSTER))
+        // Seen on the car: insets sent only on the phone's own focus request were missed at the
+        // start of a session (cards at the top, cut by the theme), so they go with every new picture.
+        delay(500)
+        sendClusterUiConfig()
     }
 
     /** A new cluster map layout mid-session: the phone is told where its cards go now. */
