@@ -14,7 +14,7 @@ import com.andrerinas.openheadunit.utils.Settings
  * Debug builds only: the content insets and the picture's placement, set live from the PC, so where
  * the phone puts its cards can be measured on the car without a build per try:
  *
- *   adb shell am broadcast -a com.rioswesley.songprohorizon.CLUSTER_PROBE --es insets 620,244,620,276 --es placement 0.8,128,34
+ *   adb shell am broadcast -a com.rioswesley.songprohorizon.CLUSTER_PROBE --es insets 402,6,402,38 --es placement 0.8,128,34
  *
  * (`am` refuses an empty value, so full size is `--es placement 1,0,0`.)
  * Each change is applied like a layout switch ([ClusterDisplayOutput.relayout]). The values hold
