@@ -20,40 +20,38 @@ internal object ClusterMapArea {
      * With Horizon the phone always draws for the whole display, so its three layouts switch live:
      * only where the picture sits ("scale,x,y": scaled from its top-left corner, then moved; see
      * parsePlacement) and the content insets change. Measured on the car with a route (2026-11-01,
-     * ClusterLayoutProbe): the phone centres the car arrow in the content area, keeps the turn card's
-     * top and the arrival card's bottom about 98 px inside its top and bottom edges, and stretches the
-     * turn card to its width less about 36 px. A content area only as tall as Horizon's opening left
-     * the cards stuck to each other over the arrow (window, side) or on top of each other (full), and
-     * one 210 px tall hid them. So each layout's insets reach about 98 px above and below the
-     * opening, and its cards land on the opening's top and bottom edges.
+     * ClusterLayoutProbe): the phone centres the car arrow in the content area and keeps its turn and
+     * arrival cards about 98 px inside that area's top and bottom edges; an area too small for them
+     * gets no cards at all. The head unit already shows the turn, distance and time, so each layout
+     * gets a 40x40 area around where its arrow goes: the map, arrow, route and street names stay,
+     * the cards do not.
      *
      * The picture is asked [HORIZON_OVERSCAN] px taller than the display: with a 1280x480 picture
      * its bottom ~80 px arrived black in every layout; at 1280x560 it is drawn to the bottom (seen in
      * the captures), and the extra rows fall below the panel.
      *
-     * Full screen: the picture as is. The cards go under the speed band (y 113) and above the
-     * bottom bar (y 393, the street name's place too), between equal side insets that keep the turn
-     * card (about 580 px wide) off the ADAS window (HorizonGeometry.js `full.adas`, from x 960).
+     * Full screen: the picture as is, the arrow midway between the speed band (y 113) and the bottom
+     * bar (y 393).
      */
     const val HORIZON_OVERSCAN = 80
     const val HORIZON_FULL = "0,0,1280,560"
-    const val HORIZON_FULL_INSETS = "333,25,333,79"
+    const val HORIZON_FULL_INSETS = "620,233,620,287"
 
     /**
      * Window: Horizon's centre opening (390,68,500,344; clear 450..830 x 108..383, from
      * HorizonGeometry.js map.video and its fades). The picture at 0.8 shows more of the map than
-     * at full size, centred, with the arrow low in the opening.
+     * at full size, with the arrow in the middle of the opening.
      */
     const val HORIZON_WINDOW_PLACEMENT = "0.8,128,34"
-    const val HORIZON_WINDOW_INSETS = "402,6,402,38"
+    const val HORIZON_WINDOW_INSETS = "620,244,620,276"
 
     /**
      * Side (the second layout): Horizon's opening on the right (863,69,305,324; clear 911..1161 x
      * 107..373, from HorizonGeometry.js side.video and side.feather), the picture at 0.72 with its
-     * centre under the clear part's.
+     * centre and the arrow under the clear part's.
      */
     const val HORIZON_SIDE_PLACEMENT = "0.72,575,56"
-    const val HORIZON_SIDE_INSETS = "466,0,466,36"
+    const val HORIZON_SIDE_INSETS = "620,242,620,278"
 
     /** Without a theme, the whole band above the factory 8.8" bottom bar. */
     const val FACTORY_FREE_BAND = "0,0,1280,420"

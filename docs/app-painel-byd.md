@@ -93,12 +93,12 @@ próprio painel como o momento de cor.
     marcha e potência), põe um fundo escuro atrás de cada grupo da barra de baixo e mostra o ADAS
     numa janelinha à direita, como a de fábrica na navegação.
 
-  Os cartões do Android Auto (manobra em cima, tempo e chegada embaixo) ficam nas bordas de cima e
-  de baixo da parte livre de cada formato, com a seta e a rota visíveis no meio: o app diz ao celular
-  onde ela está (insets de conteúdo) a cada imagem nova e a cada troca de formato. Medido no carro com
-  rota: o celular mantém os cartões ~98 px para dentro da área que recebe, então o app informa uma
-  área ~98 px mais alta que a abertura, em cima e embaixo. Com a área do tamanho exato da abertura,
-  os cartões ficavam colados em cima da seta (Janela e Lateral) ou um sobre o outro (Tela cheia).
+  O painel mostra só o mapa, a seta, a rota e os nomes de rua: os cartões do Android Auto (manobra,
+  distância, tempo e chegada) ficam de fora, porque a multimídia já mostra tudo isso. O app diz ao
+  celular a área onde ele pode pôr os cartões (insets de conteúdo) a cada imagem nova e a cada troca de
+  formato. Medido no carro com rota: o celular centraliza a seta nessa área e mantém os cartões ~98 px
+  para dentro das bordas dela; numa área pequena demais, não desenha cartão nenhum. Por isso o app
+  informa uma área de 40×40 px em volta de onde a seta deve ficar, no meio da abertura de cada formato.
   No build de depuração, `ClusterLayoutProbe` troca a área e a posição ao vivo pelo ADB.
 
   O celular sempre desenha o mapa para o painel inteiro, a 200 dpi. Trocar o formato só muda onde a
