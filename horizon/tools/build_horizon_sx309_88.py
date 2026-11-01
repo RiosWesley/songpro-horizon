@@ -399,6 +399,42 @@ function horizonGhost(n, slot){
         adas3dId[key + "pos_z"] = setTargetY(y, 1)
     }
 }"""
+# The band from the car to the vehicle it follows, coloured by the time gap (1 red, 2 amber, 3 green),
+# as the factory 2D pane draws it. The 3D scene has it too, but BYD left its function commented out;
+# this is that code, run first. It needs the gap level and which slot is followed.
+HORIZON_DISTANCE = """\
+function horizonCarDistance(){
+    var slot = ["", "adasModel_00_", "adasModel_01_", "adasModel_02_", "adasModel_03_",
+                "adasModel_04_", "adasModel_05_"][DataSource.mainTargetIndex] || ""
+    var level = DataSource.carTimeDisLevel
+    if(DataSource.laneChangeAnimationDirection !== 0 || slot === "" || level < 1 || level > 3){
+        adas3dId.distanceVisible = false
+        return
+    }
+    var end = adas3dId[slot + "pos_z"]
+    var source = adas3dId[slot + "source"]
+    var maxTargetZ = maxTargetXCar
+    if(source === "qrc:/qml10_25/adas3d/components/PedestrianDetail.qml"
+            || source === "qrc:/qml10_25/adas3d/components/BikeDetail.qml"){
+        end = end - 20
+        maxTargetZ = maxTargetZHuman
+    }else if(source === "qrc:/qml10_25/adas3d/components/CarDetail.qml"){
+        maxTargetZ = maxTargetZCar
+    }else if(source === "qrc:/qml10_25/adas3d/components/TruckDetail.qml"){
+        end = end - 30
+        maxTargetZ = maxTargetZTruck
+    }
+    var share = end / maxTargetZ
+    adas3dId.distanceEnd = share > 0.95 ? 0.95 : share
+    adas3dId.distanceColor = ["", "#f62728", "#e08102", "#17975f"][level]
+    adas3dId.distanceVisible = true
+}
+Connections {
+    target: DataSource
+    function onCarTimeDisLevelChanged(){ updateCarDistanceLevel() }
+    function onMainTargetIndexChanged(){ updateCarDistanceLevel() }
+}"""
+DISTANCE_NOW = "horizonCarDistance()\nreturn"
 ROAD_ALWAYS = ("adas3dId.adasModel_roadBgVisible = Qt.binding(function () {\n"
                "    return DataSource.naviType !== 4 && DataSource.naviType !== 3\n"
                "})")
@@ -418,6 +454,8 @@ def patch_adas3d(src):
         guard = "if(DataSource.%sState === 0){\n    horizonGhost(%d, \"%s\")\n    return\n}" % (prop, n, prop)
         for part in ("Type", "PosX", "PosY"):
             out = insert_after(out, b"    function update" + name.encode() + part.encode() + b"(){\r\n", guard, b"        ")
+    out = insert_before(out, b"    function updateCarDistanceLevel(){\r\n", HORIZON_DISTANCE, b"    ")
+    out = insert_after(out, b"    function updateCarDistanceLevel(){\r\n", DISTANCE_NOW, b"        ")
     return insert_after(out, ROAD_ANCHOR, ROAD_ALWAYS, b"        ")
 
 

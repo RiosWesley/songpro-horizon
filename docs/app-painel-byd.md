@@ -73,6 +73,9 @@ próprio painel como o momento de cor.
   Horizon só pelo app.
 - **Modos de condução:** o fundo do Horizon muda de cor com o modo (ECO verde, NORMAL azul, SPORT
   laranja), com uma transição de quase 1 s.
+- **Carro seguido:** com o ACC seguindo um carro, a estrada do ADAS mostra a faixa do seu carro até ele,
+  colorida pela distância (vermelho perto, laranja, verde longe), como no painel de fábrica. O ADAS 3D
+  de fábrica tem essa faixa, mas a BYD deixou o código comentado; o tema o liga de novo.
 - **Telas de fábrica no centro:** quando o painel abre o menu, um alerta (EPB, portas, pneus…), o
   cronômetro de 0 a 100, o carregamento ou o resumo da viagem, a estrada do ADAS esmaece. Os alertas
   ganham um cartão do Horizon atrás deles. A faixa de música de fábrica fica escondida, porque o Horizon

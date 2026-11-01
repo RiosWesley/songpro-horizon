@@ -303,6 +303,43 @@ internal object HorizonPatches {
         }
     """.trimIndent()
 
+    // The band from the car to the vehicle it follows, coloured by the time gap (1 red, 2 amber,
+    // 3 green), as the factory 2D pane draws it; the 3D scene's own function is commented out.
+    private val HORIZON_DISTANCE = """
+        function horizonCarDistance(){
+            var slot = ["", "adasModel_00_", "adasModel_01_", "adasModel_02_", "adasModel_03_",
+                        "adasModel_04_", "adasModel_05_"][DataSource.mainTargetIndex] || ""
+            var level = DataSource.carTimeDisLevel
+            if(DataSource.laneChangeAnimationDirection !== 0 || slot === "" || level < 1 || level > 3){
+                adas3dId.distanceVisible = false
+                return
+            }
+            var end = adas3dId[slot + "pos_z"]
+            var source = adas3dId[slot + "source"]
+            var maxTargetZ = maxTargetXCar
+            if(source === "qrc:/qml10_25/adas3d/components/PedestrianDetail.qml"
+                    || source === "qrc:/qml10_25/adas3d/components/BikeDetail.qml"){
+                end = end - 20
+                maxTargetZ = maxTargetZHuman
+            }else if(source === "qrc:/qml10_25/adas3d/components/CarDetail.qml"){
+                maxTargetZ = maxTargetZCar
+            }else if(source === "qrc:/qml10_25/adas3d/components/TruckDetail.qml"){
+                end = end - 30
+                maxTargetZ = maxTargetZTruck
+            }
+            var share = end / maxTargetZ
+            adas3dId.distanceEnd = share > 0.95 ? 0.95 : share
+            adas3dId.distanceColor = ["", "#f62728", "#e08102", "#17975f"][level]
+            adas3dId.distanceVisible = true
+        }
+        Connections {
+            target: DataSource
+            function onCarTimeDisLevelChanged(){ updateCarDistanceLevel() }
+            function onMainTargetIndexChanged(){ updateCarDistanceLevel() }
+        }
+    """.trimIndent()
+    private const val DISTANCE_NOW = "horizonCarDistance()\nreturn"
+
     private val ROAD_ALWAYS = """
         adas3dId.adasModel_roadBgVisible = Qt.binding(function () {
             return DataSource.naviType !== 4 && DataSource.naviType !== 3
@@ -327,6 +364,8 @@ internal object HorizonPatches {
                 out = insertAfter(out, "    function update$name$part(){\r\n", guard, "        ")
             }
         }
+        out = insertBefore(out, "    function updateCarDistanceLevel(){\r\n", HORIZON_DISTANCE, "    ")
+        out = insertAfter(out, "    function updateCarDistanceLevel(){\r\n", DISTANCE_NOW, "        ")
         return insertAfter(out, ROAD_ANCHOR, ROAD_ALWAYS, "        ")
     }
 }
