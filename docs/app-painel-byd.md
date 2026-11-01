@@ -37,6 +37,27 @@ app, continua lá, mas fica escondido. Um toque longo em **Painel BYD** abre as 
 - Ao instalar, o app já ajusta o mapa para a janela central do Horizon. Ao voltar ao original, o
   mapa volta à faixa livre do painel de fábrica.
 
+### Menu no volante (opcional, desligado por padrão)
+
+Um botão do volante abre o menu do Horizon no painel, no lugar do card da esquerda. É o mesmo
+recurso de remapear botões que o Electro usa: um serviço de acessibilidade que só lê os botões do
+volante.
+
+- **Ligar:** Painel BYD → Menu no volante. O app ativa o serviço sozinho, pelo ADB local.
+- **Botão:** por padrão é o botão programável da BYD (`AUTO_CUSTOM_KEY`). Para usar outro, toque
+  **Escolher botão** e aperte o botão do volante que você quer.
+- **No painel:** toque curto abre e fecha o menu, ◁ ▷ escolhem o item e o clique do rolete muda o
+  valor. O menu fecha sozinho depois de 10 s sem tecla.
+- **Com o menu fechado, nada muda:** ◁ ▷ continuam trocando a música, e o rolete o volume. O app só
+  segura essas teclas com o menu aberto. O toque longo do botão programável vem com outro código e
+  segue com a função de fábrica.
+- **Itens:** card da esquerda (Automático: música quando tem música, senão viagem; Música; Viagem)
+  e, com o celular conectado, mapa no painel.
+
+> Não confirmado no carro: qual código cada botão manda, e se a BYD deixa segurar o botão
+> programável antes de girar a tela. Com o menu ligado, o registro do app mostra cada tecla
+> (`WheelMenu: key …`).
+
 ### Android Auto pelo cabo
 
 - **Song Pro Horizon:** desativa o Android Auto da BYD (`pm disable-user`; nada é desinstalado) e liga

@@ -1,11 +1,11 @@
 import QtQuick 2.15
-import com.byd.DataSource 1.0
 import "HorizonGeometry.js" as Geometry
 
 // Horizon: the custom instrument scene for the BYD Song Pro 8.8" cluster.
 //
 // Instrument mode: the factory ADAS 3D road in the middle, music (with synced lyrics) or the trip
-// on the left, power on the right. Map mode (the Android projection is on): the map in a centred
+// on the left, power on the right. A steering wheel key can open Horizon's own menu in the left
+// card's place (the app's WheelMenuService; see HorizonMenuFeed). Map mode (the Android projection is on): the map in a centred
 // window cut through this scene, ADAS 3D in a window on the left.
 //
 // The native telltales, warning pop-ups and settings menu are not part of this item: they stay
@@ -19,8 +19,8 @@ Item {
     // is actually up (it loads asynchronously), and kept when 3D cannot load at all.
     readonly property bool adasReady: stage.ready
     readonly property bool adasFallback: stage.failed
-    // 0 music, 1 trip; flipped with the steering wheel.
-    property int leftPage: 0
+    // 0 music, 1 trip: as chosen in the wheel menu, or automatic (music while there is music).
+    property int leftPage: menuFeed.leftCard === "music" ? 0 : menuFeed.leftCard === "trip" ? 1 : (car.mediaPresent ? 0 : 1)
     property string clock: "--:--"
     property alias mediaDirectory: car.mediaDirectory
     property alias powerHistorySeed: energy.historySeed
@@ -33,6 +33,7 @@ Item {
     readonly property bool diagnostics: false
 
     HorizonData { id: car }
+    HorizonMenuFeed { id: menuFeed; directory: car.mediaDirectory }
     HorizonTheme { id: theme; night: car.night }
 
     Timer {
@@ -65,7 +66,7 @@ Item {
         y: 0
     }
 
-    // Left column: music or the trip, flipped with the steering wheel; music only in map mode.
+    // Left column: music or the trip; music only in map mode; the wheel menu while it is open.
     Item {
         id: leftColumn
         readonly property var r: horizon.layout.leftCard
@@ -76,7 +77,7 @@ Item {
             theme: theme
             car: car
             compact: car.mapMode
-            opacity: car.mapMode || horizon.leftPage === 0 ? 1 : 0
+            opacity: !menuFeed.open && (car.mapMode || horizon.leftPage === 0) ? 1 : 0
             visible: opacity > 0
             Behavior on opacity { NumberAnimation { duration: 220 } }
         }
@@ -84,9 +85,17 @@ Item {
             anchors { left: parent.left; right: parent.right; verticalCenter: parent.verticalCenter }
             theme: theme
             car: car
-            opacity: !car.mapMode && horizon.leftPage === 1 ? 1 : 0
+            opacity: !menuFeed.open && !car.mapMode && horizon.leftPage === 1 ? 1 : 0
             visible: opacity > 0
             Behavior on opacity { NumberAnimation { duration: 220 } }
+        }
+        HorizonMenu {
+            anchors.fill: parent
+            theme: theme
+            feed: menuFeed
+            opacity: menuFeed.open ? 1 : 0
+            visible: opacity > 0
+            Behavior on opacity { NumberAnimation { duration: 160 } }
         }
     }
 
@@ -115,18 +124,5 @@ Item {
         y: 600
         gapX: Geometry.readyLamp.x - x
         gapWidth: Geometry.readyLamp.width
-    }
-
-    // Steering wheel: left/right flips the left card while the native menu is closed. The native
-    // handler still receives every key, so the factory menu keeps working as before.
-    Connections {
-        target: DataSource
-        function onPluginMsgReceived(id, value) {
-            if (car.mapMode || DataSource.menuNeedDisplay === 1)
-                return
-            // value: KEY_CLICK (1); releases (0) and long clicks (2) are left to the native UI.
-            if (value === 1 && (id === DataSource.SEND_MSG_ID_KEY_LEFT || id === DataSource.SEND_MSG_ID_KEY_RIGHT))
-                horizon.leftPage = (horizon.leftPage + 1) % 2
-        }
     }
 }

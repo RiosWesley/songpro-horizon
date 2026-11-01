@@ -1064,4 +1064,23 @@
     <string name="byd_aa_hint">Song Pro Horizon desativa o Android Auto da BYD (nada é desinstalado); AA nativo o religa. Depois de trocar, conecte o celular de novo.</string>
     <string name="byd_aa_now_this_app">O Song Pro Horizon agora atende o celular pelo cabo. Conecte o celular de novo.</string>
     <string name="byd_aa_now_native">O Android Auto da BYD foi religado. Conecte o celular de novo.</string>
+
+    <!-- Menu no volante (Painel BYD e o menu do Horizon no painel) -->
+    <string name="wheel_menu_service_label">Song Pro Horizon: menu no volante</string>
+    <string name="wheel_menu_service_description">Deixa um botão do volante abrir o menu do Horizon no painel; com ele aberto, ◁ ▷ e o clique do rolete navegam. Só lê os botões do volante.</string>
+    <string name="wheel_menu_left_card">Card da esquerda</string>
+    <string name="wheel_menu_card_auto">Automático</string>
+    <string name="wheel_menu_card_music">Música</string>
+    <string name="wheel_menu_card_trip">Viagem</string>
+    <string name="wheel_menu_map">Mapa no painel</string>
+    <string name="wheel_menu_on">Ligado</string>
+    <string name="wheel_menu_off">Desligado</string>
+    <string name="byd_wheel_title">Menu no volante</string>
+    <string name="byd_wheel_switch">Abrir o menu Horizon com um botão do volante</string>
+    <string name="byd_wheel_key">Botão: %1$s</string>
+    <string name="byd_wheel_learn">Escolher botão</string>
+    <string name="byd_wheel_learning">Aperte o botão do volante que vai abrir o menu…</string>
+    <string name="byd_wheel_learned">Botão do menu: %1$s</string>
+    <string name="byd_wheel_needs_on">Ligue o menu primeiro.</string>
+    <string name="byd_wheel_hint">Toque curto abre e fecha o menu no painel; ◁ ▷ escolhem e o clique do rolete muda. Com o menu fechado, os botões funcionam como sempre. Precisa do tema Horizon.</string>
 </resources>

@@ -32,6 +32,9 @@ internal object ClusterMapToggle {
 
     fun isOn(context: Context) = Settings(context).clusterMapEnabled
 
+    /** Whether a phone is projecting, so the map can be switched now. */
+    fun inSession() = sessionActive
+
     fun onSessionStart(context: Context) {
         sessionActive = true
         apply(context.applicationContext, isOn(context))

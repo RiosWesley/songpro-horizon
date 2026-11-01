@@ -1215,4 +1215,23 @@
     <string name="byd_aa_hint">Song Pro Horizon turns BYD\'s Android Auto off (nothing is uninstalled); BYD\'s turns it back on. Plug the phone in again after switching.</string>
     <string name="byd_aa_now_this_app">Song Pro Horizon now answers the phone on the cable. Plug the phone in again.</string>
     <string name="byd_aa_now_native">BYD\'s Android Auto is back on. Plug the phone in again.</string>
+
+    <!-- Steering wheel menu (BYD panel and the Horizon cluster menu) -->
+    <string name="wheel_menu_service_label">Song Pro Horizon: steering wheel menu</string>
+    <string name="wheel_menu_service_description">Lets a steering wheel key open the Horizon menu on the cluster; while it is open, ◁ ▷ and the roller press navigate it. It only reads the wheel keys.</string>
+    <string name="wheel_menu_left_card">Left card</string>
+    <string name="wheel_menu_card_auto">Automatic</string>
+    <string name="wheel_menu_card_music">Music</string>
+    <string name="wheel_menu_card_trip">Trip</string>
+    <string name="wheel_menu_map">Map on the cluster</string>
+    <string name="wheel_menu_on">On</string>
+    <string name="wheel_menu_off">Off</string>
+    <string name="byd_wheel_title">Steering wheel menu</string>
+    <string name="byd_wheel_switch">Open the Horizon menu with a wheel key</string>
+    <string name="byd_wheel_key">Key: %1$s</string>
+    <string name="byd_wheel_learn">Choose key</string>
+    <string name="byd_wheel_learning">Press the wheel key that will open the menu…</string>
+    <string name="byd_wheel_learned">Menu key: %1$s</string>
+    <string name="byd_wheel_needs_on">Switch the menu on first.</string>
+    <string name="byd_wheel_hint">A short press opens and closes the menu on the cluster; ◁ ▷ choose and the roller press changes. While the menu is closed, the keys work as always. Needs the Horizon theme.</string>
 </resources>

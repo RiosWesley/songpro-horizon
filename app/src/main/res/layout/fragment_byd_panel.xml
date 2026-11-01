@@ -77,6 +77,51 @@
                 android:text="@string/byd_theme_hint"
                 android:textAppearance="?attr/textAppearanceBodySmall" />
 
+            <!-- Steering wheel menu (BydWheelSection) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/byd_wheel_title"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/byd_wheel_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/byd_wheel_switch"
+                android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/byd_wheel_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/byd_wheel_learn"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/byd_wheel_learn" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/byd_wheel_hint"
+                android:textAppearance="?attr/textAppearanceBodySmall" />
+
             <!-- Who answers the phone on the cable -->
             <LinearLayout
                 android:id="@+id/byd_aa_section"

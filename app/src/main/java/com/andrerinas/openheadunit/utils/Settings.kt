@@ -178,6 +178,16 @@ class Settings(private val context: Context) {
         get() = prefs.getBoolean("simple_home", true)
         set(value) { prefs.edit().putBoolean("simple_home", value).apply() }
 
+    // The steering wheel key that opens the Horizon cluster menu (a KeyEvent code; 0 means BYD's
+    // programmable key), and what the menu's left card shows: "auto", "music" or "trip".
+    var wheelMenuKey: Int
+        get() = prefs.getInt("wheel_menu_key", 0)
+        set(value) { prefs.edit().putInt("wheel_menu_key", value).apply() }
+
+    var horizonLeftCard: String
+        get() = prefs.getString("horizon_left_card", "auto") ?: "auto"
+        set(value) { prefs.edit().putString("horizon_left_card", value).apply() }
+
     // Feed the cluster theme what the phone is playing (title, cover, progress) through
     // /sdcard/.cluster/horizon/, and the synced lyrics with it.
     var clusterNowPlaying: Boolean

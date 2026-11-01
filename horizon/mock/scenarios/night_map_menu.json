@@ -1,0 +1,1 @@
+{"extends": ["base.json"], "datasource": {"naviType": 4, "mockMediaDir": "media/menu"}}

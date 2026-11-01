@@ -20,8 +20,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 
 /**
- * The BYD screen of the shared build: install or remove the Horizon cluster theme, and choose who
- * answers the phone on the USB cable (this app or BYD's own Android Auto).
+ * The BYD screen of the shared build: install or remove the Horizon cluster theme, the steering
+ * wheel menu ([BydWheelSection]), and who answers the phone on the USB cable (this app or BYD's own
+ * Android Auto).
  */
 class BydPanelFragment : Fragment() {
 
@@ -31,6 +32,7 @@ class BydPanelFragment : Fragment() {
     private lateinit var remove: MaterialButton
     private lateinit var aaMode: MaterialButtonToggleGroup
     private lateinit var logView: TextView
+    private var wheel: BydWheelSection? = null
     private var showingAaState = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
@@ -55,8 +57,15 @@ class BydPanelFragment : Fragment() {
             if (checked && !showingAaState) switchAndroidAuto(id == R.id.byd_aa_this_app)
         }
 
+        wheel = BydWheelSection(view, viewLifecycleOwner.lifecycleScope, ::log)
         showAaState()
         refreshTheme()
+    }
+
+    override fun onDestroyView() {
+        wheel?.release()
+        wheel = null
+        super.onDestroyView()
     }
 
     private fun refreshTheme() {
