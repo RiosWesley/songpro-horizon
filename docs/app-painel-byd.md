@@ -37,6 +37,15 @@ app, continua lá, mas fica escondido. Um toque longo em **Painel BYD** abre as 
 - **Medidor de potência:** o lado direito do Horizon tem 5 estilos — Anel, Segmentos, Arco lateral,
   Coluna e Faixa e onda (com o gráfico do último minuto). Troque em **Painel BYD → Medidor de
   potência → Trocar** ou pelo menu no volante; muda na hora, sem reiniciar o painel.
+- **Formato do mapa:** **Janela** (no centro do Horizon, com o ADAS e os cards em volta) ou **Tela
+  cheia** (o mapa no painel inteiro; o Horizon vira só uma moldura com velocidade, marcha e
+  potência em cima e a barra de baixo). Troque em **Painel BYD → Mapa no painel → Trocar** ou pelo
+  menu no volante. Vale a partir da **próxima conexão do celular** (o vídeo do mapa é combinado com o
+  celular na conexão).
+- Nos dois formatos, o vídeo do mapa é um pouco maior que a área livre e o Horizon esfuma por cima
+  dessa sobra; o app pede ao celular (insets de conteúdo do Android Auto) que mantenha os cartões de
+  manobra e de chegada na área livre. *Não confirmado no carro:* se o Android Auto respeita esses
+  insets no painel de instrumentos.
 - Ao instalar, o app já ajusta o mapa para a janela central do Horizon. Ao voltar ao original, o
   mapa volta à faixa livre do painel de fábrica.
 
@@ -55,7 +64,7 @@ volante.
   segura essas teclas com o menu aberto. O toque longo do botão programável vem com outro código e
   segue com a função de fábrica.
 - **Itens:** card da esquerda (Automático: música quando tem música, senão viagem; Música; Viagem),
-  medidor de potência e, com o celular conectado, mapa no painel.
+  medidor de potência, formato do mapa e, com o celular conectado, mapa no painel.
 
 > Não confirmado no carro: qual código cada botão manda, e se a BYD deixa segurar o botão
 > programável antes de girar a tela. Com o menu ligado, o registro do app mostra cada tecla

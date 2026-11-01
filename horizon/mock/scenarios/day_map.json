@@ -1,1 +1,1 @@
-{"extends": ["base.json"], "datasource": {"dayNightMode": 1, "naviType": 4, "speed": 47}}
+{"extends": ["base.json"], "datasource": {"mockProjection": "projection_window.png", "dayNightMode": 1, "naviType": 4, "speed": 47}}

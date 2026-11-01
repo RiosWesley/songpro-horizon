@@ -1,0 +1,1 @@
+{"extends": ["base.json"], "datasource": {"naviType": 4, "realPower": -22.0, "dayNightMode": 1, "mockMediaDir": "media/full", "mockProjection": "projection_full.png"}}

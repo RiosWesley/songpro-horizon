@@ -575,6 +575,8 @@ class CommManager(
                     if (settings.clusterNowPlaying) {
                         ClusterNowPlaying.start(context, settings.clusterLyrics)
                     }
+                    // Tells the cluster theme which map layout this connection was set up for.
+                    com.andrerinas.openheadunit.byd.BydClusterMap.onSessionStart(context)
                 } else if (settings.showClusterOnMainDisplay) {
                     // Debug: render the dedicated cluster stream in a small floating window ON TOP
                     // of the normal Android Auto projection, so both pictures are visible at once.
@@ -1034,6 +1036,7 @@ class CommManager(
             ClusterVideoStreamer.stop()
             ClusterMapToggle.onSessionEnd(context)
             ClusterNowPlaying.stop()
+            com.andrerinas.openheadunit.byd.BydClusterMap.onSessionEnd()
             ClusterDisplayOutput.stop()
             // Stop the cluster pipeline but keep the dongle up showing the idle screen, in case the
             // user has MS9120 output enabled and will connect a phone again.

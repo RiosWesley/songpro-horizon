@@ -36,6 +36,9 @@ internal object ClusterDisplayOutput {
     private var displayManager: DisplayManager? = null
     private var presentation: Presentation? = null
     private var onSurfaceReady: (() -> Unit)? = null
+    // The map area for this session: the phone's stream was negotiated for it, so a change in the
+    // settings mid-session waits for the next connection.
+    private var sessionRect: String? = null
 
     private val decoder = ClusterStreamDecoder(TAG) {
         appContext?.let { Settings(it).clusterVideoResolution } ?: "800x480"
@@ -56,6 +59,7 @@ internal object ClusterDisplayOutput {
     fun start(context: Context, onSurfaceReady: () -> Unit) = main.post {
         if (appContext != null) return@post
         appContext = context.applicationContext
+        sessionRect = Settings(context).clusterDisplayRect
         this.onSurfaceReady = onSurfaceReady
         val dm = context.getSystemService(DisplayManager::class.java)
         displayManager = dm
@@ -68,6 +72,7 @@ internal object ClusterDisplayOutput {
         dismiss()
         displayManager = null
         appContext = null
+        sessionRect = null
         onSurfaceReady = null
     }
 
@@ -106,7 +111,7 @@ internal object ClusterDisplayOutput {
             @Suppress("DEPRECATION")
             display.getRealSize(it)
         }
-        val area = ClusterMapArea.resolve(Settings(ctx).clusterDisplayRect, size.x, size.y)
+        val area = ClusterMapArea.resolve(sessionRect ?: Settings(ctx).clusterDisplayRect, size.x, size.y)
         AppLog.i("$TAG: showing on display ${display.displayId} (${display.name}, ${size.x}x${size.y}), map at $area")
 
         // The same geometry ServiceDiscovery announced, so the crop matches the phone's margins.

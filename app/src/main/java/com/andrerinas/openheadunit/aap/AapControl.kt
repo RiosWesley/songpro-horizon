@@ -67,6 +67,14 @@ internal class AapControlMedia(
                     // Confirm on the requesting channel - for the cluster channel this is what
                     // tells the phone to actually start feeding the cluster sink.
                     aapTransport.send(VideoFocusEvent(gain = true, unsolicited = false, channel = message.channel))
+                    if (message.channel == Channel.ID_VID_CLUSTER) {
+                        // The cluster theme covers some edges of the picture (fades, its own bands):
+                        // the phone keeps its cards out of them.
+                        com.andrerinas.openheadunit.aap.cluster.ClusterUiConfig.request(aapTransport.settings)?.let {
+                            aapTransport.send(it)
+                            AppLog.i("Cluster: sent UI config with content insets (${aapTransport.settings.clusterContentInsets})")
+                        }
+                    }
                     if (message.channel == Channel.ID_VID) {
                         val left = com.andrerinas.openheadunit.utils.HeadUnitScreenConfig.getLeftMargin()
                         val top = com.andrerinas.openheadunit.utils.HeadUnitScreenConfig.getTopMargin()

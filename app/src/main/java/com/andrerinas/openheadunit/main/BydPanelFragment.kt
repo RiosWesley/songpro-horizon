@@ -10,9 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.andrerinas.openheadunit.R
+import com.andrerinas.openheadunit.byd.BydClusterMap
 import com.andrerinas.openheadunit.byd.BydNativeAndroidAuto
 import com.andrerinas.openheadunit.byd.theme.HorizonCarrier
 import com.andrerinas.openheadunit.byd.theme.HorizonInstaller
+import com.andrerinas.openheadunit.byd.theme.HorizonOptions
+import com.andrerinas.openheadunit.utils.Settings
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
@@ -58,7 +61,16 @@ class BydPanelFragment : Fragment() {
         }
 
         wheel = BydWheelSection(view, viewLifecycleOwner.lifecycleScope, ::log)
-        BydPowerStyleRow(view)
+        val settings = Settings(requireContext().applicationContext)
+        BydOptionRow(view, R.id.byd_power_style, R.id.byd_power_style_change, R.string.wheel_menu_power, R.string.byd_power_style,
+            HorizonOptions.POWER_STYLES, { settings.horizonPowerStyle }) { key ->
+            settings.horizonPowerStyle = key
+            HorizonOptions.publish(requireContext().applicationContext)
+        }
+        BydOptionRow(view, R.id.byd_map_layout, R.id.byd_map_layout_change, R.string.wheel_menu_map_layout, R.string.byd_map_layout,
+            HorizonOptions.MAP_LAYOUTS, { settings.horizonMapLayout }) { key ->
+            HorizonOptions.setMapLayout(requireContext().applicationContext, key)
+        }
         showAaState()
         refreshTheme()
     }
@@ -79,6 +91,9 @@ class BydPanelFragment : Fragment() {
             val installed = runCatching { installer.installed() }
             themeStatus.text = installed.fold(
                 onSuccess = { name ->
+                    // Keeps the map fitted to what is really installed (Horizon may have come from
+                    // elsewhere, or have been removed by hand).
+                    BydClusterMap.fitTo(Settings(requireContext().applicationContext), horizon = name != null)
                     if (name == null) getString(R.string.byd_theme_factory)
                     else getString(R.string.byd_theme_installed, name.removePrefix(HorizonCarrier.NAME_PREFIX).take(8))
                 },

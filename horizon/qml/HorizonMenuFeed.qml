@@ -3,10 +3,11 @@ import QtQuick 2.15
 // The steering wheel menu, written by the app (byd/wheel/WheelMenuService) to menu.json next to
 // now_playing.json:
 //   { "seq": n, "open": bool, "selected": i, "items": [{ "label", "value" }],
-//     "leftCard": "auto"|"music"|"trip", "powerStyle": "ring"|"segments"|"arc"|"column"|"wave" }
+//     "leftCard": "auto"|"music"|"trip", "powerStyle": "ring"|"segments"|"arc"|"column"|"wave",
+//     "mapLayout": "window"|"full" }
 // The app closes the menu itself after 10 s without a key; a menu left open longer than that (the
 // app stopped) is treated as closed. Without the file the menu stays closed, the card automatic
-// and the power gauge the ring.
+// the power gauge the ring and the map in its window.
 Item {
     id: feed
     property url directory
@@ -18,6 +19,7 @@ Item {
     property var items: []
     property string leftCard: "auto"
     property string powerStyle: "ring"
+    property string mapLayout: "window"
 
     property int _seq: -1
     property bool _open: false
@@ -34,6 +36,7 @@ Item {
         items = d.items || []
         leftCard = d.leftCard || "auto"
         powerStyle = d.powerStyle || "ring"
+        mapLayout = d.mapLayout || "window"
     }
 
     function poll() {

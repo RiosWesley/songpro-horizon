@@ -8,10 +8,20 @@ Item {
     id: menu
     property HorizonTheme theme
     property HorizonMenuFeed feed
+    // Over the full-screen map the menu needs its own dark backing.
+    property bool backed: false
     readonly property int count: feed.items.length
     readonly property real space: height - header.height
     readonly property bool compact: space < count * 76
     readonly property real rowHeight: compact ? space : Math.min(104, space / Math.max(1, count))
+
+    Rectangle {
+        visible: menu.backed
+        anchors { fill: parent; margins: -18 }
+        radius: 24
+        color: menu.theme.skyTop
+        opacity: 0.86
+    }
 
     Text {
         id: header

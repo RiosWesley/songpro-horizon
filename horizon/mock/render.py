@@ -68,6 +68,9 @@ def main():
     parser.add_argument("out")
     parser.add_argument("--wait-ms", type=int, default=2500)
     parser.add_argument("--rcc", default=os.environ.get("CLUSTER_RCC"))
+    # As on the car: a translate carrier registered before the stock theme overrides its files
+    # (the patched Adas3dContainer, Center, ...). Pass the built carrier here to see them.
+    parser.add_argument("--carrier", default=os.environ.get("HORIZON_CARRIER"))
     args = parser.parse_args()
 
     with open(args.scenario, encoding="utf-8") as f:
@@ -79,6 +82,8 @@ def main():
     values.update(scenario.get("datasource", {}))
 
     app = QGuiApplication(sys.argv)
+    if args.carrier and not QResource.registerResource(args.carrier):
+        sys.exit(f"cannot register {args.carrier}")
     if args.rcc and not QResource.registerResource(args.rcc):
         sys.exit(f"cannot register {args.rcc}")
     sys.path.insert(0, os.path.join(HERE, "stubs"))

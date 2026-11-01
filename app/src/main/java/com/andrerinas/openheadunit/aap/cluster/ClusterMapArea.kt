@@ -16,17 +16,26 @@ import com.andrerinas.openheadunit.utils.Settings
 internal object ClusterMapArea {
 
     /**
-     * The map hole of the Horizon cluster theme (horizon/qml/HorizonGeometry.js, map.hole at 2/3),
-     * for cluster_display_rect when that theme is installed.
+     * The Horizon cluster theme's map window (horizon/qml/HorizonGeometry.js, map.video at 2/3):
+     * the clear hole (390,100,500,292) and 32 px more above and 20 below, which run on under the
+     * theme's fades. The insets keep the phone's cards in the clear part.
      */
-    const val HORIZON_MAP_HOLE = "390,100,500,292"
+    const val HORIZON_MAP_VIDEO = "390,68,500,344"
+    const val HORIZON_MAP_INSETS = "0,32,0,20"
+
+    /**
+     * Horizon full screen: the whole display, the phone's cards kept out of the speed band at the
+     * top, the bottom bar and the telltale columns (HorizonGeometry.js `full`).
+     */
+    const val HORIZON_FULL = "0,0,1280,480"
+    const val HORIZON_FULL_INSETS = "70,100,70,86"
 
     /** Without a theme, the whole band above the factory 8.8" bottom bar. */
     const val FACTORY_FREE_BAND = "0,0,1280,420"
 
     /** Assumed when the cluster display is not up yet (BYD DiLink 3, 8.8" cluster). */
-    private const val FALLBACK_WIDTH = 1280
-    private const val FALLBACK_HEIGHT = 480
+    const val FALLBACK_WIDTH = 1280
+    const val FALLBACK_HEIGHT = 480
 
     /** The map area on the current cluster display, or on the fallback size if there is none yet. */
     fun current(context: Context): Rect {
@@ -44,6 +53,13 @@ internal object ClusterMapArea {
         val parsed = parse(setting)
         return if (parsed != null) clamp(parsed, displayWidth, displayHeight)
         else centred(displayWidth, displayHeight)
+    }
+
+    /** "left,top,right,bottom" -> the four values, or null when blank, invalid or all zero. */
+    fun parseInsets(setting: String): IntArray? {
+        val n = setting.split(",").map { it.trim().toIntOrNull() ?: return null }
+        if (n.size != 4 || n.any { it < 0 } || n.all { it == 0 }) return null
+        return n.toIntArray()
     }
 
     private fun parse(setting: String): Rect? {

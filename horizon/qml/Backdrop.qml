@@ -6,14 +6,23 @@ import QtQuick 2.15
 // carries slow passes of light past the car. A dither keeps the long gradients from banding on the
 // car's glass.
 //
-// In map mode it is opened, with soft edges, where the map goes: the Android projection is
-// composited *under* the native scene and only shows through transparent pixels. (Computed here,
-// not masked: on the car a hidden Canvas mask is never painted.)
+// In map mode it is opened where the map goes: the Android projection is composited *under* the
+// native scene and only shows through transparent pixels. In a window, the phone's picture is
+// taller than the clear hole and the fades top and bottom run over that extra (the cards stay in
+// the hole). Full screen, only a frame is left: the scene fades out from the top, the bottom and
+// the telltale columns over the map. (Computed here, not masked: on the car a hidden Canvas mask
+// is never painted.)
 ShaderEffect {
     id: backdrop
     property HorizonTheme theme
     property bool mapMode: false
+    // Map mode: the map in a window (`hole`, the phone's whole picture) or under the full panel.
+    property bool fullMap: false
     property var hole: ({ x: 0, y: 0, width: 0, height: 0 })
+    // Full screen: how deep the frame reaches in from the top, the bottom and each side.
+    property real topBand: 230
+    property real bottomBand: 190
+    property real sideBand: 190
     // km/h: the passing light moves with the car and rests when it stops.
     property real speed: 0
     // Where the floor meets the sky, and how far the horizon drops at the edges.
@@ -33,8 +42,10 @@ ShaderEffect {
     readonly property real domeStrength: theme.domeStrength
     readonly property real vignette: theme.vignette
     readonly property real cut: mapMode ? 1 : 0
+    readonly property real full: mapMode && fullMap ? 1 : 0
     readonly property rect holeArea: Qt.rect(hole.x, hole.y, hole.width, hole.height)
-    readonly property vector4d holeFeather: Qt.vector4d(80, 22, 80, 22)
+    // Long fades: wide at the sides, and top and bottom over the picture's extra height.
+    readonly property vector4d holeFeather: Qt.vector4d(90, 60, 90, 44)
     readonly property real motion: Math.min(1, speed / 25)
     property real travel: 0
 
@@ -63,6 +74,10 @@ ShaderEffect {
         uniform highp float horizonY;
         uniform highp float arc;
         uniform lowp float cut;
+        uniform lowp float full;
+        uniform highp float topBand;
+        uniform highp float bottomBand;
+        uniform highp float sideBand;
         uniform highp vec4 holeArea;
         uniform highp vec4 holeFeather;
         uniform lowp float motion;
@@ -71,6 +86,12 @@ ShaderEffect {
         // The floor's camera: depth = K / (pixels below the horizon); sideways metres = px * z / F.
         const highp float K = 1452.0;
         const highp float F = 900.0;
+
+        // smootherstep from 0 at d = 0 to 1 at d = f.
+        highp float ease(highp float d, highp float f) {
+            highp float t = clamp(d / f, 0.0, 1.0);
+            return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
+        }
 
         highp float hash(highp vec2 p) {
             return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
@@ -158,11 +179,17 @@ ShaderEffect {
             col += (hash(p) - 0.5) / 255.0;
 
             highp float a = 1.0;
-            if (cut > 0.5) {
-                a = 1.0 - smoothstep(0.0, holeFeather.x, p.x - holeArea.x)
-                        * smoothstep(0.0, holeFeather.z, holeArea.x + holeArea.z - p.x)
-                        * smoothstep(0.0, holeFeather.y, p.y - holeArea.y)
-                        * smoothstep(0.0, holeFeather.w, holeArea.y + holeArea.w - p.y);
+            if (full > 0.5) {
+                // Solid behind the text (speed, bottom bar, telltales), then a long fade.
+                highp float top = 1.0 - ease(p.y - 95.0, topBand - 95.0);
+                highp float bottom = ease(p.y - (frame.y - bottomBand), bottomBand - 115.0);
+                highp float side = 1.0 - ease(min(p.x, frame.x - p.x) - 95.0, sideBand - 95.0);
+                a = max(max(top * 0.92, bottom * 0.92), side * 0.8);
+            } else if (cut > 0.5) {
+                a = 1.0 - ease(p.x - holeArea.x, holeFeather.x)
+                        * ease(holeArea.x + holeArea.z - p.x, holeFeather.z)
+                        * ease(p.y - holeArea.y, holeFeather.y)
+                        * ease(holeArea.y + holeArea.w - p.y, holeFeather.w);
             }
             gl_FragColor = vec4(col, 1.0) * (a * qt_Opacity);
         }"

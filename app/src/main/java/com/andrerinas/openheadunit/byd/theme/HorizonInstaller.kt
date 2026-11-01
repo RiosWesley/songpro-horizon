@@ -66,6 +66,7 @@ class HorizonInstaller(private val context: Context, private val log: (String) -
             throw Stop("o painel não aceitou o tema: ${ThemeToolOutput.reason(load)}")
         }
         BydClusterMap.fitTo(Settings(context), horizon = true)
+        HorizonOptions.publish(context)
         Outcome.RestartNeeded("Horizon selecionado. Ele aparece depois de reiniciar o painel.")
     }
 

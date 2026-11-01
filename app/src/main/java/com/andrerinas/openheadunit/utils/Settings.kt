@@ -203,6 +203,22 @@ class Settings(private val context: Context) {
         get() = prefs.getBoolean("cluster_lyrics", true)
         set(value) { prefs.edit().putBoolean("cluster_lyrics", value).apply() }
 
+    // The edges of the cluster map picture the cluster theme covers, "left,top,right,bottom" in its
+    // pixels: the phone keeps its cards out of them (ClusterUiConfig). Blank: none.
+    var clusterContentInsets: String
+        get() = prefs.getString("cluster_content_insets", "") ?: ""
+        set(value) { prefs.edit().putString("cluster_content_insets", value).apply() }
+
+    // The Horizon map: "window" (the centre window) or "full" (under the whole panel), from the
+    // next connection on; and whether this app found Horizon installed.
+    var horizonMapLayout: String
+        get() = prefs.getString("horizon_map_layout", "window") ?: "window"
+        set(value) { prefs.edit().putString("horizon_map_layout", value).apply() }
+
+    var horizonInstalled: Boolean
+        get() = prefs.getBoolean("horizon_installed", false)
+        set(value) { prefs.edit().putBoolean("horizon_installed", value).apply() }
+
     // Where the map goes on the cluster display: "x,y,width,height" in display pixels. Blank means
     // centred; see ClusterMapArea.
     var clusterDisplayRect: String

@@ -77,7 +77,7 @@
                 android:text="@string/byd_theme_hint"
                 android:textAppearance="?attr/textAppearanceBodySmall" />
 
-            <!-- The Horizon power gauge (BydPowerStyleRow) -->
+            <!-- The Horizon power gauge (BydOptionRow) -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,6 +99,36 @@
                     android:layout_marginStart="12dp"
                     android:text="@string/byd_power_style_change" />
             </LinearLayout>
+
+            <!-- The Horizon map layout (BydOptionRow) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/byd_map_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/byd_map_layout_change"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/byd_power_style_change" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/byd_map_layout_hint"
+                android:textAppearance="?attr/textAppearanceBodySmall" />
 
             <!-- Steering wheel menu (BydWheelSection) -->
             <TextView

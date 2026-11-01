@@ -29,15 +29,16 @@ Item {
 
     clip: true
 
-    // The road melts into the backdrop at the far end and at the sides (map mode: soft edges all
-    // round, like the map window beside it). A real alpha mask, so it works over any backdrop.
+    // The road melts into the backdrop at the far end, at the sides and, before the bottom bar, at
+    // the near end (map mode: long fades all round, so the lanes never stop at an edge). A real
+    // alpha mask, so it works over any backdrop.
     Item {
         id: scene
         anchors.fill: parent
         layer.enabled: true
         layer.effect: SoftMask {
-            feather: stage.windowed ? Qt.vector4d(28, 22, 28, 22)
-                                    : Qt.vector4d(width * 0.34, height * 0.45, width * 0.34, height * 0.14)
+            feather: stage.windowed ? Qt.vector4d(56, 70, 56, 62)
+                                    : Qt.vector4d(width * 0.34, height * 0.45, width * 0.34, height * 0.28)
         }
 
         Loader {

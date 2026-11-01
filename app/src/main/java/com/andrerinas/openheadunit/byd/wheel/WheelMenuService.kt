@@ -84,12 +84,17 @@ class WheelMenuService : AccessibilityService() {
     private fun items(): List<WheelMenu.Item> {
         val card = settings.horizonLeftCard
         val power = settings.horizonPowerStyle
+        val layout = settings.horizonMapLayout
         val list = mutableListOf(
             WheelMenu.Item(getString(R.string.wheel_menu_left_card), getString(HorizonOptions.find(HorizonOptions.LEFT_CARDS, card).label)) {
                 settings.horizonLeftCard = HorizonOptions.next(HorizonOptions.LEFT_CARDS, card)
             },
             WheelMenu.Item(getString(R.string.wheel_menu_power), getString(HorizonOptions.find(HorizonOptions.POWER_STYLES, power).label)) {
                 settings.horizonPowerStyle = HorizonOptions.next(HorizonOptions.POWER_STYLES, power)
+            },
+            // Takes effect at the next connection: the phone's stream is negotiated per connection.
+            WheelMenu.Item(getString(R.string.wheel_menu_map_layout), getString(HorizonOptions.find(HorizonOptions.MAP_LAYOUTS, layout).label)) {
+                HorizonOptions.setMapLayout(this, HorizonOptions.next(HorizonOptions.MAP_LAYOUTS, layout))
             })
         // The map can only be switched while a phone is projecting.
         if (ClusterMapToggle.inSession()) {
@@ -103,7 +108,7 @@ class WheelMenuService : AccessibilityService() {
 
     private fun onChange(state: WheelMenu.State) {
         try {
-            file.write(state, settings.horizonLeftCard, settings.horizonPowerStyle)
+            file.write(state, settings.horizonLeftCard, settings.horizonPowerStyle, HorizonOptions.activeMapLayout(settings))
         } catch (e: Exception) {
             AppLog.w("WheelMenu: could not write the menu file: ${e.message}")
         }

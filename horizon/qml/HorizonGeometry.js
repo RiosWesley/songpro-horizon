@@ -20,11 +20,28 @@ var native = {
 // Map mode (the Android projection is on): the map in the middle, ADAS 3D in a window on the
 // left above a compact music card, energy on the right.
 var map = {
-    // Centred under the speed, close to the phone cluster UI's own proportions (500x292 physical).
+    // Centred under the speed, close to the phone cluster UI's own proportions (500x292 physical):
+    // where the map is fully clear. The phone's picture is taller (`video`, the app's
+    // cluster_display_rect): it runs on under the backdrop, which fades over that margin, and the
+    // phone is told to keep its cards inside `hole` (content insets).
     hole:      { x: 585,  y: 150, width: 750, height: 438 },
+    video:     { x: 585,  y: 102, width: 750, height: 516 },
     adasMini:  { x: 124,  y: 160, width: 425, height: 252 },
     leftCard:  { x: 124,  y: 424, width: 425, height: 168 },
     rightCard: { x: 1371, y: 160, width: 371, height: 432 }
+}
+
+// Full-screen map: the phone's picture under the whole panel, Horizon only a frame round it: a band
+// at the top (speed, gear, power), one at the bottom (the bottom bar), the telltale columns at the
+// sides. The phone keeps its cards out of those (content insets).
+var full = {
+    video:     { x: 0, y: 0, width: 1920, height: 720 },
+    topBand:   240,
+    bottomBand: 230,
+    sideBand:  200,
+    // Above the top-left telltale row (x 510-750, y 95-140) and clear of the speed limit sign.
+    power:     { x: 480, y: 2, width: 250, height: 84 },
+    menu:      { x: 124, y: 190, width: 430, height: 330 }
 }
 
 // What open-headunit must be told: the map hole in physical display pixels (cluster_display_rect).
