@@ -53,3 +53,35 @@ Três arquivos do 2602 têm os SHA-256 que o DashCast fixa: `XdjaContainerServic
     `commonTranslate.rcc`, `XdjaContainerService.apk` `1b9eef49…`, `framework.jar` `f3e9c416…`. Os arquivos
     `fissiond` e `container_comm_cfg.json` não mudaram.
 - O melhor é aceitar as duas versões, com um conjunto de SHA-256 para cada.
+
+## Fora do painel
+
+Comparação dos APKs das partições `system` e `product` (175 no 2511, 176 no 2602), pelo hash e pela versão
+(`aapt dump badging`). Quase tudo foi recompilado; abaixo, só o que tem versão nova ou é novo. As propriedades do
+sistema só mudam em data e identificação da compilação: o patch de segurança do Android continua em 2023-02-05.
+
+| Área | App | 2511 → 2602 |
+|---|---|---|
+| Assistente de voz | BydVoice, BydVoiceDownload, BydVoiceSetting | S.11.2.2 → **S.12.4.1** |
+| | SpeechHMI, SpeechAvatar, VRdownloadXF (iFlytek) | v.1031 (09/2025) → v.1032 (12/2025) |
+| Ajustes do carro | CarSetting | 1.4.1.182 (11/2025) → **1.4.1.212** (01/2026) |
+| | CarSettingsPlugins | 1.4.1.59 → 1.4.1.61 |
+| Tela inicial | Launcher3 | 5.6.3.35 → **5.7.4.36** |
+| Mídia | IntegrationMediaCenter | 1.3.0.109 → 1.3.0.120 |
+| | MediaController e widget, MusicWidget | novas compilações |
+| Carregamento | BydSmartTravel (Smart Charging) | 09/2025 → 12/2025 |
+| Atualização | Cota (Upgrade, OTA do veículo) | 2.1.1 → 2.1.4 |
+| | ProductLineOTA | 08/2025 → 12/2025 |
+| Nuvem e conta | **CloudServiceFrame** (novo), AppServer, BydDiLinkAccount | — / 1.3.1.108 → 109 / 08 → 10/2025 |
+| Loja e manual | OverseaAppStore, OverseaUserManual, BydBootGuide | V5.0.63 → V5.0.74 / 09 → 11/2025 / 107 → 114 |
+| Visual | WallpaperHome, BydThemeStore, ScreenSaver | 154 → 162 / 10 → 12/2025 / 1.17 → 1.18 |
+| Câmera e fotos | BydAutoCamera, BydAutoPhoto, BydCDR | novas compilações (09 → 11/2025) |
+| Entrada e alertas | IntelligentEntry, BydCpdWarn (criança no carro) | 09 → 12/2025 / 08 → 10/2025 |
+| Telefone | BluetoothPhone, BluetoothSettings, XCall, Bluetooth do Android | novas compilações |
+| Projeção | Android Auto da BYD, Android Auto (Google), CarPlay | mesma versão, nova compilação |
+| Painel | ClusterDebug | 2508 → 2511 |
+| Outros | CanDataCollect, TrafficMonitor, MiniKaraoke, teclado | novas versões |
+| Mapas de outros mercados | TMap (Coreia), Zenrin (Japão), TelenavHere | 0.15 → 1.0.3 / v3 → v4 / 9.0.141 → 9.0.152 |
+
+Relevante para o Song Pro Horizon: o `ClusterDebug` (usado para ligar a projeção e esconder o ADAS de fábrica) e o
+`XdjaContainerService` (usado pela ferramenta do tema) mudaram; os dois precisam de teste no carro antes de usar o app no 2602.
