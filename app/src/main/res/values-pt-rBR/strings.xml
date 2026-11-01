@@ -1112,7 +1112,7 @@
     <string name="hz_home_waiting_lead">Ligue o celular no cabo USB da central. O Android Auto abre sozinho.</string>
     <string name="hz_home_connect">Conectar pelo USB</string>
     <string name="hz_home_connected">Android Auto conectado</string>
-    <string name="hz_home_connected_lead">Pelo cabo USB. O mapa no painel liga pelo botão MAPA ou pelo menu do volante.</string>
+    <string name="hz_home_connected_lead">Pelo cabo USB. O mapa no painel liga pelo menu do volante.</string>
     <string name="hz_home_open_aa">Abrir o Android Auto</string>
     <string name="hz_status_aa">Android Auto do cabo</string>
     <string name="hz_this_app">Este app</string>
@@ -1143,7 +1143,7 @@
     <string name="hz_aa_autostart">Abrir sozinho ao conectar</string>
     <string name="hz_aa_autostart_hint">Assim que o celular entra no cabo</string>
     <string name="hz_aa_map">Mapa no painel ao conectar</string>
-    <string name="hz_aa_map_hint">Desligado, o mapa liga pelo botão MAPA ou pelo menu do volante</string>
+    <string name="hz_aa_map_hint">Desligado, o mapa liga pelo menu do volante</string>
     <string name="hz_aa_lyrics">Letra das músicas no painel</string>
     <string name="hz_aa_lyrics_hint">Letra sincronizada no card de música do Horizon</string>
     <string name="hz_aa_quality">Qualidade da imagem</string>
@@ -1172,4 +1172,5 @@
     <string name="hz_about_advanced">Ajustes avançados</string>
     <string name="hz_about_advanced_hint">Todos os ajustes herdados do open-headunit: conexão sem fio, vídeo, áudio, teclas e registros</string>
     <string name="hz_about_open">Abrir</string>
+    <string name="map_layout_side">Lateral</string>
 </resources>

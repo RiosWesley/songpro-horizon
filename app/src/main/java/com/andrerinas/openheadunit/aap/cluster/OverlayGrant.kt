@@ -6,7 +6,7 @@ import com.andrerinas.openheadunit.utils.AppLog
 import com.andrerinas.openheadunit.utils.adb.AdbManager
 
 /**
- * The overlay grant (SYSTEM_ALERT_WINDOW) the cluster map and its floating button are drawn with.
+ * The overlay grant (SYSTEM_ALERT_WINDOW) the cluster map is drawn with.
  * Without it the projection still opens on the cluster, but nothing is drawn there: a black frame.
  * A fresh install starts without it, so it is given as the shell user through Self-ADB, like the
  * panel commands.

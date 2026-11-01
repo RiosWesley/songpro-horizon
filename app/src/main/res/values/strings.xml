@@ -1263,7 +1263,7 @@
     <string name="hz_home_waiting_lead">Plug the phone into the head unit\'s USB cable. Android Auto opens by itself.</string>
     <string name="hz_home_connect">Connect over USB</string>
     <string name="hz_home_connected">Android Auto connected</string>
-    <string name="hz_home_connected_lead">Over the USB cable. The cluster map turns on with the MAPA button or the wheel menu.</string>
+    <string name="hz_home_connected_lead">Over the USB cable. The cluster map turns on from the wheel menu.</string>
     <string name="hz_home_open_aa">Open Android Auto</string>
     <string name="hz_status_aa">Android Auto on the cable</string>
     <string name="hz_this_app">This app</string>
@@ -1294,7 +1294,7 @@
     <string name="hz_aa_autostart">Open on connect</string>
     <string name="hz_aa_autostart_hint">As soon as the phone is plugged in</string>
     <string name="hz_aa_map">Cluster map on connect</string>
-    <string name="hz_aa_map_hint">Off, the map turns on with the MAPA button or the wheel menu</string>
+    <string name="hz_aa_map_hint">Off, the map turns on from the wheel menu</string>
     <string name="hz_aa_lyrics">Lyrics on the cluster</string>
     <string name="hz_aa_lyrics_hint">Synced lyrics in Horizon\'s music card</string>
     <string name="hz_aa_quality">Picture quality</string>
@@ -1323,4 +1323,5 @@
     <string name="hz_about_advanced">Advanced settings</string>
     <string name="hz_about_advanced_hint">Every setting inherited from open-headunit: wireless, video, audio, keys and logs</string>
     <string name="hz_about_open">Open</string>
+    <string name="map_layout_side">Side</string>
 </resources>

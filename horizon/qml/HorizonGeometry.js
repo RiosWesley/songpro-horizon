@@ -22,9 +22,9 @@ var native = {
 var map = {
     // Centred under the speed, close to the phone cluster UI's own proportions (500x292 physical):
     // where the map is fully clear. The backdrop opens `video` over the phone's picture and fades
-    // over the margin round `hole`. The picture always covers the whole panel (so the app can switch
-    // layouts live), moved 66 physical px up in this layout; the phone is told to keep its cards
-    // inside `hole` (content insets; the app's ClusterMapArea).
+    // over the margin round `hole`. The phone always draws for the whole panel (so the app can
+    // switch layouts live); in this layout the app scales its picture to 0.8 and centres it here,
+    // and tells the phone to keep its cards inside `hole` (content insets; the app's ClusterMapArea).
     hole:      { x: 585,  y: 150, width: 750, height: 438 },
     video:     { x: 585,  y: 102, width: 750, height: 516 },
     adasMini:  { x: 124,  y: 160, width: 425, height: 252 },
@@ -32,16 +32,27 @@ var map = {
     rightCard: { x: 1371, y: 160, width: 371, height: 432 }
 }
 
-// Full-screen map: the phone's picture under the whole panel, Horizon only a frame round it: a band
-// at the top (speed, gear, power), one at the bottom (the bottom bar), the telltale columns at the
-// sides. The phone keeps its cards out of those (content insets).
+// Map mode, second layout: the map takes the right side instead of the energy card, the ADAS road
+// stays in the middle (narrower, so it ends before the map) and power is a bar at the top, as on
+// the full-screen map. `video` is opened over the phone's picture and faded by `feather` (left,
+// top, right, bottom) towards the clear part; the app scales and moves the picture into it.
+var side = {
+    video:     { x: 1240, y: 100, width: 512, height: 500 },
+    feather:   [64, 56, 36, 44],
+    stage:     { x: 400,  y: 150, width: 820, height: 450 }
+}
+
+// Full-screen map: the phone's picture under the whole panel. Horizon keeps a band across the top
+// (speed, gear, power) and backings behind the bottom bar's figures; the map runs to the bottom
+// and to the sides. The ADAS road shows in a small window, like the factory's own in navigation.
+// The phone keeps its cards out of the top band and the bottom bar (content insets).
 var full = {
     video:     { x: 0, y: 0, width: 1920, height: 720 },
-    topBand:   240,
-    bottomBand: 230,
-    sideBand:  200,
+    topSolid:  76,
+    topBand:   170,
     // Above the top-left telltale row (x 510-750, y 95-140) and clear of the speed limit sign.
-    power:     { x: 480, y: 2, width: 250, height: 84 },
+    power:     { x: 470, y: 22, width: 300, height: 48 },
+    adas:      { x: 1400, y: 300, width: 330, height: 220 },
     menu:      { x: 124, y: 190, width: 430, height: 330 }
 }
 

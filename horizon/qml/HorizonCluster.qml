@@ -31,10 +31,14 @@ Item {
     property alias powerHistorySeed: energy.historySeed
     // The power gauge chosen in the wheel menu or the BYD panel (see EnergyCard).
     property string powerStyle: menuFeed.powerStyle
-    // The map under the whole panel instead of in a window (chosen in the app; switches live).
+    // Where the map goes (chosen in the app or the wheel menu; switches live): a centre window, the
+    // right side with the road kept in the middle ("side"), or under the whole panel ("full").
     property bool fullMap: car.mapMode && menuFeed.mapLayout === "full"
+    property bool sideMap: car.mapMode && menuFeed.mapLayout === "side"
+    // The centre-window layout; the side layout keeps the instrument layout's left card.
+    readonly property bool windowMap: car.mapMode && !fullMap && !sideMap
 
-    readonly property var layout: car.mapMode ? Geometry.map : Geometry.native
+    readonly property var layout: windowMap ? Geometry.map : Geometry.native
     // The factory Quick3D road. false keeps the native 2D ADAS instead (the root patch moves it
     // into this scene); the carrier makes the road's target loaders synchronous, see the builder.
     readonly property bool adas3dEnabled: true
@@ -58,25 +62,40 @@ Item {
         theme: theme
         mapMode: car.mapMode
         fullMap: horizon.fullMap
-        hole: Geometry.map.video
+        hole: horizon.sideMap ? Geometry.side.video : Geometry.map.video
+        holeFeather: horizon.sideMap ? Qt.vector4d(Geometry.side.feather[0], Geometry.side.feather[1],
+                                                   Geometry.side.feather[2], Geometry.side.feather[3])
+                                     : Qt.vector4d(90, 60, 90, 44)
+        topSolid: Geometry.full.topSolid
         topBand: Geometry.full.topBand
-        bottomBand: Geometry.full.bottomBand
-        sideBand: Geometry.full.sideBand
         speed: car.speed
     }
 
-    // ADAS: the whole road in the middle, or the factory's own window on the left in map mode.
+    // Over the full-screen map the ADAS window sits on a card of its own, like the factory's.
+    Rectangle {
+        visible: horizon.fullMap
+        readonly property var r: Geometry.full.adas
+        x: r.x; y: r.y; width: r.width; height: r.height
+        radius: 24
+        color: theme.night ? "#e6070b12" : "#e6f3f6f9"
+        border { width: 1; color: theme.hairline }
+    }
+
+    // ADAS: the whole road in the middle (instruments, and the side layout, narrower), the
+    // factory's own window on the left (centre-window layout) or a small window over the
+    // full-screen map.
     AdasStage {
         id: stage
         active: car.poweredOn
         use3d: horizon.adas3dEnabled
-        windowed: car.mapMode
-        // Full screen there is no room for it; it stays loaded, so the native 2D pane stays away.
-        visible: !horizon.fullMap
+        windowed: horizon.windowMap || horizon.fullMap
+        windowFeather: horizon.fullMap ? Qt.vector4d(24, 28, 24, 24) : Qt.vector4d(56, 70, 56, 62)
         // The road steps back while a factory screen is in the centre over it.
-        opacity: centre.busy && !car.mapMode ? 0.12 : 1
+        opacity: centre.busy && !horizon.windowMap && !horizon.fullMap ? 0.12 : 1
         Behavior on opacity { NumberAnimation { duration: 250 } }
-        readonly property var r: car.mapMode ? Geometry.map.adasMini : Geometry.native.stage
+        readonly property var r: horizon.fullMap ? Geometry.full.adas
+                               : horizon.sideMap ? Geometry.side.stage
+                               : car.mapMode ? Geometry.map.adasMini : Geometry.native.stage
         x: r.x; y: r.y; width: r.width; height: r.height
     }
 
@@ -87,7 +106,7 @@ Item {
         y: 0
     }
 
-    // Left column: music or the trip; music only in map mode; the wheel menu while it is open
+    // Left column: music or the trip (compact music only in the centre-window layout); the wheel menu while it is open
     // (full screen, only the menu, on its own backing over the map).
     Item {
         id: leftColumn
@@ -98,8 +117,8 @@ Item {
             anchors.fill: parent
             theme: theme
             car: car
-            compact: car.mapMode
-            opacity: !menuFeed.open && !horizon.fullMap && (car.mapMode || horizon.leftPage === 0) ? 1 : 0
+            compact: horizon.windowMap
+            opacity: !menuFeed.open && !horizon.fullMap && (horizon.windowMap || horizon.leftPage === 0) ? 1 : 0
             visible: opacity > 0
             Behavior on opacity { NumberAnimation { duration: 220 } }
         }
@@ -107,7 +126,7 @@ Item {
             anchors { left: parent.left; right: parent.right; verticalCenter: parent.verticalCenter }
             theme: theme
             car: car
-            opacity: !menuFeed.open && !car.mapMode && horizon.leftPage === 1 ? 1 : 0
+            opacity: !menuFeed.open && (!car.mapMode || horizon.sideMap) && horizon.leftPage === 1 ? 1 : 0
             visible: opacity > 0
             Behavior on opacity { NumberAnimation { duration: 220 } }
         }
@@ -129,13 +148,13 @@ Item {
         style: horizon.powerStyle
         readonly property var r: horizon.layout.rightCard
         x: r.x; y: r.y; width: r.width; height: r.height
-        visible: !horizon.fullMap
+        visible: !horizon.fullMap && !horizon.sideMap
     }
 
     PowerPill {
         theme: theme
         car: car
-        visible: horizon.fullMap
+        visible: horizon.fullMap || horizon.sideMap
         readonly property var r: Geometry.full.power
         x: r.x; y: r.y; width: r.width; height: r.height
     }
@@ -157,6 +176,7 @@ Item {
         theme: theme
         car: car
         clock: horizon.clock
+        backed: horizon.fullMap
         x: Geometry.lampBands.left + 12
         width: Geometry.lampBands.right - Geometry.lampBands.left - 24
         y: 600

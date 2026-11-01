@@ -571,7 +571,7 @@ class CommManager(
                         onSurfaceReady = { _scope.launch { requestClusterKeyframe() } },
                         onLayoutChanged = { _scope.launch { sendClusterUiConfig() } })
                     // Switches the car's cluster to the projection (or leaves it native) as the
-                    // floating button was last left, and shows that button.
+                    // wheel menu's map switch was last left.
                     ClusterMapToggle.onSessionStart(context)
                     if (settings.clusterNowPlaying) {
                         ClusterNowPlaying.start(context, settings.clusterLyrics)

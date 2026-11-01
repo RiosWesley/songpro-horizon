@@ -1,1 +1,1 @@
-{"extends": ["base.json"], "datasource": {"mockProjection": "projection_window.png", "naviType": 4}}
+{"extends": ["base.json"], "datasource": {"mockProjection": "projection_full.png", "mockPlacement": "0.8,128,34", "naviType": 4}}

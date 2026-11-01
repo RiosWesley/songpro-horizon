@@ -4,7 +4,7 @@ import QtQuick 2.15
 // now_playing.json:
 //   { "seq": n, "open": bool, "selected": i, "items": [{ "label", "value" }],
 //     "leftCard": "auto"|"music"|"trip", "powerStyle": "ring"|"segments"|"arc"|"column"|"wave",
-//     "mapLayout": "window"|"full" }
+//     "mapLayout": "window"|"side"|"full", "skin": "horizon"|"factory" }
 // The app closes the menu itself after 10 s without a key; a menu left open longer than that (the
 // app stopped) is treated as closed. Without the file the menu stays closed, the card automatic
 // the power gauge the ring and the map in its window.

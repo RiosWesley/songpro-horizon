@@ -16,23 +16,32 @@ import com.andrerinas.openheadunit.utils.Settings
 internal object ClusterMapArea {
 
     /**
-     * With Horizon the phone always draws for the whole display, so its window and full-screen
-     * layouts switch live: only the picture's position and the content insets change.
+     * With Horizon the phone always draws for the whole display, so its three layouts switch live:
+     * only where the picture sits ("scale,x,y": scaled from its top-left corner, then moved; see
+     * parsePlacement) and the content insets change. The insets are the clear part of Horizon's
+     * opening, mapped back into the phone's picture, so its cards land there; the car arrow, drawn
+     * low in the frame, lands inside the opening even if the phone ignores them.
      *
-     * Full screen: the phone's cards kept out of the speed band at the top, the bottom bar and the
-     * telltale columns (HorizonGeometry.js `full`).
+     * Full screen: the picture as is; the cards kept out of the band at the top (speed, gear,
+     * power) and the bottom bar (HorizonGeometry.js `full`, at 2/3).
      */
     const val HORIZON_FULL = "0,0,1280,480"
-    const val HORIZON_FULL_INSETS = "70,100,70,86"
+    const val HORIZON_FULL_INSETS = "0,100,0,84"
 
     /**
-     * Window: Horizon shows the map through its window (390,68,500,344, clear from y 100 to 392;
-     * HorizonGeometry.js map.video at 2/3). The picture is moved 66 px up, so the car arrow the
-     * phone draws low in the frame lands inside the window even if the phone ignores the insets;
-     * the insets are that clear window in the moved picture (y + 66), for the cards.
+     * Window: Horizon's centre opening (390,68,500,344; clear 450..830 x 108..383, from
+     * HorizonGeometry.js map.video and its fades). The picture at 0.8 shows more of the map than
+     * at full size, centred, with the arrow low in the opening.
      */
-    const val HORIZON_WINDOW_SHIFT_Y = -66
-    const val HORIZON_WINDOW_INSETS = "420,166,420,22"
+    const val HORIZON_WINDOW_PLACEMENT = "0.8,128,34"
+    const val HORIZON_WINDOW_INSETS = "402,92,402,44"
+
+    /**
+     * Side (the second layout): Horizon's opening on the right (827,67,341,333; clear 869..1144 x
+     * 104..371, from HorizonGeometry.js side.video and side.feather), the picture at 0.72.
+     */
+    const val HORIZON_SIDE_PLACEMENT = "0.72,536,56"
+    const val HORIZON_SIDE_INSETS = "463,66,435,43"
 
     /** Without a theme, the whole band above the factory 8.8" bottom bar. */
     const val FACTORY_FREE_BAND = "0,0,1280,420"
@@ -57,6 +66,13 @@ internal object ClusterMapArea {
         val parsed = parse(setting)
         return if (parsed != null) clamp(parsed, displayWidth, displayHeight)
         else centred(displayWidth, displayHeight)
+    }
+
+    /** "scale,x,y" -> the picture's scale (from its top-left corner) and offset; blank: as is. */
+    fun parsePlacement(setting: String): Triple<Float, Float, Float> {
+        val n = setting.split(",").map { it.trim().toFloatOrNull() }
+        if (n.size != 3 || n.any { it == null } || n[0]!! <= 0f) return Triple(1f, 0f, 0f)
+        return Triple(n[0]!!, n[1]!!, n[2]!!)
     }
 
     /** "left,top,right,bottom" -> the four values, or null when blank, invalid or all zero. */

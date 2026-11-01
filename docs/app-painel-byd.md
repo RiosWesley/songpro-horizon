@@ -61,20 +61,26 @@ próprio painel como o momento de cor.
 - **Medidor de potência:** o lado direito do Horizon tem 5 estilos — Anel, Segmentos, Arco lateral,
   Coluna e Faixa e onda (com o gráfico do último minuto). Troque em **Painel → Medidor de
   potência → Trocar** ou pelo menu no volante; muda na hora, sem reiniciar o painel.
-- **Formato do mapa:** **Janela** (no centro do Horizon, com o ADAS e os cards em volta) ou **Tela
-  cheia** (o mapa no painel inteiro; o Horizon vira só uma moldura com velocidade, marcha e
-  potência em cima e a barra de baixo). Troque em **Painel → Mapa no painel** ou pelo
-  menu no volante. Muda **na hora**, também com o celular conectado e o carro andando: com o Horizon,
-  o vídeo do mapa é sempre combinado para o painel inteiro, e trocar o formato só move a imagem
-  (66 px para cima na janela, para a seta do carro cair dentro dela), muda o recorte do Horizon e
-  avisa o celular onde pôr os cartões.
-- O mapa e o botão flutuante são janelas sobrepostas, que precisam da permissão de sobreposição
+- **Formato do mapa:** três formatos, trocados em **Painel → Mapa no painel** ou pelo menu no
+  volante. Mudam **na hora**, também com o celular conectado e o carro andando.
+  - **Janela:** o mapa no centro do Horizon, com o ADAS numa janela à esquerda e os cards em volta.
+  - **Lateral:** o mapa no lado direito, no lugar do medidor de potência; o ADAS continua no
+    centro e a potência vira uma barra horizontal em cima.
+  - **Tela cheia:** o mapa no painel inteiro. O Horizon guarda só uma faixa em cima (velocidade,
+    marcha e potência), põe um fundo escuro atrás de cada grupo da barra de baixo e mostra o ADAS
+    numa janelinha, como a de fábrica na navegação.
+
+  O celular sempre desenha o mapa para o painel inteiro, a 200 dpi. Trocar o formato só muda onde a
+  imagem fica (na Janela ela é reduzida a 0,8 e, na Lateral, a 0,72, para caber mais mapa), o
+  recorte do Horizon e o aviso ao celular de onde pôr os cartões.
+- **Ligar o mapa:** pelo menu no volante ("Mapa no painel"). Não há mais botão na tela.
+- O mapa é uma janela sobreposta, que precisa da permissão de sobreposição
   (`SYSTEM_ALERT_WINDOW`). Uma instalação nova começa sem ela, e sem ela o painel abre a projeção
   mas fica um quadro preto. Por isso o app a concede a si mesmo pelo ADB local quando o celular conecta.
-- Nos dois formatos, o vídeo do mapa é maior que a área livre e o Horizon esfuma por cima dessa
+- Na Janela e na Lateral, a imagem do mapa passa da área livre e o Horizon esfuma por cima dessa
   sobra; o app pede ao celular (insets de conteúdo do Android Auto) que mantenha os cartões de
-  manobra e de chegada na área livre, e repete o pedido a cada troca de formato. *Não confirmado no carro:* se o Android Auto respeita esses
-  insets no painel de instrumentos.
+  manobra e de chegada na área livre, e repete o pedido a cada troca de formato. *Não confirmado no
+  carro:* se o Android Auto respeita esses insets no painel de instrumentos.
 - Ao instalar, o app já ajusta o mapa para a janela central do Horizon. Ao voltar ao original, o
   mapa volta à faixa livre do painel de fábrica.
 

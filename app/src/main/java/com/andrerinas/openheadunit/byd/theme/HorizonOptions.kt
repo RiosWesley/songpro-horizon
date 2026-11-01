@@ -33,6 +33,7 @@ object HorizonOptions {
 
     val MAP_LAYOUTS = listOf(
         Option("window", R.string.map_layout_window),
+        Option("side", R.string.map_layout_side),
         Option("full", R.string.map_layout_full))
 
     /** What the cluster's Simples slot shows: Horizon, or the factory Simples it replaced. */

@@ -7,22 +7,23 @@ import QtQuick 2.15
 // car's glass.
 //
 // In map mode it is opened where the map goes: the Android projection is composited *under* the
-// native scene and only shows through transparent pixels. In a window, the phone's picture is
-// taller than the clear hole and the fades top and bottom run over that extra (the cards stay in
-// the hole). Full screen, only a frame is left: the scene fades out from the top, the bottom and
-// the telltale columns over the map. (Computed here, not masked: on the car a hidden Canvas mask
-// is never painted.)
+// native scene and only shows through transparent pixels. In a window (the centre one, or the side
+// one of the second layout), the phone's picture runs on past the clear part and the fades run
+// over that extra (the cards stay in the clear part). Full screen, only a band across the top is
+// left behind the speed and the gear; the map runs to the bottom edge and to both sides. (Computed
+// here, not masked: on the car a hidden Canvas mask is never painted.)
 ShaderEffect {
     id: backdrop
     property HorizonTheme theme
     property bool mapMode: false
-    // Map mode: the map in a window (`hole`, the phone's whole picture) or under the full panel.
+    // Map mode: the map in a window (`hole`, faded `holeFeather` inwards: left, top, right, bottom)
+    // or under the full panel.
     property bool fullMap: false
     property var hole: ({ x: 0, y: 0, width: 0, height: 0 })
-    // Full screen: how deep the frame reaches in from the top, the bottom and each side.
-    property real topBand: 230
-    property real bottomBand: 190
-    property real sideBand: 190
+    property vector4d holeFeather: Qt.vector4d(90, 60, 90, 44)
+    // Full screen: the top band is solid down to `topSolid`, then fades out by `topBand`.
+    property real topSolid: 76
+    property real topBand: 170
     // km/h: the passing light moves with the car and rests when it stops.
     property real speed: 0
     // Where the floor meets the sky, and how far the horizon drops at the edges.
@@ -50,8 +51,6 @@ ShaderEffect {
     readonly property real cut: mapMode ? 1 : 0
     readonly property real full: mapMode && fullMap ? 1 : 0
     readonly property rect holeArea: Qt.rect(hole.x, hole.y, hole.width, hole.height)
-    // Long fades: wide at the sides, and top and bottom over the picture's extra height.
-    readonly property vector4d holeFeather: Qt.vector4d(90, 60, 90, 44)
     readonly property real motion: Math.min(1, speed / 25)
     property real travel: 0
 
@@ -81,9 +80,8 @@ ShaderEffect {
         uniform highp float arc;
         uniform lowp float cut;
         uniform lowp float full;
+        uniform highp float topSolid;
         uniform highp float topBand;
-        uniform highp float bottomBand;
-        uniform highp float sideBand;
         uniform highp vec4 holeArea;
         uniform highp vec4 holeFeather;
         uniform lowp float motion;
@@ -186,11 +184,8 @@ ShaderEffect {
 
             highp float a = 1.0;
             if (full > 0.5) {
-                // Solid behind the text (speed, bottom bar, telltales), then a long fade.
-                highp float top = 1.0 - ease(p.y - 95.0, topBand - 95.0);
-                highp float bottom = ease(p.y - (frame.y - bottomBand), bottomBand - 115.0);
-                highp float side = 1.0 - ease(min(p.x, frame.x - p.x) - 95.0, sideBand - 95.0);
-                a = max(max(top * 0.92, bottom * 0.92), side * 0.8);
+                // Only behind the speed and the gear; the bottom bar has its own backings.
+                a = (1.0 - ease(p.y - topSolid, topBand - topSolid)) * 0.92;
             } else if (cut > 0.5) {
                 a = 1.0 - ease(p.x - holeArea.x, holeFeather.x)
                         * ease(holeArea.x + holeArea.z - p.x, holeFeather.z)

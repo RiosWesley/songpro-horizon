@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.Display
 import android.view.Surface
+import android.view.View
 import android.view.WindowManager
 import android.widget.FrameLayout
 import com.andrerinas.openheadunit.aap.ClusterStreamDecoder
@@ -39,8 +40,8 @@ internal object ClusterDisplayOutput {
     private var onSurfaceReady: (() -> Unit)? = null
     private var onLayoutChanged: (() -> Unit)? = null
     // The map area for this session: the phone's stream was negotiated for it, so a change in the
-    // settings mid-session waits for the next connection. Its position (cluster_map_shift_y) and
-    // the content insets do not: see relayout.
+    // settings mid-session waits for the next connection. Where the picture sits
+    // (cluster_map_placement) and the content insets do not: see relayout.
     private var sessionRect: String? = null
 
     private val decoder = ClusterStreamDecoder(TAG) {
@@ -83,13 +84,24 @@ internal object ClusterDisplayOutput {
     }
 
     /**
-     * Applies a new layout mid-session: the picture moves to cluster_map_shift_y and the phone is
+     * Applies a new layout mid-session: the picture goes to cluster_map_placement and the phone is
      * sent cluster_content_insets. Nothing happens between connections; the next one starts with both.
      */
     fun relayout() = main.post {
         val ctx = appContext ?: return@post
-        mapView?.translationY = Settings(ctx).clusterMapShiftY.toFloat()
+        mapView?.let { place(it, Settings(ctx)) }
         onLayoutChanged?.invoke()
+    }
+
+    /** Scales the picture from its top-left corner, then moves it. */
+    private fun place(view: View, settings: Settings) {
+        val (scale, x, y) = ClusterMapArea.parsePlacement(settings.clusterMapPlacement)
+        view.pivotX = 0f
+        view.pivotY = 0f
+        view.scaleX = scale
+        view.scaleY = scale
+        view.translationX = x
+        view.translationY = y
     }
 
     /**
@@ -140,8 +152,8 @@ internal object ClusterDisplayOutput {
                 leftMargin = area.left
                 topMargin = area.top
             }
-            translationY = Settings(ctx).clusterMapShiftY.toFloat()
         }
+        place(view, Settings(ctx))
         mapView = view
         val root = FrameLayout(ctx).apply {
             setBackgroundColor(Color.BLACK)

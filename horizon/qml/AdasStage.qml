@@ -13,6 +13,8 @@ Item {
     property bool use3d: true
     // Instrument mode shows the whole road; map mode the factory's own rounded window.
     property bool windowed: false
+    // A window's fades, left, top, right, bottom (the full-screen map's overlay window is tighter).
+    property vector4d windowFeather: Qt.vector4d(56, 70, 56, 62)
 
     readonly property bool failed: loader.status === Loader.Error
                                    || (loader.status === Loader.Ready && loader.item === null)
@@ -29,16 +31,21 @@ Item {
 
     clip: true
 
-    // The road melts into the backdrop at the far end, at the sides and, before the bottom bar, at
-    // the near end (map mode: long fades all round, so the lanes never stop at an edge). A real
-    // alpha mask, so it works over any backdrop.
+    // The road melts into the backdrop. The factory scene lays a dark ground plane under the road
+    // that starts with a straight edge at the horizon and widens to the sides like a trapezoid; a
+    // rectangle fading from the stage's edges leaves both edges showing (seen on the car). So the
+    // whole road is seen through an oval centred low on the car, gone before the horizon and the
+    // plane's sides, and the near end still fades before the bottom bar. A window fades all round,
+    // so its lanes never stop at an edge. A real alpha mask, so it works over any backdrop.
     Item {
         id: scene
         anchors.fill: parent
         layer.enabled: true
         layer.effect: SoftMask {
-            feather: stage.windowed ? Qt.vector4d(56, 70, 56, 62)
-                                    : Qt.vector4d(width * 0.34, height * 0.45, width * 0.34, height * 0.28)
+            feather: stage.windowed ? stage.windowFeather : Qt.vector4d(0, 0, 0, height * 0.28)
+            ellipse: stage.windowed ? Qt.vector4d(0, 0, 0, 0)
+                                    : Qt.vector4d(width / 2, height * 0.98, width * 0.46, height * 0.8)
+            ellipseFeather: 0.5
         }
 
         Loader {

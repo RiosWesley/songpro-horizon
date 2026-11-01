@@ -165,7 +165,7 @@ class Settings(private val context: Context) {
         get() = prefs.getBoolean("cluster_on_cluster_display", false)
         set(value) { prefs.edit().putBoolean("cluster_on_cluster_display", value).apply() }
 
-    // The floating "map on the cluster" switch, remembered between sessions. Only read while
+    // The "map on the cluster" switch (the wheel menu's), remembered between sessions. Only read while
     // showClusterOnClusterDisplay is on. Off until the driver turns the map on: switching the
     // cluster to the projection changes the panel, so it is never done unasked.
     var clusterMapEnabled: Boolean
@@ -209,13 +209,14 @@ class Settings(private val context: Context) {
         get() = prefs.getString("cluster_content_insets", "") ?: ""
         set(value) { prefs.edit().putString("cluster_content_insets", value).apply() }
 
-    /** Moves the cluster map picture up (negative) or down on the cluster display, in pixels. */
-    var clusterMapShiftY: Int
-        get() = prefs.getInt("cluster_map_shift_y", 0)
-        set(value) { prefs.edit().putInt("cluster_map_shift_y", value).apply() }
+    /** Where the cluster map picture sits on the cluster display: "scale,x,y" (ClusterMapArea). */
+    var clusterMapPlacement: String
+        get() = prefs.getString("cluster_map_placement", "") ?: ""
+        set(value) { prefs.edit().putString("cluster_map_placement", value).apply() }
 
-    // The Horizon map: "window" (the centre window) or "full" (under the whole panel), switched
-    // live; and whether this app found Horizon installed.
+
+    // The Horizon map: "window" (the centre window), "side" (the right side) or "full" (under the
+    // whole panel), switched live; and whether this app found Horizon installed.
     var horizonMapLayout: String
         get() = prefs.getString("horizon_map_layout", "window") ?: "window"
         set(value) { prefs.edit().putString("horizon_map_layout", value).apply() }

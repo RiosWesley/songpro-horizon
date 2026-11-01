@@ -10,7 +10,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
 /**
- * The user's "map on the cluster" switch for an Android Auto session. On, the cluster shows the
+ * The driver's "map on the cluster" switch for an Android Auto session, in the wheel menu. On, the cluster shows the
  * projection with the map and the ADAS pane hidden; off, the native cluster comes back. The choice
  * is remembered, so the next session starts the way the last one was left.
  */
@@ -38,19 +38,17 @@ internal object ClusterMapToggle {
     fun onSessionStart(context: Context) {
         sessionActive = true
         val app = context.applicationContext
-        // The map and the button are overlays, so the grant comes first.
+        // The map is an overlay window, so the grant comes first.
         scope.launch {
             OverlayGrant.ensure(app)
             if (!sessionActive) return@launch
             apply(app, isOn(app))
-            ClusterToggleButton.show(app)
         }
     }
 
     fun onSessionEnd(context: Context) {
         if (!sessionActive) return
         sessionActive = false
-        ClusterToggleButton.hide()
         // Leave the car's own cluster behind, whichever way the switch was.
         setPanel(context.applicationContext, false)
     }
