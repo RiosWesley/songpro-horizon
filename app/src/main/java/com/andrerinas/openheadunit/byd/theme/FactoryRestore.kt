@@ -2,6 +2,7 @@ package com.andrerinas.openheadunit.byd.theme
 
 import android.content.Context
 import com.andrerinas.openheadunit.byd.BydNativeAndroidAuto
+import com.andrerinas.openheadunit.byd.WirelessAndroidAuto
 import com.andrerinas.openheadunit.byd.wheel.WheelMenuSwitch
 import com.andrerinas.openheadunit.utils.Settings
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +13,7 @@ import kotlinx.coroutines.withContext
  * Back to the car as it came: everything Song Pro Horizon changed on it is undone, and the factory
  * panel, without any change, shows after one restart.
  * - every file of Horizon's leaves the car ([HorizonInstaller.removeEverything]);
- * - BYD's own Android Auto comes back on, and this app's USB auto-start goes off;
+ * - BYD's own Android Auto comes back on, and this app's USB auto-start and wireless go off;
  * - the wheel menu's accessibility service goes off.
  * The backup of the original panel ([OriginalBackup], outside the cluster's folders) and this app
  * stay; uninstalling the app is the driver's call.
@@ -28,6 +29,10 @@ class FactoryRestore(private val context: Context, private val log: (String) -> 
         if (BydNativeAndroidAuto.state(context) == BydNativeAndroidAuto.State.DISABLED) {
             log("Religando o Android Auto da BYD")
             BydNativeAndroidAuto.useThisApp(context, thisApp = false)?.let { problems += "Android Auto da BYD ($it)" }
+        }
+        if (WirelessAndroidAuto.isOn(Settings(context))) {
+            log("Desligando o Android Auto sem fio")
+            WirelessAndroidAuto.set(context, on = false)
         }
         if (WheelMenuSwitch.isOn(context)) {
             log("Desligando o menu do volante")

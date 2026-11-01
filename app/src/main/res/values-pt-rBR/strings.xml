@@ -1152,6 +1152,13 @@
     <string name="hz_aa_next_connection">Vale a partir da próxima conexão</string>
     <string name="hz_aa_density">Tamanho dos elementos</string>
     <string name="hz_aa_density_hint">Ícones e textos do Android Auto na central; vale a partir da próxima conexão</string>
+    <string name="hz_aa_wireless">Sem fio pelo Bluetooth</string>
+    <string name="hz_aa_wireless_hint">Quando o carro conecta o Bluetooth do celular, o Android Auto abre sem cabo</string>
+    <string name="hz_aa_wireless_phone">Celular</string>
+    <string name="hz_aa_wireless_any">Qualquer celular pareado que pedir. Toque para escolher o seu.</string>
+    <string name="hz_aa_wireless_pick">Celulares que abrem o Android Auto sem fio</string>
+    <string name="hz_aa_wireless_bt_off">Ligue o Bluetooth da central para escolher</string>
+    <string name="hz_aa_wireless_failed">Não deu para ligar o sem fio: %1$s</string>
     <string name="hz_auto">Automática</string>
     <string name="hz_density_smaller">Menor</string>
     <string name="hz_density_default">Padrão</string>

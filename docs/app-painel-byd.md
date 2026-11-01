@@ -14,7 +14,7 @@ O app tem cinco seções numa barra à esquerda:
 |---|---|
 | **Início** | O estado (esperando o celular ou conectado), o botão de conectar ou de abrir o Android Auto, três linhas de estado e o painel como fica com o Horizon |
 | **Painel** | Instalar ou atualizar o Horizon, voltar à fábrica, reiniciar o painel, a vaga Simples, o medidor de potência, o card da esquerda e o formato do mapa |
-| **Android Auto** | Quem atende o cabo (este app ou o da BYD), abrir sozinho, mapa e letra no painel, qualidade da imagem e tamanho dos elementos |
+| **Android Auto** | Quem atende o cabo (este app ou o da BYD), abrir sozinho, sem fio pelo Bluetooth, mapa e letra no painel, qualidade da imagem e tamanho dos elementos |
 | **Volante** | O menu do Horizon no volante, o botão que abre o menu e o que cada tecla faz |
 | **Sobre** | Versão, créditos e **Ajustes avançados**, com todos os ajustes herdados do Open Headunit |
 
@@ -58,7 +58,7 @@ próprio painel como o momento de cor.
   - apaga tudo o que é do Horizon: o tema, as versões antigas em `retired/`, os arquivos que o app
     escreve para ele e a ferramenta do tema;
   - remove as pastas do painel que ficarem vazias (o carro veio sem `/sdcard/.cluster`);
-  - religa o Android Auto da BYD e desliga o menu do volante;
+  - religa o Android Auto da BYD e desliga o menu do volante e o Android Auto sem fio;
   - pede para reiniciar.
 
   Sem o arquivo do tema, o painel grava sozinho a seleção de fábrica e mostra o de fábrica: é o
@@ -157,6 +157,29 @@ volante.
   a conexão automática do app quando o celular é plugado.
 - **AA nativo da BYD:** religa o app da BYD e desliga a conexão automática deste app.
 - Depois de trocar, **desconecte e conecte o celular de novo**.
+
+### Android Auto sem fio (opcional, desligado por padrão)
+
+Como num carro com AA sem fio de fábrica: quando o carro conecta o Bluetooth do celular, o Android Auto
+abre sem cabo.
+
+- **Ligar:** Android Auto → **Sem fio pelo Bluetooth**. Na primeira vez o app abre a lista de
+  aparelhos pareados para escolher o seu celular (dá para trocar em **Celular**). Sem nenhum escolhido,
+  vale qualquer celular pareado que pedir.
+- **Como funciona:** é o modo "Native AA" do Open Headunit. O Bluetooth da central anuncia o Android
+  Auto; o celular, ao conectar no carro, liga de volta por esse canal, recebe a senha de uma rede Wi-Fi
+  Direct que o app cria, entra nela e projeta. O Wi-Fi da central continua livre para entrar numa rede,
+  e as ligações continuam no Bluetooth da BYD (o app não registra um viva-voz próprio).
+- O app se concede a localização pelo ADB local, porque o Android 10 só informa a rede Wi-Fi Direct a
+  quem tem essa permissão.
+- O celular escolhido também acorda o app quando conecta o Bluetooth, como no início automático do
+  Open Headunit.
+- Só com o Song Pro Horizon atendendo o Android Auto. Escolher o AA da BYD ou **Voltar à fábrica**
+  desliga o sem fio.
+- No celular: Android Auto com "Android Auto sem fio" ligado (Android 11 ou mais novo).
+
+> Não testado no carro: se o Bluetooth da BYD aceita o anúncio do Android Auto, se o Wi-Fi Direct
+> sobe junto com o Wi-Fi da central e a qualidade do vídeo sem fio com o mapa no painel ao mesmo tempo.
 
 ## Se algo der errado
 

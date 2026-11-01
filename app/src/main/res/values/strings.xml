@@ -1303,6 +1303,13 @@
     <string name="hz_aa_next_connection">From the next connection</string>
     <string name="hz_aa_density">Element size</string>
     <string name="hz_aa_density_hint">Android Auto\'s icons and text on the head unit; from the next connection</string>
+    <string name="hz_aa_wireless">Wireless over Bluetooth</string>
+    <string name="hz_aa_wireless_hint">When the car connects to the phone over Bluetooth, Android Auto opens without the cable</string>
+    <string name="hz_aa_wireless_phone">Phone</string>
+    <string name="hz_aa_wireless_any">Any paired phone that asks for it. Tap to choose yours.</string>
+    <string name="hz_aa_wireless_pick">Phones that open Android Auto wirelessly</string>
+    <string name="hz_aa_wireless_bt_off">Turn the head unit\'s Bluetooth on to choose</string>
+    <string name="hz_aa_wireless_failed">Could not turn wireless on: %1$s</string>
     <string name="hz_auto">Automatic</string>
     <string name="hz_density_smaller">Smaller</string>
     <string name="hz_density_default">Default</string>

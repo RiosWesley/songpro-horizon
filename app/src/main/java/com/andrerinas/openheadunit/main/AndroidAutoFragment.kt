@@ -24,6 +24,7 @@ class AndroidAutoFragment : Fragment() {
     private lateinit var settings: Settings
     private lateinit var who: MaterialButtonToggleGroup
     private lateinit var lastMessage: TextView
+    private lateinit var wireless: WirelessSection
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(R.layout.fragment_hz_android_auto, container, false)
@@ -34,6 +35,7 @@ class AndroidAutoFragment : Fragment() {
         who = view.findViewById(R.id.byd_aa_mode)
         lastMessage = view.findViewById(R.id.hz_aa_log)
         showWho()
+        wireless = WirelessSection(view, viewLifecycleOwner.lifecycleScope, ::showMessage)
 
         toggle(view, R.id.hz_switch_autostart, settings.autoStartOnUsb) {
             settings.autoStartOnUsb = it
@@ -72,12 +74,17 @@ class AndroidAutoFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             val error = BydNativeAndroidAuto.useThisApp(requireContext().applicationContext, thisApp)
             if (view == null) return@launch
-            lastMessage.text = error ?: getString(if (thisApp) R.string.byd_aa_now_this_app else R.string.byd_aa_now_native)
-            lastMessage.visibility = View.VISIBLE
+            showMessage(error ?: getString(if (thisApp) R.string.byd_aa_now_this_app else R.string.byd_aa_now_native))
             showWho()
+            if (error == null && !thisApp) wireless.turnOff() else wireless.show()
             // Choosing this app also turns its USB auto-start on.
             requireView().findViewById<CompoundButton>(R.id.hz_switch_autostart).isChecked = settings.autoStartOnUsb
         }
+    }
+
+    private fun showMessage(text: String) {
+        lastMessage.text = text
+        lastMessage.visibility = View.VISIBLE
     }
 
     private companion object {
