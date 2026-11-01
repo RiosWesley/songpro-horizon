@@ -52,11 +52,31 @@ internal object HorizonPatches {
     // ---- qml10_25/cluster.qml ----------------------------------------------------------------
 
     private val ROOT_PROPS = """
-        // Horizon runs only while the factory instruments would: powered on, power-on animation done,
-        // the always-displayed layer and the telltale layer visible, on the 8.8" panel (screenSize 1).
-        readonly property bool horizonWanted: DataSource.screenSize === 0x01 && rootItemId.width === 1920 && rootItemId.height === 720 && DataSource.powerGear === 0x03 && DataSource.playAnim === true && alwyasDisplayId.visible && warningLayoutId.visible
-        // Fail-open: every factory item Horizon replaces keeps its stock look unless this is true.
-        readonly property bool horizonActive: rootItemId.horizonWanted && horizonLoader.status === Loader.Ready && horizonLoader.item !== null
+        // Horizon takes the factory "Simples" slot (themeIndex 2) of the cluster's theme menu; "Classico" stays
+        // the factory's. In that slot the app can still choose the factory Simples (menu.json "skin":
+        // "factory"); it is read here, as Horizon itself is not loaded then.
+        property bool horizonSkin: true
+        Timer {
+            interval: 1000; running: true; repeat: true; triggeredOnStart: true
+            onTriggered: {
+                var xhr = new XMLHttpRequest()
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState !== XMLHttpRequest.DONE || xhr.responseText.length === 0)
+                        return
+                    try { rootItemId.horizonSkin = JSON.parse(xhr.responseText).skin !== "factory" } catch (e) { }
+                }
+                xhr.open("GET", "file:///data/cells/cell2-rw/data/media/0/.cluster/horizon/menu.json")
+                xhr.send()
+            }
+        }
+        // Horizon runs only in its slot and while the factory instruments would: powered on, power-on
+        // animation done, the always-displayed layer and the telltale layer visible, on the 8.8" panel.
+        readonly property bool horizonWanted: DataSource.themeIndex === 0x02 && rootItemId.horizonSkin && DataSource.screenSize === 0x01 && rootItemId.width === 1920 && rootItemId.height === 720 && DataSource.powerGear === 0x03 && DataSource.playAnim === true && alwyasDisplayId.visible && warningLayoutId.visible
+        // Fail-open: every factory item Horizon replaces keeps its stock look unless this is true. It
+        // steps aside while the factory theme-switch animation plays over the whole panel.
+        readonly property bool horizonActive: rootItemId.horizonWanted && !rootItemId.isInThemeSwithAnim && horizonLoader.status === Loader.Ready && horizonLoader.item !== null
+        // Horizon shows the music itself: the factory media strip (top centre, with lyrics) yields.
+        onHorizonActiveChanged: createMediaInfo()
         // The native 2D ADAS window yields only if Horizon's own 3D road is up (adasReady if Horizon
         // exposes it, else the absence of adasFallback).
         readonly property bool horizonAdas3d: rootItemId.horizonActive && (horizonLoader.item.adasReady !== undefined ? horizonLoader.item.adasReady === true : horizonLoader.item.adasFallback === false)
@@ -91,6 +111,16 @@ internal object HorizonPatches {
         }
     """.trimIndent()
 
+    private val MEDIA_GUARD = """
+        if(rootItemId.horizonActive){
+            if(rootItemId.mediaInfoUi != null){
+                rootItemId.mediaInfoUi.destroy()
+                rootItemId.mediaInfoUi = null
+            }
+            return
+        }
+    """.trimIndent()
+
     fun patchRoot(src: String): String {
         var out = insertAfter(src, "    id:rootItemId\r\n", ROOT_PROPS, "    ")
         out = insertAfter(out, "        id: bgImageContainerId\r\n", "opacity: rootItemId.horizonActive ? 0 : 1", "        ")
@@ -101,8 +131,31 @@ internal object HorizonPatches {
         out = insertAfter(out, "        id:warningLayoutId\r\n", "horizonActive: rootItemId.horizonActive", "        ")
         out = insertAfter(out, "        id:centerContainerId\r\n",
             "horizonActive: rootItemId.horizonActive\nhorizonAdas3d: rootItemId.horizonAdas3d", "        ")
-        return insertBefore(out, "    Loader{\r\n        id:presentationLoaderId\r\n", ROOT_LOADER, "    ")
+        out = insertBefore(out, "    Loader{\r\n        id:presentationLoaderId\r\n", ROOT_LOADER, "    ")
+        return insertAfter(out, "    function createMediaInfo(){\r\n", MEDIA_GUARD, "        ")
     }
+
+    // ---- qml10_25/menu/ThemeSwitch.qml ---------------------------------------------------------
+
+    // The cluster's theme menu: Horizon is the second entry, in place of the factory "Simples" (the
+    // root patch runs Horizon only in that slot).
+    private const val THEMES_LABEL_ORIG = "            text: TranslateStr.menu_themeSimpleStr\r\n"
+    private const val THEMES_LABEL_NEW = "            text: \"Horizon\" // HORIZON: the Simples slot is Horizon's" +
+        " (was TranslateStr.menu_themeSimpleStr)\r\n"
+    private val THEMES_PICTURE = """
+        Loader {
+            anchors.fill: parent
+            source: "qrc:/horizon/ThemePreview.qml"
+        }
+    """.trimIndent()
+
+    fun patchThemes(src: String): String {
+        val out = insertAfter(src, "            id: techImgId\r\n", THEMES_PICTURE, "            ")
+        unique(out, THEMES_LABEL_ORIG)
+        return out.replaceFirst(THEMES_LABEL_ORIG, THEMES_LABEL_NEW)
+    }
+
+    fun unpatchThemes(src: String): String = stripMarkers(src).replaceFirst(THEMES_LABEL_NEW, THEMES_LABEL_ORIG)
 
     // ---- qml10_25/WarinLightLayout.qml -------------------------------------------------------
 

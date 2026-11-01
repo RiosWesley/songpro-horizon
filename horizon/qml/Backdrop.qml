@@ -31,13 +31,19 @@ ShaderEffect {
 
     readonly property size frame: Qt.size(width, height)
     readonly property color skyTop: theme.skyTop
-    readonly property color skyHorizon: theme.skyHorizon
-    readonly property color dome: theme.dome
     readonly property color floorHorizon: theme.floorHorizon
     readonly property color floorBottom: theme.floorBottom
-    readonly property color light: theme.horizonLight
-    readonly property color distant: theme.horizonDistant
-    readonly property color mountainFar: theme.mountainFar
+    // The drive mode tints these; a change of mode fades over instead of jumping.
+    property color skyHorizon: theme.skyHorizon
+    property color dome: theme.dome
+    property color light: theme.horizonLight
+    property color distant: theme.horizonDistant
+    property color mountainFar: theme.mountainFar
+    Behavior on skyHorizon { ColorAnimation { duration: 900 } }
+    Behavior on dome { ColorAnimation { duration: 900 } }
+    Behavior on light { ColorAnimation { duration: 900 } }
+    Behavior on distant { ColorAnimation { duration: 900 } }
+    Behavior on mountainFar { ColorAnimation { duration: 900 } }
     readonly property color mountainNear: theme.mountainNear
     readonly property real domeStrength: theme.domeStrength
     readonly property real vignette: theme.vignette

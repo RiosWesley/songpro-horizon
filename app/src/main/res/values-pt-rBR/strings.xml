@@ -1092,6 +1092,11 @@
     <string name="byd_power_style">Medidor de potência: %1$s</string>
     <string name="byd_power_style_change">Trocar</string>
     <string name="wheel_menu_map_layout">Formato do mapa</string>
+    <string name="wheel_menu_skin">Tema do painel</string>
+    <string name="skin_horizon">Horizon</string>
+    <string name="skin_factory">Simples original</string>
+    <string name="byd_skin">Tema na vaga Simples: %1$s</string>
+    <string name="byd_skin_hint">No menu de tema do painel (botão voltar → Tema), o Horizon ocupa o lugar do Simples; o Clássico continua de fábrica. Com "Simples original", essa vaga volta a mostrar o Simples de fábrica, e o Horizon só volta trocando aqui.</string>
     <string name="map_layout_window">Janela</string>
     <string name="map_layout_full">Tela cheia</string>
     <string name="byd_map_layout">Mapa no painel: %1$s</string>

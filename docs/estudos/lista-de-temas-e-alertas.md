@@ -125,6 +125,11 @@ animações de ligar e de chegada.
 3. **Música de fábrica escondida** com o Horizon ligado (patch na raiz). Isso também acaba com a letra que aparece
    atrás do km/h no mapa em tela cheia.
 
+**Estado (2026-11-01):** a Fase A está pronta no código e só foi testada no mock. Estão nela a vaga do
+Simples (`themeIndex` 2, com "Simples original" escolhido no app em `menu.json` `"skin"`), o palco do centro
+(`FactoryCentre.qml`, `WarningCard.qml`) e a música de fábrica escondida. Junto com ela entrou a cor do
+fundo por modo de condução. Falta validar tudo no carro.
+
 **Fase B — as telas cheias no visual do Horizon.** O cronômetro de 0 a 100, o carregamento e o resumo da viagem
 passam a ser desenhados pelo Horizon, com os mesmos dados da biblioteca:
 

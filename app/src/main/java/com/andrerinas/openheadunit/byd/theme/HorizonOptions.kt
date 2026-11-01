@@ -12,7 +12,8 @@ import com.andrerinas.openheadunit.utils.Settings
 
 /**
  * What the driver chooses about the Horizon scene, from the wheel menu or the BYD panel: the left
- * card, the power gauge and the map layout. The keys are the ones the theme reads from menu.json.
+ * card, the power gauge, the map layout and whether the Simples slot shows Horizon at all. The keys
+ * are the ones the theme reads from menu.json.
  */
 object HorizonOptions {
 
@@ -34,6 +35,11 @@ object HorizonOptions {
         Option("window", R.string.map_layout_window),
         Option("full", R.string.map_layout_full))
 
+    /** What the cluster's Simples slot shows: Horizon, or the factory Simples it replaced. */
+    val SKINS = listOf(
+        Option("horizon", R.string.skin_horizon),
+        Option("factory", R.string.skin_factory))
+
     fun find(options: List<Option>, key: String): Option = options.firstOrNull { it.key == key } ?: options[0]
 
     fun next(options: List<Option>, key: String): String = options[(options.indexOf(find(options, key)) + 1) % options.size].key
@@ -53,8 +59,7 @@ object HorizonOptions {
     fun publish(context: Context) {
         val settings = Settings(context)
         try {
-            HorizonMenuFile().write(WheelMenu.State(false, 0, emptyList()), settings.horizonLeftCard, settings.horizonPowerStyle,
-                settings.horizonMapLayout)
+            HorizonMenuFile().write(WheelMenu.State(false, 0, emptyList()), settings)
         } catch (e: Exception) {
             AppLog.w("HorizonOptions: could not write the menu file: ${e.message}")
         }

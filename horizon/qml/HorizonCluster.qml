@@ -9,8 +9,12 @@ import "HorizonGeometry.js" as Geometry
 // card's place (the app's WheelMenuService; see HorizonMenuFeed). Map mode (the Android projection is on): the map in a centred
 // window cut through this scene, ADAS 3D in a window on the left.
 //
+// It runs in the factory "Simples" slot of the cluster's theme menu (the carrier's root patch);
+// the drive mode (ECO, NORMAL, SPORT) tints the world behind the instruments.
+//
 // The native telltales, warning pop-ups and settings menu are not part of this item: they stay
-// the factory's, drawn above it.
+// the factory's, drawn above it. While one of those screens is in the centre, the road steps back
+// and the warnings get a card (FactoryCentre, WarningCard).
 Item {
     id: horizon
     width: 1920
@@ -39,7 +43,9 @@ Item {
 
     HorizonData { id: car }
     HorizonMenuFeed { id: menuFeed; directory: car.mediaDirectory }
-    HorizonTheme { id: theme; night: car.night }
+    HorizonTheme { id: theme; night: car.night; mode: car.driveMode }
+    // The factory screens drawn above Horizon (menu, warnings, 0-100, charging...), see FactoryCentre.
+    FactoryCentre { id: centre }
 
     Timer {
         interval: 1000; running: true; repeat: true; triggeredOnStart: true
@@ -67,6 +73,9 @@ Item {
         windowed: car.mapMode
         // Full screen there is no room for it; it stays loaded, so the native 2D pane stays away.
         visible: !horizon.fullMap
+        // The road steps back while a factory screen is in the centre over it.
+        opacity: centre.busy && !car.mapMode ? 0.12 : 1
+        Behavior on opacity { NumberAnimation { duration: 250 } }
         readonly property var r: car.mapMode ? Geometry.map.adasMini : Geometry.native.stage
         x: r.x; y: r.y; width: r.width; height: r.height
     }
@@ -129,6 +138,11 @@ Item {
         visible: horizon.fullMap
         readonly property var r: Geometry.full.power
         x: r.x; y: r.y; width: r.width; height: r.height
+    }
+
+    WarningCard {
+        theme: theme
+        shown: centre.warning
     }
 
     Loader {

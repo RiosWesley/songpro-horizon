@@ -1243,6 +1243,11 @@
     <string name="byd_power_style">Power gauge: %1$s</string>
     <string name="byd_power_style_change">Change</string>
     <string name="wheel_menu_map_layout">Map layout</string>
+    <string name="wheel_menu_skin">Cluster theme</string>
+    <string name="skin_horizon">Horizon</string>
+    <string name="skin_factory">Original Simple</string>
+    <string name="byd_skin">Theme in the Simple slot: %1$s</string>
+    <string name="byd_skin_hint">In the cluster\'s theme menu (back key → Theme), Horizon takes the place of Simple; Classic stays the factory\'s. With "Original Simple" that slot shows the factory Simple again, and Horizon only comes back from here.</string>
     <string name="map_layout_window">Window</string>
     <string name="map_layout_full">Full screen</string>
     <string name="byd_map_layout">Map on the cluster: %1$s</string>

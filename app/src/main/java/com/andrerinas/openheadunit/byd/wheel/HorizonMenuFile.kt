@@ -1,6 +1,7 @@
 package com.andrerinas.openheadunit.byd.wheel
 
 import android.os.Environment
+import com.andrerinas.openheadunit.utils.Settings
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -8,8 +9,10 @@ import java.io.File
 /**
  * The menu as the Horizon theme reads it (horizon/qml/HorizonMenuFeed.qml): menu.json next to the
  * now-playing feed, in the Android cell's /sdcard/.cluster/horizon/.
- *   { "seq": n, "open": bool, "selected": i, "items": [{ "label", "value" }], "leftCard", "powerStyle", "mapLayout" }
- * (the choices' keys are HorizonOptions').
+ *   { "seq": n, "open": bool, "selected": i, "items": [{ "label", "value" }], "leftCard", "powerStyle",
+ *     "mapLayout", "skin" }
+ * (the choices' keys are HorizonOptions'). "skin" is read by the carrier's root patch too: "factory"
+ * gives the cluster's Simples slot back to the factory theme.
  * Written to a temp file and renamed, so the theme never reads half of it.
  */
 internal class HorizonMenuFile(
@@ -19,7 +22,7 @@ internal class HorizonMenuFile(
     // number (the theme skips a number it has seen).
     private var seq = 0L
 
-    fun write(state: WheelMenu.State, leftCard: String, powerStyle: String, mapLayout: String) {
+    fun write(state: WheelMenu.State, settings: Settings) {
         val items = JSONArray()
         for (item in state.items) items.put(JSONObject().put("label", item.label).put("value", item.value))
         val json = JSONObject()
@@ -27,9 +30,10 @@ internal class HorizonMenuFile(
             .put("open", state.open)
             .put("selected", state.selected)
             .put("items", items)
-            .put("leftCard", leftCard)
-            .put("powerStyle", powerStyle)
-            .put("mapLayout", mapLayout)
+            .put("leftCard", settings.horizonLeftCard)
+            .put("powerStyle", settings.horizonPowerStyle)
+            .put("mapLayout", settings.horizonMapLayout)
+            .put("skin", settings.horizonSkin)
         dir.mkdirs()
         val target = File(dir, FILE)
         val tmp = File(dir, ".$FILE.tmp")

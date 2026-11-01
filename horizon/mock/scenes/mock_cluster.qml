@@ -24,4 +24,33 @@ Item {
         source: "../patched/WarinLightLayout.qml"
         onLoaded: item.horizonActive = true
     }
+    // Stand-in for a factory warning (the Center draws it above Horizon on the car), as in the
+    // car photo of "EPB ativado": an icon and a line of text, centred on BYD's card at y 197.
+    Item {
+        visible: (DataSource.mockWarningText || "") !== ""
+        x: (parent.width - width) / 2
+        y: 197; width: 658; height: 396
+        Column {
+            anchors.centerIn: parent
+            spacing: 16
+            Rectangle {
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: 96; height: 96; radius: 48
+                color: "transparent"
+                border { width: 5; color: DataSource.dayNightMode === 2 ? "#e6e6e6" : "#333333" }
+                Text {
+                    anchors.centerIn: parent
+                    text: "P"
+                    color: DataSource.dayNightMode === 2 ? "#e6e6e6" : "#333333"
+                    font { pixelSize: 54; bold: true }
+                }
+            }
+            Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: DataSource.mockWarningText || ""
+                color: DataSource.dayNightMode === 2 ? "#ffffff" : "#333333"
+                font.pixelSize: 34
+            }
+        }
+    }
 }

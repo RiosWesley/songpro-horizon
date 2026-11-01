@@ -62,6 +62,11 @@ class BydPanelFragment : Fragment() {
 
         wheel = BydWheelSection(view, viewLifecycleOwner.lifecycleScope, ::log)
         val settings = Settings(requireContext().applicationContext)
+        BydOptionRow(view, R.id.byd_skin, R.id.byd_skin_change, R.string.wheel_menu_skin, R.string.byd_skin,
+            HorizonOptions.SKINS, { settings.horizonSkin }) { key ->
+            settings.horizonSkin = key
+            HorizonOptions.publish(requireContext().applicationContext)
+        }
         BydOptionRow(view, R.id.byd_power_style, R.id.byd_power_style_change, R.string.wheel_menu_power, R.string.byd_power_style,
             HorizonOptions.POWER_STYLES, { settings.horizonPowerStyle }) { key ->
             settings.horizonPowerStyle = key

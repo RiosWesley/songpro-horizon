@@ -36,6 +36,7 @@ object HorizonCarrier {
     private val CENTER = Source(THEME2, "qml10_25/Center.qml", "b284c991e474a8b2a0369a4151d15b2ee5ecfeaa19fa01a5f617b4eb1293b4d1")
     private val MODEL3D = Source(THEME2, "qml10_25/adas3d/components/Model3D.qml", "d8be8a34e500e61b77220da17253674f8f5831fa52a0e40375e0b8a9433367fe")
     private val ADAS3D = Source(THEME2, "qml10_25/adas3d/Adas3dContainer.qml", "9f4af828aff95dfd887fb087105f3acf2ff8f409385a42a2a6203051df5efd29")
+    private val THEMES = Source(THEME2, "qml10_25/menu/ThemeSwitch.qml", "22fefad0a83b5a36ee4879f49df15e8fc425fee778419bf16a15ad9b3a5abe9c")
 
     class Carrier(val bytes: ByteArray, val sha256: String) {
         /** The name the cluster's matcher accepts, keyed by the carrier's own hash. */
@@ -57,7 +58,7 @@ object HorizonCarrier {
         }
 
         progress("Lendo o QML de fábrica")
-        val factory = listOf(ROOT1, ROOT2, LAMPS, CENTER, MODEL3D, ADAS3D).associate { source ->
+        val factory = listOf(ROOT1, ROOT2, LAMPS, CENTER, MODEL3D, ADAS3D, THEMES).associate { source ->
             val data = Rcc.read(File(stockDir, source.rcc), source.alias)
             if (sha256(data) != source.sha256) throw Refused("${source.alias} de fábrica inesperado; nada foi feito")
             source.alias to data
@@ -74,7 +75,8 @@ object HorizonCarrier {
             LAMPS.alias to patch(factory, LAMPS, HorizonPatches::patchLamps, HorizonPatches::unpatchLamps),
             CENTER.alias to patch(factory, CENTER, HorizonPatches::patchCenter, HorizonPatches::stripMarkers),
             MODEL3D.alias to patch(factory, MODEL3D, HorizonPatches::patchModel3d, HorizonPatches::unpatchModel3d),
-            ADAS3D.alias to patch(factory, ADAS3D, HorizonPatches::patchAdas3d, HorizonPatches::stripMarkers))
+            ADAS3D.alias to patch(factory, ADAS3D, HorizonPatches::patchAdas3d, HorizonPatches::stripMarkers),
+            THEMES.alias to patch(factory, THEMES, HorizonPatches::patchThemes, HorizonPatches::unpatchThemes))
 
         for (required in listOf("HorizonCluster.qml", "HorizonGeometry.js")) {
             if (required !in horizon) throw Refused("faltou $required no app")

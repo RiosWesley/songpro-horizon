@@ -2,6 +2,11 @@
 
 Documento de planejamento. **Nenhum comando abaixo foi executado no carro** (nem por mim, nem pelo builder). Tudo que escreve no carro está marcado **[ESCREVE]**. Leituras estão marcadas **[LÊ]**.
 
+> **Atalho, a partir do carrier que ocupa a vaga do Simples:** com o painel funcionando, o caminho mais curto
+> até o painel de fábrica é o menu do próprio painel (botão voltar → Tema → **Clássico**). O carrier só mexe
+> na vaga do Simples, então o Clássico é sempre o de fábrica. Isso não remove nada; para tirar o Horizon de
+> vez, siga o §5. Cópia dos arquivos de fábrica do painel: repositório privado `songpro-cluster-backup`.
+
 Base: `../docs/estudos/tema-cluster-88.md` (mecanismo, evidência no `libBydDataSource.so` do carro, §1.4) e os guias do DashCast. O DashCast **nunca validou** a recuperação a partir de QML quebrado; o único teste dele foi `reboot fission-all` a partir do estado normal.
 
 ## 0. Estado de partida (lido do carro em 2026-10-31)

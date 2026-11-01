@@ -1,0 +1,1 @@
+{"extends": ["base.json", "day_instruments.json"], "datasource": {"UI_DISPLAY": 1, "commonWarningInfoNeedDisplay": 1, "mockWarningText": "EPB ativado", "speed": 0}}

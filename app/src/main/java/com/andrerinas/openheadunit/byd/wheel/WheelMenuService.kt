@@ -54,6 +54,8 @@ class WheelMenuService : AccessibilityService() {
             handler.post { learn(code) }
             return true
         }
+        // With the factory Simples there is no Horizon to show the menu in: the key keeps its own job.
+        if (down && !menu.open && settings.horizonSkin == "factory") return false
         return menu.onKey(code, down, event.repeatCount)
     }
 
@@ -96,6 +98,12 @@ class WheelMenuService : AccessibilityService() {
             WheelMenu.Item(getString(R.string.wheel_menu_map_layout), getString(HorizonOptions.find(HorizonOptions.MAP_LAYOUTS, layout).label)) {
                 HorizonOptions.setMapLayout(this, HorizonOptions.next(HorizonOptions.MAP_LAYOUTS, layout))
             })
+        // Hands the Simples slot back to the factory theme; Horizon, and this menu with it, goes until
+        // the app brings it back.
+        list += WheelMenu.Item(getString(R.string.wheel_menu_skin), getString(R.string.skin_horizon)) {
+            settings.horizonSkin = "factory"
+            menu.close()
+        }
         // The map can only be switched while a phone is projecting.
         if (ClusterMapToggle.inSession()) {
             val on = ClusterMapToggle.isOn(this)
@@ -108,7 +116,7 @@ class WheelMenuService : AccessibilityService() {
 
     private fun onChange(state: WheelMenu.State) {
         try {
-            file.write(state, settings.horizonLeftCard, settings.horizonPowerStyle, settings.horizonMapLayout)
+            file.write(state, settings)
         } catch (e: Exception) {
             AppLog.w("WheelMenu: could not write the menu file: ${e.message}")
         }

@@ -214,11 +214,17 @@ class Settings(private val context: Context) {
         get() = prefs.getInt("cluster_map_shift_y", 0)
         set(value) { prefs.edit().putInt("cluster_map_shift_y", value).apply() }
 
-    // The Horizon map: "window" (the centre window) or "full" (under the whole panel), from the
-    // next connection on; and whether this app found Horizon installed.
+    // The Horizon map: "window" (the centre window) or "full" (under the whole panel), switched
+    // live; and whether this app found Horizon installed.
     var horizonMapLayout: String
         get() = prefs.getString("horizon_map_layout", "window") ?: "window"
         set(value) { prefs.edit().putString("horizon_map_layout", value).apply() }
+
+    // The cluster's Simples slot: "horizon", or "factory" for the factory Simples Horizon replaced.
+    // From "factory" only the app brings Horizon back (its wheel menu is part of Horizon).
+    var horizonSkin: String
+        get() = prefs.getString("horizon_skin", "horizon") ?: "horizon"
+        set(value) { prefs.edit().putString("horizon_skin", value).apply() }
 
     var horizonInstalled: Boolean
         get() = prefs.getBoolean("horizon_installed", false)

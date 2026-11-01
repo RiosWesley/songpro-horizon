@@ -13,6 +13,8 @@ hash matches the SX309 cohort, and writes a translate-RCC carrier that contains:
     lane unless the camera gives its real position, neighbour lanes beyond dashed lines, targets the
     camera places but does not classify (ACC off) drawn as cars, no popup
     background behind the map-mode window, the road surface in every ADAS mode);
+  * qml10_25/menu/ThemeSwitch.qml (factory + the "Simples" entry relabelled "Horizon", with Horizon's
+    picture over BYD's: Horizon takes that slot of the cluster's theme menu);
   * qml/cluster.qml       (theme 1 root, byte-identical to factory; the 8.8" never uses it);
   * horizon/*             (the Horizon QML/JS files, loaded as qrc:/horizon/...).
 
@@ -52,6 +54,7 @@ MODEL3D = ("cluster_theme2.rcc", "qml10_25/adas3d/components/Model3D.qml",
 ADAS3D = ("cluster_theme2.rcc", "qml10_25/adas3d/Adas3dContainer.qml",
           "9f4af828aff95dfd887fb087105f3acf2ff8f409385a42a2a6203051df5efd29")
 CENTER = ("cluster_theme2.rcc", "qml10_25/Center.qml", "b284c991e474a8b2a0369a4151d15b2ee5ecfeaa19fa01a5f617b4eb1293b4d1")
+THEMES = ("cluster_theme2.rcc", "qml10_25/menu/ThemeSwitch.qml", "22fefad0a83b5a36ee4879f49df15e8fc425fee778419bf16a15ad9b3a5abe9c")
 LOCALES = 80
 
 BEGIN = b"// HORIZON_BEGIN\r\n"
@@ -123,11 +126,31 @@ def strip_markers(src):
 
 
 ROOT_PROPS = """\
-// Horizon runs only while the factory instruments would: powered on, power-on animation done,
-// the always-displayed layer and the telltale layer visible, on the 8.8" panel (screenSize 1).
-readonly property bool horizonWanted: DataSource.screenSize === 0x01 && rootItemId.width === 1920 && rootItemId.height === 720 && DataSource.powerGear === 0x03 && DataSource.playAnim === true && alwyasDisplayId.visible && warningLayoutId.visible
-// Fail-open: every factory item Horizon replaces keeps its stock look unless this is true.
-readonly property bool horizonActive: rootItemId.horizonWanted && horizonLoader.status === Loader.Ready && horizonLoader.item !== null
+// Horizon takes the factory "Simples" slot (themeIndex 2) of the cluster's theme menu; "Classico" stays
+// the factory's. In that slot the app can still choose the factory Simples (menu.json "skin":
+// "factory"); it is read here, as Horizon itself is not loaded then.
+property bool horizonSkin: true
+Timer {
+    interval: 1000; running: true; repeat: true; triggeredOnStart: true
+    onTriggered: {
+        var xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== XMLHttpRequest.DONE || xhr.responseText.length === 0)
+                return
+            try { rootItemId.horizonSkin = JSON.parse(xhr.responseText).skin !== "factory" } catch (e) { }
+        }
+        xhr.open("GET", "file:///data/cells/cell2-rw/data/media/0/.cluster/horizon/menu.json")
+        xhr.send()
+    }
+}
+// Horizon runs only in its slot and while the factory instruments would: powered on, power-on
+// animation done, the always-displayed layer and the telltale layer visible, on the 8.8" panel.
+readonly property bool horizonWanted: DataSource.themeIndex === 0x02 && rootItemId.horizonSkin && DataSource.screenSize === 0x01 && rootItemId.width === 1920 && rootItemId.height === 720 && DataSource.powerGear === 0x03 && DataSource.playAnim === true && alwyasDisplayId.visible && warningLayoutId.visible
+// Fail-open: every factory item Horizon replaces keeps its stock look unless this is true. It
+// steps aside while the factory theme-switch animation plays over the whole panel.
+readonly property bool horizonActive: rootItemId.horizonWanted && !rootItemId.isInThemeSwithAnim && horizonLoader.status === Loader.Ready && horizonLoader.item !== null
+// Horizon shows the music itself: the factory media strip (top centre, with lyrics) yields.
+onHorizonActiveChanged: createMediaInfo()
 // The native 2D ADAS window yields only if Horizon's own 3D road is up (adasReady if Horizon
 // exposes it, else the absence of adasFallback).
 readonly property bool horizonAdas3d: rootItemId.horizonActive && (horizonLoader.item.adasReady !== undefined ? horizonLoader.item.adasReady === true : horizonLoader.item.adasFallback === false)
@@ -160,6 +183,15 @@ Loader {
     visible: rootItemId.horizonActive
 }"""
 
+MEDIA_GUARD = """\
+if(rootItemId.horizonActive){
+    if(rootItemId.mediaInfoUi != null){
+        rootItemId.mediaInfoUi.destroy()
+        rootItemId.mediaInfoUi = null
+    }
+    return
+}"""
+
 SPEED_FIX = """\
 x: 1504
 y: 588
@@ -184,6 +216,7 @@ def patch_root(src, speed_fix):
     out = insert_after(out, b"        id:centerContainerId\r\n",
                        "horizonActive: rootItemId.horizonActive\nhorizonAdas3d: rootItemId.horizonAdas3d", b"        ")
     out = insert_before(out, b"    Loader{\r\n        id:presentationLoaderId\r\n", ROOT_LOADER, b"    ")
+    out = insert_after(out, b"    function createMediaInfo(){\r\n", MEDIA_GUARD, b"        ")
     if speed_fix:
         out = insert_after(out, b"            id: naviSpeedId\r\n", SPEED_FIX, b"            ")
     return out
@@ -241,6 +274,28 @@ def patch_center(src):
     out = insert_after(src, b"    id:centerContainerId\r\n", CENTER_PROPS, b"    ")
     out = insert_after(out, b"    function driveInfoUIUpdate(){\r\n", DRIVEINFO_GUARD, b"        ")
     return insert_after(out, b"    function updateAdas(){\r\n", ADAS_GUARD, b"        ")
+
+
+# The cluster's theme menu: Horizon is the second entry, in place of the factory "Simples" (the root
+# patch runs Horizon only in that slot).
+THEMES_LABEL_ORIG = b"            text: TranslateStr.menu_themeSimpleStr\r\n"
+THEMES_LABEL_NEW = b"            text: \"Horizon\" // HORIZON: the Simples slot is Horizon's (was TranslateStr.menu_themeSimpleStr)\r\n"
+THEMES_PICTURE = """\
+Loader {
+    anchors.fill: parent
+    source: "qrc:/horizon/ThemePreview.qml"
+}"""
+
+
+def patch_themes(src):
+    out = insert_after(src, b"            id: techImgId\r\n", THEMES_PICTURE, b"            ")
+    if out.count(THEMES_LABEL_ORIG) != 1:
+        raise SystemExit("ThemeSwitch label anchor is not unique")
+    return out.replace(THEMES_LABEL_ORIG, THEMES_LABEL_NEW, 1)
+
+
+def unpatch_themes(src):
+    return strip_markers(src).replace(THEMES_LABEL_NEW, THEMES_LABEL_ORIG, 1)
 
 
 # The 3D scene swaps each target slot's Loader3D source as targets come and go. Asynchronous
@@ -406,7 +461,7 @@ def build(args):
             raise SystemExit(f"{name}: SHA-256 {digest.hexdigest()} is not the SX309 cohort ({expected}); refusing")
 
     roots = {}
-    for rcc_name, alias, expected in (ROOT1, ROOT2, LAMPS, CENTER, MODEL3D, ADAS3D):
+    for rcc_name, alias, expected in (ROOT1, ROOT2, LAMPS, CENTER, MODEL3D, ADAS3D, THEMES):
         data = rcc_entry(stock / rcc_name, alias)
         if sha(data) != expected:
             raise SystemExit(f"{alias}: unexpected factory source {sha(data)}; refusing")
@@ -423,16 +478,17 @@ def build(args):
     center = patch_center(roots[CENTER[1]])
     model3d = patch_model3d(roots[MODEL3D[1]])
     adas3d = patch_adas3d(roots[ADAS3D[1]])
+    themes = patch_themes(roots[THEMES[1]])
     if (unpatch_root(root2) != roots[ROOT2[1]] or unpatch_lamps(lamps) != roots[LAMPS[1]]
             or strip_markers(center) != roots[CENTER[1]] or unpatch_model3d(model3d) != roots[MODEL3D[1]]
-            or strip_markers(adas3d) != roots[ADAS3D[1]]):
+            or strip_markers(adas3d) != roots[ADAS3D[1]] or unpatch_themes(themes) != roots[THEMES[1]]):
         raise SystemExit("patch is not exactly reversible")
 
     owned = horizon_files(args.horizon)
     # Stored uncompressed, like the Horizon files: zlib output differs between implementations, and
     # the app builds this same carrier on the car (byd/theme/HorizonCarrier.kt), byte for byte.
     entries = [(ROOT1[1], roots[ROOT1[1]], 0), (ROOT2[1], root2, 0), (LAMPS[1], lamps, 0), (CENTER[1], center, 0),
-               (MODEL3D[1], model3d, 0), (ADAS3D[1], adas3d, 0)]
+               (MODEL3D[1], model3d, 0), (ADAS3D[1], adas3d, 0), (THEMES[1], themes, 0)]
     entries += [(alias, data, 0) for alias, data in owned.items()]
     for alias, data, compressed in entries:
         raw = struct.pack(">I", len(data)) + zlib.compress(data, 9) if compressed else data
@@ -466,10 +522,10 @@ def build(args):
         "locale_entries": LOCALES, "locales_preserved_byte_for_byte": True,
         "factory_sources": {"qml/cluster.qml": ROOT1[2], "qml10_25/cluster.qml": ROOT2[2],
                             "qml10_25/WarinLightLayout.qml": LAMPS[2], "qml10_25/Center.qml": CENTER[2],
-                            MODEL3D[1]: MODEL3D[2], ADAS3D[1]: ADAS3D[2]},
+                            MODEL3D[1]: MODEL3D[2], ADAS3D[1]: ADAS3D[2], THEMES[1]: THEMES[2]},
         "patched_sources": {"qml/cluster.qml": ROOT1[2] + " (unchanged)", "qml10_25/cluster.qml": sha(root2),
                             "qml10_25/WarinLightLayout.qml": sha(lamps), "qml10_25/Center.qml": sha(center),
-                            MODEL3D[1]: sha(model3d), ADAS3D[1]: sha(adas3d)},
+                            MODEL3D[1]: sha(model3d), ADAS3D[1]: sha(adas3d), THEMES[1]: sha(themes)},
         "owned_resources": {alias: sha(data) for alias, data in owned.items()},
         "entries": len(rows),
     }
@@ -481,7 +537,8 @@ def build(args):
              "patches/Model3D.qml.diff": diff(roots[MODEL3D[1]], model3d, MODEL3D[1]).encode(),
              "patches/Adas3dContainer.qml.diff": diff(roots[ADAS3D[1]], adas3d, ADAS3D[1]).encode(),
              "patches/cluster.qml.diff": diff(roots[ROOT2[1]], root2, "qml10_25/cluster.qml").encode(),
-             "patches/WarinLightLayout.qml.diff": diff(roots[LAMPS[1]], lamps, "qml10_25/WarinLightLayout.qml").encode()}
+             "patches/WarinLightLayout.qml.diff": diff(roots[LAMPS[1]], lamps, "qml10_25/WarinLightLayout.qml").encode(),
+             "patches/ThemeSwitch.qml.diff": diff(roots[THEMES[1]], themes, THEMES[1]).encode()}
     for rel, data in files.items():
         target = out / rel
         target.parent.mkdir(parents=True, exist_ok=True)

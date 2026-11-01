@@ -34,6 +34,19 @@ app, continua lá, mas fica escondido. Um toque longo em **Painel BYD** abre as 
 - **Voltar ao original:** o app move o tema para `/sdcard/.cluster/retired/` (não apaga nada) e
   pede para reiniciar. Sem o arquivo, o painel volta sozinho ao de fábrica. Este é o caminho de
   volta comprovado no carro. O "restaurar padrão" da BYD não funciona neste firmware.
+- **O Horizon no menu de tema do painel:** o Horizon ocupa a vaga do **Simples** no menu do próprio
+  painel (botão voltar → Tema); o **Clássico** continua de fábrica. Trocar entre os dois por esse menu não
+  precisa do app nem de reiniciar. Na troca, a BYD toca a animação dela e o Horizon espera ela acabar.
+- **Tema na vaga Simples:** Painel BYD → Tema na vaga Simples → **Horizon** ou **Simples original**. O
+  "Simples original" devolve a vaga ao Simples de fábrica sem tirar o Horizon do carro. O menu no volante
+  também tem essa opção ("Tema do painel"), mas, como o menu é desenhado pelo Horizon, a volta para o
+  Horizon só pelo app.
+- **Modos de condução:** o fundo do Horizon muda de cor com o modo (ECO verde, NORMAL azul, SPORT
+  laranja), com uma transição de quase 1 s.
+- **Telas de fábrica no centro:** quando o painel abre o menu, um alerta (EPB, portas, pneus…), o
+  cronômetro de 0 a 100, o carregamento ou o resumo da viagem, a estrada do ADAS esmaece. Os alertas
+  ganham um cartão do Horizon atrás deles. A faixa de música de fábrica fica escondida, porque o Horizon
+  mostra a música.
 - **Medidor de potência:** o lado direito do Horizon tem 5 estilos — Anel, Segmentos, Arco lateral,
   Coluna e Faixa e onda (com o gráfico do último minuto). Troque em **Painel BYD → Medidor de
   potência → Trocar** ou pelo menu no volante; muda na hora, sem reiniciar o painel.
