@@ -1,7 +1,7 @@
 package com.andrerinas.openheadunit.byd.theme
 
 import android.content.Context
-import com.andrerinas.openheadunit.aap.cluster.ClusterMapArea
+import com.andrerinas.openheadunit.byd.BydClusterMap
 import com.andrerinas.openheadunit.utils.AppLog
 import com.andrerinas.openheadunit.utils.Settings
 import com.andrerinas.openheadunit.utils.adb.AdbManager
@@ -65,10 +65,7 @@ class HorizonInstaller(private val context: Context, private val log: (String) -
             retire(listOf(carrier.name))
             throw Stop("o painel não aceitou o tema: ${ThemeToolOutput.reason(load)}")
         }
-        Settings(context).apply {
-            clusterDisplayRect = ClusterMapArea.HORIZON_MAP_HOLE
-            clusterVideoDpi = HORIZON_MAP_DPI
-        }
+        BydClusterMap.fitTo(Settings(context), horizon = true)
         Outcome.RestartNeeded("Horizon selecionado. Ele aparece depois de reiniciar o painel.")
     }
 
@@ -77,10 +74,7 @@ class HorizonInstaller(private val context: Context, private val log: (String) -
         val horizon = rccFiles().filter { it.startsWith(HorizonCarrier.NAME_PREFIX) }
         if (horizon.isEmpty()) return@guarded Outcome.NothingToDo("Nenhum Horizon instalado: o painel já usa o tema de fábrica.")
         retire(horizon)
-        Settings(context).apply {
-            clusterDisplayRect = ClusterMapArea.FACTORY_FREE_BAND
-            clusterVideoDpi = 0
-        }
+        BydClusterMap.fitTo(Settings(context), horizon = false)
         Outcome.RestartNeeded("Horizon removido. O painel de fábrica volta depois de reiniciar.")
     }
 
@@ -144,7 +138,5 @@ class HorizonInstaller(private val context: Context, private val log: (String) -
         private const val TOOL_NAME = "horizon-theme-tool.dex"
         private const val TOOL = "/data/local/tmp/$TOOL_NAME"
         private const val QML_ASSETS = "horizon/qml"
-        /** The map fills Horizon's centre window legibly at this density (tested on the car). */
-        const val HORIZON_MAP_DPI = 240
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Open Headunit</string>
+    <string name="app_name">Song Pro Horizon</string>
     <string name="menu">Menú</string>
     <string name="settings">Configuración</string>
 
@@ -12,7 +12,7 @@
     <string name="video">Android Auto</string>
     <string name="self_mode">Modo autónomo</string>
     <string name="to_android_auto">A Android Auto</string>
-    <string name="title">Open Headunit</string>
+    <string name="title">Song Pro Horizon</string>
     <string name="remove">Eliminar</string>
     <string name="usb">USB</string>
     <string name="wifi">WiFi</string>
@@ -162,9 +162,9 @@
     <string name="usb_auto_connect">Conexión automática USB</string>
     <string name="usb_auto_connect_description">Se conecta automáticamente a un dispositivo USB conocido tan pronto como se abre la aplicación.</string>
     <string name="auto_start_bt_label">Autoinicio por Bluetooth</string>
-    <string name="auto_start_bt_description">Abrir Open Headunit automáticamente al conectar un dispositivo Bluetooth.</string>
+    <string name="auto_start_bt_description">Abrir Song Pro Horizon automáticamente al conectar un dispositivo Bluetooth.</string>
     <string name="auto_start_wifi_label">Inicio automático por WiFi</string>
-    <string name="auto_start_wifi_description">Abrir Open Headunit automáticamente al conectarse a una red WiFi específica.</string>
+    <string name="auto_start_wifi_description">Abrir Song Pro Horizon automáticamente al conectarse a una red WiFi específica.</string>
     <string name="auto_start_wifi_ssid_label">SSID WiFi</string>
     <string name="auto_start_wifi_ssid_description">Conectar solo cuando se detecte este SSID WiFi</string>
     <string name="auto_start_wifi_warning">Característica heredada: Es posible que esto no funcione correctamente en Android 8+ debido a restricciones de fondo. Asegúrese de excluir la aplicación de la optimización de batería.</string>
@@ -189,7 +189,7 @@
     <string name="bt_permission_denied_title">Permiso de Bluetooth requerido</string>
     <string name="bt_permission_denied_message">Se necesita el permiso de Bluetooth para seleccionar dispositivos emparejados. Concédalo en los ajustes de la app.</string>
     <string name="overlay_permission_title">Permiso de inicio en segundo plano</string>
-    <string name="overlay_permission_description">Para permitir que Open Headunit se abra automáticamente, active \"Mostrar sobre otras aplicaciones\".</string>
+    <string name="overlay_permission_description">Para permitir que Song Pro Horizon se abra automáticamente, active \"Mostrar sobre otras aplicaciones\".</string>
     <string name="open_settings">Ajustes</string>
     <string name="wireless_connection_settings">Conexión inalámbrica</string>
     <string name="right_hand_drive">Conducción por la derecha</string>
@@ -266,9 +266,9 @@
     <!-- Info Settings -->
     <string name="category_info">Información</string>
     <string name="about">Acerca de</string>
-    <string name="about_description">Más información sobre Open Headunit</string>
+    <string name="about_description">Más información sobre Song Pro Horizon</string>
     <string name="version">Versión</string>
-    <string name="about_title">Acerca de Open Headunit</string>
+    <string name="about_title">Acerca de Song Pro Horizon</string>
     <string name="copyright">© 2025-%d André Rinas</string>
 
     <!-- Safety Disclaimer -->
@@ -279,7 +279,7 @@
         <b>1. Céntrese en la carretera</b><br/>
         Usar este software mientras conduce puede ser peligroso. Priorice siempre la seguridad.<br/><br/>
         <b>2. Limitación de responsabilidad</b><br/>
-        Open Headunit se proporciona "tal cual". Los desarrolladores no asumen responsabilidad por accidentes o daños.<br/><br/>
+        Song Pro Horizon se proporciona "tal cual". Los desarrolladores no asumen responsabilidad por accidentes o daños.<br/><br/>
         <b>3. Sin afiliación</b><br/>
         Este proyecto no está afiliado a Google LLC ni a Android Auto.
     ]]></string>
@@ -325,7 +325,7 @@
     <string name="connection_interrupted">Conexión perdida</string>
     <string name="connection_interrupted_detail">Reintentando…</string>
     <string name="wifi_disconnect_toast">Android Auto desconectado: Si usas AA inalámbrico, desactiva \"Cambiar entre redes\" o \"Aceleración de red\" en ajustes WiFi del móvil</string>
-    <string name="notification_service_running">Open Headunit ejecutándose</string>
+    <string name="notification_service_running">Song Pro Horizon ejecutándose</string>
     <string name="notification_projection_active">Android Auto proyectado</string>
     <string name="shortcut_connect_title">Conectar</string>
     <string name="shortcut_connect_desc">Conectar al último dispositivo</string>
@@ -583,7 +583,7 @@
     <string name="export_settings_downloads">Guardar en Descargas</string>
     <string name="export_settings_app_folder">Guardar en la carpeta de copias de la app</string>
     <string name="import_settings">Importar ajustes</string>
-    <string name="import_settings_description">Restaurar ajustes desde una copia de seguridad de Open Headunit</string>
+    <string name="import_settings_description">Restaurar ajustes desde una copia de seguridad de Song Pro Horizon</string>
     <string name="import_settings_choose_file">Elegir archivo de copia</string>
     <string name="import_settings_downloads">Importar desde Descargas</string>
     <string name="import_settings_app_folder">Importar desde la carpeta de copias de la app</string>
@@ -605,8 +605,8 @@
     <string name="no_file_picker_title">No hay selector de archivos disponible</string>
     <string name="no_file_picker_message">Este dispositivo no tiene un selector de archivos compatible. Puedes usar Descargas o la carpeta de copias de la app en su lugar.</string>
     <string name="no_settings_backups_title">No se han encontrado copias de seguridad</string>
-    <string name="no_settings_backups_message">No se han encontrado copias de Open Headunit en la carpeta de copias de la app. Exporta primero una copia a esa carpeta y luego impórtala desde aquí.</string>
-    <string name="no_settings_backups_downloads_message">No se han encontrado copias de Open Headunit en Descargas. Exporta primero una copia a Descargas y luego impórtala desde aquí.</string>
+    <string name="no_settings_backups_message">No se han encontrado copias de Song Pro Horizon en la carpeta de copias de la app. Exporta primero una copia a esa carpeta y luego impórtala desde aquí.</string>
+    <string name="no_settings_backups_downloads_message">No se han encontrado copias de Song Pro Horizon en Descargas. Exporta primero una copia a Descargas y luego impórtala desde aquí.</string>
 
     <!-- Keymap: back key label -->
     <string name="key_back">Atrás</string>
@@ -698,7 +698,7 @@
     <string name="onb_next">Siguiente</string>
     <string name="onb_skip">Omitir</string>
     <string name="onb_ready_finish">Finalizar</string>
-    <string name="onb_welcome_title">Bienvenido a Open Headunit</string>
+    <string name="onb_welcome_title">Bienvenido a Song Pro Horizon</string>
     <string name="onb_welcome_body">Esta configuración rápida analiza tu dispositivo y elige los mejores ajustes de vídeo, pantalla y modo oscuro para ti. Puedes cambiarlo todo más tarde en Configuración.</string>
     <string name="onb_safety_title">La seguridad primero</string>
     <string name="onb_safety_accept">He leído y acepto los términos</string>
@@ -817,7 +817,7 @@
     <string name="support_rules_connection_title">Di cómo te conectas</string>
     <string name="support_rules_connection_desc">Cable USB, adaptador inalámbrico USB, WiFi Direct, WiFi (headunit server) o Self Mode. Si es inalámbrico, añade el modelo del adaptador o dongle.</string>
     <string name="support_rules_appversion_title">Incluye la versión de la app</string>
-    <string name="support_rules_appversion_desc">La versión de Open Headunit, que aparece en la pantalla Acerca de.</string>
+    <string name="support_rules_appversion_desc">La versión de Song Pro Horizon, que aparece en la pantalla Acerca de.</string>
     <string name="support_rules_logs_title">Adjunta los registros justo cuando ocurra</string>
     <string name="support_rules_logs_desc">Ve a Ajustes, abre la pestaña Avanzado, activa el Modo depuración en la sección Depuración, reproduce el problema y toca Exportar registros enseguida para que el registro cubra el momento del fallo y no solo el arranque. Adjunta ese archivo a tu incidencia.</string>
     <string name="support_rules_search_title">Sin duplicados</string>
@@ -839,7 +839,7 @@
     <string name="aa174_notice_button_confirm">Entendido</string>
     <string name="aa174_notice_button_guide">Abrir guía</string>
 
-    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Open Headunit\" if you use those apps.</string>
+    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Song Pro Horizon\" if you use those apps.</string>
     <string-array name="vehicle_brands">
         <item>Google</item>
         <item>Android</item>
@@ -896,8 +896,8 @@
     <string name="github_issues_url">https://github.com/andreknieriem/open-headunit/issues</string>
     <string name="support_rules_english_title">All posts in English</string>
     <string name="boot_loop_paused_title">Wireless start-up paused</string>
-    <string name="boot_loop_paused_generic">This device restarted three times in a row shortly after Open Headunit started wireless, so wireless was left off this time. USB still works. Open the app to turn it back on.</string>
-    <string name="boot_loop_paused_native_wifi_direct">This device restarted three times in a row shortly after Open Headunit started wireless, so wireless was left off this time. On some head units the WiFi chipset takes the whole system down when a phone joins a WiFi Direct network. Try switching Android Auto mode to the head unit hotspot. USB still works.</string>
+    <string name="boot_loop_paused_generic">This device restarted three times in a row shortly after Song Pro Horizon started wireless, so wireless was left off this time. USB still works. Open the app to turn it back on.</string>
+    <string name="boot_loop_paused_native_wifi_direct">This device restarted three times in a row shortly after Song Pro Horizon started wireless, so wireless was left off this time. On some head units the WiFi chipset takes the whole system down when a phone joins a WiFi Direct network. Try switching Android Auto mode to the head unit hotspot. USB still works.</string>
     <string name="vehicle_make_hint">A real car brand shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps installed from outside the Play Store. Set it back to \"Google\" to get those apps listed again.</string>
     <string name="external_bt_nativeaa">Native Wireless cannot work on this head unit</string>
     <string name="external_bt_nativeaa_desc">This head unit uses its own Bluetooth module (%1$s) instead of the one Android exposes to apps. Your phone pairs with that module, so anything this app sends over Bluetooth never reaches it — the connection will look like it is working and then stall.\n\nThis is a hardware limitation and cannot be worked around from the app. Please use USB, or the \"Wireless Helper\" or \"Auto (Headunit Server)\" mode, which do not need the Bluetooth handshake.</string>

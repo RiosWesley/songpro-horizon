@@ -1,14 +1,14 @@
-# Open Headunit para o BYD Song Pro: Horizon + Android Auto pelo cabo
+# Song Pro Horizon: instalar e usar
 
-Esta versão do Open Headunit é feita para o **BYD Song Pro com DiLink 3.0 e painel de 8,8"
+O Song Pro Horizon é feito para o **BYD Song Pro com DiLink 3.0 e painel de 8,8"
 (firmware SX309)**. Ela faz três coisas:
 
 1. **Android Auto pelo cabo**, com o mapa do celular (Waze/Maps) no painel de instrumentos.
 2. **Instala o tema de painel Horizon** e **volta ao painel original** com um toque.
-3. **Escolhe quem atende o celular no cabo:** o Open Headunit ou o Android Auto nativo da BYD.
+3. **Escolhe quem atende o celular no cabo:** o Song Pro Horizon ou o Android Auto nativo da BYD.
 
-A tela inicial tem só dois botões: **USB** e **Painel BYD**. O resto do Open Headunit continua no
-app, mas fica escondido. Um toque longo em **Painel BYD** abre as configurações completas.
+A tela inicial tem só dois botões: **USB** e **Painel BYD**. O resto do Open Headunit, a base do
+app, continua lá, mas fica escondido. Um toque longo em **Painel BYD** abre as configurações completas.
 
 > Projeto independente, sem relação com a BYD. Mexer no painel de instrumentos tem risco: siga os
 > passos com o carro **parado, em P e com freio de mão**. A história completa e os detalhes técnicos
@@ -39,9 +39,9 @@ app, mas fica escondido. Um toque longo em **Painel BYD** abre as configuraçõe
 
 ### Android Auto pelo cabo
 
-- **Open Headunit:** desativa o Android Auto da BYD (`pm disable-user`; nada é desinstalado) e liga
-  a conexão automática do Open Headunit quando o celular é plugado.
-- **AA nativo da BYD:** religa o app da BYD e desliga a conexão automática do Open Headunit.
+- **Song Pro Horizon:** desativa o Android Auto da BYD (`pm disable-user`; nada é desinstalado) e liga
+  a conexão automática do app quando o celular é plugado.
+- **AA nativo da BYD:** religa o app da BYD e desliga a conexão automática deste app.
 - Depois de trocar, **desconecte e conecte o celular de novo**.
 
 ## Se algo der errado
@@ -79,6 +79,7 @@ HORIZON_STOCK_DIR=<pasta com cluster_theme1.rcc, cluster_theme2.rcc, commonTrans
 
 ## Créditos
 
-- Open Headunit (AGPL-3.0), Headunit Revived e o headunit original de Michael Reid.
+- Base: Open Headunit (AGPL-3.0, André Knieriem e colaboradores), Headunit Revived e o headunit
+  original de Michael Reid.
 - DashCast (MIT, Cedric Carre, <https://github.com/Kiroha/byd-dashcast>): o protocolo de seleção de
   tema e o formato do carrier vieram de lá; o codec RCC está em `horizon/tools/third_party/dashcast/`.

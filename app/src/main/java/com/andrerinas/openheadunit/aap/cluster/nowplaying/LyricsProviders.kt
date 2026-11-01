@@ -45,7 +45,7 @@ internal class LrclibProvider : LyricsProvider {
 
     private companion object {
         // LRCLIB asks clients to identify themselves.
-        const val USER_AGENT = "open-headunit cluster lyrics (https://github.com/RiosWesley/open-headunit)"
+        const val USER_AGENT = "Song Pro Horizon cluster lyrics (https://github.com/RiosWesley/songpro-horizon)"
     }
 }
 

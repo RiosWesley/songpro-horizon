@@ -11,8 +11,9 @@ import kotlinx.coroutines.withContext
  * Who answers the phone on the USB cable: BYD's own Android Auto (com.byd.androidauto) or this app.
  *
  * Both want the phone, so only one may run: choosing this app disables BYD's (as the shell user,
- * "pm disable-user", reversible with "pm enable") and turns on this app's USB auto-start; choosing
- * BYD's does the opposite. Nothing is uninstalled. The phone has to be plugged in again after a switch.
+ * "pm disable-user", reversible with "pm enable") and turns on this app's USB auto-start and the map
+ * on the cluster; choosing BYD's turns BYD's back on and this app's USB auto-start off. Nothing is
+ * uninstalled. The phone has to be plugged in again after a switch.
  */
 object BydNativeAndroidAuto {
 
@@ -42,6 +43,7 @@ object BydNativeAndroidAuto {
         settings.autoStartOnUsb = thisApp
         Settings.syncAutoStartOnUsbToDeviceStorage(context, thisApp)
         settings.autoConnectSingleUsbDevice = thisApp
+        if (thisApp) BydClusterMap.enable(settings)
         null
     }
 }

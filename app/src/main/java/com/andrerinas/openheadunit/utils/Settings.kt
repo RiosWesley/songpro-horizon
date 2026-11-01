@@ -166,9 +166,10 @@ class Settings(private val context: Context) {
         set(value) { prefs.edit().putBoolean("cluster_on_cluster_display", value).apply() }
 
     // The floating "map on the cluster" switch, remembered between sessions. Only read while
-    // showClusterOnClusterDisplay is on.
+    // showClusterOnClusterDisplay is on. Off until the driver turns the map on: switching the
+    // cluster to the projection changes the panel, so it is never done unasked.
     var clusterMapEnabled: Boolean
-        get() = prefs.getBoolean("cluster_map_enabled", true)
+        get() = prefs.getBoolean("cluster_map_enabled", false)
         set(value) { prefs.edit().putBoolean("cluster_map_enabled", value).apply() }
 
     // The shared BYD build opens on a home with only USB and the BYD panel. The other entries stay
@@ -748,7 +749,7 @@ class Settings(private val context: Context) {
         // Cosmetic: the phone shows this in its connection history and on the Android Auto
         // welcome screen. It is not the reported manufacturer, which stays "Google" unless
         // the user picks a real car brand — see the car step in OnboardingActivity.
-        get() = prefs.getString("vehicle-display-name", "Open Headunit")!!
+        get() = prefs.getString("vehicle-display-name", "Song Pro Horizon")!!
         set(value) { prefs.edit().putString("vehicle-display-name", value).apply() }
 
     var vehicleMake: String

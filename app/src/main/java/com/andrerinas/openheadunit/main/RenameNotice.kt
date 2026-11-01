@@ -21,9 +21,13 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
  */
 object RenameNotice {
 
+    /** Song Pro Horizon was never Headunit Revived: Open Headunit's rename notice is not for its users. */
+    private const val SHOW = false
+
     private var dialog: AlertDialog? = null
 
     fun maybeShow(activity: Activity?, settings: Settings) {
+        if (!SHOW) return
         if (activity == null || activity.isFinishing) return
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && activity.isDestroyed) return
         if (settings.renameNoticeShown) return

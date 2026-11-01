@@ -39,8 +39,7 @@ A tela inicial tem só **USB** e **Painel BYD**.
 ./gradlew :app:assembleGithubDebug
 ```
 
-O APK sai em `app/build/outputs/apk/github/debug/`. O app ainda usa o nome e o pacote do Open
-Headunit (`com.andrerinas.headunitrevived`).
+O APK sai em `app/build/outputs/apk/github/debug/`. O pacote do app é `com.rioswesley.songprohorizon`.
 
 ## Licença e créditos
 
