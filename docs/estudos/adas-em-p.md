@@ -138,6 +138,32 @@ O registrador de 3 h ficou parado nesses valores enquanto foi conferido.
 - Não se sabe se este Song Pro tem sensores dianteiros. O estado `1` nas 9 zonas não distingue zona inexistente
   de zona livre.
 
+**Medido em R (2026-11-01, 13:05)** **[medido]**: o dono engatou a ré e foi chegando devagar num obstáculo,
+com o `ParkProbe log` rodando. Trecho do registro (só as colunas que mudaram):
+
+```
+hora          dist 0x61..0x69                      estado 0x71..0x79    0x4180001A 0x4180001E
+13:05:43.756  150 150 150 150 150 150 150 150 150  1 1 1 1 1 1 1 1 1    1          1
+13:05:45.414  150 150 150 150  75 150 150  75  75  1 1 1 1 2 1 1 2 2    2          2
+13:05:50.497  150 150 150 150  55  60 150  70  55  1 1 1 1 3 3 1 3 3    2          1
+13:05:51.330  150 150 150 150  30  30  55  30  30  1 1 1 1 4 4 3 4 4    2          1
+13:05:52.159  150 150 150 150 150 150 150 150 150  1 1 1 1 1 1 1 1 1    1          2
+```
+
+- **O PDC chega à multimídia ao vivo**, uma leitura a cada ~270 ms. A distância desce em degraus (75, 65, 55,
+  45, 30), e o estado sobe junto (2 verde, 3 amarelo, 4 vermelho). 30 é o degrau mais perto.
+- Em R só acordam as cinco zonas de trás (`0x65`..`0x69`: os dois cantos, as duas do meio e o centro). As quatro
+  da frente ficam em 150 e 1. Se o carro tem sensores dianteiros, eles devem acordar em D, devagar perto de um
+  obstáculo. Não testado.
+- O `0x4180001A` (lido em P como "chave do RCTA") vai a 2 enquanto a ré está engatada e volta a 1 em P. Então ele
+  é o estado do RCTA, não a chave: o palpite de que o RCTA estaria desligado no menu estava errado. O `0x4180001E`
+  oscila durante a manobra; o significado ainda não está claro.
+- Os avisos de tráfego cruzado (`0x41800014/15`) ficaram em 0: não passou ninguém atrás durante o teste.
+- A marcha (`0x34200020`) continua ilegível (65535). A atividade do PDC basta para saber que a ré está engatada.
+
+Isso abre o caminho do "melhor candidato" do resumo (item 7): um leitor como o `ParkProbe`, rodando como shell pelo
+ADB local do app, que escreve um `park.json` para o Horizon desenhar a proximidade atrás do carro.
+
 **O painel não tem PDC** **[código]**: a `libBydDataSource.so` registra 762 sinais em 77 quadros. Nenhum deles é de
 PDC (`0x365`, `0x1EC`, `0x3F5`, `0x2D0`, `0x31A`, `0x22C`). O `0x990` que ela assina é só estado do MCU
 (`0x99000003`, `0x99000039`, `0x99000040`). O `DataItemId` (578 itens) não tem item de PDC, e o QML de fábrica não
