@@ -16,19 +16,23 @@ import com.andrerinas.openheadunit.utils.Settings
 internal object ClusterMapArea {
 
     /**
-     * The Horizon cluster theme's map window (horizon/qml/HorizonGeometry.js, map.video at 2/3):
-     * the clear hole (390,100,500,292) and 32 px more above and 20 below, which run on under the
-     * theme's fades. The insets keep the phone's cards in the clear part.
-     */
-    const val HORIZON_MAP_VIDEO = "390,68,500,344"
-    const val HORIZON_MAP_INSETS = "0,32,0,20"
-
-    /**
-     * Horizon full screen: the whole display, the phone's cards kept out of the speed band at the
-     * top, the bottom bar and the telltale columns (HorizonGeometry.js `full`).
+     * With Horizon the phone always draws for the whole display, so its window and full-screen
+     * layouts switch live: only the picture's position and the content insets change.
+     *
+     * Full screen: the phone's cards kept out of the speed band at the top, the bottom bar and the
+     * telltale columns (HorizonGeometry.js `full`).
      */
     const val HORIZON_FULL = "0,0,1280,480"
     const val HORIZON_FULL_INSETS = "70,100,70,86"
+
+    /**
+     * Window: Horizon shows the map through its window (390,68,500,344, clear from y 100 to 392;
+     * HorizonGeometry.js map.video at 2/3). The picture is moved 66 px up, so the car arrow the
+     * phone draws low in the frame lands inside the window even if the phone ignores the insets;
+     * the insets are that clear window in the moved picture (y + 66), for the cards.
+     */
+    const val HORIZON_WINDOW_SHIFT_Y = -66
+    const val HORIZON_WINDOW_INSETS = "420,166,420,22"
 
     /** Without a theme, the whole band above the factory 8.8" bottom bar. */
     const val FACTORY_FREE_BAND = "0,0,1280,420"

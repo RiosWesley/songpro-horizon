@@ -85,7 +85,6 @@ class WheelMenuService : AccessibilityService() {
         val card = settings.horizonLeftCard
         val power = settings.horizonPowerStyle
         val layout = settings.horizonMapLayout
-        val layoutLabel = getString(HorizonOptions.find(HorizonOptions.MAP_LAYOUTS, layout).label)
         val list = mutableListOf(
             WheelMenu.Item(getString(R.string.wheel_menu_left_card), getString(HorizonOptions.find(HorizonOptions.LEFT_CARDS, card).label)) {
                 settings.horizonLeftCard = HorizonOptions.next(HorizonOptions.LEFT_CARDS, card)
@@ -93,11 +92,8 @@ class WheelMenuService : AccessibilityService() {
             WheelMenu.Item(getString(R.string.wheel_menu_power), getString(HorizonOptions.find(HorizonOptions.POWER_STYLES, power).label)) {
                 settings.horizonPowerStyle = HorizonOptions.next(HorizonOptions.POWER_STYLES, power)
             },
-            // Takes effect at the next connection: the phone's stream is negotiated per connection,
-            // so until then the value says so.
-            WheelMenu.Item(getString(R.string.wheel_menu_map_layout),
-                if (layout == HorizonOptions.activeMapLayout(settings)) layoutLabel
-                else getString(R.string.wheel_menu_map_layout_pending, layoutLabel)) {
+            // Switches live, also while a phone is projecting.
+            WheelMenu.Item(getString(R.string.wheel_menu_map_layout), getString(HorizonOptions.find(HorizonOptions.MAP_LAYOUTS, layout).label)) {
                 HorizonOptions.setMapLayout(this, HorizonOptions.next(HorizonOptions.MAP_LAYOUTS, layout))
             })
         // The map can only be switched while a phone is projecting.
@@ -112,7 +108,7 @@ class WheelMenuService : AccessibilityService() {
 
     private fun onChange(state: WheelMenu.State) {
         try {
-            file.write(state, settings.horizonLeftCard, settings.horizonPowerStyle, HorizonOptions.activeMapLayout(settings))
+            file.write(state, settings.horizonLeftCard, settings.horizonPowerStyle, settings.horizonMapLayout)
         } catch (e: Exception) {
             AppLog.w("WheelMenu: could not write the menu file: ${e.message}")
         }

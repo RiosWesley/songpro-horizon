@@ -40,14 +40,16 @@ app, continua lá, mas fica escondido. Um toque longo em **Painel BYD** abre as 
 - **Formato do mapa:** **Janela** (no centro do Horizon, com o ADAS e os cards em volta) ou **Tela
   cheia** (o mapa no painel inteiro; o Horizon vira só uma moldura com velocidade, marcha e
   potência em cima e a barra de baixo). Troque em **Painel BYD → Mapa no painel → Trocar** ou pelo
-  menu no volante. Vale a partir da **próxima conexão do celular** (o vídeo do mapa é combinado com o
-  celular na conexão). Até lá, o menu mostra o formato novo com "(ao reconectar)".
+  menu no volante. Muda **na hora**, também com o celular conectado e o carro andando: com o Horizon,
+  o vídeo do mapa é sempre combinado para o painel inteiro, e trocar o formato só move a imagem
+  (66 px para cima na janela, para a seta do carro cair dentro dela), muda o recorte do Horizon e
+  avisa o celular onde pôr os cartões.
 - O mapa e o botão flutuante são janelas sobrepostas, que precisam da permissão de sobreposição
   (`SYSTEM_ALERT_WINDOW`). Uma instalação nova começa sem ela, e sem ela o painel abre a projeção
   mas fica um quadro preto. Por isso o app a concede a si mesmo pelo ADB local quando o celular conecta.
-- Nos dois formatos, o vídeo do mapa é um pouco maior que a área livre e o Horizon esfuma por cima
-  dessa sobra; o app pede ao celular (insets de conteúdo do Android Auto) que mantenha os cartões de
-  manobra e de chegada na área livre. *Não confirmado no carro:* se o Android Auto respeita esses
+- Nos dois formatos, o vídeo do mapa é maior que a área livre e o Horizon esfuma por cima dessa
+  sobra; o app pede ao celular (insets de conteúdo do Android Auto) que mantenha os cartões de
+  manobra e de chegada na área livre, e repete o pedido a cada troca de formato. *Não confirmado no carro:* se o Android Auto respeita esses
   insets no painel de instrumentos.
 - Ao instalar, o app já ajusta o mapa para a janela central do Horizon. Ao voltar ao original, o
   mapa volta à faixa livre do painel de fábrica.

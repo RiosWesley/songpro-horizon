@@ -3,6 +3,7 @@ package com.andrerinas.openheadunit.byd.theme
 import android.content.Context
 import androidx.annotation.StringRes
 import com.andrerinas.openheadunit.R
+import com.andrerinas.openheadunit.aap.cluster.ClusterDisplayOutput
 import com.andrerinas.openheadunit.byd.BydClusterMap
 import com.andrerinas.openheadunit.byd.wheel.HorizonMenuFile
 import com.andrerinas.openheadunit.byd.wheel.WheelMenu
@@ -37,14 +38,15 @@ object HorizonOptions {
 
     fun next(options: List<Option>, key: String): String = options[(options.indexOf(find(options, key)) + 1) % options.size].key
 
-    /** The layout the theme must draw: the one the current connection was set up for. */
-    fun activeMapLayout(settings: Settings): String = BydClusterMap.sessionLayout ?: settings.horizonMapLayout
-
-    /** A new map layout: kept, and the map refitted for the next connection. */
+    /**
+     * A new map layout, applied live: the map refitted and, during a connection, moved on the
+     * cluster with the phone told where its cards go. The theme follows with the next menu.json.
+     */
     fun setMapLayout(context: Context, key: String) {
         val settings = Settings(context)
         settings.horizonMapLayout = key
         BydClusterMap.fitTo(settings, horizon = true)
+        ClusterDisplayOutput.relayout()
     }
 
     /** Hands the current choices to the theme now, with the menu closed (a change made in the app). */
@@ -52,7 +54,7 @@ object HorizonOptions {
         val settings = Settings(context)
         try {
             HorizonMenuFile().write(WheelMenu.State(false, 0, emptyList()), settings.horizonLeftCard, settings.horizonPowerStyle,
-                activeMapLayout(settings))
+                settings.horizonMapLayout)
         } catch (e: Exception) {
             AppLog.w("HorizonOptions: could not write the menu file: ${e.message}")
         }

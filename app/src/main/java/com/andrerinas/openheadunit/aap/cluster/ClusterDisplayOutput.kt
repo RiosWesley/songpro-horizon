@@ -35,9 +35,12 @@ internal object ClusterDisplayOutput {
     private var appContext: Context? = null
     private var displayManager: DisplayManager? = null
     private var presentation: Presentation? = null
+    private var mapView: ClusterMapView? = null
     private var onSurfaceReady: (() -> Unit)? = null
+    private var onLayoutChanged: (() -> Unit)? = null
     // The map area for this session: the phone's stream was negotiated for it, so a change in the
-    // settings mid-session waits for the next connection.
+    // settings mid-session waits for the next connection. Its position (cluster_map_shift_y) and
+    // the content insets do not: see relayout.
     private var sessionRect: String? = null
 
     private val decoder = ClusterStreamDecoder(TAG) {
@@ -55,12 +58,14 @@ internal object ClusterDisplayOutput {
     /**
      * Starts showing the cluster map, now or as soon as the cluster display appears.
      * [onSurfaceReady] runs each time a new surface is up; it should ask the phone for a keyframe.
+     * [onLayoutChanged] runs after [relayout]; it should send the phone the new content insets.
      */
-    fun start(context: Context, onSurfaceReady: () -> Unit) = main.post {
+    fun start(context: Context, onSurfaceReady: () -> Unit, onLayoutChanged: () -> Unit) = main.post {
         if (appContext != null) return@post
         appContext = context.applicationContext
         sessionRect = Settings(context).clusterDisplayRect
         this.onSurfaceReady = onSurfaceReady
+        this.onLayoutChanged = onLayoutChanged
         val dm = context.getSystemService(DisplayManager::class.java)
         displayManager = dm
         dm.registerDisplayListener(displayListener, main)
@@ -74,6 +79,17 @@ internal object ClusterDisplayOutput {
         appContext = null
         sessionRect = null
         onSurfaceReady = null
+        onLayoutChanged = null
+    }
+
+    /**
+     * Applies a new layout mid-session: the picture moves to cluster_map_shift_y and the phone is
+     * sent cluster_content_insets. Nothing happens between connections; the next one starts with both.
+     */
+    fun relayout() = main.post {
+        val ctx = appContext ?: return@post
+        mapView?.translationY = Settings(ctx).clusterMapShiftY.toFloat()
+        onLayoutChanged?.invoke()
     }
 
     /**
@@ -119,15 +135,17 @@ internal object ClusterDisplayOutput {
 
         // The same geometry ServiceDiscovery announced, so the crop matches the phone's margins.
         val geometry = ClusterVideoGeometry.forArea(area.width(), area.height())
-        val mapView = ClusterMapView(ctx, geometry, ::onMapSurface).apply {
+        val view = ClusterMapView(ctx, geometry, ::onMapSurface).apply {
             layoutParams = FrameLayout.LayoutParams(area.width(), area.height()).apply {
                 leftMargin = area.left
                 topMargin = area.top
             }
+            translationY = Settings(ctx).clusterMapShiftY.toFloat()
         }
+        mapView = view
         val root = FrameLayout(ctx).apply {
             setBackgroundColor(Color.BLACK)
-            addView(mapView)
+            addView(view)
         }
         return Presentation(ctx, display).apply {
             window?.setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY)
@@ -146,6 +164,7 @@ internal object ClusterDisplayOutput {
             presentation?.dismiss()
         } catch (_: Exception) {}
         presentation = null
+        mapView = null
         decoder.release()
     }
 }

@@ -9,6 +9,7 @@ import com.andrerinas.openheadunit.aap.ClusterOverlay
 import com.andrerinas.openheadunit.aap.ClusterVideoStreamer
 import com.andrerinas.openheadunit.aap.cluster.ClusterDisplayOutput
 import com.andrerinas.openheadunit.aap.cluster.ClusterMapToggle
+import com.andrerinas.openheadunit.aap.cluster.ClusterUiConfig
 import com.andrerinas.openheadunit.aap.cluster.nowplaying.ClusterNowPlaying
 import com.andrerinas.openheadunit.aap.ms9120.Ms9120Manager
 import com.andrerinas.openheadunit.input.KeyCode
@@ -566,16 +567,16 @@ class CommManager(
                     ClusterVideoStreamer.frameListener = { data, offset, length ->
                         ClusterDisplayOutput.onUnit(data, offset, length)
                     }
-                    ClusterDisplayOutput.start(context) {
-                        _scope.launch { requestClusterKeyframe() }
-                    }
+                    ClusterDisplayOutput.start(context,
+                        onSurfaceReady = { _scope.launch { requestClusterKeyframe() } },
+                        onLayoutChanged = { _scope.launch { sendClusterUiConfig() } })
                     // Switches the car's cluster to the projection (or leaves it native) as the
                     // floating button was last left, and shows that button.
                     ClusterMapToggle.onSessionStart(context)
                     if (settings.clusterNowPlaying) {
                         ClusterNowPlaying.start(context, settings.clusterLyrics)
                     }
-                    // Tells the cluster theme which map layout this connection was set up for.
+                    // Tells the cluster theme the current choices (map layout, power gauge, card).
                     com.andrerinas.openheadunit.byd.BydClusterMap.onSessionStart(context)
                 } else if (settings.showClusterOnMainDisplay) {
                     // Debug: render the dedicated cluster stream in a small floating window ON TOP
@@ -939,6 +940,15 @@ class CommManager(
         transport.send(VideoFocusEvent(gain = true, unsolicited = true, channel = Channel.ID_VID_CLUSTER))
     }
 
+    /** A new cluster map layout mid-session: the phone is told where its cards go now. */
+    private fun sendClusterUiConfig() {
+        val transport = _transport ?: return
+        if (_connectionState.value !is ConnectionState.TransportStarted) return
+        val request = ClusterUiConfig.request(settings) ?: return
+        transport.send(request)
+        AppLog.i("CommManager: sent cluster UI config with content insets (${settings.clusterContentInsets})")
+    }
+
     // -----------------------------------------------------------------------------------------
     // Disconnect
     // -----------------------------------------------------------------------------------------
@@ -1036,7 +1046,6 @@ class CommManager(
             ClusterVideoStreamer.stop()
             ClusterMapToggle.onSessionEnd(context)
             ClusterNowPlaying.stop()
-            com.andrerinas.openheadunit.byd.BydClusterMap.onSessionEnd()
             ClusterDisplayOutput.stop()
             // Stop the cluster pipeline but keep the dongle up showing the idle screen, in case the
             // user has MS9120 output enabled and will connect a phone again.

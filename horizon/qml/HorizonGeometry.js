@@ -21,9 +21,10 @@ var native = {
 // left above a compact music card, energy on the right.
 var map = {
     // Centred under the speed, close to the phone cluster UI's own proportions (500x292 physical):
-    // where the map is fully clear. The phone's picture is taller (`video`, the app's
-    // cluster_display_rect): it runs on under the backdrop, which fades over that margin, and the
-    // phone is told to keep its cards inside `hole` (content insets).
+    // where the map is fully clear. The backdrop opens `video` over the phone's picture and fades
+    // over the margin round `hole`. The picture always covers the whole panel (so the app can switch
+    // layouts live), moved 66 physical px up in this layout; the phone is told to keep its cards
+    // inside `hole` (content insets; the app's ClusterMapArea).
     hole:      { x: 585,  y: 150, width: 750, height: 438 },
     video:     { x: 585,  y: 102, width: 750, height: 516 },
     adasMini:  { x: 124,  y: 160, width: 425, height: 252 },
@@ -44,7 +45,7 @@ var full = {
     menu:      { x: 124, y: 190, width: 430, height: 330 }
 }
 
-// What open-headunit must be told: the map hole in physical display pixels (cluster_display_rect).
+// A design rect in physical display pixels (the app's ClusterMapArea uses these).
 function physical(r) {
     return { x: Math.round(r.x * 2 / 3), y: Math.round(r.y * 2 / 3),
              width: Math.round(r.width * 2 / 3), height: Math.round(r.height * 2 / 3) }

@@ -70,6 +70,7 @@ class BydPanelFragment : Fragment() {
         BydOptionRow(view, R.id.byd_map_layout, R.id.byd_map_layout_change, R.string.wheel_menu_map_layout, R.string.byd_map_layout,
             HorizonOptions.MAP_LAYOUTS, { settings.horizonMapLayout }) { key ->
             HorizonOptions.setMapLayout(requireContext().applicationContext, key)
+            HorizonOptions.publish(requireContext().applicationContext)
         }
         showAaState()
         refreshTheme()

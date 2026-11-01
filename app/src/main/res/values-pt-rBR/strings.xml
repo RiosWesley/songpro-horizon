@@ -1092,9 +1092,8 @@
     <string name="byd_power_style">Medidor de potência: %1$s</string>
     <string name="byd_power_style_change">Trocar</string>
     <string name="wheel_menu_map_layout">Formato do mapa</string>
-    <string name="wheel_menu_map_layout_pending">%1$s (ao reconectar)</string>
     <string name="map_layout_window">Janela</string>
     <string name="map_layout_full">Tela cheia</string>
     <string name="byd_map_layout">Mapa no painel: %1$s</string>
-    <string name="byd_map_layout_hint">O formato do mapa vale a partir da próxima conexão do celular.</string>
+    <string name="byd_map_layout_hint">O formato do mapa muda na hora, também com o celular conectado.</string>
 </resources>

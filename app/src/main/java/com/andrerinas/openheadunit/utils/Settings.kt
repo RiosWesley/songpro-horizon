@@ -209,6 +209,11 @@ class Settings(private val context: Context) {
         get() = prefs.getString("cluster_content_insets", "") ?: ""
         set(value) { prefs.edit().putString("cluster_content_insets", value).apply() }
 
+    /** Moves the cluster map picture up (negative) or down on the cluster display, in pixels. */
+    var clusterMapShiftY: Int
+        get() = prefs.getInt("cluster_map_shift_y", 0)
+        set(value) { prefs.edit().putInt("cluster_map_shift_y", value).apply() }
+
     // The Horizon map: "window" (the centre window) or "full" (under the whole panel), from the
     // next connection on; and whether this app found Horizon installed.
     var horizonMapLayout: String
