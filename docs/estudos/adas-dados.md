@@ -38,6 +38,11 @@ Levantamento de 2026-10-31, só leitura (nada foi escrito no carro).
   /data/logs/cluster_fission_screencap_%s.png`. Falta ver se a multimídia tem esse comando.
 - **Filtro dos alvos:** ver acima: posição com `TYPE` fora de 1..4 é descartada antes do QML. O que a câmera
   manda sem ACC só se vê no quadro `0x295` cru, que nem o QML nem o Android recebem.
+- **Logs do painel (`/data/logs/host`), testado em 2026-11-01:** fechados. O shell não lê nem faz `stat` de
+  `/data/logs` (SELinux). Quem lê é o `BydLogTool` da BYD (uid system), que grava zips "All…" de ~95 MB em
+  `/storage/emulated/0/logs` (80 no carro, até 13/10). Esses zips trazem o `aplog` do lado painel, mas
+  `host/clusterlogs` e `host/spilogs` vêm vazios (desligados), e **todos os arquivos vêm cifrados** (AES, com a
+  chave cifrada para a BYD no comentário do zip). Por aqui não se chega às linhas `receive:` cruas.
 
 ## Leitura pela multimídia
 
