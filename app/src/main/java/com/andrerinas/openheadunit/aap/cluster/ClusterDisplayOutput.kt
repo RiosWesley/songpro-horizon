@@ -87,6 +87,9 @@ internal object ClusterDisplayOutput {
 
     @Volatile private var visible = true
 
+    /** Tries the map again if it is wanted but not up, e.g. once the overlay grant has arrived. */
+    fun retry() = main.post { showIfPossible() }
+
     /** Called on the reader thread for each reassembled access unit. */
     fun onUnit(data: ByteArray, offset: Int, length: Int) = decoder.onUnit(data, offset, length)
 

@@ -37,8 +37,14 @@ internal object ClusterMapToggle {
 
     fun onSessionStart(context: Context) {
         sessionActive = true
-        apply(context.applicationContext, isOn(context))
-        ClusterToggleButton.show(context)
+        val app = context.applicationContext
+        // The map and the button are overlays, so the grant comes first.
+        scope.launch {
+            OverlayGrant.ensure(app)
+            if (!sessionActive) return@launch
+            apply(app, isOn(app))
+            ClusterToggleButton.show(app)
+        }
     }
 
     fun onSessionEnd(context: Context) {
@@ -70,11 +76,17 @@ internal object ClusterMapToggle {
                 if (target == applied) return@withLock
                 // An "off" arriving mid-masking cuts the pass short; the projection is open by then,
                 // so `show` still reports on and the next reconcile closes it.
-                val ok = if (target) ClusterPanelControl.show(context) { wanted == true }
-                    else ClusterPanelControl.hide(context)
+                val ok = if (target) showMap(context) else ClusterPanelControl.hide(context)
                 // A failed command leaves the panel state unknown, so the next request retries.
                 applied = if (ok) target else null
             }
         }
+    }
+
+    /** Without the overlay grant the cluster would only open a black frame, so it is not opened. */
+    private suspend fun showMap(context: Context): Boolean {
+        if (!OverlayGrant.ensure(context)) return false
+        ClusterDisplayOutput.retry()
+        return ClusterPanelControl.show(context) { wanted == true }
     }
 }

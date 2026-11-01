@@ -1243,6 +1243,7 @@
     <string name="byd_power_style">Power gauge: %1$s</string>
     <string name="byd_power_style_change">Change</string>
     <string name="wheel_menu_map_layout">Map layout</string>
+    <string name="wheel_menu_map_layout_pending">%1$s (on reconnect)</string>
     <string name="map_layout_window">Window</string>
     <string name="map_layout_full">Full screen</string>
     <string name="byd_map_layout">Map on the cluster: %1$s</string>
