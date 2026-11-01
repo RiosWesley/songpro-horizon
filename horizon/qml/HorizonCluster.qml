@@ -39,8 +39,6 @@ Item {
 
     HorizonData { id: car }
     HorizonMenuFeed { id: menuFeed; directory: car.mediaDirectory }
-    // Off unless asked over adb (see AdasRecorder): records the ADAS values the cluster receives.
-    AdasRecorder { directory: car.mediaDirectory }
     HorizonTheme { id: theme; night: car.night }
 
     Timer {

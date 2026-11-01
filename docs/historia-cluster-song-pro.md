@@ -490,6 +490,11 @@ lê do seu lado, e não chegam ao `autoservice` da multimídia. O caminho "a mul
 fechado. A única pista do lado do painel é o `DataSource.aheadDistance`, que o diagnóstico da v8diag já mostrava;
 nada útil foi anotado dele.
 
+**7. Gravar do lado do painel também não deu.** Um gravador no próprio tema (`22c102f8…`) tentava tirar esses valores
+gravando um arquivo e mandando pela rede para a multimídia. Ligado, derrubou o renderizador a cada ~8 s ("ELKA OFF")
+sem tirar nenhum dado; apagar o comando parou as quedas na hora. O gravador foi removido. Detalhes em
+[estudos/adas-dados.md](estudos/adas-dados.md).
+
 **Becos sem saída:** os pacotes de log da BYD em `/sdcard/logs` são cifrados com AES. O argumento do dono de que o
 BYD King mostra o carro da frente sem ACC (mesmo chipset) **não foi verificado**.
 

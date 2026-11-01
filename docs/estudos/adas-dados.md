@@ -48,10 +48,10 @@ duas vezes; o painel mostrou um veículo nas duas. Resultado: **todos** os sinai
 (`0x13300023` = 2, `0x44100008` = 0, `0x4A50502C` = 22, `0x12D0002A` = 2). Os quadros do ADAS não chegam à
 multimídia: o painel os lê do seu lado. A leitura pela multimídia não serve para os alvos.
 
-## Gravador no próprio painel (Horizon)
+## Gravador no próprio painel (Horizon) — tentado e removido
 
-Como a multimídia não vê os alvos, o tema grava o que o painel recebe: `horizon/qml/AdasRecorder.qml`, desligado
-até o arquivo de comando `/sdcard/.cluster/horizon/adas-rec.json` pedir:
+Como a multimídia não vê os alvos, o tema passou a gravar o que o painel recebe (`AdasRecorder.qml`, commit
+`0fbdfb48`), desligado até o arquivo de comando `/sdcard/.cluster/horizon/adas-rec.json` pedir:
 
 ```json
 { "on": true, "id": "volta1", "urls": ["http://127.0.0.1:8765/lo", "http://<ip-da-multimídia>:8765/wlan"] }
@@ -73,4 +73,6 @@ faixas e os 7 slots (estado, x, y). A cada 5 s ele tenta duas saídas, porque ne
 ("ELKA OFF", `AutoContainerServiceNative died` no logcat), começando logo depois da primeira descarga (5 s).
 Nenhum pedaço foi gravado e nada chegou ao `AdasRecSink`. Apagar o arquivo de comando parou as quedas na hora;
 sem o arquivo o gravador fica parado e o tema é estável. Ainda não se sabe se quem derruba é o `PUT` ou o `POST`.
-**Não ligar o gravador com o carro andando.**
+Por isso o gravador e o `AdasRecSink` **saíram do tema e do repositório**; o carrier `22c102f8…` ainda tem o
+gravador, parado (sem o arquivo de comando ele não faz nada). **Não criar o `adas-rec.json` no carro.** Nenhum
+dado saiu do painel: até hoje ele só **lê** arquivos da multimídia.

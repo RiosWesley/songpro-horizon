@@ -1,5 +1,5 @@
 #!/bin/sh
-# Build adas-probe.dex (AdasProbe and AdasRecSink; offline, nothing touches the car).
+# Build adas-probe.dex (offline, nothing touches the car).
 #   ANDROID_SDK (default ~/Android/Sdk), PLATFORM (default android-36), BUILD_TOOLS (default 36.0.0)
 set -e
 HERE=$(cd "$(dirname "$0")" && pwd)
