@@ -93,19 +93,19 @@ object AdbManager {
             // proper detachment) would otherwise be read until the process dies — potentially never,
             // freezing whatever UI is waiting on the result. Bound the read to a hard timeout.
             val readStart = System.currentTimeMillis()
-            while (!activeStream.isClosed) {
+            // Read until read() reports the stream closed AND drained: the last output often
+            // arrives together with the close, and stopping at isClosed lost it.
+            while (true) {
                 if (System.currentTimeMillis() - readStart > maxReadMs) {
                     AppLog.w("AdbManager: read timed out after ${maxReadMs}ms for '$command' — closing stream.")
                     break
                 }
-                try {
-                    val data = activeStream.read()
-                    if (data.isNotEmpty()) {
-                        outputBuilder.append(String(data, StandardCharsets.UTF_8))
-                    }
+                val data = try {
+                    activeStream.read()
                 } catch (e: Exception) {
                     break
                 }
+                outputBuilder.append(String(data, StandardCharsets.UTF_8))
             }
 
             var resultStr = outputBuilder.toString().trim()

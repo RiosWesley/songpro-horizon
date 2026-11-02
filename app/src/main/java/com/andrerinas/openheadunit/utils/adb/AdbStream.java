@@ -53,20 +53,22 @@ public class AdbStream implements Closeable {
         }
     }
 
+    /**
+     * The next payload; once the stream is closed, what is still queued first, then IOException.
+     * A command's last output and the close often arrive together, so a closed stream may still
+     * hold data.
+     */
     public byte[] read() throws IOException, InterruptedException {
-        byte[] payload = null;
+        byte[] payload;
         synchronized (this.readQueue) {
-            while (!this.isClosed && (payload = this.readQueue.poll()) == null) {
+            while ((payload = this.readQueue.poll()) == null && !this.isClosed) {
                 this.readQueue.wait();
             }
-            if (payload != null) {
-                return payload;
-            }
-            if (this.isClosed) {
-                throw new IOException("Stream closed");
-            }
         }
-        return new byte[0];
+        if (payload == null) {
+            throw new IOException("Stream closed");
+        }
+        return payload;
     }
 
     public void readyForWrite() {
