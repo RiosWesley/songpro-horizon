@@ -111,9 +111,19 @@ próprio painel como o momento de cor.
   1280×720, diz ao celular que a área livre é ela toda (a seta fica na linha 360 e os cartões perto do
   topo e do pé, ~98 px para dentro) e desenha só a faixa do meio, das linhas 175 a 545. Cada formato
   põe essa faixa na sua abertura: Tela cheia em tamanho real, Janela a 0,93 e Lateral a 0,876, para
-  cobrir também as bordas esfumadas. No build de depuração, `ClusterLayoutProbe` troca a área, a
-  posição e a faixa ao vivo pelo ADB, e o app salva uma captura do painel alguns segundos depois de o
-  mapa aparecer ou mudar de formato (`/data/local/tmp/horizon-map-<formato>.png`).
+  cobrir também as bordas esfumadas. No build de depuração, `ClusterLayoutProbe` troca a área livre e
+  a posição ao vivo pelo ADB, e o app salva uma captura do painel alguns segundos depois de o mapa
+  aparecer ou mudar de formato (`/data/local/tmp/horizon-map-<formato>.png`).
+- **Ajuste fino do mapa** (avançado, em **Painel → Ajuste fino do mapa**): para experimentar sem
+  compilar o app de novo. Cada formato guarda os próprios valores, e o formato escolhido na tela é o
+  que o painel mostra.
+  - **Ao vivo:** com o Android Auto conectado, o painel muda na hora. Dá para mexer na escala (sempre
+    proporcional, para não distorcer o mapa), na posição horizontal e vertical e no corte em cima,
+    embaixo e dos lados, que define a largura e a altura visíveis.
+  - **Na próxima conexão:** o DPI do mapa, um só para os três formatos, porque eles trocam ao vivo
+    sobre a mesma imagem do celular. DPI menor mostra mais mapa, com seta, ruas e cartões menores;
+    depois de mudar, reajuste o corte.
+  - **Voltar ao padrão** deste formato, ou de tudo: os valores medidos no carro.
 - **Ligar o mapa:** pelo menu no volante ("Mapa no painel"). Não há mais botão na tela.
 - O mapa é uma janela sobreposta, que precisa da permissão de sobreposição
   (`SYSTEM_ALERT_WINDOW`). Uma instalação nova começa sem ela, e sem ela o painel abre a projeção

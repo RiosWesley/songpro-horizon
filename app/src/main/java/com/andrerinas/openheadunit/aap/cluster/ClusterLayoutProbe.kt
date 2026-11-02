@@ -14,9 +14,10 @@ import com.andrerinas.openheadunit.utils.Settings
  * Debug builds only: the content insets and the picture's placement, set live from the PC, so where
  * the phone puts its cards can be measured on the car without a build per try:
  *
- *   adb shell am broadcast -a com.rioswesley.songprohorizon.CLUSTER_PROBE --es insets 1,1,1,1 --es placement 0.8,128,-42 --es rows 175,545
+ *   adb shell am broadcast -a com.rioswesley.songprohorizon.CLUSTER_PROBE --es insets 1,1,1,1 --es placement 0.8,128,-42
  *
- * (`am` refuses an empty value, so full size is `--es placement 1,0,0`; `rows` is the band drawn.)
+ * (`am` refuses an empty value, so full size is `--es placement 1,0,0`. The part of the picture drawn
+ * is tuned in the app: Painel → Ajuste fino do mapa.)
  * Each change is applied like a layout switch ([ClusterDisplayOutput.relayout]). The values hold
  * until the next layout switch or app start, which fit the map again. `--es cycle after` runs the
  * cluster focus cycle a new picture gets (insets sent after it); `--es cycle first` sends them before too.
@@ -35,12 +36,10 @@ internal object ClusterLayoutProbe {
             val settings = Settings(context)
             val insets = intent.getStringExtra("insets")
             val placement = intent.getStringExtra("placement")
-            val rows = intent.getStringExtra("rows")?.split(",")?.mapNotNull { it.trim().toIntOrNull() }
             insets?.let { settings.clusterContentInsets = it }
             placement?.let { settings.clusterMapPlacement = it }
-            if (rows?.size == 2) ClusterMapArea.probeCardFreeRows = rows[0]..rows[1]
-            AppLog.i("ClusterLayoutProbe: insets ${settings.clusterContentInsets}, placement ${settings.clusterMapPlacement}, rows ${ClusterMapArea.probeCardFreeRows}")
-            if (insets != null || placement != null || rows != null) ClusterDisplayOutput.relayout()
+            AppLog.i("ClusterLayoutProbe: insets ${settings.clusterContentInsets}, placement ${settings.clusterMapPlacement}")
+            if (insets != null || placement != null) ClusterDisplayOutput.relayout()
             intent.getStringExtra("cycle")?.let {
                 App.provide(context).commManager.probeClusterFocusCycle(insetsFirst = it == "first")
             }

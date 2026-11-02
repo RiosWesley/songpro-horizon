@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.andrerinas.openheadunit.R
 import com.andrerinas.openheadunit.byd.BydClusterMap
 import com.andrerinas.openheadunit.byd.BydNativeAndroidAuto
@@ -74,6 +75,7 @@ class BydPanelFragment : Fragment() {
             HorizonOptions.setMapLayout(requireContext().applicationContext, it)
             publish()
         }
+        view.findViewById<View>(R.id.hz_map_tune_open).setOnClickListener { findNavController().navigate(R.id.mapTuneFragment) }
         showPowerTiles(view.findViewById(R.id.hz_power_tiles))
         refreshTheme()
     }

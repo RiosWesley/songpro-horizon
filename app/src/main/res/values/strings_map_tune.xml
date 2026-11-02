@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cluster → Map fine tuning (MapTuneFragment). -->
+<resources>
+    <string name="hz_tune_title">Map fine tuning</string>
+    <string name="hz_tune_entry_hint">Advanced: each layout\'s scale, position, visible area and density, to experiment with.</string>
+    <string name="hz_tune_open">Adjust</string>
+    <string name="hz_tune_lead">With Android Auto connected and the map on the cluster, every change shows at once. Each layout keeps its own values, and the layout chosen here is the one the cluster shows.</string>
+    <string name="hz_tune_needs_horizon">The tuning applies with Horizon installed. The values are kept until then.</string>
+    <string name="hz_tune_layout">Layout</string>
+    <string name="hz_tune_step">Step</string>
+    <string name="hz_tune_step_fine">Fine</string>
+    <string name="hz_tune_step_coarse">Coarse</string>
+    <string name="hz_tune_picture">Phone picture</string>
+    <string name="hz_tune_picture_hint">Scaling is always even: stretching one way only would distort the map.</string>
+    <string name="hz_tune_scale">Scale</string>
+    <string name="hz_tune_scale_value">%1$.3f×</string>
+    <string name="hz_tune_x">Horizontal</string>
+    <string name="hz_tune_y">Vertical</string>
+    <string name="hz_tune_px">%1$d px</string>
+    <string name="hz_tune_visible">Visible area</string>
+    <string name="hz_tune_visible_size">Visible width × height: %1$d × %2$d px of the phone picture. How much of it shows; this is what keeps the route cards out.</string>
+    <string name="hz_tune_cut_top">Cut at the top</string>
+    <string name="hz_tune_cut_bottom">Cut at the bottom</string>
+    <string name="hz_tune_cut_left">Cut on the left</string>
+    <string name="hz_tune_cut_right">Cut on the right</string>
+    <string name="hz_tune_density">Density (all layouts)</string>
+    <string name="hz_tune_density_hint">Applies from the phone\'s next connection. Lower: more map, with a smaller arrow, streets and cards; higher: the opposite. After a change, adjust the cut again.</string>
+    <string name="hz_tune_dpi">Map DPI</string>
+    <string name="hz_tune_dpi_default">%1$d (default)</string>
+    <string name="hz_tune_less">Less</string>
+    <string name="hz_tune_more">More</string>
+    <string name="hz_tune_reset">Back to this layout\'s default</string>
+    <string name="hz_tune_reset_all">Reset everything</string>
+    <string name="hz_tune_reset_all_message">The three layouts and the density go back to the values measured on the car.</string>
+</resources>

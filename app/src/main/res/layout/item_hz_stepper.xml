@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One adjustable value: what it is, then - / value / +. Held, the buttons repeat (HzStepper). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="80dp"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/hz_card_padding"
+    android:paddingTop="12dp"
+    android:paddingEnd="@dimen/hz_card_padding"
+    android:paddingBottom="12dp">
+
+    <TextView
+        android:id="@+id/hz_stepper_label"
+        style="@style/HzText.Label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/hz_stepper_minus"
+        style="@style/HzButton.Secondary"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/hz_tune_less"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:text="&#8722;"
+        android:textSize="26sp" />
+
+    <TextView
+        android:id="@+id/hz_stepper_value"
+        style="@style/HzText.Figure"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:gravity="center" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/hz_stepper_plus"
+        style="@style/HzButton.Secondary"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/hz_tune_more"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:text="+"
+        android:textSize="26sp" />
+</LinearLayout>

@@ -276,6 +276,52 @@
                     app:singleSelection="true" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/hz_card_padding"
+                android:layout_marginEnd="@dimen/hz_card_padding"
+                android:background="@color/hz_hairline" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/hz_row_height"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/hz_card_padding"
+                android:paddingTop="16dp"
+                android:paddingEnd="@dimen/hz_card_padding"
+                android:paddingBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/HzText.Label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hz_tune_title" />
+                    <TextView
+                        style="@style/HzText.Hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/hz_tune_entry_hint" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/hz_map_tune_open"
+                    style="@style/HzButton.Secondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hz_tune_open" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

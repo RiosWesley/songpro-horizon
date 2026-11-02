@@ -4,7 +4,6 @@ import android.app.Presentation
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Point
-import android.graphics.Rect
 import android.hardware.display.DisplayManager
 import android.os.Handler
 import android.os.Looper
@@ -100,10 +99,18 @@ internal object ClusterDisplayOutput {
         presentation?.display?.let { ClusterMapSnapshot.schedule(ctx, it.displayId) }
     }
 
-    /** Scales the picture from its top-left corner, then moves it; with Horizon only its card-free rows show. */
+    /**
+     * Re-places the picture after a fine-tuning change (Painel → Ajuste fino do mapa). The phone is
+     * not told: its content area stays the same, and a burst of UiConfig messages unsettles it.
+     */
+    fun reposition() = main.post {
+        val ctx = appContext ?: return@post
+        mapView?.let { place(it, Settings(ctx)) }
+    }
+
+    /** Scales the picture from its top-left corner, then moves it; with Horizon only its visible part shows. */
     private fun place(view: View, settings: Settings) {
-        val rows = ClusterMapArea.cardFreeRows(settings)
-        view.clipBounds = rows?.let { Rect(0, it.first, 4096, it.last) }
+        view.clipBounds = ClusterMapArea.visibleArea(settings)
         val (scale, x, y) = ClusterMapArea.parsePlacement(settings.clusterMapPlacement)
         view.pivotX = 0f
         view.pivotY = 0f

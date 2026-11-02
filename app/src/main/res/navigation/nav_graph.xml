@@ -229,6 +229,11 @@
         android:name="com.andrerinas.openheadunit.main.BydPanelFragment"
         android:label="@string/hz_nav_cluster" />
 
+    <fragment
+        android:id="@+id/mapTuneFragment"
+        android:name="com.andrerinas.openheadunit.main.MapTuneFragment"
+        android:label="@string/hz_tune_title" />
+
     <!-- Song Pro Horizon's other sections (HorizonSidebar) -->
     <fragment
         android:id="@+id/androidAutoFragment"

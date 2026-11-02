@@ -23,6 +23,8 @@ internal class HorizonSidebar(private val activity: Activity, private val nav: N
         R.id.hz_nav_aa to R.id.androidAutoFragment,
         R.id.hz_nav_wheel to R.id.wheelFragment,
         R.id.hz_nav_about to R.id.horizonAboutFragment)
+    // Screens opened from a section: the sidebar stays, with their section marked.
+    private val subscreens = mapOf(R.id.mapTuneFragment to R.id.bydPanelFragment)
 
     init {
         for ((row, destination) in sections) activity.findViewById<View>(row).setOnClickListener { open(destination) }
@@ -58,7 +60,8 @@ internal class HorizonSidebar(private val activity: Activity, private val nav: N
             .build())
     }
 
-    private fun show(destination: Int) {
+    private fun show(shown: Int) {
+        val destination = subscreens[shown] ?: shown
         val visibility = if (destination in sections.values) View.VISIBLE else View.GONE
         sidebar.visibility = visibility
         edge.visibility = visibility

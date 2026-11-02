@@ -221,6 +221,20 @@ class Settings(private val context: Context) {
         get() = prefs.getString("horizon_map_layout", "window") ?: "window"
         set(value) { prefs.edit().putString("horizon_map_layout", value).apply() }
 
+    // Per Horizon map layout ("window", "side", "full"): its fine tuning,
+    // "scale,x,y,left,top,right,bottom"; blank is the default. See ClusterMapTune.
+    fun clusterMapTune(layout: String): String = prefs.getString("cluster_map_tune_$layout", "") ?: ""
+
+    fun setClusterMapTune(layout: String, value: String) {
+        prefs.edit().putString("cluster_map_tune_$layout", value).apply()
+    }
+
+    // The density the phone draws the Horizon map with, for every layout; 0 is
+    // BydClusterMap.HORIZON_MAP_DPI. Takes effect from the next connection.
+    var horizonMapDpi: Int
+        get() = prefs.getInt("horizon_map_dpi", 0)
+        set(value) { prefs.edit().putInt("horizon_map_dpi", value).apply() }
+
     // The cluster's Simples slot: "horizon", or "factory" for the factory Simples Horizon replaced.
     // From "factory" only the app brings Horizon back (its wheel menu is part of Horizon).
     var horizonSkin: String

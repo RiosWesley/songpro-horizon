@@ -19,48 +19,24 @@ internal object ClusterMapArea {
     /**
      * With Horizon the phone always draws one picture, 1280x720 (the whole cluster stream, no margins),
      * so its three layouts switch live: only where the picture sits ("scale,x,y": scaled from its
-     * top-left corner, then moved; see parsePlacement) changes.
+     * top-left corner, then moved; see parsePlacement) and the part of it drawn change, per layout
+     * ([ClusterMapTune], fine-tuned in the app).
      *
      * Measured on the car with a route (2026-11-01, ClusterLayoutProbe): the phone centres the car
      * arrow in the content area and keeps its turn card's top and arrival card's bottom about 98 px
      * inside the area's top and bottom edges (each card about 71 px tall). An area too small for the
      * cards is not taken at all (the arrow drops to the phone's own default, ~82% down), so the cards
      * cannot be turned off; and the head unit already shows the turn, distance and time. So the area
-     * is the whole picture: the arrow sits on row 360, the cards on rows ~98..169 and ~551..622, and
-     * only the rows between them ([HORIZON_CARD_FREE_TOP]..[HORIZON_CARD_FREE_BOTTOM]) are drawn.
-     * Each layout places that band so the arrow lands in the middle of Horizon's opening.
-     *
-     * Full screen: the picture at full size, the arrow midway between the speed band (y 113) and
-     * the bottom bar (y 393); the band covers y 68..438.
+     * is the whole picture and the cards' rows are left out of the part drawn.
      */
     const val HORIZON_OVERSCAN = 240
     const val HORIZON_FULL = "0,0,1280,720"
     const val HORIZON_INSETS = "1,1,1,1"
-    const val HORIZON_CARD_FREE_TOP = 175
-    const val HORIZON_CARD_FREE_BOTTOM = 545
-    const val HORIZON_FULL_PLACEMENT = "1,0,-107"
 
-    /**
-     * Window: Horizon's centre opening (390,68,500,344; clear 450..830 x 108..383, from
-     * HorizonGeometry.js map.video and its fades). The band at 0.93 covers the whole opening, fades
-     * included (y 68..412); at 0.8 its top and bottom fades showed black (seen in the mock).
-     */
-    const val HORIZON_WINDOW_PLACEMENT = "0.93,45,-95"
-
-    /**
-     * Side (the second layout): Horizon's opening on the right (863,69,305,324; clear 911..1161 x
-     * 107..373, from HorizonGeometry.js side.video and side.feather): the band at 0.876 covers the
-     * opening with its feather (y 69..393), the arrow under the clear part's centre.
-     */
-    const val HORIZON_SIDE_PLACEMENT = "0.876,475,-84"
-
-    /** Debug builds: the card-free rows set live by ClusterLayoutProbe, or null for the constants. */
-    @Volatile var probeCardFreeRows: IntRange? = null
-
-    /** The rows of the phone's picture to draw: all of them without Horizon. */
-    fun cardFreeRows(settings: Settings): IntRange? =
+    /** The part of the phone's picture to draw: all of it without Horizon, else the layout's [ClusterMapTune]. */
+    fun visibleArea(settings: Settings): Rect? =
         if (settings.clusterDisplayRect != HORIZON_FULL) null
-        else probeCardFreeRows ?: HORIZON_CARD_FREE_TOP..HORIZON_CARD_FREE_BOTTOM
+        else ClusterMapTune.of(settings, settings.horizonMapLayout).visible
 
     /** Without a theme, the whole band above the factory 8.8" bottom bar. */
     const val FACTORY_FREE_BAND = "0,0,1280,420"

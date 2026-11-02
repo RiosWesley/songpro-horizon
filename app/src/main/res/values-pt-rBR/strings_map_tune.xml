@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Painel → Ajuste fino do mapa (MapTuneFragment). -->
+<resources>
+    <string name="hz_tune_title">Ajuste fino do mapa</string>
+    <string name="hz_tune_entry_hint">Avançado: escala, posição, área visível e densidade de cada modo, para experimentar.</string>
+    <string name="hz_tune_open">Ajustar</string>
+    <string name="hz_tune_lead">Com o Android Auto conectado e o mapa no painel, cada mudança aparece na hora. Cada modo guarda os próprios valores, e o modo escolhido aqui é o que o painel mostra.</string>
+    <string name="hz_tune_needs_horizon">O ajuste vale com o Horizon instalado. Os valores ficam guardados até lá.</string>
+    <string name="hz_tune_layout">Modo</string>
+    <string name="hz_tune_step">Passo</string>
+    <string name="hz_tune_step_fine">Fino</string>
+    <string name="hz_tune_step_coarse">Grosso</string>
+    <string name="hz_tune_picture">Imagem do celular</string>
+    <string name="hz_tune_picture_hint">A escala é sempre proporcional: esticar de um lado só distorceria o mapa.</string>
+    <string name="hz_tune_scale">Escala</string>
+    <string name="hz_tune_scale_value">%1$.3f×</string>
+    <string name="hz_tune_x">Horizontal</string>
+    <string name="hz_tune_y">Vertical</string>
+    <string name="hz_tune_px">%1$d px</string>
+    <string name="hz_tune_visible">Área visível</string>
+    <string name="hz_tune_visible_size">Largura × altura visíveis: %1$d × %2$d px da imagem do celular. Quanto da imagem aparece; é por aqui que os cartões de rota ficam de fora.</string>
+    <string name="hz_tune_cut_top">Corte em cima</string>
+    <string name="hz_tune_cut_bottom">Corte embaixo</string>
+    <string name="hz_tune_cut_left">Corte à esquerda</string>
+    <string name="hz_tune_cut_right">Corte à direita</string>
+    <string name="hz_tune_density">Densidade (todos os modos)</string>
+    <string name="hz_tune_density_hint">Vale a partir da próxima conexão do celular. Menor: mais mapa, com seta, ruas e cartões menores; maior: o contrário. Depois de mudar, reajuste o corte.</string>
+    <string name="hz_tune_dpi">DPI do mapa</string>
+    <string name="hz_tune_dpi_default">%1$d (padrão)</string>
+    <string name="hz_tune_less">Diminuir</string>
+    <string name="hz_tune_more">Aumentar</string>
+    <string name="hz_tune_reset">Voltar ao padrão deste modo</string>
+    <string name="hz_tune_reset_all">Voltar tudo ao padrão</string>
+    <string name="hz_tune_reset_all_message">Os três modos e a densidade voltam aos valores medidos no carro.</string>
+</resources>
