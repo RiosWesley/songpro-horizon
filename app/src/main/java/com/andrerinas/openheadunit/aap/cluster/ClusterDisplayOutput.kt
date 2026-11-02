@@ -4,6 +4,7 @@ import android.app.Presentation
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Point
+import android.graphics.Rect
 import android.hardware.display.DisplayManager
 import android.os.Handler
 import android.os.Looper
@@ -99,8 +100,10 @@ internal object ClusterDisplayOutput {
         presentation?.display?.let { ClusterMapSnapshot.schedule(ctx, it.displayId) }
     }
 
-    /** Scales the picture from its top-left corner, then moves it. */
+    /** Scales the picture from its top-left corner, then moves it; with Horizon only its card-free rows show. */
     private fun place(view: View, settings: Settings) {
+        val rows = ClusterMapArea.cardFreeRows(settings)
+        view.clipBounds = rows?.let { Rect(0, it.first, 4096, it.last) }
         val (scale, x, y) = ClusterMapArea.parsePlacement(settings.clusterMapPlacement)
         view.pivotX = 0f
         view.pivotY = 0f

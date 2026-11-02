@@ -93,19 +93,15 @@ próprio painel como o momento de cor.
     marcha e potência), põe um fundo escuro atrás de cada grupo da barra de baixo e mostra o ADAS
     numa janelinha à direita, como a de fábrica na navegação.
 
-  Os cartões do Android Auto (manobra em cima, tempo e chegada embaixo) ficam nas bordas de cima e
-  de baixo da parte livre de cada formato, com a seta e a rota visíveis no meio: o app diz ao celular
-  onde ela está (insets de conteúdo) a cada imagem nova e a cada troca de formato. Medido no carro com
-  rota: o celular mantém os cartões ~98 px para dentro da área que recebe, então o app informa uma
-  área ~98 px mais alta que a abertura, em cima e embaixo. Com a área do tamanho exato da abertura,
-  os cartões ficavam colados em cima da seta (Janela e Lateral) ou um sobre o outro (Tela cheia).
-  No build de depuração, `ClusterLayoutProbe` troca a área e a posição ao vivo pelo ADB.
-
-  O celular sempre desenha o mapa para o painel inteiro, a 200 dpi. Trocar o formato só muda onde a
-  imagem fica (na Janela ela é reduzida a 0,8 e, na Lateral, a 0,72, para caber mais mapa), o
-  recorte do Horizon e o aviso ao celular de onde pôr os cartões. A imagem é pedida 80 px mais alta
-  que o painel: no carro, as últimas ~80 linhas dela chegavam pretas, e agora essa faixa fica abaixo
-  do painel. No build de depuração, o app salva uma captura do painel alguns segundos depois de o
+  O painel mostra só o mapa, a seta, a rota e os nomes de rua: os cartões do Android Auto (manobra,
+  distância, tempo e chegada) ficam de fora, porque a multimídia já mostra tudo isso. Quem desenha os
+  cartões é o celular, e ele não aceita deixar de desenhar: uma área livre pequena demais para eles é
+  ignorada, e a seta cai para o pé da imagem (medido no carro). Por isso o app pede a imagem inteira de
+  1280×720, diz ao celular que a área livre é ela toda (a seta fica na linha 360 e os cartões perto do
+  topo e do pé, ~98 px para dentro) e desenha só a faixa do meio, das linhas 175 a 545. Cada formato
+  põe essa faixa na sua abertura: Tela cheia em tamanho real, Janela a 0,93 e Lateral a 0,876, para
+  cobrir também as bordas esfumadas. No build de depuração, `ClusterLayoutProbe` troca a área, a
+  posição e a faixa ao vivo pelo ADB, e o app salva uma captura do painel alguns segundos depois de o
   mapa aparecer ou mudar de formato (`/data/local/tmp/horizon-map-<formato>.png`).
 - **Ligar o mapa:** pelo menu no volante ("Mapa no painel"). Não há mais botão na tela.
 - O mapa é uma janela sobreposta, que precisa da permissão de sobreposição

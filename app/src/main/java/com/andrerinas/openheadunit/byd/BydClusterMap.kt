@@ -37,14 +37,10 @@ object BydClusterMap {
         settings.horizonInstalled = horizon
         val layout = if (horizon) settings.horizonMapLayout else ""
         settings.clusterDisplayRect = if (horizon) ClusterMapArea.HORIZON_FULL else ClusterMapArea.FACTORY_FREE_BAND
-        settings.clusterContentInsets = when {
-            !horizon -> ""
-            layout == "full" -> ClusterMapArea.HORIZON_FULL_INSETS
-            layout == "side" -> ClusterMapArea.HORIZON_SIDE_INSETS
-            else -> ClusterMapArea.HORIZON_WINDOW_INSETS
-        }
+        settings.clusterContentInsets = if (horizon) ClusterMapArea.HORIZON_INSETS else ""
         settings.clusterMapPlacement = when {
-            !horizon || layout == "full" -> ""
+            !horizon -> ""
+            layout == "full" -> ClusterMapArea.HORIZON_FULL_PLACEMENT
             layout == "side" -> ClusterMapArea.HORIZON_SIDE_PLACEMENT
             else -> ClusterMapArea.HORIZON_WINDOW_PLACEMENT
         }
