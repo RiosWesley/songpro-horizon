@@ -4,7 +4,7 @@
 // through IContainerCallback.receivedInfo2(int, byte[]) = transaction 4 of the callback.
 // Verified on this car's framework.jar (IAutoContainer$Stub: sendJson 1, sendInfo 2, sendInfo2 3,
 // registerCallback 4; IContainerCallback$Stub: serviceDied 1, receivedJson 2, receivedInfo 3,
-// receivedInfo2 4). The service accepts the shell uid because it shares the platform signature
+// receivedInfo2 4); Compatibility reads them again on every run. The service accepts the shell uid because it shares the platform signature
 // (checkSignatures fast path); on this firmware container_comm_cfg.json only lists clusterdemo.
 // One pinned connection: no reconnect, no replay.
 import android.os.Binder;
@@ -49,7 +49,7 @@ final class Bridge implements AutoCloseable {
                     if (!accepting) { if (reply != null) reply.writeNoException(); return true; }
                     try {
                         data.enforceInterface(Policy.CALLBACK);
-                        if (code == 4) {
+                        if (code == Policy.TX_RECEIVED_INFO2) {
                             int type = data.readInt();
                             byte[] bytes = data.createByteArray();
                             if (type == 8 && bytes != null && data.dataAvail() == 0) {
@@ -64,11 +64,11 @@ final class Bridge implements AutoCloseable {
                 return true;
             }
         };
-        return transact(4, new Writer() { public void write(Parcel p) { p.writeStrongBinder(callback); } });
+        return transact(Policy.TX_REGISTER_CALLBACK, new Writer() { public void write(Parcel p) { p.writeStrongBinder(callback); } });
     }
 
     int send(byte[] payload) throws Exception {
-        return transact(3, new Writer() { public void write(Parcel p) { p.writeInt(8); p.writeByteArray(payload); } });
+        return transact(Policy.TX_SEND_INFO2, new Writer() { public void write(Parcel p) { p.writeInt(8); p.writeByteArray(payload); } });
     }
 
     void accept(boolean on) { synchronized (lock) { accepting = on; } }

@@ -686,63 +686,14 @@
     <string name="connection_kind_usb_wireless_adapter">Bezdrátový USB adaptér</string>
     <string name="connection_kind_wifi">WiFi</string>
     <string name="connection_kind_unset">Nenastaveno</string>
-    <string name="onb_next">Další</string>
-    <string name="onb_skip">Přeskočit</string>
-    <string name="onb_ready_finish">Dokončit</string>
-    <string name="onb_welcome_title">Vítejte v Song Pro Horizon</string>
-    <string name="onb_welcome_body">Toto rychlé nastavení prohlédne vaše zařízení a vybere pro vás nejlepší nastavení videa, displeje a nočního režimu. Vše můžete později změnit v Nastavení.</string>
-    <string name="onb_safety_title">Bezpečnost především</string>
-    <string name="onb_safety_accept">Přečetl/a jsem si podmínky a souhlasím s nimi</string>
-    <string name="onb_connection_title">Jak se připojujete?</string>
-    <string name="onb_connection_help">Vyberte, jak se váš telefon připojuje. Obrazovka nastavení tak zůstane zaměřená na to, co se vás týká.</string>
-    <string name="onb_connection_cable_detail">Telefon zapojený přímo do autorádia pomocí USB kabelu. Bezdrátové možnosti se nezobrazují.</string>
-    <string name="onb_connection_adapter_detail">USB adaptér přemosťuje kabel na bezdrátové spojení. Bezdrátové možnosti se zobrazují.</string>
-    <string name="onb_connection_wifi_detail">Telefon se připojuje přes WiFi.</string>
-    <string name="onb_display_title">Displej</string>
-    <string name="onb_display_detected">Detekovaný panel: %1$d x %2$d px, %3$d dpi, hardware %4$s.</string>
-    <string name="onb_display_size_label">Velikost obrazovky</string>
-    <string name="onb_display_orientation_label">Orientace</string>
-    <string name="onb_display_apply">Použít doporučené nastavení</string>
-    <string name="onb_display_result">Použito: %1$s, %2$d dpi, %3$s, zobrazení %4$s.</string>
-    <string name="onb_appearance_title">Vzhled</string>
-    <string name="onb_appearance_theme_label">Téma aplikace</string>
-    <string name="onb_theme_auto">Automaticky</string>
-    <string name="onb_theme_light">Světlé</string>
-    <string name="onb_theme_dark">Tmavé</string>
-    <string name="onb_appearance_night_label">Tmavý režim (Android Auto)</string>
-    <string name="onb_night_auto">Automaticky</string>
-    <string name="onb_night_day">Den</string>
-    <string name="onb_night_night">Noc</string>
-    <string name="onb_night_light_sensor_available">Byl detekován světelný senzor, takže automatický režim může sledovat okolní světlo.</string>
-    <string name="onb_night_no_light_sensor">Nebyl detekován žádný světelný senzor, takže automatický režim se řídí východem a západem slunce.</string>
-    <string name="onb_ready_title">Vše je připraveno</string>
-    <string name="onb_ready_summary">Připojení: %1$s\nRozlišení: %2$s\nKodek: %3$s\n\nVše můžete doladit v Nastavení.</string>
-    <string name="onb_language_help">Vyberte jazyk aplikace.</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">Telefon připojený přes USB, kabelem nebo bezdrátovým USB adaptérem.</string>
-    <string name="onb_more_appearance">Další nastavení vzhledu</string>
-    <string name="onb_automation_title">Automatizace</string>
-    <string name="onb_automation_help">Vyberte, jak se aplikace sama spouští a připojuje. Otevřete nastavení automatického připojení a přetažením nastavte pořadí priorit.</string>
-    <string name="onb_gps_title">Poloha</string>
-    <string name="onb_gps_help">Kterou GPS má Android Auto používat pro navigaci?</string>
-    <string name="onb_gps_this_device">Toto zařízení</string>
-    <string name="onb_gps_phone">Připojený telefon</string>
-    <string name="onb_do_it_later">Udělat později</string>
-    <string name="onb_display_dpi_label">Velikost Android Auto</string>
     <string name="onb_dpi_small">Malá</string>
     <string name="onb_dpi_medium">Střední</string>
     <string name="onb_dpi_large">Velká</string>
-    <string name="onb_appearance_more_hint">Další možnosti tmavého režimu najdete v Nastavení.</string>
-    <string name="onb_automation_more_hint">Další možnosti najdete v nastavení automatického připojení a automatického spuštění.</string>
     <string name="onb_dpi_help">Vyšší DPI zvětší ikony a text Android Auto, takže se na obrazovku vejde méně. Nižší DPI je zmenší a vejde se více. Projeví se po připojení Android Auto.</string>
-    <string name="onb_change_later">Toto můžete změnit později v Nastavení.</string>
     <string name="dpi_automatic">Automaticky</string>
     <string name="dpi_automatic_desc">Použít hustotu zařízení</string>
-    <string name="onb_conn_usb_label">USB (nebo adaptér)</string>
-    <string name="onb_connection_self_detail">Samostatný režim spouští Android Auto v tomto zařízení bez telefonu.</string>
     <string name="connection_kind_all">Vše</string>
-    <string name="onb_connection_all_detail">Zobrazí nastavení USB i WiFi.</string>
-    <string name="onb_connection_warning">Výběr typu připojení skryje nepoužitelná nastavení v základním i pokročilém režimu. Chcete-li je znovu zobrazit, zvolte později jiný režim v nastavení připojení.</string>
     <string name="resolution_recommended_format">%1$s (Doporučeno)</string>
     <string name="resolution_high_bandwidth_format">%1$s · vysoký datový tok</string>
     <string name="resolution_too_high_title">Rozlišení vyšší než obrazovka</string>
@@ -754,16 +705,9 @@
     <string name="dpi_automatic_desc_format">Použije hustotu zařízení (%1$d DPI)</string>
     <string name="dpi_input_hint">DPI</string>
     <string name="onb_dpi_huge">Obrovský</string>
-    <string name="onb_vehicle_title">Vaše auto</string>
-    <string name="onb_vehicle_input_hint">Značka nebo název</string>
-    <string name="onb_vehicle_help_aa">Tento název se odesílá do Android Auto. Zobrazuje se v historii připojení telefonu a na uvítací obrazovce Android Auto.</string>
-    <string name="onb_vehicle_help_advanced">Další podrobnosti o vozidle můžete upravit na kartě Pokročilé. Tato data nepoužíváme; odesílají se pouze do Android Auto, protože je vyžaduje.</string>
-    <string name="onb_summary_vehicle_format">Vozidlo: %1$s</string>
     <string name="sunrise_reference_help">Referenční bod používaný pro výpočet východu a západu slunce. Vyberte svou polohu jednou; funguje to bez GPS.</string>
 
     <!-- Permissions / Onboarding -->
-    <string name="onb_summary_permissions_format">Oprávnění: %1$d z %2$d uděleno</string>
-    <string name="onb_permissions_title">Povolit oprávnění</string>
     <string name="onb_permissions_help">Zapněte oprávnění, která aplikace potřebuje, aby vše fungovalo bez nečekaných výzev později. Tato oprávnění můžete kdykoli změnit.</string>
     <string name="onb_perms_enable_all">Povolit vše</string>
     <string name="perm_allow">Povolit</string>
@@ -785,9 +729,6 @@
     <string name="perm_write_settings_help">Umožňuje aplikaci automaticky zapnout hotspot pro bezdrátová připojení.</string>
     <string name="perm_storage_title">Úložiště</string>
     <string name="perm_storage_help">Potřebné pro zálohování a obnovu nastavení a pro výběr vlastního obrázku načítání.</string>
-    <string name="onb_dpi_recommended">Doporučeno pro vaši obrazovku: %1$d dpi</string>
-    <string name="onb_ready_loading_intro">Ještě jedna věc: nyní můžete nastavit vlastní načítací obrazovku, která se zobrazí při připojování auta.</string>
-    <string name="onb_ready_loading_button">Nastavit načítací obrazovku</string>
 
     <string name="support">Nahlásit chybu</string>
     <string name="support_description">Hledejte nebo nahlašujte chyby na GitHubu</string>
@@ -796,8 +737,6 @@
     <string name="support_open_issues">Otevřít hlášení na GitHubu</string>
     <string name="support_scan_qr">Nebo naskenujte tento QR kód a otevřete seznam hlášení na jiném zařízení.</string>
     <string name="support_github_account_warning">Poznámka: k vytvoření hlášení potřebujete bezplatný účet na GitHubu.</string>
-    <string name="onb_ready_extras_title">Než dokončíte, můžete také nastavit:</string>
-    <string name="onb_extra_loading_desc">Vlastní obrázek zobrazený při připojování auta</string>
 
     <!-- Support / reporting rules -->
     <string name="support_rules_button">Pravidla hlášení</string>
@@ -830,32 +769,6 @@
     <string name="aa174_notice_button_confirm">Rozumím</string>
     <string name="aa174_notice_button_guide">Otevřít návod</string>
 
-    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Song Pro Horizon\" if you use those apps.</string>
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
     <string name="dpi_size_s">S</string>
     <string name="dpi_size_m">M</string>
     <string name="dpi_size_l">L</string>
@@ -1037,7 +950,4 @@
     <string name="audio_stream_unnamed_format">Stream %1$d</string>
     <string name="audio_stream_unavailable_format">Stream %1$d (na tomto zařízení není)</string>
     <string name="audio_stream_vendor_info">Toto autorádio má výstupní streamy, které standardní Android nemá; níže jsou uvedeny pod názvy, které jim dává jeho vlastní systém. Právě k nim bývá zesilovač vozu skutečně připojen, takže je vyzkoušejte tlačítkem reproduktoru, pokud některý kanál mlčí.</string>
-    <string name="onb_audio_title">Zvuk</string>
-    <string name="onb_audio_help">Vyberte systémový stream, na kterém hraje každý kanál Android Auto, a klepnutím na reproduktor si jej poslechněte. Pokud některý kanál v autě mlčí, obvykle pomůže přesunout jej na jiný stream.</string>
-    <string name="onb_audio_more_hint">Toto můžete později změnit v Nastavení → Zvukové streamy.</string>
 </resources>

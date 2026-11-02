@@ -4,7 +4,7 @@
 //   CLASSPATH=/data/local/tmp/horizon-theme-tool.dex app_process / HorizonThemeTool <command> ...
 //
 // Commands
-//   query                                        read-only: cohort check + the decoded OEM selection
+//   query                                        read-only: compatibility check + the decoded OEM selection
 //   load <basename> --sha256 <hex> --assert-parked [--replace-own]
 //                                                select the carrier in /sdcard/.cluster/translate/;
 //                                                --replace-own also over another Horizon carrier
@@ -91,9 +91,9 @@ public final class HorizonThemeTool {
             if (!Policy.NAME.matcher(name).matches()) throw new Refused("basename must match " + Policy.NAME.pattern());
             if (sha == null || !sha.matches("[0-9a-f]{64}")) throw new Refused("--sha256 <64 hex> of the carrier is required");
         }
-        Cohort.Log log = new Cohort.Log() { @Override public void line(String s) { HorizonThemeTool.line(s); } };
-        String why = Cohort.verify(cmd.equals("load"), deadline, log);
-        if (why != null) throw new Refused("firmware is not the SX309 cohort: " + why);
+        Compatibility.Log log = new Compatibility.Log() { @Override public void line(String s) { HorizonThemeTool.line(s); } };
+        String why = Compatibility.verify(log);
+        if (why != null) throw new Refused("this head unit's AutoContainer is not the one this tool knows: " + why);
         if (cmd.equals("load")) checkCarrier(name, sha, deadline);
         if (mutating) checkState(flag(args, "--ack-ambiguous"));
 
@@ -127,7 +127,7 @@ public final class HorizonThemeTool {
         if (!file.exists()) throw new Refused(file.getPath() + " does not exist");
         if (Files.isSymbolicLink(file.toPath()) || !Files.isRegularFile(file.toPath(), LinkOption.NOFOLLOW_LINKS)) throw new Refused("carrier is not a regular file");
         if (file.length() < 1 || file.length() > Policy.MAX_CARRIER) throw new Refused("carrier size " + file.length() + " outside 1.." + Policy.MAX_CARRIER);
-        String got = Cohort.sha256(file.getPath(), deadline);
+        String got = Compatibility.sha256(file.getPath(), deadline);
         if (!got.equals(sha)) throw new Refused("carrier SHA-256 " + got + " != expected " + sha);
         line("carrier ok: " + file.getPath() + " " + file.length() + " bytes sha256=" + got);
     }

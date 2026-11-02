@@ -85,7 +85,7 @@ Saída: linhas `HORIZON: …` legíveis (erros mapeados: `0x232c NOT_RCC`, `0x23
 ./tools/horizon-theme-tool/install.sh out-carrier/OFFLINE_ONLY_horizon_sx309_88.rcc <ip-da-multimídia>:5555   # só imprime
 ```
 1. `adb push …/horizon-theme-tool.dex /data/local/tmp/` e conferir o SHA.
-2. **`query`** (leitura): deve imprimir todas as linhas `cohort: ok …` e `selection … [FACTORY DEFAULT]`. Se algo recusar, **parar**.
+2. **`query`** (leitura): deve imprimir as linhas `compat: ok …` (códigos de chamada do AutoContainer) e `selection … [FACTORY DEFAULT]`. Se algo recusar, **parar**.
 3. Colocar o arquivo (§2; o nome é `…_TranslateHorizon_<32 primeiros hex do SHA-256 do carrier>.rcc`).
 4. `load <NAME> --sha256 <SHA> --assert-parked` → esperar `SETTLED` (saída 0) e **olhar o painel**. Seleção ≠ registro ≠ pixel; o QML só é relido quando o caminho de aplicação roda.
 5. `query` de novo.

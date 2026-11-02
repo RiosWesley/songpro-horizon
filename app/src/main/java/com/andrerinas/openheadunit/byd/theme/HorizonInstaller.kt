@@ -36,14 +36,13 @@ class HorizonInstaller(private val context: Context, private val log: (String) -
 
     /** Builds the carrier from this car's factory files and selects it. */
     suspend fun install(): Outcome = guarded {
-        val carrier = HorizonCarrier.build(File(STOCK_DIR), horizonFiles(), log)
+        val carrier = buildCarrier()
         log("Tema montado: ${carrier.bytes.size / 1024} KB, SHA-256 ${carrier.sha256.take(16)}…")
 
-        val staging = context.getExternalFilesDir("horizon") ?: throw Stop("armazenamento do app indisponível")
+        val staging = staging()
         File(staging, carrier.name).writeBytes(carrier.bytes)
-        val tool = File(staging, TOOL_NAME).apply { writeBytes(context.assets.open("horizon/$TOOL_NAME").use { it.readBytes() }) }
-        expectSha(shell("mkdir -p $TRANSLATE $RETIRED $INCOMING_DIR && cp '${tool.path}' $TOOL && chmod 644 $TOOL && sha256sum $TOOL"),
-            HorizonCarrier.sha256(tool.readBytes()), "ferramenta do tema")
+        shell("mkdir -p $TRANSLATE $RETIRED $INCOMING_DIR")
+        installTool(staging)
 
         log("Consultando o tema selecionado")
         val query = runTool("query", 90_000)
@@ -105,6 +104,29 @@ class HorizonInstaller(private val context: Context, private val log: (String) -
 
     /** The installed Horizon carrier, or null; throws when Self-ADB is not reachable. */
     suspend fun installed(): String? = rccFiles().firstOrNull { it.startsWith(HorizonCarrier.NAME_PREFIX) }
+
+    /** The carrier from this car's factory files; [HorizonCarrier.Refused] names the file that differs. */
+    fun buildCarrier(): HorizonCarrier.Carrier = HorizonCarrier.build(File(STOCK_DIR), horizonFiles(), log)
+
+    /**
+     * The theme tool's read-only query, to read with [ThemeToolOutput]: it refuses unless the
+     * cluster's theme service is the one it knows, and reports the selection. Without Horizon on the
+     * car, the tool does not stay. Throws when Self-ADB is not reachable.
+     */
+    suspend fun queryPanel(): String = withContext(Dispatchers.IO) {
+        installTool(staging())
+        val out = runTool("query", 90_000)
+        if (installed() == null) shell("rm -f $TOOL")
+        out
+    }
+
+    private fun staging(): File = context.getExternalFilesDir("horizon") ?: throw Stop("armazenamento do app indisponível")
+
+    /** Puts the theme tool where the shell user runs it, checked byte for byte. */
+    private suspend fun installTool(staging: File) {
+        val tool = File(staging, TOOL_NAME).apply { writeBytes(context.assets.open("horizon/$TOOL_NAME").use { it.readBytes() }) }
+        expectSha(shell("cp '${tool.path}' $TOOL && chmod 644 $TOOL && sha256sum $TOOL"), HorizonCarrier.sha256(tool.readBytes()), "ferramenta do tema")
+    }
 
     /**
      * Restarts the cluster host and the head unit; only with the car parked. Without Horizon on the

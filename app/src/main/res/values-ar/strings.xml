@@ -686,65 +686,16 @@
     <string name="connection_kind_usb_wireless_adapter">محول USB لاسلكي</string>
     <string name="connection_kind_wifi">WiFi</string>
     <string name="connection_kind_unset">غير محدد</string>
-    <string name="onb_next">التالي</string>
-    <string name="onb_skip">تخطي</string>
-    <string name="onb_ready_finish">إنهاء</string>
-    <string name="onb_welcome_title">مرحبا بك في Song Pro Horizon</string>
-    <string name="onb_welcome_body">يفحص هذا الإعداد السريع جهازك ويختار لك أفضل إعدادات الفيديو والعرض والوضع الداكن. يمكنك تغيير كل شيء لاحقا في الإعدادات.</string>
-    <string name="onb_safety_title">السلامة أولا</string>
-    <string name="onb_safety_accept">لقد قرأت الشروط وأوافق عليها</string>
-    <string name="onb_connection_title">كيف تتصل؟</string>
-    <string name="onb_connection_help">اختر كيفية اتصال هاتفك. يبقي هذا شاشة الإعدادات مركزة على ما ينطبق عليك.</string>
-    <string name="onb_connection_cable_detail">الهاتف موصول مباشرة بوحدة الرأس بكابل USB. تبقى الخيارات اللاسلكية بعيدة عن الطريق.</string>
-    <string name="onb_connection_adapter_detail">يربط محول USB الكابل بوصلة لاسلكية. يتم عرض الخيارات اللاسلكية.</string>
-    <string name="onb_connection_wifi_detail">يتصل الهاتف عبر WiFi.</string>
-    <string name="onb_display_title">العرض</string>
-    <string name="onb_display_detected">اللوحة المكتشفة: %1$d x %2$d px، %3$d dpi، الأجهزة %4$s.</string>
-    <string name="onb_display_size_label">حجم الشاشة</string>
-    <string name="onb_display_orientation_label">الاتجاه</string>
-    <string name="onb_display_apply">تطبيق الإعدادات الموصى بها</string>
-    <string name="onb_display_result">تم التطبيق: %1$s، %2$d dpi، %3$s، عرض %4$s.</string>
-    <string name="onb_appearance_title">المظهر</string>
-    <string name="onb_appearance_theme_label">سمة التطبيق</string>
-    <string name="onb_theme_auto">تلقائي</string>
-    <string name="onb_theme_light">فاتح</string>
-    <string name="onb_theme_dark">داكن</string>
-    <string name="onb_appearance_night_label">الوضع الداكن (Android Auto)</string>
-    <string name="onb_night_auto">تلقائي</string>
-    <string name="onb_night_day">نهاري</string>
-    <string name="onb_night_night">ليلي</string>
-    <string name="onb_night_light_sensor_available">تم اكتشاف مستشعر ضوء، لذا يمكن للوضع التلقائي أن يتبع الضوء المحيط.</string>
-    <string name="onb_night_no_light_sensor">لم يتم اكتشاف مستشعر ضوء، لذا يتبع الوضع التلقائي الشروق والغروب.</string>
-    <string name="onb_ready_title">كل شيء جاهز</string>
-    <string name="onb_ready_summary">الاتصال: %1$s\nالدقة: %2$s\nالترميز: %3$s\n\nيمكنك ضبط كل شيء بدقة في الإعدادات.</string>
 
     <!-- Onboarding wizard (round 2) -->
-    <string name="onb_language_help">اختر لغة التطبيق.</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">الهاتف متصل عبر USB، بكابل مباشر أو محول USB لاسلكي.</string>
-    <string name="onb_more_appearance">المزيد من إعدادات المظهر</string>
-    <string name="onb_automation_title">الأتمتة</string>
-    <string name="onb_automation_help">اختر كيفية بدء التطبيق واتصاله من تلقاء نفسه. افتح إعدادات الاتصال التلقائي لسحب ترتيب الأولويات.</string>
-    <string name="onb_gps_title">الموقع</string>
-    <string name="onb_gps_help">أي GPS ينبغي أن يستخدمه Android Auto للملاحة؟</string>
-    <string name="onb_gps_this_device">هذا الجهاز</string>
-    <string name="onb_gps_phone">الهاتف المتصل</string>
-    <string name="onb_do_it_later">القيام بذلك لاحقًا</string>
-    <string name="onb_display_dpi_label">حجم Android Auto</string>
     <string name="onb_dpi_small">صغير</string>
     <string name="onb_dpi_medium">متوسط</string>
     <string name="onb_dpi_large">كبير</string>
-    <string name="onb_appearance_more_hint">يمكنك العثور على المزيد من خيارات الوضع الداكن في الإعدادات.</string>
-    <string name="onb_automation_more_hint">يمكنك العثور على المزيد من الخيارات في إعدادات الاتصال التلقائي والتشغيل التلقائي.</string>
     <string name="onb_dpi_help">يؤدي رفع الـ DPI إلى تكبير أيقونات ونص Android Auto، فيظهر عدد أقل على الشاشة. وخفضه يصغّرها فيظهر المزيد. يُطبَّق عند توصيل Android Auto.</string>
-    <string name="onb_change_later">يمكنك تغيير هذا لاحقًا من الإعدادات.</string>
     <string name="dpi_automatic">تلقائي</string>
     <string name="dpi_automatic_desc">استخدام كثافة الجهاز</string>
-    <string name="onb_conn_usb_label">USB (أو محول)</string>
-    <string name="onb_connection_self_detail">يشغّل الوضع المستقل Android Auto على هذا الجهاز دون توصيل هاتف.</string>
     <string name="connection_kind_all">الكل</string>
-    <string name="onb_connection_all_detail">يعرض إعدادات USB وWiFi معًا.</string>
-    <string name="onb_connection_warning">اختيار نوع الاتصال يخفي الإعدادات غير المنطبقة في الوضعين الأساسي والمتقدم. لرؤيتها مجددًا، اختر لاحقًا وضعًا آخر من إعدادات الاتصال.</string>
     <string name="resolution_recommended_format">%1$s (موصى به)</string>
     <string name="resolution_high_bandwidth_format">%1$s · نطاق ترددي عالٍ</string>
     <string name="resolution_too_high_title">الدقة أعلى من الشاشة</string>
@@ -756,11 +707,6 @@
     <string name="dpi_automatic_desc_format">يستخدم كثافة الجهاز (%1$d DPI)</string>
     <string name="dpi_input_hint">DPI</string>
     <string name="onb_dpi_huge">ضخم</string>
-    <string name="onb_vehicle_title">سيارتك</string>
-    <string name="onb_vehicle_input_hint">العلامة أو الاسم</string>
-    <string name="onb_vehicle_help_aa">يُرسَل هذا الاسم إلى Android Auto. ويظهر في سجل اتصالات هاتفك وعلى شاشة الترحيب في Android Auto.</string>
-    <string name="onb_vehicle_help_advanced">يمكنك ضبط المزيد من تفاصيل مركبتك في علامة التبويب المتقدمة. نحن لا نستخدم هذه البيانات؛ تُرسَل فقط إلى Android Auto لأنه يطلبها.</string>
-    <string name="onb_summary_vehicle_format">المركبة: %1$s</string>
     <string name="sunrise_reference_help">النقطة المرجعية المستخدمة لحساب وقت الشروق والغروب. اختر موقعك مرة واحدة؛ يعمل بدون نظام تحديد المواقع.</string>
 
     <string name="support">الإبلاغ عن مشكلة</string>
@@ -770,8 +716,6 @@
     <string name="support_open_issues">فتح صفحة المشكلات على GitHub</string>
     <string name="support_scan_qr">أو امسح رمز QR هذا لفتح قائمة المشكلات على جهاز آخر.</string>
     <string name="support_github_account_warning">ملاحظة: تحتاج إلى حساب GitHub مجاني لفتح مشكلة جديدة.</string>
-    <string name="onb_ready_extras_title">قبل أن تنهي، يمكنك أيضًا إعداد:</string>
-    <string name="onb_extra_loading_desc">صورة مخصصة تظهر أثناء اتصال السيارة</string>
 
     <string name="support_rules_intro">شرطان فقط مطلوبان. ما عداهما اختياري، لكنه يساعد على حل مشكلتك بشكل أسرع.</string>
     <string name="support_rules_section_required">مطلوب</string>
@@ -802,10 +746,6 @@
     <string name="aa174_notice_button_confirm">فهمت ذلك</string>
     <string name="aa174_notice_button_guide">فتح الدليل</string>
 
-    <string name="onb_summary_permissions_format">Permissions: %1$d of %2$d granted</string>
-    <string name="onb_ready_loading_intro">One more thing: you can now set a custom loading screen, shown while the car connects.</string>
-    <string name="onb_ready_loading_button">Set up a loading screen</string>
-    <string name="onb_permissions_title">Enable permissions</string>
     <string name="onb_permissions_help">Turn on the permissions the app needs so everything works without surprise prompts later. You can change these any time.</string>
     <string name="onb_perms_enable_all">Enable all</string>
     <string name="perm_allow">Allow</string>
@@ -827,37 +767,10 @@
     <string name="perm_write_settings_help">Lets the app turn the hotspot on automatically for wireless connections.</string>
     <string name="perm_storage_title">Storage</string>
     <string name="perm_storage_help">Needed to back up and restore your settings and to pick a custom loading image.</string>
-    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Song Pro Horizon\" if you use those apps.</string>
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
     <string name="dpi_size_s">S</string>
     <string name="dpi_size_m">M</string>
     <string name="dpi_size_l">L</string>
     <string name="dpi_size_xl">XL</string>
-    <string name="onb_dpi_recommended">Recommended for your screen: %1$d dpi</string>
     <string name="dpi_value_format">%1$d DPI</string>
     <string name="pixel_aspect_ratio">Pixel aspect ratio</string>
     <string name="enter_pixel_aspect_ratio_value">Pixel aspect ratio x10000 (10000 = square pixels)</string>
@@ -1035,7 +948,4 @@
     <string name="audio_stream_unnamed_format">التدفق %1$d</string>
     <string name="audio_stream_unavailable_format">التدفق %1$d (غير متوفر على هذا الجهاز)</string>
     <string name="audio_stream_vendor_info">تحتوي وحدة الرأس هذه على تدفقات إخراج لا توجد في أندرويد القياسي؛ وهي مدرجة أدناه بالأسماء التي يمنحها لها نظامها الخاص. غالبًا ما يكون مكبر صوت السيارة موصولًا بها فعليًا، فجرّبها بزر السماعة إذا ظلت إحدى القنوات صامتة.</string>
-    <string name="onb_audio_title">الصوت</string>
-    <string name="onb_audio_help">اختر تدفق النظام الذي تُشغَّل عليه كل قناة من قنوات Android Auto، والمس السماعة لسماعه. إذا ظلت قناة صامتة في السيارة، فنقلها إلى تدفق آخر هو الحل عادةً.</string>
-    <string name="onb_audio_more_hint">يمكنك تغيير ذلك لاحقًا من الإعدادات ← تدفقات الصوت.</string>
 </resources>

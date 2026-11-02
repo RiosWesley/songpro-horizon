@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Song Pro Horizon's onboarding (OnboardingActivity, main/onboarding/) and the car check (CarCheck). -->
+<resources>
+    <string name="hz_onb_progress">Passo %1$d de %2$d</string>
+    <string name="hz_onb_back">Voltar</string>
+    <string name="hz_onb_continue">Continuar</string>
+    <string name="hz_onb_finish">Concluir</string>
+
+    <string name="hz_onb_welcome_title">Song Pro Horizon</string>
+    <string name="hz_onb_welcome_lead">Um painel de instrumentos novo para o seu Song Pro, com o mapa do Android Auto e um menu no volante. Este guia deixa tudo pronto em poucos minutos.</string>
+    <string name="hz_onb_feature_theme">Tema Horizon no painel</string>
+    <string name="hz_onb_feature_theme_text">Velocidade, energia, ADAS e música num visual novo, montado sobre o painel de fábrica do próprio carro.</string>
+    <string name="hz_onb_feature_map">Mapa no painel</string>
+    <string name="hz_onb_feature_map_text">Com o celular no Android Auto pelo app, o mapa do Waze ou do Google Maps aparece no painel.</string>
+    <string name="hz_onb_feature_wheel">Menu no volante</string>
+    <string name="hz_onb_feature_wheel_text">Uma tecla do volante abre o menu do Horizon no painel, para trocar o mapa, o medidor e o cartão da esquerda.</string>
+
+    <string name="hz_onb_risks_title">Antes de instalar</string>
+    <string name="hz_onb_risks_lead">O Song Pro Horizon é um projeto independente, sem ligação com a BYD. Leia com atenção:</string>
+    <string name="hz_onb_risk_parked">Só com o carro parado</string>
+    <string name="hz_onb_risk_parked_text">Instalar, reiniciar o painel e voltar à fábrica, só com o carro em P e freio de mão puxado. O reinício apaga o painel e a multimídia por cerca de um minuto. Não mexa no app dirigindo.</string>
+    <string name="hz_onb_risk_undo">Dá para desfazer</string>
+    <string name="hz_onb_risk_undo_text">Nenhum arquivo do sistema é alterado: o tema fica num arquivo à parte, e o app guarda antes uma cópia do painel original. Voltar à fábrica, na seção Painel, desfaz tudo o que o app mudou.</string>
+    <string name="hz_onb_risk_firmware">Feito para o Song Pro com painel de 8,8\"</string>
+    <string name="hz_onb_risk_firmware_text">O Horizon foi feito e testado na multimídia 13.1.33.2511080.1. Em outras versões, o app confere os arquivos do painel antes de instalar, mas ainda pode haver diferenças. Se o painel se comportar de forma estranha, volte à fábrica.</string>
+    <string name="hz_onb_risk_updates">Antes de atualizar a multimídia</string>
+    <string name="hz_onb_risk_updates_text">Volte à fábrica antes de uma atualização, pelo ar ou na concessionária, e instale o Horizon de novo depois.</string>
+    <string name="hz_onb_risk_adb">ADB por rede ligado</string>
+    <string name="hz_onb_risk_adb_text">O app precisa do ADB por rede da multimídia. Enquanto ele estiver ligado, outro aparelho na mesma rede pode pedir acesso: só aceite pedidos que você reconhece.</string>
+    <string name="hz_onb_risk_own">Por sua conta</string>
+    <string name="hz_onb_risk_own_text">O projeto não tem garantia nem suporte da BYD. Você usa por sua conta e risco.</string>
+    <string name="hz_onb_risks_accept">Li e entendi os riscos</string>
+
+    <string name="hz_onb_access_title">Acesso à multimídia</string>
+    <string name="hz_onb_access_lead">O app instala o tema e liga as funções do painel pela própria multimídia, por ADB local, do mesmo jeito que o DashCast e o Electro.</string>
+    <string name="hz_onb_access_on">1. Ligue o ADB por rede</string>
+    <string name="hz_onb_access_on_text">Ligue a depuração ADB por rede na multimídia, o mesmo ajuste que o DashCast e o Electro pedem. Se você já usa um deles, ela já está ligada.</string>
+    <string name="hz_onb_access_allow">2. Permita a depuração</string>
+    <string name="hz_onb_access_allow_text">Toque em Conferir acesso. Na primeira vez, a multimídia pergunta se permite a depuração: marque Sempre permitir e toque em Permitir.</string>
+    <string name="hz_onb_access_check">Conferir acesso</string>
+    <string name="hz_onb_access_waiting">Conferindo… se a multimídia perguntar, permita.</string>
+    <string name="hz_onb_access_ok">Acesso liberado.</string>
+    <string name="hz_onb_access_failed">Sem acesso. Se a multimídia perguntou, permita e toque de novo; se não perguntou, ligue o ADB por rede.</string>
+
+    <string name="hz_onb_install_title">Verificar e instalar</string>
+    <string name="hz_onb_install_lead">Primeiro o app confere se este carro tem o que o Horizon precisa. A verificação só lê; não muda nada.</string>
+    <string name="hz_onb_checking">Verificando…</string>
+    <string name="hz_onb_verdict_ok">Tudo certo para instalar.</string>
+    <string name="hz_onb_verdict_warning">Dá para instalar, com a observação acima.</string>
+    <string name="hz_onb_verdict_no">O Horizon não pode ser instalado neste carro agora. O Android Auto do app funciona mesmo assim.</string>
+    <string name="hz_onb_install_hint">Com o carro em P e freio de mão. O app guarda uma cópia do painel original (cerca de 290 MB) e seleciona o Horizon, que aparece quando o painel reiniciar, no fim deste guia.</string>
+    <string name="hz_onb_install_button">Instalar o Horizon</string>
+    <string name="hz_onb_installed">Instalado</string>
+    <string name="hz_onb_check_again">Verificar de novo</string>
+
+    <string name="hz_onb_check_adb">ADB local</string>
+    <string name="hz_onb_check_adb_ok">A multimídia respondeu.</string>
+    <string name="hz_onb_check_adb_failed">Sem resposta. Volte um passo e libere o acesso.</string>
+    <string name="hz_onb_check_needs_adb">Precisa do ADB local.</string>
+    <string name="hz_onb_check_panel">Serviço de temas do painel</string>
+    <string name="hz_onb_check_panel_refused">Não reconhecido: %1$s</string>
+    <string name="hz_onb_check_panel_factory">Reconhecido. O painel usa o tema de fábrica.</string>
+    <string name="hz_onb_check_panel_horizon">Reconhecido. O Horizon já está selecionado.</string>
+    <string name="hz_onb_check_panel_other">Há outro tema personalizado selecionado no painel (do DashCast, por exemplo). Remova-o antes.</string>
+    <string name="hz_onb_check_files">Arquivos do painel de fábrica</string>
+    <string name="hz_onb_check_files_ok">Todas as mudanças do Horizon encaixam no painel deste carro.</string>
+    <string name="hz_onb_check_firmware">Versão da multimídia</string>
+    <string name="hz_onb_check_firmware_tested">A mesma em que o Horizon foi testado.</string>
+    <string name="hz_onb_check_firmware_other">Diferente da testada (%1$s). As outras checagens passaram; depois de instalar, observe o painel.</string>
+    <string name="hz_onb_check_space">Espaço livre</string>
+    <string name="hz_onb_check_space_ok">%1$d MB livres.</string>
+    <string name="hz_onb_check_space_low">O backup precisa de %1$d MB, e há %2$d MB livres.</string>
+
+    <string name="hz_onb_ready_title">Pronto</string>
+    <string name="hz_onb_ready_lead_installed">Falta reiniciar o painel para o Horizon aparecer. Com o carro em P e freio de mão, toque em Reiniciar o painel.</string>
+    <string name="hz_onb_ready_lead_later">O app está pronto. Você pode instalar o Horizon quando quiser, na seção Painel.</string>
+    <string name="hz_onb_ready_restart">Reiniciar o painel</string>
+    <string name="hz_onb_tip_theme">No painel, escolha Horizon</string>
+    <string name="hz_onb_tip_theme_text">O Horizon fica no lugar do tema Simples. Se o painel mostrar o Clássico, troque no menu de temas do próprio painel.</string>
+    <string name="hz_onb_tip_sections">Tudo fica nas seções do app</string>
+    <string name="hz_onb_tip_sections_text">Painel, Android Auto e Volante têm as opções deste guia, para mudar quando quiser.</string>
+    <string name="hz_onb_tip_factory">Para voltar ao original</string>
+    <string name="hz_onb_tip_factory_text">Em Painel, Voltar à fábrica desfaz tudo o que o app mudou no carro.</string>
+</resources>

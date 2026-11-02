@@ -1,6 +1,5 @@
 package com.andrerinas.openheadunit.main
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,8 +25,8 @@ import kotlinx.coroutines.launch
 /**
  * Painel: the Horizon cluster theme (install or update, restart the cluster, back to factory) and
  * what Horizon shows: the Simples slot, the power gauge, the left card and the map layout. Every
- * choice reaches the cluster at once through menu.json. The first time it finds the car without
- * Horizon, it offers to install it; "back to factory" undoes everything the app changed
+ * choice reaches the cluster at once through menu.json. The first install is offered by the
+ * onboarding ([OnboardingActivity]); "back to factory" undoes everything the app changed
  * ([FactoryRestore]). Only here: the app's own screen, not the cluster's menu.
  */
 class BydPanelFragment : Fragment() {
@@ -111,11 +110,6 @@ class BydPanelFragment : Fragment() {
     }
 
     private fun refreshTheme() {
-        if (Build.FINGERPRINT != HorizonCarrier.SUPPORTED_FINGERPRINT) {
-            showTheme(R.string.hz_theme_unsupported, getString(R.string.byd_theme_unsupported), installed = false)
-            install.isEnabled = false
-            return
-        }
         viewLifecycleOwner.lifecycleScope.launch {
             val found = runCatching { installer.installed() }
             if (view == null) return@launch
@@ -127,16 +121,9 @@ class BydPanelFragment : Fragment() {
                     if (name == null) showTheme(R.string.hz_theme_factory, getString(R.string.hz_theme_factory_hint), installed = false)
                     else showTheme(R.string.hz_theme_installed, getString(R.string.hz_theme_installed_hint,
                         name.removePrefix(HorizonCarrier.NAME_PREFIX).take(8)), installed = true)
-                    if (name == null && !settings.horizonSetupOffered) offerFirstInstall()
                 },
                 onFailure = { showTheme(R.string.hz_theme_no_adb, getString(R.string.byd_adb_unavailable), installed = false) })
         }
-    }
-
-    /** The app's first time on a car without Horizon: the install, asked once. */
-    private fun offerFirstInstall() {
-        settings.horizonSetupOffered = true
-        install.performClick()
     }
 
     private fun showTheme(status: Int, hint: String, installed: Boolean) {
@@ -174,7 +161,7 @@ class BydPanelFragment : Fragment() {
     }
 
     private fun setBusy(busy: Boolean) {
-        install.isEnabled = !busy && Build.FINGERPRINT == HorizonCarrier.SUPPORTED_FINGERPRINT
+        install.isEnabled = !busy
         restart.isEnabled = !busy
         remove.isEnabled = !busy
     }

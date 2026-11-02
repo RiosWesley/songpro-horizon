@@ -231,11 +231,6 @@ class Settings(private val context: Context) {
         get() = prefs.getBoolean("horizon_installed", false)
         set(value) { prefs.edit().putBoolean("horizon_installed", value).apply() }
 
-    // Whether the app already offered to install Horizon on its own, the first time it opened.
-    var horizonSetupOffered: Boolean
-        get() = prefs.getBoolean("horizon_setup_offered", false)
-        set(value) { prefs.edit().putBoolean("horizon_setup_offered", value).apply() }
-
     // Where the map goes on the cluster display: "x,y,width,height" in display pixels. Blank means
     // centred; see ClusterMapArea.
     var clusterDisplayRect: String
@@ -796,7 +791,7 @@ class Settings(private val context: Context) {
     var vehicleDisplayName: String
         // Cosmetic: the phone shows this in its connection history and on the Android Auto
         // welcome screen. It is not the reported manufacturer, which stays "Google" unless
-        // the user picks a real car brand — see the car step in OnboardingActivity.
+        // the user picks a real car brand in the vehicle settings (VehicleInfoFragment).
         get() = prefs.getString("vehicle-display-name", "Song Pro Horizon")!!
         set(value) { prefs.edit().putString("vehicle-display-name", value).apply() }
 

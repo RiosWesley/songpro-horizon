@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One point of an onboarding card: what it is, in a line, and a sentence or two about it. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/hz_card_padding"
+    android:paddingTop="20dp"
+    android:paddingEnd="@dimen/hz_card_padding"
+    android:paddingBottom="20dp">
+
+    <TextView
+        android:id="@+id/onb_point_title"
+        style="@style/HzText.Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/onb_point_text"
+        style="@style/HzText.Hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp" />
+</LinearLayout>

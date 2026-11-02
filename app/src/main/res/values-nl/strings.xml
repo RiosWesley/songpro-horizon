@@ -686,63 +686,14 @@
     <string name="connection_kind_usb_wireless_adapter">Draadloze USB-adapter</string>
     <string name="connection_kind_wifi">WiFi</string>
     <string name="connection_kind_unset">Niet ingesteld</string>
-    <string name="onb_next">Volgende</string>
-    <string name="onb_skip">Overslaan</string>
-    <string name="onb_ready_finish">Voltooien</string>
-    <string name="onb_welcome_title">Welkom bij Song Pro Horizon</string>
-    <string name="onb_welcome_body">Deze snelle installatie scant je apparaat en kiest de beste video-, weergave- en nachtmodusinstellingen voor je. Je kunt alles later wijzigen in Instellingen.</string>
-    <string name="onb_safety_title">Veiligheid eerst</string>
-    <string name="onb_safety_accept">Ik heb de voorwaarden gelezen en ga ermee akkoord</string>
-    <string name="onb_connection_title">Hoe maak je verbinding?</string>
-    <string name="onb_connection_help">Kies hoe je telefoon verbinding maakt. Zo blijft het instellingenscherm gericht op wat voor jou van toepassing is.</string>
-    <string name="onb_connection_cable_detail">Telefoon rechtstreeks met een USB-kabel op de headunit aangesloten. Draadloze opties blijven verborgen.</string>
-    <string name="onb_connection_adapter_detail">Een USB-dongle verbindt de kabel met een draadloze verbinding. Draadloze opties worden getoond.</string>
-    <string name="onb_connection_wifi_detail">Telefoon maakt verbinding via WiFi.</string>
-    <string name="onb_display_title">Weergave</string>
-    <string name="onb_display_detected">Gedetecteerd scherm: %1$d x %2$d px, %3$d dpi, hardware %4$s.</string>
-    <string name="onb_display_size_label">Schermgrootte</string>
-    <string name="onb_display_orientation_label">Oriëntatie</string>
-    <string name="onb_display_apply">Aanbevolen instellingen toepassen</string>
-    <string name="onb_display_result">Toegepast: %1$s, %2$d dpi, %3$s, %4$s-weergave.</string>
-    <string name="onb_appearance_title">Uiterlijk</string>
-    <string name="onb_appearance_theme_label">App-thema</string>
-    <string name="onb_theme_auto">Auto</string>
-    <string name="onb_theme_light">Licht</string>
-    <string name="onb_theme_dark">Donker</string>
-    <string name="onb_appearance_night_label">Nachtmodus (Android Auto)</string>
-    <string name="onb_night_auto">Automatisch</string>
-    <string name="onb_night_day">Dag</string>
-    <string name="onb_night_night">Nacht</string>
-    <string name="onb_night_light_sensor_available">Er is een lichtsensor gedetecteerd, zodat Automatisch het omgevingslicht kan volgen.</string>
-    <string name="onb_night_no_light_sensor">Geen lichtsensor gedetecteerd, dus Automatisch volgt zonsopgang en zonsondergang.</string>
-    <string name="onb_ready_title">Alles is klaar</string>
-    <string name="onb_ready_summary">Verbinding: %1$s\nResolutie: %2$s\nCodec: %3$s\n\nJe kunt alles verfijnen in Instellingen.</string>
-    <string name="onb_language_help">Kies de taal van de app.</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">Telefoon via USB verbonden, met kabel of USB-draadloosadapter.</string>
-    <string name="onb_more_appearance">Meer uiterlijk-instellingen</string>
-    <string name="onb_automation_title">Automatisering</string>
-    <string name="onb_automation_help">Kies hoe de app zelf start en verbinding maakt. Open de Auto-Connect instellingen om de prioriteitsvolgorde te slepen.</string>
-    <string name="onb_gps_title">Locatie</string>
-    <string name="onb_gps_help">Welke GPS moet Android Auto gebruiken voor navigatie?</string>
-    <string name="onb_gps_this_device">Dit apparaat</string>
-    <string name="onb_gps_phone">Verbonden telefoon</string>
-    <string name="onb_do_it_later">Later doen</string>
-    <string name="onb_display_dpi_label">Android Auto-grootte</string>
     <string name="onb_dpi_small">Klein</string>
     <string name="onb_dpi_medium">Gemiddeld</string>
     <string name="onb_dpi_large">Groot</string>
-    <string name="onb_appearance_more_hint">Je vindt meer opties voor de donkere modus in Instellingen.</string>
-    <string name="onb_automation_more_hint">Je vindt meer opties in de instellingen voor Automatisch verbinden en Automatisch starten.</string>
     <string name="onb_dpi_help">Een hogere DPI maakt de pictogrammen en tekst van Android Auto groter, waardoor er minder op het scherm past. Een lagere DPI maakt alles kleiner, waardoor er meer past. Dit wordt toegepast wanneer je Android Auto verbindt.</string>
-    <string name="onb_change_later">Je kunt dit later wijzigen in Instellingen.</string>
     <string name="dpi_automatic">Automatisch</string>
     <string name="dpi_automatic_desc">Gebruik de dichtheid van het apparaat</string>
-    <string name="onb_conn_usb_label">USB (of adapter)</string>
-    <string name="onb_connection_self_detail">De zelfstandige modus draait Android Auto op dit apparaat zonder telefoon.</string>
     <string name="connection_kind_all">Alle</string>
-    <string name="onb_connection_all_detail">Toont zowel de USB- als de WiFi-instellingen.</string>
-    <string name="onb_connection_warning">Als je een verbindingstype kiest, worden de niet-toepasselijke instellingen verborgen in Basis en Geavanceerd. Kies later een andere modus in de verbindingsinstellingen om ze weer te zien.</string>
     <string name="resolution_recommended_format">%1$s (Aanbevolen)</string>
     <string name="resolution_high_bandwidth_format">%1$s · veel bandbreedte</string>
     <string name="resolution_too_high_title">Resolutie hoger dan het scherm</string>
@@ -754,16 +705,9 @@
     <string name="dpi_automatic_desc_format">Gebruikt de dichtheid van het apparaat (%1$d DPI)</string>
     <string name="dpi_input_hint">DPI</string>
     <string name="onb_dpi_huge">Enorm</string>
-    <string name="onb_vehicle_title">Je auto</string>
-    <string name="onb_vehicle_input_hint">Merk of naam</string>
-    <string name="onb_vehicle_help_aa">Deze naam wordt naar Android Auto gestuurd. Hij verschijnt in de verbindingsgeschiedenis van je telefoon en op het welkomstscherm van Android Auto.</string>
-    <string name="onb_vehicle_help_advanced">Je kunt meer voertuiggegevens aanpassen op het tabblad Geavanceerd. Wij gebruiken deze gegevens niet; ze worden alleen naar Android Auto gestuurd omdat het ze vereist.</string>
-    <string name="onb_summary_vehicle_format">Voertuig: %1$s</string>
     <string name="sunrise_reference_help">Het referentiepunt dat wordt gebruikt om zonsopkomst en zonsondergang te berekenen. Kies één keer je locatie; het werkt zonder gps.</string>
 
     <!-- Permissions & onboarding -->
-    <string name="onb_summary_permissions_format">Machtigingen: %1$d van %2$d verleend</string>
-    <string name="onb_permissions_title">Machtigingen inschakelen</string>
     <string name="onb_permissions_help">Schakel de machtigingen in die de app nodig heeft, zodat alles werkt zonder onverwachte prompts. Je kunt deze altijd later wijzigen.</string>
     <string name="onb_perms_enable_all">Alles inschakelen</string>
     <string name="perm_allow">Toestaan</string>
@@ -785,9 +729,6 @@
     <string name="perm_write_settings_help">Laat de app de hotspot automatisch inschakelen voor draadloze verbindingen.</string>
     <string name="perm_storage_title">Opslag</string>
     <string name="perm_storage_help">Nodig om je instellingen te back-uppen en te herstellen en om een aangepaste laadafbeelding te kiezen.</string>
-    <string name="onb_dpi_recommended">Aanbevolen voor je scherm: %1$d dpi</string>
-    <string name="onb_ready_loading_intro">Nog één ding: je kunt nu een aangepast laadscherm instellen, dat wordt getoond terwijl de auto verbinding maakt.</string>
-    <string name="onb_ready_loading_button">Een laadscherm instellen</string>
 
     <!-- Support / Bug report -->
     <string name="support">Probleem melden</string>
@@ -797,8 +738,6 @@
     <string name="support_open_issues">Open de GitHub-issuespagina</string>
     <string name="support_scan_qr">Of scan deze QR-code om de issueslijst op een ander apparaat te openen.</string>
     <string name="support_github_account_warning">Let op: je hebt een gratis GitHub-account nodig om een issue aan te maken.</string>
-    <string name="onb_ready_extras_title">Voordat je klaar bent, kun je ook instellen:</string>
-    <string name="onb_extra_loading_desc">Een aangepaste afbeelding die wordt getoond terwijl de auto verbinding maakt</string>
 
     <!-- Support rules -->
     <string name="support_rules_button">Meldingsregels</string>
@@ -830,32 +769,6 @@
     <string name="aa174_notice_button_confirm">Begrepen</string>
     <string name="aa174_notice_button_guide">Handleiding openen</string>
 
-    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Song Pro Horizon\" if you use those apps.</string>
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
     <string name="dpi_size_s">S</string>
     <string name="dpi_size_m">M</string>
     <string name="dpi_size_l">L</string>
@@ -1037,7 +950,4 @@
     <string name="audio_stream_unnamed_format">Stream %1$d</string>
     <string name="audio_stream_unavailable_format">Stream %1$d (niet op dit apparaat)</string>
     <string name="audio_stream_vendor_info">Deze headunit heeft uitvoerstreams die het standaard-Android niet kent; ze staan hieronder onder de namen die zijn eigen systeem eraan geeft. Vaak zijn juist die op de versterker van de auto aangesloten, dus probeer ze met de luidsprekerknop als een kanaal stil blijft.</string>
-    <string name="onb_audio_title">Audio</string>
-    <string name="onb_audio_help">Kies via welke systeemstream elk Android Auto-kanaal wordt afgespeeld en tik op de luidspreker om het te horen. Blijft een kanaal stil in de auto, dan helpt het meestal om het naar een andere stream te verplaatsen.</string>
-    <string name="onb_audio_more_hint">Je kunt dit later aanpassen bij Instellingen → Audiostreams.</string>
 </resources>

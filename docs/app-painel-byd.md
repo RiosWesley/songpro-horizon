@@ -1,7 +1,7 @@
 # Song Pro Horizon: instalar e usar
 
-O Song Pro Horizon é feito para o **BYD Song Pro com DiLink 3.0 e painel de 8,8"
-(firmware SX309)**. Ela faz três coisas:
+O Song Pro Horizon é feito para o **BYD Song Pro com DiLink 3.0 e painel de 8,8"** e testado na
+multimídia 13.1.33.2511080.1 (firmware SX309). Ela faz três coisas:
 
 1. **Android Auto pelo cabo**, com o mapa do celular (Waze/Maps) no painel de instrumentos.
 2. **Instala o tema de painel Horizon** (com backup do painel original antes) e **volta ao painel de
@@ -32,15 +32,26 @@ próprio painel como o momento de cor.
   própria multimídia por ADB local (`127.0.0.1:5555`). É assim que ele roda a ferramenta do tema e
   liga ou desliga o AA nativo. Na primeira vez, a multimídia pergunta se permite a depuração:
   marque **sempre permitir**.
-- **Firmware SX309, painel de 8,8".** O app confere o firmware e os arquivos do painel antes de
-  qualquer coisa. Em outro firmware, a instalação do tema fica desligada.
+- **Painel de 8,8".** Não há trava por versão: o app verifica o carro antes de instalar (veja
+  **Verificação do carro**). Em outra versão da multimídia, a verificação avisa que ela não é a
+  testada, e a instalação continua possível se o resto passar.
 
 ## Usar
 
 ### Tema do painel (Horizon)
 
-- **Primeira abertura:** num carro sem o Horizon, o app abre a seção Painel e oferece a instalação
-  uma vez.
+- **Primeira abertura:** um guia passo a passo apresenta o Horizon e os riscos (é preciso marcar
+  que leu), confere o ADB local, verifica o carro, instala, configura o Android Auto e o menu do
+  volante e, no fim, oferece o reinício do painel. Dá para reabrir o guia nos Ajustes avançados.
+- **Verificação do carro:** só lê, não muda nada. Confere:
+  - **ADB local:** a multimídia responde.
+  - **Serviço de temas do painel:** a ferramenta do tema reconhece a interface do serviço do painel
+    pelos códigos de chamada do próprio firmware, e não por um hash fixo. Também lê qual tema está
+    selecionado; outro tema personalizado (do DashCast, por exemplo) bloqueia.
+  - **Arquivos do painel de fábrica:** o tema é montado na memória, e cada mudança do Horizon
+    precisa achar o seu ponto exato no QML de fábrica e sair dele sem deixar rastro.
+  - **Versão da multimídia:** outra que não a testada é só um aviso.
+  - **Espaço livre:** cerca de 400 MB, para o backup.
 - **Instalar Horizon:** o app monta o tema **no próprio carro**, a partir dos arquivos de fábrica
   dele. Nada da BYD vem dentro do app. Na primeira instalação, antes de colocar qualquer coisa, o app
   guarda o painel original em `/sdcard/SongProHorizon/original/` (cerca de 290 MB):

@@ -730,63 +730,14 @@
     <string name="connection_kind_usb_wireless_adapter">Kabelloser USB-Adapter</string>
     <string name="connection_kind_wifi">WiFi</string>
     <string name="connection_kind_unset">Nicht gesetzt</string>
-    <string name="onb_next">Weiter</string>
-    <string name="onb_skip">Überspringen</string>
-    <string name="onb_ready_finish">Fertig</string>
-    <string name="onb_welcome_title">Willkommen bei Song Pro Horizon</string>
-    <string name="onb_welcome_body">Diese Schnell-Einrichtung prüft Ihr Gerät und wählt die besten Einstellungen für Video, Anzeige und Dunkelmodus für Sie aus. Sie können später alles in den Einstellungen ändern.</string>
-    <string name="onb_safety_title">Sicherheit zuerst</string>
-    <string name="onb_safety_accept">Ich habe die Bedingungen gelesen und akzeptiere sie</string>
-    <string name="onb_connection_title">Wie verbinden Sie sich?</string>
-    <string name="onb_connection_help">Wählen Sie, wie sich Ihr Handy verbindet. So bleibt der Einstellungsbildschirm auf das beschränkt, was für Sie relevant ist.</string>
-    <string name="onb_connection_cable_detail">Handy direkt mit einem USB-Kabel an das Autoradio angeschlossen. Kabellose Optionen bleiben ausgeblendet.</string>
-    <string name="onb_connection_adapter_detail">Ein USB-Dongle verbindet das Kabel mit einer kabellosen Verbindung. Kabellose Optionen werden angezeigt.</string>
-    <string name="onb_connection_wifi_detail">Telefon verbindet sich über WiFi.</string>
-    <string name="onb_display_title">Anzeige</string>
-    <string name="onb_display_detected">Erkanntes Display: %1$d x %2$d px, %3$d dpi, Hardware %4$s.</string>
-    <string name="onb_display_size_label">Bildschirmgröße</string>
-    <string name="onb_display_orientation_label">Ausrichtung</string>
-    <string name="onb_display_apply">Empfohlene Einstellungen übernehmen</string>
-    <string name="onb_display_result">Übernommen: %1$s, %2$d dpi, %3$s, %4$s-Ansicht.</string>
-    <string name="onb_appearance_title">Aussehen</string>
-    <string name="onb_appearance_theme_label">App-Design</string>
-    <string name="onb_theme_auto">Automatisch</string>
-    <string name="onb_theme_light">Hell</string>
-    <string name="onb_theme_dark">Dunkel</string>
-    <string name="onb_appearance_night_label">Dunkelmodus (Android Auto)</string>
-    <string name="onb_night_auto">Automatisch</string>
-    <string name="onb_night_day">Tag</string>
-    <string name="onb_night_night">Nacht</string>
-    <string name="onb_night_light_sensor_available">Ein Lichtsensor wurde erkannt, daher kann der Automatik-Modus dem Umgebungslicht folgen.</string>
-    <string name="onb_night_no_light_sensor">Kein Lichtsensor erkannt, daher richtet sich der Automatik-Modus nach Sonnenauf- und -untergang.</string>
-    <string name="onb_ready_title">Alles bereit</string>
-    <string name="onb_ready_summary">Verbindung: %1$s\nAuflösung: %2$s\nCodec: %3$s\n\nSie können alles in den Einstellungen feinabstimmen.</string>
-    <string name="onb_language_help">Wählen Sie die App-Sprache.</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">Telefon über USB verbunden, per Kabel oder USB-Funkadapter.</string>
-    <string name="onb_more_appearance">Weitere Aussehen-Einstellungen</string>
-    <string name="onb_automation_title">Automatisierung</string>
-    <string name="onb_automation_help">Wählen Sie, wie die App von selbst startet und sich verbindet. Öffnen Sie die Auto-Connect-Einstellungen, um die Priorität-Reihenfolge zu ziehen.</string>
-    <string name="onb_gps_title">Standort</string>
-    <string name="onb_gps_help">Welches GPS soll Android Auto für die Navigation verwenden?</string>
-    <string name="onb_gps_this_device">Dieses Gerät</string>
-    <string name="onb_gps_phone">Verbundenes Handy</string>
-    <string name="onb_do_it_later">Später erledigen</string>
-    <string name="onb_display_dpi_label">Android Auto Größe</string>
     <string name="onb_dpi_small">Klein</string>
     <string name="onb_dpi_medium">Mittel</string>
     <string name="onb_dpi_large">Groß</string>
-    <string name="onb_appearance_more_hint">Weitere Optionen für den Dunkelmodus findest du in den Einstellungen.</string>
-    <string name="onb_automation_more_hint">Weitere Optionen findest du in den Einstellungen für automatische Verbindung und automatischen Start.</string>
     <string name="onb_dpi_help">Ein höherer DPI-Wert macht die Symbole und Texte von Android Auto größer, es passt weniger auf den Bildschirm. Ein niedrigerer Wert macht alles kleiner, es passt mehr. Die Änderung greift beim Verbinden von Android Auto.</string>
-    <string name="onb_change_later">Du kannst das später in den Einstellungen ändern.</string>
     <string name="dpi_automatic">Automatisch</string>
     <string name="dpi_automatic_desc">Gerätedichte verwenden</string>
-    <string name="onb_conn_usb_label">USB (oder Adapter)</string>
-    <string name="onb_connection_self_detail">Der autonome Modus führt Android Auto auf diesem Gerät ohne verbundenes Telefon aus.</string>
     <string name="connection_kind_all">Alle</string>
-    <string name="onb_connection_all_detail">Zeigt sowohl die USB- als auch die WiFi-Einstellungen.</string>
-    <string name="onb_connection_warning">Wenn du einen Verbindungstyp wählst, werden die nicht passenden Einstellungen in Basis und Erweitert ausgeblendet. Um sie wieder anzuzeigen, wähle später einen anderen Modus in den Verbindungseinstellungen.</string>
     <string name="resolution_recommended_format">%1$s (Empfohlen)</string>
     <string name="resolution_high_bandwidth_format">%1$s · hohe Bandbreite</string>
     <string name="resolution_too_high_title">Auflösung höher als der Bildschirm</string>
@@ -798,16 +749,9 @@
     <string name="dpi_automatic_desc_format">Verwendet die Gerätedichte (%1$d DPI)</string>
     <string name="dpi_input_hint">DPI</string>
     <string name="onb_dpi_huge">Riesig</string>
-    <string name="onb_vehicle_title">Dein Auto</string>
-    <string name="onb_vehicle_input_hint">Marke oder Name</string>
-    <string name="onb_vehicle_help_aa">Dieser Name wird an Android Auto gesendet. Er erscheint im Verbindungsverlauf deines Telefons und auf dem Willkommensbildschirm von Android Auto.</string>
-    <string name="onb_vehicle_help_advanced">Weitere Fahrzeugdetails kannst du im Tab Erweitert anpassen. Wir verwenden diese Daten nicht, sie werden nur an Android Auto gesendet, weil es sie benötigt.</string>
-    <string name="onb_summary_vehicle_format">Fahrzeug: %1$s</string>
     <string name="sunrise_reference_help">Der Referenzpunkt zur Berechnung von Sonnenaufgang und Sonnenuntergang. Wähle deinen Standort einmal aus; es funktioniert ohne GPS.</string>
 
     <!-- Permissions onboarding -->
-    <string name="onb_summary_permissions_format">Berechtigungen: %1$d von %2$d erteilt</string>
-    <string name="onb_permissions_title">Berechtigungen aktivieren</string>
     <string name="onb_permissions_help">Aktivieren Sie die Berechtigungen, die die App benötigt, damit später keine unerwarteten Aufforderungen erscheinen. Sie können diese jederzeit ändern.</string>
     <string name="onb_perms_enable_all">Alle aktivieren</string>
     <string name="perm_allow">Erlauben</string>
@@ -829,9 +773,6 @@
     <string name="perm_write_settings_help">Ermöglicht der App, den Hotspot für kabellose Verbindungen automatisch einzuschalten.</string>
     <string name="perm_storage_title">Speicher</string>
     <string name="perm_storage_help">Wird benötigt, um Ihre Einstellungen zu sichern und wiederherzustellen sowie ein benutzerdefiniertes Ladebild auszuwählen.</string>
-    <string name="onb_dpi_recommended">Empfohlen für Ihren Bildschirm: %1$d dpi</string>
-    <string name="onb_ready_loading_intro">Noch eine Sache: Sie können jetzt einen benutzerdefinierten Ladebildschirm festlegen, der angezeigt wird, während das Auto eine Verbindung herstellt.</string>
-    <string name="onb_ready_loading_button">Ladebildschirm einrichten</string>
     <string name="static_bssid_title">Statische BSSID (MAC Address)</string>
     <string name="static_bssid_enter_value">BSSID-Wert (Format: XX:XX:XX:XX:XX:XX)</string>
     <string name="rename_notice_title">Unser Name wird zu Open Headunit</string>
@@ -908,9 +849,6 @@
     <string name="hotspot_ssid_override_message">Leer lassen zum automatischen Auslesen. Falls das Auslesen fehlschlägt, gib hier den genauen Hotspot-Namen ein.</string>
     <string name="hotspot_password_override">Hotspot-Passwort (Manuell)</string>
     <string name="hotspot_password_override_message">Leer lassen zum automatischen Auslesen. Das Passwort wird dem Smartphone zur Verbindung übergeben.</string>
-<string name="onb_ready_extras_title">Bevor du fertig bist, kannst du noch einrichten:</string>
-    <string name="onb_extra_loading_desc">Ein eigenes Bild anzeigen, während sich das Auto verbindet</string>
-    <string name="onb_vehicle_help_sideload">Die Auswahl einer echten Automarke zeigt deren Logo auf dem Beenden-Button von Android Auto. Android Auto blendet dann jedoch Apps aus, die nicht aus dem Play Store stammen. Behalte \"Google\" oder \"Song Pro Horizon\", wenn du solche Apps nutzt.</string>
     <string name="dpi_size_s">S</string>
     <string name="dpi_size_m">M</string>
     <string name="dpi_size_l">L</string>
@@ -919,31 +857,6 @@
     <string name="use_measured_touch_surface">Experimentelle Fixierung für Touch-Ausrichtung</string>
     <string name="use_measured_touch_surface_description">Normalisiert Touch-Eingaben über dem gemessenen Projektionsbereich. Hilft, wenn kleine Android Auto Bedienelemente versetzt wirken.</string>
 
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
 
     <!-- Auto-added missing translations -->
     <string name="hotspot_band">Hotspot-Frequenzband</string>
@@ -1038,7 +951,4 @@
     <string name="audio_stream_unnamed_format">Stream %1$d</string>
     <string name="audio_stream_unavailable_format">Stream %1$d (auf diesem Gerät nicht vorhanden)</string>
     <string name="audio_stream_vendor_info">Dieses Headunit hat Ausgabestreams, die es im Standard-Android nicht gibt; sie stehen unten unter den Namen, die sein eigenes System ihnen gibt. Häufig sind genau sie mit dem Verstärker des Autos verbunden – probiere sie mit der Lautsprechertaste aus, wenn ein Kanal stumm bleibt.</string>
-    <string name="onb_audio_title">Audio</string>
-    <string name="onb_audio_help">Lege fest, über welchen Systemstream jeder Android-Auto-Kanal wiedergegeben wird, und tippe auf den Lautsprecher, um ihn zu hören. Bleibt ein Kanal im Auto stumm, hilft meist der Wechsel auf einen anderen Stream.</string>
-    <string name="onb_audio_more_hint">Du kannst das später unter Einstellungen → Audio-Streams wieder ändern.</string>
 </resources>

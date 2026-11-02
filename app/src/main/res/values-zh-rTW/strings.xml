@@ -685,63 +685,14 @@
     <string name="connection_kind_usb_wireless_adapter">USB 無線轉接器</string>
     <string name="connection_kind_wifi">WiFi</string>
     <string name="connection_kind_unset">尚未設定</string>
-    <string name="onb_next">下一步</string>
-    <string name="onb_skip">略過</string>
-    <string name="onb_ready_finish">完成</string>
-    <string name="onb_welcome_title">歡迎使用 Song Pro Horizon</string>
-    <string name="onb_welcome_body">此快速設定會掃描您的裝置，並為您挑選最佳的視訊、顯示及夜間模式設定。您稍後隨時可以在設定中變更所有項目。</string>
-    <string name="onb_safety_title">安全第一</string>
-    <string name="onb_safety_accept">我已閱讀並接受條款</string>
-    <string name="onb_connection_title">您如何連線？</string>
-    <string name="onb_connection_help">請選擇您手機的連線方式。這能讓設定畫面專注於與您相關的項目。</string>
-    <string name="onb_connection_cable_detail">手機以 USB 線直接插入車機。無線選項不會顯示。</string>
-    <string name="onb_connection_adapter_detail">USB 轉接器將線材橋接為無線連線。會顯示無線選項。</string>
-    <string name="onb_connection_wifi_detail">手機透過 WiFi 連接。</string>
-    <string name="onb_display_title">顯示</string>
-    <string name="onb_display_detected">偵測到的面板：%1$d x %2$d px，%3$d dpi，硬體 %4$s。</string>
-    <string name="onb_display_size_label">螢幕尺寸</string>
-    <string name="onb_display_orientation_label">螢幕方向</string>
-    <string name="onb_display_apply">套用建議設定</string>
-    <string name="onb_display_result">已套用：%1$s、%2$d dpi、%3$s、%4$s 檢視。</string>
-    <string name="onb_appearance_title">外觀</string>
-    <string name="onb_appearance_theme_label">應用程式主題</string>
-    <string name="onb_theme_auto">自動</string>
-    <string name="onb_theme_light">淺色</string>
-    <string name="onb_theme_dark">深色</string>
-    <string name="onb_appearance_night_label">深色模式（Android Auto）</string>
-    <string name="onb_night_auto">自動</string>
-    <string name="onb_night_day">日間</string>
-    <string name="onb_night_night">夜間</string>
-    <string name="onb_night_light_sensor_available">已偵測到光線感應器，因此自動模式可依環境光線調整。</string>
-    <string name="onb_night_no_light_sensor">未偵測到光線感應器，因此自動模式會依日出與日落調整。</string>
-    <string name="onb_ready_title">一切就緒</string>
-    <string name="onb_ready_summary">連線：%1$s\n解析度：%2$s\n編碼：%3$s\n\n您可以在設定中微調所有項目。</string>
-    <string name="onb_language_help">選擇應用程式語言。</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">手機透過 USB 連接，使用直接連接線或 USB 無線轉接器。</string>
-    <string name="onb_more_appearance">更多外觀設定</string>
-    <string name="onb_automation_title">自動化</string>
-    <string name="onb_automation_help">選擇應用程式自動啟動與連線的方式。開啟自動連線設定即可拖曳調整優先順序。</string>
-    <string name="onb_gps_title">位置</string>
-    <string name="onb_gps_help">Android Auto 應使用哪個 GPS 進行導航？</string>
-    <string name="onb_gps_this_device">此裝置</string>
-    <string name="onb_gps_phone">已連接的手機</string>
-    <string name="onb_do_it_later">稍後設定</string>
-    <string name="onb_display_dpi_label">Android Auto 大小</string>
     <string name="onb_dpi_small">小</string>
     <string name="onb_dpi_medium">中</string>
     <string name="onb_dpi_large">大</string>
-    <string name="onb_appearance_more_hint">你可以在設定中找到更多深色模式選項。</string>
-    <string name="onb_automation_more_hint">你可以在自動連線與自動啟動設定中找到更多選項。</string>
     <string name="onb_dpi_help">較高的 DPI 會讓 Android Auto 的圖示與文字變大，畫面能顯示的內容較少；較低的 DPI 會讓它們變小，能顯示更多。連線 Android Auto 時生效。</string>
-    <string name="onb_change_later">你可以稍後在設定中變更。</string>
     <string name="dpi_automatic">自動</string>
     <string name="dpi_automatic_desc">使用裝置密度</string>
-    <string name="onb_conn_usb_label">USB（或轉接器）</string>
-    <string name="onb_connection_self_detail">自主模式在本裝置上執行 Android Auto，不需連接手機。</string>
     <string name="connection_kind_all">全部</string>
-    <string name="onb_connection_all_detail">同時顯示 USB 與 WiFi 設定。</string>
-    <string name="onb_connection_warning">選擇連線類型會在基本與進階模式中隱藏不適用的設定。若要再次顯示，稍後在連線設定中選擇其他模式。</string>
     <string name="resolution_recommended_format">%1$s（建議）</string>
     <string name="resolution_high_bandwidth_format">%1$s · 高頻寬</string>
     <string name="resolution_too_high_title">解析度高於螢幕</string>
@@ -753,16 +704,9 @@
     <string name="dpi_automatic_desc_format">使用裝置密度（%1$d DPI）</string>
     <string name="dpi_input_hint">DPI</string>
     <string name="onb_dpi_huge">巨大</string>
-    <string name="onb_vehicle_title">你的車</string>
-    <string name="onb_vehicle_input_hint">品牌或名稱</string>
-    <string name="onb_vehicle_help_aa">這個名稱會傳送到 Android Auto，並顯示在手機的連線紀錄和 Android Auto 的歡迎畫面上。</string>
-    <string name="onb_vehicle_help_advanced">你可以在進階分頁中調整更多車輛細節。我們不會使用這些資料，只會傳送給 Android Auto，因為它需要這些資料。</string>
-    <string name="onb_summary_vehicle_format">車輛：%1$s</string>
     <string name="sunrise_reference_help">用來計算日出和日落時間的參考點。只需選擇一次位置，無需 GPS 即可運作。</string>
 
     <!-- Onboarding permissions -->
-    <string name="onb_summary_permissions_format">權限：已授予 %1$d / %2$d 項</string>
-    <string name="onb_permissions_title">啟用權限</string>
     <string name="onb_permissions_help">開啟應用程式所需的權限，以免日後出現意外提示。您隨時可以更改這些設定。</string>
     <string name="onb_perms_enable_all">全部啟用</string>
     <string name="perm_allow">允許</string>
@@ -784,9 +728,6 @@
     <string name="perm_write_settings_help">讓應用程式自動開啟熱點以進行無線連線。</string>
     <string name="perm_storage_title">儲存空間</string>
     <string name="perm_storage_help">備份和還原設定，以及選擇自訂載入畫面圖片所需的權限。</string>
-    <string name="onb_dpi_recommended">您螢幕的建議值：%1$d dpi</string>
-    <string name="onb_ready_loading_intro">還有一件事：您現在可以設定自訂載入畫面，在汽車連線時顯示。</string>
-    <string name="onb_ready_loading_button">設定載入畫面</string>
 
     <!-- Support / Bug Report -->
     <string name="support">回報問題</string>
@@ -796,8 +737,6 @@
     <string name="support_open_issues">前往 GitHub Issues 頁面</string>
     <string name="support_scan_qr">或掃描此 QR 碼，在其他裝置上開啟 Issues 清單。</string>
     <string name="support_github_account_warning">注意：建立 Issue 需要一個免費的 GitHub 帳號。</string>
-    <string name="onb_ready_extras_title">完成前，您還可以設定：</string>
-    <string name="onb_extra_loading_desc">汽車連線時顯示的自訂圖片</string>
 
     <!-- Support Rules -->
     <string name="support_rules_intro">只有兩項是必填的，其餘都是選填，但填得越詳細，問題就越容易被解決。</string>
@@ -829,32 +768,6 @@
     <string name="aa174_notice_button_confirm">我知道了</string>
     <string name="aa174_notice_button_guide">開啟說明指南</string>
 
-    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Song Pro Horizon\" if you use those apps.</string>
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
     <string name="dpi_size_s">S</string>
     <string name="dpi_size_m">M</string>
     <string name="dpi_size_l">L</string>
@@ -1036,7 +949,4 @@
     <string name="audio_stream_unnamed_format">串流 %1$d</string>
     <string name="audio_stream_unavailable_format">串流 %1$d（這台裝置沒有）</string>
     <string name="audio_stream_vendor_info">這台主機有標準 Android 沒有的輸出串流，下方以其系統自訂的名稱列出。車上的擴大機往往實際接在這些串流上，因此若某個頻道一直沒有聲音，請用喇叭按鈕試試看。</string>
-    <string name="onb_audio_title">音訊</string>
-    <string name="onb_audio_help">選擇每個 Android Auto 頻道要在哪個系統串流上播放，並輕觸喇叭試聽。如果某個頻道在車上一直沒有聲音，改到另一個串流通常就能解決。</string>
-    <string name="onb_audio_more_hint">之後可以在「設定 → 音訊串流」中再修改。</string>
 </resources>

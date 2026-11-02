@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Song Pro Horizon's onboarding (OnboardingActivity, main/onboarding/) and the car check (CarCheck). -->
+<resources>
+    <string name="hz_onb_progress">Step %1$d of %2$d</string>
+    <string name="hz_onb_back">Back</string>
+    <string name="hz_onb_continue">Continue</string>
+    <string name="hz_onb_finish">Finish</string>
+
+    <string name="hz_onb_welcome_title">Song Pro Horizon</string>
+    <string name="hz_onb_welcome_lead">A new instrument cluster for your Song Pro, with the Android Auto map and a steering wheel menu. This guide gets everything ready in a few minutes.</string>
+    <string name="hz_onb_feature_theme">The Horizon theme on the cluster</string>
+    <string name="hz_onb_feature_theme_text">Speed, power, ADAS and music in a new look, built on the car\'s own factory cluster.</string>
+    <string name="hz_onb_feature_map">The map on the cluster</string>
+    <string name="hz_onb_feature_map_text">With the phone on Android Auto through the app, the Waze or Google Maps map shows on the cluster.</string>
+    <string name="hz_onb_feature_wheel">A steering wheel menu</string>
+    <string name="hz_onb_feature_wheel_text">A wheel key opens the Horizon menu on the cluster, to change the map, the gauge and the left card.</string>
+
+    <string name="hz_onb_risks_title">Before you install</string>
+    <string name="hz_onb_risks_lead">Song Pro Horizon is an independent project, not affiliated with BYD. Please read:</string>
+    <string name="hz_onb_risk_parked">Only while parked</string>
+    <string name="hz_onb_risk_parked_text">Install, restart the cluster and go back to factory only in P with the parking brake on. The restart turns the cluster and the head unit off for about a minute. Do not use the app while driving.</string>
+    <string name="hz_onb_risk_undo">It can be undone</string>
+    <string name="hz_onb_risk_undo_text">No system file is changed: the theme is a separate file, and the app first keeps a copy of the original cluster. Back to factory, in the Cluster section, undoes everything the app changed.</string>
+    <string name="hz_onb_risk_firmware">Made for the Song Pro with the 8.8\" cluster</string>
+    <string name="hz_onb_risk_firmware_text">Horizon was made and tested on head unit firmware 13.1.33.2511080.1. On other versions the app checks the cluster files before installing, but there may still be differences. If the cluster behaves oddly, go back to factory.</string>
+    <string name="hz_onb_risk_updates">Before a head unit update</string>
+    <string name="hz_onb_risk_updates_text">Go back to factory before an update, over the air or at the dealer, and install Horizon again afterwards.</string>
+    <string name="hz_onb_risk_adb">Network ADB on</string>
+    <string name="hz_onb_risk_adb_text">The app needs the head unit\'s network ADB. While it is on, another device on the same network can ask for access: only accept requests you recognise.</string>
+    <string name="hz_onb_risk_own">At your own risk</string>
+    <string name="hz_onb_risk_own_text">The project has no warranty and no support from BYD. You use it at your own risk.</string>
+    <string name="hz_onb_risks_accept">I have read and understood the risks</string>
+
+    <string name="hz_onb_access_title">Access to the head unit</string>
+    <string name="hz_onb_access_lead">The app installs the theme and turns cluster features on through the head unit itself, over local ADB, the same way DashCast and Electro do.</string>
+    <string name="hz_onb_access_on">1. Turn network ADB on</string>
+    <string name="hz_onb_access_on_text">Turn network ADB debugging on in the head unit, the same setting DashCast and Electro ask for. If you already use one of them, it is on.</string>
+    <string name="hz_onb_access_allow">2. Allow debugging</string>
+    <string name="hz_onb_access_allow_text">Tap Check access. The first time, the head unit asks whether to allow debugging: tick Always allow and tap Allow.</string>
+    <string name="hz_onb_access_check">Check access</string>
+    <string name="hz_onb_access_waiting">Checking… if the head unit asks, allow it.</string>
+    <string name="hz_onb_access_ok">Access granted.</string>
+    <string name="hz_onb_access_failed">No access. If the head unit asked, allow it and tap again; if it did not, turn network ADB on.</string>
+
+    <string name="hz_onb_install_title">Check and install</string>
+    <string name="hz_onb_install_lead">First the app checks that this car has what Horizon needs. The check only reads; it changes nothing.</string>
+    <string name="hz_onb_checking">Checking…</string>
+    <string name="hz_onb_verdict_ok">Ready to install.</string>
+    <string name="hz_onb_verdict_warning">It can be installed, with the note above.</string>
+    <string name="hz_onb_verdict_no">Horizon cannot be installed on this car for now. The app\'s Android Auto works anyway.</string>
+    <string name="hz_onb_install_hint">In P with the parking brake on. The app keeps a copy of the original cluster (about 290 MB) and selects Horizon, which shows when the cluster restarts at the end of this guide.</string>
+    <string name="hz_onb_install_button">Install Horizon</string>
+    <string name="hz_onb_installed">Installed</string>
+    <string name="hz_onb_check_again">Check again</string>
+
+    <string name="hz_onb_check_adb">Local ADB</string>
+    <string name="hz_onb_check_adb_ok">The head unit answered.</string>
+    <string name="hz_onb_check_adb_failed">No answer. Go back a step and allow access.</string>
+    <string name="hz_onb_check_needs_adb">Needs local ADB.</string>
+    <string name="hz_onb_check_panel">Cluster theme service</string>
+    <string name="hz_onb_check_panel_refused">Not recognised: %1$s</string>
+    <string name="hz_onb_check_panel_factory">Recognised. The cluster uses the factory theme.</string>
+    <string name="hz_onb_check_panel_horizon">Recognised. Horizon is already selected.</string>
+    <string name="hz_onb_check_panel_other">Another custom theme is selected on the cluster (DashCast\'s, for instance). Remove it first.</string>
+    <string name="hz_onb_check_files">Factory cluster files</string>
+    <string name="hz_onb_check_files_ok">Every Horizon change fits this car\'s cluster.</string>
+    <string name="hz_onb_check_firmware">Head unit version</string>
+    <string name="hz_onb_check_firmware_tested">The one Horizon was tested on.</string>
+    <string name="hz_onb_check_firmware_other">Not the tested one (%1$s). The other checks passed; watch the cluster after installing.</string>
+    <string name="hz_onb_check_space">Free space</string>
+    <string name="hz_onb_check_space_ok">%1$d MB free.</string>
+    <string name="hz_onb_check_space_low">The backup needs %1$d MB and %2$d MB are free.</string>
+
+    <string name="hz_onb_ready_title">Done</string>
+    <string name="hz_onb_ready_lead_installed">Restart the cluster to see Horizon. In P with the parking brake on, tap Restart the cluster.</string>
+    <string name="hz_onb_ready_lead_later">The app is ready. You can install Horizon whenever you like, in the Cluster section.</string>
+    <string name="hz_onb_ready_restart">Restart the cluster</string>
+    <string name="hz_onb_tip_theme">On the cluster, choose Horizon</string>
+    <string name="hz_onb_tip_theme_text">Horizon takes the place of the Simple theme. If the cluster shows Classic, change it in the cluster\'s own theme menu.</string>
+    <string name="hz_onb_tip_sections">Everything stays in the app\'s sections</string>
+    <string name="hz_onb_tip_sections_text">Cluster, Android Auto and Wheel have this guide\'s options, to change whenever you like.</string>
+    <string name="hz_onb_tip_factory">To go back to the original</string>
+    <string name="hz_onb_tip_factory_text">In Cluster, Back to factory undoes everything the app changed on the car.</string>
+</resources>

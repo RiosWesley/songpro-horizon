@@ -687,63 +687,14 @@
     <string name="connection_kind_usb_wireless_adapter">Adaptor wireless USB</string>
     <string name="connection_kind_wifi">WiFi</string>
     <string name="connection_kind_unset">Nesetat</string>
-    <string name="onb_next">Următorul</string>
-    <string name="onb_skip">Omite</string>
-    <string name="onb_ready_finish">Finalizează</string>
-    <string name="onb_welcome_title">Bine ai venit în Song Pro Horizon</string>
-    <string name="onb_welcome_body">Această configurare rapidă scanează dispozitivul și alege cele mai bune setări video, de afișare și mod de noapte pentru tine. Poți schimba oricând totul mai târziu în Setări.</string>
-    <string name="onb_safety_title">Siguranța pe primul loc</string>
-    <string name="onb_safety_accept">Am citit și accept termenii</string>
-    <string name="onb_connection_title">Cum te conectezi?</string>
-    <string name="onb_connection_help">Alege cum se conectează telefonul tău. Astfel ecranul de setări rămâne concentrat pe ceea ce ți se aplică.</string>
-    <string name="onb_connection_cable_detail">Telefonul este conectat direct la unitatea principală printr-un cablu USB. Opțiunile wireless rămân ascunse.</string>
-    <string name="onb_connection_adapter_detail">Un dongle USB face legătura dintre cablu și o conexiune wireless. Opțiunile wireless sunt afișate.</string>
-    <string name="onb_connection_wifi_detail">Telefonul se conectează prin WiFi.</string>
-    <string name="onb_display_title">Afișare</string>
-    <string name="onb_display_detected">Ecran detectat: %1$d x %2$d px, %3$d dpi, hardware %4$s.</string>
-    <string name="onb_display_size_label">Mărime ecran</string>
-    <string name="onb_display_orientation_label">Orientare</string>
-    <string name="onb_display_apply">Aplică setările recomandate</string>
-    <string name="onb_display_result">Aplicat: %1$s, %2$d dpi, %3$s, vizualizare %4$s.</string>
-    <string name="onb_appearance_title">Aspect</string>
-    <string name="onb_appearance_theme_label">Tema aplicației</string>
-    <string name="onb_theme_auto">Auto</string>
-    <string name="onb_theme_light">Deschis</string>
-    <string name="onb_theme_dark">Întunecat</string>
-    <string name="onb_appearance_night_label">Mod întunecat Android Auto</string>
-    <string name="onb_night_auto">Automat</string>
-    <string name="onb_night_day">Zi</string>
-    <string name="onb_night_night">Noapte</string>
-    <string name="onb_night_light_sensor_available">A fost detectat un senzor de lumină, deci modul Automat poate urmări lumina ambientală.</string>
-    <string name="onb_night_no_light_sensor">Nu a fost detectat niciun senzor de lumină, deci modul Automat urmărește răsăritul și apusul.</string>
-    <string name="onb_ready_title">Ești gata</string>
-    <string name="onb_ready_summary">Conexiune: %1$s\nRezoluție: %2$s\nCodec: %3$s\n\nPoți ajusta fin totul în Setări.</string>
-    <string name="onb_language_help">Alege limba aplicației.</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">Telefon conectat prin USB, cu cablu direct sau adaptor USB wireless.</string>
-    <string name="onb_more_appearance">Mai multe setări de aspect</string>
-    <string name="onb_automation_title">Automatizare</string>
-    <string name="onb_automation_help">Alege cum pornește și se conectează aplicația de una singură. Deschide setările de conectare automată pentru a trage de ordinea de prioritate.</string>
-    <string name="onb_gps_title">Locație</string>
-    <string name="onb_gps_help">Ce GPS ar trebui să folosească Android Auto pentru navigație?</string>
-    <string name="onb_gps_this_device">Acest dispozitiv</string>
-    <string name="onb_gps_phone">Telefon conectat</string>
-    <string name="onb_do_it_later">Fă mai târziu</string>
-    <string name="onb_display_dpi_label">Dimensiune Android Auto</string>
     <string name="onb_dpi_small">Mic</string>
     <string name="onb_dpi_medium">Mediu</string>
     <string name="onb_dpi_large">Mare</string>
-    <string name="onb_appearance_more_hint">Poți găsi mai multe opțiuni pentru modul întunecat în Setări.</string>
-    <string name="onb_automation_more_hint">Poți găsi mai multe opțiuni în setările de Conectare automată și Pornire automată.</string>
     <string name="onb_dpi_help">Un DPI mai mare mărește pictogramele și textul Android Auto, așa că încape mai puțin pe ecran. Un DPI mai mic le micșorează și încape mai mult. Se aplică la conectarea Android Auto.</string>
-    <string name="onb_change_later">Poți schimba asta mai târziu în Setări.</string>
     <string name="dpi_automatic">Automat</string>
     <string name="dpi_automatic_desc">Folosește densitatea dispozitivului</string>
-    <string name="onb_conn_usb_label">USB (sau adaptor)</string>
-    <string name="onb_connection_self_detail">Modul autonom rulează Android Auto pe acest dispozitiv fără a conecta un telefon.</string>
     <string name="connection_kind_all">Toate</string>
-    <string name="onb_connection_all_detail">Afișează atât setările USB, cât și cele WiFi.</string>
-    <string name="onb_connection_warning">Alegerea unui tip de conexiune ascunde setările care nu se aplică, atât în Bază, cât și în Avansat. Pentru a le vedea din nou, alege mai târziu alt mod din setările de conexiune.</string>
     <string name="resolution_recommended_format">%1$s (Recomandat)</string>
     <string name="resolution_high_bandwidth_format">%1$s · lățime de bandă mare</string>
     <string name="resolution_too_high_title">Rezoluție mai mare decât ecranul</string>
@@ -755,11 +706,6 @@
     <string name="dpi_automatic_desc_format">Folosește densitatea dispozitivului (%1$d DPI)</string>
     <string name="dpi_input_hint">DPI</string>
     <string name="onb_dpi_huge">Uriaș</string>
-    <string name="onb_vehicle_title">Mașina ta</string>
-    <string name="onb_vehicle_input_hint">Marcă sau nume</string>
-    <string name="onb_vehicle_help_aa">Acest nume este trimis către Android Auto. Apare în istoricul conexiunilor telefonului și pe ecranul de întâmpinare Android Auto.</string>
-    <string name="onb_vehicle_help_advanced">Poți ajusta mai multe detalii despre vehicul în fila Avansat. Nu folosim aceste date; sunt trimise doar către Android Auto deoarece le solicită.</string>
-    <string name="onb_summary_vehicle_format">Vehicul: %1$s</string>
     <string name="sunrise_reference_help">Punctul de referință folosit pentru a calcula răsăritul și apusul soarelui. Alege-ți locația o singură dată; funcționează fără GPS.</string>
 
     <string name="support">Raportează o problemă</string>
@@ -769,8 +715,6 @@
     <string name="support_open_issues">Deschide pagina de probleme GitHub</string>
     <string name="support_scan_qr">Sau scanează acest cod QR pentru a deschide lista de probleme pe un alt dispozitiv.</string>
     <string name="support_github_account_warning">Notă: ai nevoie de un cont GitHub gratuit pentru a crea o problemă.</string>
-    <string name="onb_ready_extras_title">Înainte să termini, poți configura și:</string>
-    <string name="onb_extra_loading_desc">O imagine personalizată afișată cât timp mașina se conectează</string>
 
     <string name="support_rules_button">Reguli de raportare</string>
     <string name="support_rules_english_desc">Te rugăm să scrii întotdeauna problema ta în engleză. Este singura limbă pe care o înțelege cel care întreține proiectul și cei mai mulți dintre cei care ajută aici, iar un fir în mai multe limbi se transformă repede într-un mic turnul Babel în care nimeni nu poate ajuta pe nimeni. Nu te judecă nimeni — nici nivelul de engleză, nici felul în care scrii — deci nu-ți face griji pentru greșeli. Dacă te ajută, un traducător precum Google Translate sau DeepL, ori un AI precum ChatGPT sau Claude, poate să îți scrie și să îți pună în ordine mesajul în engleză.</string>
@@ -801,10 +745,6 @@
     <string name="aa174_notice_button_confirm">Am înțeles</string>
     <string name="aa174_notice_button_guide">Deschide ghidul</string>
 
-    <string name="onb_summary_permissions_format">Permissions: %1$d of %2$d granted</string>
-    <string name="onb_ready_loading_intro">One more thing: you can now set a custom loading screen, shown while the car connects.</string>
-    <string name="onb_ready_loading_button">Set up a loading screen</string>
-    <string name="onb_permissions_title">Enable permissions</string>
     <string name="onb_permissions_help">Turn on the permissions the app needs so everything works without surprise prompts later. You can change these any time.</string>
     <string name="onb_perms_enable_all">Enable all</string>
     <string name="perm_allow">Allow</string>
@@ -826,37 +766,10 @@
     <string name="perm_write_settings_help">Lets the app turn the hotspot on automatically for wireless connections.</string>
     <string name="perm_storage_title">Storage</string>
     <string name="perm_storage_help">Needed to back up and restore your settings and to pick a custom loading image.</string>
-    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Song Pro Horizon\" if you use those apps.</string>
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
     <string name="dpi_size_s">S</string>
     <string name="dpi_size_m">M</string>
     <string name="dpi_size_l">L</string>
     <string name="dpi_size_xl">XL</string>
-    <string name="onb_dpi_recommended">Recommended for your screen: %1$d dpi</string>
     <string name="dpi_value_format">%1$d DPI</string>
     <string name="pixel_aspect_ratio">Pixel aspect ratio</string>
     <string name="enter_pixel_aspect_ratio_value">Pixel aspect ratio x10000 (10000 = square pixels)</string>
@@ -1034,7 +947,4 @@
     <string name="audio_stream_unnamed_format">Flux %1$d</string>
     <string name="audio_stream_unavailable_format">Flux %1$d (nu există pe acest dispozitiv)</string>
     <string name="audio_stream_vendor_info">Această unitate auto are fluxuri de ieșire pe care Android standard nu le are; apar mai jos cu numele date de propriul ei sistem. Adesea tocmai la ele este conectat efectiv amplificatorul mașinii, așa că încearcă-le cu butonul difuzorului dacă un canal rămâne mut.</string>
-    <string name="onb_audio_title">Audio</string>
-    <string name="onb_audio_help">Alege fluxul de sistem pe care se redă fiecare canal Android Auto și atinge difuzorul ca să îl auzi. Dacă un canal rămâne mut în mașină, mutarea lui pe alt flux rezolvă de obicei problema.</string>
-    <string name="onb_audio_more_hint">Poți schimba acestea mai târziu din Setări → Fluxuri audio.</string>
 </resources>

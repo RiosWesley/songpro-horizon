@@ -619,63 +619,14 @@
     <string name="connection_kind_usb_wireless_adapter">USB უსადენო ადაპტერი</string>
     <string name="connection_kind_wifi">WiFi</string>
     <string name="connection_kind_unset">არ არის მითითებული</string>
-    <string name="onb_next">შემდეგი</string>
-    <string name="onb_skip">გამოტოვება</string>
-    <string name="onb_ready_finish">დასრულება</string>
-    <string name="onb_welcome_title">კეთილი იყოს თქვენი მობრძანება Song Pro Horizon-ში</string>
-    <string name="onb_welcome_body">ეს სწრაფი გამართვა ასკანირებს თქვენს მოწყობილობას და ირჩევს ვიდეოს, ეკრანისა და ბნელი რეჟიმის საუკეთესო პარამეტრებს. ყველაფრის შეცვლა მოგვიანებით პარამეტრებში შეგიძლიათ.</string>
-    <string name="onb_safety_title">უპირველესად უსაფრთხოება</string>
-    <string name="onb_safety_accept">წავიკითხე და ვეთანხმები პირობებს</string>
-    <string name="onb_connection_title">როგორ უკავშირდებით?</string>
-    <string name="onb_connection_help">აირჩიეთ, როგორ უკავშირდება თქვენი ტელეფონი. ეს პარამეტრების ეკრანს მხოლოდ თქვენთვის რელევანტურ ვარიანტებზე ამახვილებს.</string>
-    <string name="onb_connection_cable_detail">ტელეფონი პირდაპირ მონიტორშია ჩართული USB კაბელით. უსადენო ვარიანტები დამალული რჩება.</string>
-    <string name="onb_connection_adapter_detail">USB დონგლი აკავშირებს კაბელს უსადენო კავშირთან. უსადენო ვარიანტები ნაჩვენებია.</string>
-    <string name="onb_connection_wifi_detail">ტელეფონი უკავშირდება WiFi-ით.</string>
-    <string name="onb_display_title">ეკრანი</string>
-    <string name="onb_display_detected">აღმოჩენილი პანელი: %1$d x %2$d px, %3$d dpi, აპარატურა %4$s.</string>
-    <string name="onb_display_size_label">ეკრანის ზომა</string>
-    <string name="onb_display_orientation_label">ორიენტაცია</string>
-    <string name="onb_display_apply">რეკომენდებული პარამეტრების გამოყენება</string>
-    <string name="onb_display_result">გამოყენებულია: %1$s, %2$d dpi, %3$s, %4$s ხედი.</string>
-    <string name="onb_appearance_title">იერსახე</string>
-    <string name="onb_appearance_theme_label">აპლიკაციის თემა</string>
-    <string name="onb_theme_auto">ავტო</string>
-    <string name="onb_theme_light">ღია</string>
-    <string name="onb_theme_dark">ბნელი</string>
-    <string name="onb_appearance_night_label">ბნელი რეჟიმი (Android Auto)</string>
-    <string name="onb_night_auto">ავტომატური</string>
-    <string name="onb_night_day">დღე</string>
-    <string name="onb_night_night">ღამე</string>
-    <string name="onb_night_light_sensor_available">აღმოჩენილია სინათლის სენსორი, ამიტომ ავტომატურ რეჟიმს შეუძლია გარემო განათებას მიჰყვეს.</string>
-    <string name="onb_night_no_light_sensor">სინათლის სენსორი ვერ მოიძებნა, ამიტომ ავტომატური რეჟიმი მიჰყვება მზის ამოსვლასა და ჩასვლას.</string>
-    <string name="onb_ready_title">ყველაფერი მზადაა</string>
-    <string name="onb_ready_summary">კავშირი: %1$s\nგაფართოება: %2$s\nკოდეკი: %3$s\n\nყველაფრის ზუსტად მორგება პარამეტრებში შეგიძლიათ.</string>
-    <string name="onb_language_help">აირჩიეთ აპლიკაციის ენა.</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">ტელეფონი USB-ით არის დაკავშირებული: პირდაპირი კაბელით ან USB უსადენო ადაპტერით.</string>
-    <string name="onb_more_appearance">იერსახის დამატებითი პარამეტრები</string>
-    <string name="onb_automation_title">ავტომატიზაცია</string>
-    <string name="onb_automation_help">აირჩიეთ, როგორ გაეშვას და დაუკავშირდეს აპლიკაცია დამოუკიდებლად. ავტო-კავშირის პარამეტრები გახსენით პრიორიტეტული რიგის გადასათრევად.</string>
-    <string name="onb_gps_title">მდებარეობა</string>
-    <string name="onb_gps_help">რომელი GPS გამოიყენოს Android Auto-მ ნავიგაციისთვის?</string>
-    <string name="onb_gps_this_device">ეს მოწყობილობა</string>
-    <string name="onb_gps_phone">დაკავშირებული ტელეფონი</string>
-    <string name="onb_do_it_later">მოგვიანებით</string>
-    <string name="onb_display_dpi_label">Android Auto-ს ზომა</string>
     <string name="onb_dpi_small">პატარა</string>
     <string name="onb_dpi_medium">საშუალო</string>
     <string name="onb_dpi_large">დიდი</string>
-    <string name="onb_appearance_more_hint">მუქი რეჟიმის დამატებით პარამეტრებს პარამეტრებში იპოვით.</string>
-    <string name="onb_automation_more_hint">დამატებით პარამეტრებს ავტომატური დაკავშირებისა და ავტომატური გაშვების პარამეტრებში იპოვით.</string>
     <string name="onb_dpi_help">მაღალი DPI ზრდის Android Auto-ს ხატულებსა და ტექსტს, ამიტომ ეკრანზე ნაკლები ეტევა. დაბალი DPI ამცირებს მათ და მეტი ეტევა. მოქმედებს Android Auto-ს დაკავშირებისას.</string>
-    <string name="onb_change_later">ამის შეცვლა მოგვიანებით პარამეტრებში შეგიძლიათ.</string>
     <string name="dpi_automatic">ავტომატური</string>
     <string name="dpi_automatic_desc">მოწყობილობის სიმკვრივის გამოყენება</string>
-    <string name="onb_conn_usb_label">USB (ან ადაპტერი)</string>
-    <string name="onb_connection_self_detail">ავტონომიური რეჟიმი უშვებს Android Auto-ს ამ მოწყობილობაზე ტელეფონის დაკავშირების გარეშე.</string>
     <string name="connection_kind_all">ყველა</string>
-    <string name="onb_connection_all_detail">აჩვენებს როგორც USB, ისე WiFi პარამეტრებს.</string>
-    <string name="onb_connection_warning">კავშირის ტიპის არჩევა მალავს შეუსაბამო პარამეტრებს როგორც ძირითად, ისე გაფართოებულ ჩანართში. ისევ სანახავად, მოგვიანებით აირჩიეთ სხვა რეჟიმი კავშირის პარამეტრებში.</string>
     <string name="resolution_recommended_format">%1$s (რეკომენდებული)</string>
     <string name="resolution_high_bandwidth_format">%1$s · მაღალი გამტარუნარიანობა</string>
     <string name="resolution_too_high_title">გარჩევადობა ეკრანზე მაღალია</string>
@@ -687,11 +638,6 @@
     <string name="dpi_automatic_desc_format">იყენებს მოწყობილობის სიმკვრივეს (%1$d DPI)</string>
     <string name="dpi_input_hint">DPI</string>
     <string name="onb_dpi_huge">უზარმაზარი</string>
-    <string name="onb_vehicle_title">თქვენი მანქანა</string>
-    <string name="onb_vehicle_input_hint">მარკა ან სახელი</string>
-    <string name="onb_vehicle_help_aa">ეს სახელი იგზავნება Android Auto-ში. ის ჩანს ტელეფონის კავშირების ისტორიაში და Android Auto-ს მისალმების ეკრანზე.</string>
-    <string name="onb_vehicle_help_advanced">მანქანის დამატებითი დეტალები შეგიძლიათ დააკონფიგუროთ ჩანართში დამატებითი. ჩვენ არ ვიყენებთ ამ მონაცემებს; ისინი იგზავნება მხოლოდ Android Auto-ში, რადგან ის ამას მოითხოვს.</string>
-    <string name="onb_summary_vehicle_format">მანქანა: %1$s</string>
 
     <string name="support">პრობლემის შეტყობინება</string>
     <string name="support_description">GitHub-ზე ხარვეზების ძებნა ან შეტყობინება</string>
@@ -700,8 +646,6 @@
     <string name="support_open_issues">GitHub-ის საკითხების გვერდის გახსნა</string>
     <string name="support_scan_qr">ან დაასკანირეთ ეს QR კოდი, რათა გახსნათ საკითხების სია სხვა მოწყობილობაზე.</string>
     <string name="support_github_account_warning">შენიშვნა: საკითხის შესაქმნელად საჭიროა უფასო GitHub ანგარიში.</string>
-    <string name="onb_ready_extras_title">დასრულებამდე შეგიძლიათ ასევე გამართოთ:</string>
-    <string name="onb_extra_loading_desc">სახეობრივი სურათი, რომელიც ჩანს მანქანის დაკავშირების დროს</string>
 
     <string name="support_rules_button">შეტყობინების წესები</string>
     <string name="support_rules_english_desc">გთხოვთ, პრობლემა ყოველთვის ინგლისურად აღწეროთ. ეს ის ერთი ენაა, რომელსაც პროექტის შემქმნელი და აქ მომხმარეთა უმეტესობა იზიარებს, ხოლო ნაირენოვანი ძაფი სწრაფად გადაიქცევა ბაბილონის გოდოლად, სადაც ვერავინ ვერ ეხმარება ვერავის. არავინ გასამართლებთ — არც თქვენს ინგლისურს, არც ჩაწერის სტილს, ამიტომ ნუ ინერვიულებთ შეცდომებზე. თუ გამოგადგებათ, მთარგმნელი, Google Translate ან DeepL, ან ხელოვნური ინტელექტი, ChatGPT ან Claude, დაგეხმარებათ ინგლისურად გამართულად ჩამოაყალიბოთ გზავნილი.</string>
@@ -732,10 +676,6 @@
     <string name="aa174_notice_button_confirm">გასაგებია</string>
     <string name="aa174_notice_button_guide">ინსტრუქციის გახსნა</string>
 
-    <string name="onb_summary_permissions_format">Permissions: %1$d of %2$d granted</string>
-    <string name="onb_ready_loading_intro">One more thing: you can now set a custom loading screen, shown while the car connects.</string>
-    <string name="onb_ready_loading_button">Set up a loading screen</string>
-    <string name="onb_permissions_title">Enable permissions</string>
     <string name="onb_permissions_help">Turn on the permissions the app needs so everything works without surprise prompts later. You can change these any time.</string>
     <string name="onb_perms_enable_all">Enable all</string>
     <string name="perm_allow">Allow</string>
@@ -757,37 +697,10 @@
     <string name="perm_write_settings_help">Lets the app turn the hotspot on automatically for wireless connections.</string>
     <string name="perm_storage_title">Storage</string>
     <string name="perm_storage_help">Needed to back up and restore your settings and to pick a custom loading image.</string>
-    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Song Pro Horizon\" if you use those apps.</string>
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
     <string name="dpi_size_s">S</string>
     <string name="dpi_size_m">M</string>
     <string name="dpi_size_l">L</string>
     <string name="dpi_size_xl">XL</string>
-    <string name="onb_dpi_recommended">Recommended for your screen: %1$d dpi</string>
     <string name="dpi_value_format">%1$d DPI</string>
     <string name="pixel_aspect_ratio">Pixel aspect ratio</string>
     <string name="enter_pixel_aspect_ratio_value">Pixel aspect ratio x10000 (10000 = square pixels)</string>
@@ -1018,7 +931,4 @@
     <string name="audio_stream_unnamed_format">ნაკადი %1$d</string>
     <string name="audio_stream_unavailable_format">ნაკადი %1$d (ამ მოწყობილობაზე არ არის)</string>
     <string name="audio_stream_vendor_info">ამ მაგნიტოლას აქვს გამომავალი ნაკადები, რომლებიც სტანდარტულ Android-ს არ აქვს; ქვემოთ ისინი მისივე სისტემის მიერ მინიჭებული სახელებით არის ჩამოთვლილი. ხშირად სწორედ მათზეა რეალურად მიერთებული ავტომობილის გამაძლიერებელი, ამიტომ სცადეთ ისინი დინამიკის ღილაკით, თუ რომელიმე არხი დუმს.</string>
-    <string name="onb_audio_title">აუდიო</string>
-    <string name="onb_audio_help">აირჩიეთ სისტემური ნაკადი, რომელზეც უკრავს Android Auto-ს თითოეული არხი, და შეეხეთ დინამიკს მოსასმენად. თუ არხი მანქანაში დუმს, ჩვეულებრივ სხვა ნაკადზე გადატანა შველის.</string>
-    <string name="onb_audio_more_hint">ამის შეცვლა მოგვიანებით შეგიძლიათ: პარამეტრები → აუდიონაკადები.</string>
 </resources>

@@ -692,63 +692,14 @@
     <string name="connection_kind_usb_wireless_adapter">Bộ chuyển không dây USB</string>
     <string name="connection_kind_wifi">WiFi</string>
     <string name="connection_kind_unset">Chưa đặt</string>
-    <string name="onb_next">Tiếp theo</string>
-    <string name="onb_skip">Bỏ qua</string>
-    <string name="onb_ready_finish">Hoàn tất</string>
-    <string name="onb_welcome_title">Chào mừng đến với Song Pro Horizon</string>
-    <string name="onb_welcome_body">Thiết lập nhanh này quét thiết bị của bạn và chọn cài đặt video, hiển thị và chế độ tối tốt nhất cho bạn. Bạn có thể đổi mọi thứ sau trong Cài đặt.</string>
-    <string name="onb_safety_title">An toàn là trên hết</string>
-    <string name="onb_safety_accept">Tôi đã đọc và đồng ý với các điều khoản</string>
-    <string name="onb_connection_title">Bạn kết nối bằng cách nào?</string>
-    <string name="onb_connection_help">Chọn cách điện thoại của bạn kết nối. Việc này giúp màn hình cài đặt tập trung vào những gì phù hợp với bạn.</string>
-    <string name="onb_connection_cable_detail">Điện thoại cắm thẳng vào head unit bằng cáp USB. Các tuỳ chọn không dây sẽ được ẩn đi.</string>
-    <string name="onb_connection_adapter_detail">Bộ chuyển USB nối cáp với kết nối không dây. Các tuỳ chọn không dây sẽ được hiển thị.</string>
-    <string name="onb_connection_wifi_detail">Điện thoại kết nối qua WiFi.</string>
-    <string name="onb_display_title">Hiển thị</string>
-    <string name="onb_display_detected">Màn hình phát hiện: %1$d x %2$d px, %3$d dpi, phần cứng %4$s.</string>
-    <string name="onb_display_size_label">Kích thước màn hình</string>
-    <string name="onb_display_orientation_label">Hướng màn hình</string>
-    <string name="onb_display_apply">Áp dụng cài đặt đề xuất</string>
-    <string name="onb_display_result">Đã áp dụng: %1$s, %2$d dpi, %3$s, chế độ hiển thị %4$s.</string>
-    <string name="onb_appearance_title">Giao diện</string>
-    <string name="onb_appearance_theme_label">Giao diện ứng dụng</string>
-    <string name="onb_theme_auto">Tự động</string>
-    <string name="onb_theme_light">Sáng</string>
-    <string name="onb_theme_dark">Tối</string>
-    <string name="onb_appearance_night_label">Chế độ tối Android Auto</string>
-    <string name="onb_night_auto">Tự động</string>
-    <string name="onb_night_day">Ban ngày</string>
-    <string name="onb_night_night">Ban đêm</string>
-    <string name="onb_night_light_sensor_available">Đã phát hiện cảm biến ánh sáng, nên chế độ Tự động có thể theo ánh sáng môi trường.</string>
-    <string name="onb_night_no_light_sensor">Không phát hiện cảm biến ánh sáng, nên chế độ Tự động theo giờ bình minh và hoàng hôn.</string>
-    <string name="onb_ready_title">Bạn đã sẵn sàng</string>
-    <string name="onb_ready_summary">Kết nối: %1$s\nĐộ phân giải: %2$s\nCodec: %3$s\n\nBạn có thể tinh chỉnh mọi thứ trong Cài đặt.</string>
-    <string name="onb_language_help">Chọn ngôn ngữ ứng dụng.</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">Điện thoại kết nối qua USB, bằng cáp trực tiếp hoặc bộ chuyển đổi không dây USB.</string>
-    <string name="onb_more_appearance">Thêm cài đặt giao diện</string>
-    <string name="onb_automation_title">Tự động hoá</string>
-    <string name="onb_automation_help">Chọn cách ứng dụng tự khởi động và kết nối. Mở cài đặt Tự kết nối để kéo sắp thứ tự ưu tiên.</string>
-    <string name="onb_gps_title">Vị trí</string>
-    <string name="onb_gps_help">Android Auto nên dùng GPS nào cho điều hướng?</string>
-    <string name="onb_gps_this_device">Máy này</string>
-    <string name="onb_gps_phone">Điện thoại đã kết nối</string>
-    <string name="onb_do_it_later">Để sau</string>
-    <string name="onb_display_dpi_label">Kích thước Android Auto</string>
     <string name="onb_dpi_small">Nhỏ</string>
     <string name="onb_dpi_medium">Vừa</string>
     <string name="onb_dpi_large">Lớn</string>
-    <string name="onb_appearance_more_hint">Bạn có thể tìm thêm tùy chọn chế độ tối trong Cài đặt.</string>
-    <string name="onb_automation_more_hint">Bạn có thể tìm thêm tùy chọn trong cài đặt Tự động kết nối và Tự động khởi động.</string>
     <string name="onb_dpi_help">DPI cao hơn làm cho biểu tượng và chữ của Android Auto lớn hơn, nên hiển thị được ít hơn. DPI thấp hơn làm chúng nhỏ lại và hiển thị được nhiều hơn. Áp dụng khi bạn kết nối Android Auto.</string>
-    <string name="onb_change_later">Bạn có thể thay đổi điều này sau trong Cài đặt.</string>
     <string name="dpi_automatic">Tự động</string>
     <string name="dpi_automatic_desc">Dùng mật độ của thiết bị</string>
-    <string name="onb_conn_usb_label">USB (hoặc bộ chuyển đổi)</string>
-    <string name="onb_connection_self_detail">Chế độ độc lập chạy Android Auto trên thiết bị này mà không cần kết nối điện thoại.</string>
     <string name="connection_kind_all">Tất cả</string>
-    <string name="onb_connection_all_detail">Hiển thị cả cài đặt USB và WiFi.</string>
-    <string name="onb_connection_warning">Chọn một loại kết nối sẽ ẩn các cài đặt không áp dụng, ở cả Cơ bản và Nâng cao. Để xem lại, hãy chọn chế độ khác trong cài đặt kết nối sau.</string>
     <string name="resolution_recommended_format">%1$s (Khuyến nghị)</string>
     <string name="resolution_high_bandwidth_format">%1$s · băng thông cao</string>
     <string name="resolution_too_high_title">Độ phân giải cao hơn màn hình</string>
@@ -760,11 +711,6 @@
     <string name="dpi_automatic_desc_format">Dùng mật độ của thiết bị (%1$d DPI)</string>
     <string name="dpi_input_hint">DPI</string>
     <string name="onb_dpi_huge">Cực lớn</string>
-    <string name="onb_vehicle_title">Xe của bạn</string>
-    <string name="onb_vehicle_input_hint">Hãng hoặc tên</string>
-    <string name="onb_vehicle_help_aa">Tên này được gửi đến Android Auto. Nó hiển thị trong lịch sử kết nối của điện thoại và trên màn hình chào mừng của Android Auto.</string>
-    <string name="onb_vehicle_help_advanced">Bạn có thể tinh chỉnh thêm chi tiết xe trong tab Nâng cao. Chúng tôi không dùng dữ liệu này; nó chỉ được gửi đến Android Auto vì Android Auto yêu cầu.</string>
-    <string name="onb_summary_vehicle_format">Xe: %1$s</string>
     <string name="sunrise_reference_help">Điểm tham chiếu được dùng để tính thời gian mặt trời mọc và lặn. Chọn vị trí của bạn một lần; hoạt động mà không cần GPS.</string>
 
     <string name="support">Báo cáo sự cố</string>
@@ -774,8 +720,6 @@
     <string name="support_open_issues">Mở trang issues trên GitHub</string>
     <string name="support_scan_qr">Hoặc quét mã QR này để mở danh sách issues trên thiết bị khác.</string>
     <string name="support_github_account_warning">Lưu ý: bạn cần có tài khoản GitHub miễn phí để tạo issue.</string>
-    <string name="onb_ready_extras_title">Trước khi hoàn tất, bạn cũng có thể thiết lập:</string>
-    <string name="onb_extra_loading_desc">Hình ảnh tuỳ chỉnh hiển thị khi xe đang kết nối</string>
 
     <!-- Support rules -->
     <string name="support_rules_button">Quy tắc báo cáo</string>
@@ -807,10 +751,6 @@
     <string name="aa174_notice_button_confirm">Đã hiểu</string>
     <string name="aa174_notice_button_guide">Mở hướng dẫn</string>
 
-    <string name="onb_summary_permissions_format">Permissions: %1$d of %2$d granted</string>
-    <string name="onb_ready_loading_intro">One more thing: you can now set a custom loading screen, shown while the car connects.</string>
-    <string name="onb_ready_loading_button">Set up a loading screen</string>
-    <string name="onb_permissions_title">Enable permissions</string>
     <string name="onb_permissions_help">Turn on the permissions the app needs so everything works without surprise prompts later. You can change these any time.</string>
     <string name="onb_perms_enable_all">Enable all</string>
     <string name="perm_allow">Allow</string>
@@ -832,37 +772,10 @@
     <string name="perm_write_settings_help">Lets the app turn the hotspot on automatically for wireless connections.</string>
     <string name="perm_storage_title">Storage</string>
     <string name="perm_storage_help">Needed to back up and restore your settings and to pick a custom loading image.</string>
-    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Song Pro Horizon\" if you use those apps.</string>
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
     <string name="dpi_size_s">S</string>
     <string name="dpi_size_m">M</string>
     <string name="dpi_size_l">L</string>
     <string name="dpi_size_xl">XL</string>
-    <string name="onb_dpi_recommended">Recommended for your screen: %1$d dpi</string>
     <string name="dpi_value_format">%1$d DPI</string>
     <string name="pixel_aspect_ratio">Pixel aspect ratio</string>
     <string name="enter_pixel_aspect_ratio_value">Pixel aspect ratio x10000 (10000 = square pixels)</string>
@@ -1040,7 +953,4 @@
     <string name="audio_stream_unnamed_format">Luồng %1$d</string>
     <string name="audio_stream_unavailable_format">Luồng %1$d (không có trên thiết bị này)</string>
     <string name="audio_stream_vendor_info">Đầu phát này có những luồng đầu ra mà Android tiêu chuẩn không có; chúng được liệt kê bên dưới theo tên do chính hệ thống của nó đặt. Bộ khuếch đại của xe thường thực sự được đấu vào những luồng đó, nên hãy thử chúng bằng nút loa nếu một kênh vẫn im lặng.</string>
-    <string name="onb_audio_title">Âm thanh</string>
-    <string name="onb_audio_help">Chọn luồng hệ thống mà mỗi kênh Android Auto sẽ phát trên đó, rồi chạm vào loa để nghe thử. Nếu một kênh vẫn im lặng trong xe, chuyển nó sang luồng khác thường là cách khắc phục.</string>
-    <string name="onb_audio_more_hint">Bạn có thể thay đổi lại sau trong Cài đặt → Luồng âm thanh.</string>
 </resources>

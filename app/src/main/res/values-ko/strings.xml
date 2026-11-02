@@ -690,63 +690,14 @@
     <string name="connection_kind_usb_wireless_adapter">USB 무선 어댑터</string>
     <string name="connection_kind_wifi">WiFi</string>
     <string name="connection_kind_unset">설정 안 됨</string>
-    <string name="onb_next">다음</string>
-    <string name="onb_skip">건너뛰기</string>
-    <string name="onb_ready_finish">완료</string>
-    <string name="onb_welcome_title">Song Pro Horizon에 오신 것을 환영합니다</string>
-    <string name="onb_welcome_body">이 빠른 설정은 기기를 검사하여 가장 적합한 비디오, 디스플레이, 다크 모드 설정을 자동으로 선택합니다. 모든 항목은 나중에 설정에서 변경할 수 있습니다.</string>
-    <string name="onb_safety_title">안전이 우선입니다</string>
-    <string name="onb_safety_accept">약관을 읽고 동의합니다</string>
-    <string name="onb_connection_title">어떻게 연결하시나요?</string>
-    <string name="onb_connection_help">휴대폰 연결 방식을 선택하세요. 이렇게 하면 설정 화면에 본인에게 해당하는 항목만 표시됩니다.</string>
-    <string name="onb_connection_cable_detail">휴대폰을 USB 케이블로 헤드유닛에 직접 연결합니다. 무선 관련 옵션은 표시되지 않습니다.</string>
-    <string name="onb_connection_adapter_detail">USB 동글이 케이블을 무선 연결로 연결해 줍니다. 무선 관련 옵션이 표시됩니다.</string>
-    <string name="onb_connection_wifi_detail">휴대폰을 WiFi로 연결합니다. 무선 관련 옵션이 표시됩니다.</string>
-    <string name="onb_display_title">디스플레이</string>
-    <string name="onb_display_detected">감지된 화면: %1$d x %2$d px, %3$d dpi, 하드웨어 %4$s.</string>
-    <string name="onb_display_size_label">화면 크기</string>
-    <string name="onb_display_orientation_label">화면 방향</string>
-    <string name="onb_display_apply">권장 설정 적용</string>
-    <string name="onb_display_result">적용됨: %1$s, %2$d dpi, %3$s, %4$s 뷰.</string>
-    <string name="onb_appearance_title">모양</string>
-    <string name="onb_appearance_theme_label">앱 테마</string>
-    <string name="onb_theme_auto">자동</string>
-    <string name="onb_theme_light">라이트</string>
-    <string name="onb_theme_dark">다크</string>
-    <string name="onb_appearance_night_label">다크 모드(Android Auto)</string>
-    <string name="onb_night_auto">자동</string>
-    <string name="onb_night_day">주간</string>
-    <string name="onb_night_night">야간</string>
-    <string name="onb_night_light_sensor_available">조도 센서가 감지되어 자동 모드가 주변 밝기에 따라 동작할 수 있습니다.</string>
-    <string name="onb_night_no_light_sensor">조도 센서가 감지되지 않아 자동 모드가 일출과 일몰 시간을 따릅니다.</string>
-    <string name="onb_ready_title">모든 준비가 끝났습니다</string>
-    <string name="onb_ready_summary">연결: %1$s\n해상도: %2$s\n코덱: %3$s\n\n모든 항목은 설정에서 세부 조정할 수 있습니다.</string>
-    <string name="onb_language_help">앱 언어를 선택하세요.</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">휴대폰을 USB로 연결합니다. 직접 케이블 또는 USB 무선 어댑터 모두 해당합니다. 무선 관련 옵션은 기본 화면에서는 숨겨집니다.</string>
-    <string name="onb_more_appearance">모양 설정 더 보기</string>
-    <string name="onb_automation_title">자동화</string>
-    <string name="onb_automation_help">앱이 스스로 시작하고 연결하는 방식을 선택하세요. 자동 연결 설정을 열어 우선순위 순서를 드래그할 수 있습니다.</string>
-    <string name="onb_gps_title">위치</string>
-    <string name="onb_gps_help">Android Auto 내비게이션에 어떤 GPS를 사용할까요?</string>
-    <string name="onb_gps_this_device">이 기기</string>
-    <string name="onb_gps_phone">연결된 휴대폰</string>
-    <string name="onb_do_it_later">나중에 하기</string>
-    <string name="onb_display_dpi_label">Android Auto 크기</string>
     <string name="onb_dpi_small">작게</string>
     <string name="onb_dpi_medium">중간</string>
     <string name="onb_dpi_large">크게</string>
-    <string name="onb_appearance_more_hint">설정에서 더 많은 다크 모드 옵션을 찾을 수 있습니다.</string>
-    <string name="onb_automation_more_hint">자동 연결 및 자동 시작 설정에서 더 많은 옵션을 찾을 수 있습니다.</string>
     <string name="onb_dpi_help">DPI를 높이면 Android Auto의 아이콘과 글자가 커져 화면에 표시되는 양이 줄어듭니다. 낮추면 작아져 더 많이 표시됩니다. Android Auto에 연결할 때 적용됩니다.</string>
-    <string name="onb_change_later">나중에 설정에서 변경할 수 있습니다.</string>
     <string name="dpi_automatic">자동</string>
     <string name="dpi_automatic_desc">기기 밀도 사용</string>
-    <string name="onb_conn_usb_label">USB (또는 어댑터)</string>
-    <string name="onb_connection_self_detail">자율 모드는 휴대전화를 연결하지 않고 이 기기에서 Android Auto를 실행하므로 기본 탭에서 USB 및 WiFi 옵션이 숨겨집니다.</string>
     <string name="connection_kind_all">모두</string>
-    <string name="onb_connection_all_detail">USB와 WiFi 설정을 모두 표시합니다.</string>
-    <string name="onb_connection_warning">연결 유형을 선택하면 해당하지 않는 설정이 기본 및 고급 탭에서 모두 숨겨집니다. 다시 보려면 나중에 연결 설정에서 다른 모드를 선택하세요.</string>
     <string name="resolution_recommended_format">%1$s (권장)</string>
     <string name="resolution_high_bandwidth_format">%1$s · 높은 대역폭</string>
     <string name="resolution_too_high_title">화면보다 높은 해상도</string>
@@ -758,11 +709,6 @@
     <string name="dpi_automatic_desc_format">기기 밀도를 사용합니다 (%1$d DPI)</string>
     <string name="dpi_input_hint">DPI</string>
     <string name="onb_dpi_huge">매우 크게</string>
-    <string name="onb_vehicle_title">내 차</string>
-    <string name="onb_vehicle_input_hint">브랜드 또는 이름</string>
-    <string name="onb_vehicle_help_aa">이 이름은 Android Auto로 전송됩니다. 휴대전화의 연결 기록과 Android Auto 시작 화면에 표시됩니다.</string>
-    <string name="onb_vehicle_help_advanced">고급 탭에서 차량 세부정보를 더 조정할 수 있습니다. 이 데이터는 저희가 사용하지 않으며, Android Auto가 요구하므로 전송만 합니다.</string>
-    <string name="onb_summary_vehicle_format">차량: %1$s</string>
     <string name="sunrise_reference_help">일출과 일몰을 계산하는 데 사용되는 기준점입니다. 위치를 한 번만 선택하면 GPS 없이도 작동합니다.</string>
     <string name="support">문제 신고</string>
     <string name="support_description">GitHub에서 버그를 검색하거나 신고하세요</string>
@@ -771,8 +717,6 @@
     <string name="support_open_issues">GitHub 이슈 페이지 열기</string>
     <string name="support_scan_qr">또는 이 QR 코드를 스캔하여 다른 기기에서 이슈 목록을 여세요.</string>
     <string name="support_github_account_warning">참고: 이슈를 작성하려면 무료 GitHub 계정이 필요합니다.</string>
-    <string name="onb_ready_extras_title">마무리하기 전에 추가로 설정할 수 있습니다:</string>
-    <string name="onb_extra_loading_desc">차량 연결 중에 표시되는 사용자 지정 이미지</string>
 
     <!-- Support / issue reporting rules -->
     <string name="support_rules_button">신고 규칙</string>
@@ -804,10 +748,6 @@
     <string name="aa174_notice_button_confirm">확인</string>
     <string name="aa174_notice_button_guide">가이드 열기</string>
 
-    <string name="onb_summary_permissions_format">Permissions: %1$d of %2$d granted</string>
-    <string name="onb_ready_loading_intro">One more thing: you can now set a custom loading screen, shown while the car connects.</string>
-    <string name="onb_ready_loading_button">Set up a loading screen</string>
-    <string name="onb_permissions_title">Enable permissions</string>
     <string name="onb_permissions_help">Turn on the permissions the app needs so everything works without surprise prompts later. You can change these any time.</string>
     <string name="onb_perms_enable_all">Enable all</string>
     <string name="perm_allow">Allow</string>
@@ -829,37 +769,10 @@
     <string name="perm_write_settings_help">Lets the app turn the hotspot on automatically for wireless connections.</string>
     <string name="perm_storage_title">Storage</string>
     <string name="perm_storage_help">Needed to back up and restore your settings and to pick a custom loading image.</string>
-    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Song Pro Horizon\" if you use those apps.</string>
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
     <string name="dpi_size_s">S</string>
     <string name="dpi_size_m">M</string>
     <string name="dpi_size_l">L</string>
     <string name="dpi_size_xl">XL</string>
-    <string name="onb_dpi_recommended">Recommended for your screen: %1$d dpi</string>
     <string name="dpi_value_format">%1$d DPI</string>
     <string name="pixel_aspect_ratio">Pixel aspect ratio</string>
     <string name="enter_pixel_aspect_ratio_value">Pixel aspect ratio x10000 (10000 = square pixels)</string>
@@ -1034,7 +947,4 @@
     <string name="audio_stream_unnamed_format">스트림 %1$d</string>
     <string name="audio_stream_unavailable_format">스트림 %1$d(이 기기에 없음)</string>
     <string name="audio_stream_vendor_info">이 헤드유닛에는 표준 Android에 없는 출력 스트림이 있으며, 아래에 자체 시스템이 붙인 이름으로 표시됩니다. 차량 앰프는 실제로 이런 스트림에 연결된 경우가 많으므로, 어떤 채널이 계속 무음이면 스피커 버튼으로 시험해 보세요.</string>
-    <string name="onb_audio_title">오디오</string>
-    <string name="onb_audio_help">각 Android Auto 채널이 재생될 시스템 스트림을 선택하고 스피커를 눌러 들어 보세요. 차에서 어떤 채널이 무음이면 대개 다른 스트림으로 옮기면 해결됩니다.</string>
-    <string name="onb_audio_more_hint">설정 → 오디오 스트림에서 나중에 다시 변경할 수 있습니다.</string>
 </resources>

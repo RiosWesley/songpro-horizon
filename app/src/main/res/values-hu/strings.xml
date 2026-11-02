@@ -685,63 +685,14 @@
     <string name="connection_kind_usb_wireless_adapter">USB vezeték nélküli adapter</string>
     <string name="connection_kind_wifi">WiFi</string>
     <string name="connection_kind_unset">Nincs beállítva</string>
-    <string name="onb_next">Tovább</string>
-    <string name="onb_skip">Kihagyás</string>
-    <string name="onb_ready_finish">Befejezés</string>
-    <string name="onb_welcome_title">Üdvözöl a Song Pro Horizon</string>
-    <string name="onb_welcome_body">Ez a gyorsbeállítás megvizsgálja az eszközödet, és kiválasztja számodra a legjobb videó-, kijelző- és éjszakai mód beállításokat. Mindent később is módosíthatsz a Beállításokban.</string>
-    <string name="onb_safety_title">Biztonság mindenekelőtt</string>
-    <string name="onb_safety_accept">Elolvastam és elfogadom a feltételeket</string>
-    <string name="onb_connection_title">Hogyan csatlakozol?</string>
-    <string name="onb_connection_help">Válaszd ki, hogyan csatlakozik a telefonod. Így a beállítások képernyő csak arra összpontosít, ami rád vonatkozik.</string>
-    <string name="onb_connection_cable_detail">A telefon közvetlenül a fejegységhez csatlakozik USB-kábellel. A vezeték nélküli lehetőségek nem jelennek meg.</string>
-    <string name="onb_connection_adapter_detail">Egy USB-dongle vezeték nélküli kapcsolattá alakítja a kábelt. A vezeték nélküli lehetőségek megjelennek.</string>
-    <string name="onb_connection_wifi_detail">A telefon WiFi-n keresztül csatlakozik.</string>
-    <string name="onb_display_title">Kijelző</string>
-    <string name="onb_display_detected">Észlelt panel: %1$d x %2$d px, %3$d dpi, hardver %4$s.</string>
-    <string name="onb_display_size_label">Kijelző mérete</string>
-    <string name="onb_display_orientation_label">Tájolás</string>
-    <string name="onb_display_apply">Ajánlott beállítások alkalmazása</string>
-    <string name="onb_display_result">Alkalmazva: %1$s, %2$d dpi, %3$s, %4$s megjelenítés.</string>
-    <string name="onb_appearance_title">Megjelenés</string>
-    <string name="onb_appearance_theme_label">Alkalmazás témája</string>
-    <string name="onb_theme_auto">Auto</string>
-    <string name="onb_theme_light">Világos</string>
-    <string name="onb_theme_dark">Sötét</string>
-    <string name="onb_appearance_night_label">Android Auto éjszakai mód</string>
-    <string name="onb_night_auto">Automatikus</string>
-    <string name="onb_night_day">Nappali</string>
-    <string name="onb_night_night">Éjszakai</string>
-    <string name="onb_night_light_sensor_available">Fényérzékelő észlelve, így az Automatikus mód követheti a környezeti fényt.</string>
-    <string name="onb_night_no_light_sensor">Nem észlelhető fényérzékelő, így az Automatikus mód a napkeltét és napnyugtát követi.</string>
-    <string name="onb_ready_title">Minden készen áll</string>
-    <string name="onb_ready_summary">Csatlakozás: %1$s\nFelbontás: %2$s\nKódek: %3$s\n\nMindent finomhangolhatsz a Beállításokban.</string>
-    <string name="onb_language_help">Válaszd ki az alkalmazás nyelvét.</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">Telefon USB-n keresztül csatlakoztatva, kábellel vagy USB-s vezeték nélküli adapterrel.</string>
-    <string name="onb_more_appearance">További megjelenítési beállítások</string>
-    <string name="onb_automation_title">Automatizálás</string>
-    <string name="onb_automation_help">Válaszd ki, hogyan induljon el és csatlakozzon az alkalmazás magától. Nyisd meg az Automatikus csatlakozás beállításait a prioritási sorrend átrendezéséhez.</string>
-    <string name="onb_gps_title">Hely</string>
-    <string name="onb_gps_help">Melyik GPS-t használja az Android Auto a navigációhoz?</string>
-    <string name="onb_gps_this_device">Ez az eszköz</string>
-    <string name="onb_gps_phone">Csatlakoztatott telefon</string>
-    <string name="onb_do_it_later">Később</string>
-    <string name="onb_display_dpi_label">Android Auto méret</string>
     <string name="onb_dpi_small">Kicsi</string>
     <string name="onb_dpi_medium">Közepes</string>
     <string name="onb_dpi_large">Nagy</string>
-    <string name="onb_appearance_more_hint">További sötét mód beállításokat a Beállításokban találsz.</string>
-    <string name="onb_automation_more_hint">További beállításokat az Automatikus csatlakozás és Automatikus indítás menüben találsz.</string>
     <string name="onb_dpi_help">A magasabb DPI nagyobbá teszi az Android Auto ikonjait és szövegét, így kevesebb fér a képernyőre. Az alacsonyabb DPI kisebbé teszi, így több fér el. A csatlakozáskor lép érvénybe.</string>
-    <string name="onb_change_later">Ezt később a Beállításokban módosíthatod.</string>
     <string name="dpi_automatic">Automatikus</string>
     <string name="dpi_automatic_desc">Az eszköz sűrűségének használata</string>
-    <string name="onb_conn_usb_label">USB (vagy adapter)</string>
-    <string name="onb_connection_self_detail">Az önálló mód telefon csatlakoztatása nélkül futtatja az Android Autót ezen az eszközön.</string>
     <string name="connection_kind_all">Összes</string>
-    <string name="onb_connection_all_detail">Megjeleníti az USB- és a WiFi-beállításokat is.</string>
-    <string name="onb_connection_warning">Egy kapcsolattípus kiválasztása elrejti a nem megfelelő beállításokat az Alap és a Speciális fülön is. Ha újra látni szeretnéd őket, később válassz másik módot a kapcsolat beállításainál.</string>
     <string name="resolution_recommended_format">%1$s (Ajánlott)</string>
     <string name="resolution_high_bandwidth_format">%1$s · nagy sávszélesség</string>
     <string name="resolution_too_high_title">A képernyőnél nagyobb felbontás</string>
@@ -753,11 +704,6 @@
     <string name="dpi_automatic_desc_format">Az eszköz sűrűségét használja (%1$d DPI)</string>
     <string name="dpi_input_hint">DPI</string>
     <string name="onb_dpi_huge">Hatalmas</string>
-    <string name="onb_vehicle_title">Az autód</string>
-    <string name="onb_vehicle_input_hint">Márka vagy név</string>
-    <string name="onb_vehicle_help_aa">Ez a név elküldésre kerül az Android Autónak. Megjelenik a telefon csatlakozási előzményeiben és az Android Auto üdvözlőképernyőjén.</string>
-    <string name="onb_vehicle_help_advanced">További járműadatokat a Speciális lapon állíthatsz be. Ezeket az adatokat nem használjuk; csak azért küldjük az Android Autónak, mert megköveteli.</string>
-    <string name="onb_summary_vehicle_format">Jármű: %1$s</string>
     <string name="sunrise_reference_help">A napkelte és napnyugta kiszámításához használt referenciapont. Válassza ki egyszer a helyét; GPS nélkül is működik.</string>
 
     <string name="support">Probléma bejelentése</string>
@@ -767,8 +713,6 @@
     <string name="support_open_issues">GitHub hibajelentések megnyitása</string>
     <string name="support_scan_qr">Vagy olvasd be ezt a QR-kódot, ha egy másik eszközön szeretnéd megnyitni a hibajelentések listáját.</string>
     <string name="support_github_account_warning">Megjegyzés: hibajegy létrehozásához ingyenes GitHub-fiókra van szükség.</string>
-    <string name="onb_ready_extras_title">Mielőtt befejeznéd, ezeket is beállíthatod:</string>
-    <string name="onb_extra_loading_desc">Egyéni kép, amely az autó csatlakozása közben jelenik meg</string>
 
     <!-- Support / issue reporting rules -->
     <string name="support_rules_button">Hibajelentési szabályok</string>
@@ -800,10 +744,6 @@
     <string name="aa174_notice_button_confirm">Értem</string>
     <string name="aa174_notice_button_guide">Útmutató megnyitása</string>
 
-    <string name="onb_summary_permissions_format">Permissions: %1$d of %2$d granted</string>
-    <string name="onb_ready_loading_intro">One more thing: you can now set a custom loading screen, shown while the car connects.</string>
-    <string name="onb_ready_loading_button">Set up a loading screen</string>
-    <string name="onb_permissions_title">Enable permissions</string>
     <string name="onb_permissions_help">Turn on the permissions the app needs so everything works without surprise prompts later. You can change these any time.</string>
     <string name="onb_perms_enable_all">Enable all</string>
     <string name="perm_allow">Allow</string>
@@ -825,37 +765,10 @@
     <string name="perm_write_settings_help">Lets the app turn the hotspot on automatically for wireless connections.</string>
     <string name="perm_storage_title">Storage</string>
     <string name="perm_storage_help">Needed to back up and restore your settings and to pick a custom loading image.</string>
-    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Song Pro Horizon\" if you use those apps.</string>
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
     <string name="dpi_size_s">S</string>
     <string name="dpi_size_m">M</string>
     <string name="dpi_size_l">L</string>
     <string name="dpi_size_xl">XL</string>
-    <string name="onb_dpi_recommended">Recommended for your screen: %1$d dpi</string>
     <string name="dpi_value_format">%1$d DPI</string>
     <string name="pixel_aspect_ratio">Pixel aspect ratio</string>
     <string name="enter_pixel_aspect_ratio_value">Pixel aspect ratio x10000 (10000 = square pixels)</string>
@@ -1033,7 +946,4 @@
     <string name="audio_stream_unnamed_format">%1$d. folyam</string>
     <string name="audio_stream_unavailable_format">%1$d. folyam (nincs ezen az eszközön)</string>
     <string name="audio_stream_vendor_info">Ennek a fejegységnek olyan kimeneti folyamai vannak, amelyek a gyári Androidban nincsenek meg; alább a saját rendszere által adott néven szerepelnek. Gyakran éppen ezekre van kötve az autó erősítője, ezért próbáld ki őket a hangszóró gombbal, ha egy csatorna néma marad.</string>
-    <string name="onb_audio_title">Hang</string>
-    <string name="onb_audio_help">Válaszd ki, melyik rendszerfolyamon szóljon az egyes Android Auto-csatornák hangja, és koppints a hangszóróra a meghallgatásához. Ha egy csatorna néma marad az autóban, általában segít másik folyamra tenni.</string>
-    <string name="onb_audio_more_hint">Ezeket később a Beállítások → Hangfolyamok alatt módosíthatod.</string>
 </resources>

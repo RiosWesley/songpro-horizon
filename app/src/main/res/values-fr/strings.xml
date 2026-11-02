@@ -16,51 +16,13 @@
     <string name="connection_kind_unset">Non défini</string>
 
     <!-- Onboarding wizard -->
-    <string name="onb_next">Suivant</string>
-    <string name="onb_skip">Passer</string>
-    <string name="onb_ready_finish">Terminer</string>
-    <string name="onb_welcome_title">Bienvenue dans Song Pro Horizon</string>
-    <string name="onb_welcome_body">Cette configuration rapide analyse ton appareil et sélectionne les meilleurs paramètres vidéo, d\'affichage et de mode nuit pour toi. Tu pourras tout modifier plus tard dans les Paramètres.</string>
-    <string name="onb_safety_title">La sécurité avant tout</string>
-    <string name="onb_safety_accept">J\'ai lu et j\'accepte les conditions</string>
-    <string name="onb_connection_title">Comment te connectes-tu ?</string>
-    <string name="onb_connection_help">Choisis la façon dont ton téléphone se connecte. Cela permet de concentrer l\'écran des paramètres sur ce qui s\'applique à ton cas.</string>
-    <string name="onb_connection_cable_detail">Le téléphone est branché directement à l\'autoradio avec un câble USB. Les options sans fil sont masquées.</string>
-    <string name="onb_connection_adapter_detail">Un dongle USB relie le câble à une connexion sans fil. Les options sans fil sont affichées.</string>
-    <string name="onb_connection_wifi_detail">Le téléphone se connecte par WiFi.</string>
-    <string name="onb_display_title">Affichage</string>
     <!-- %1$d width, %2$d height, %3$d dpi, %4$s codec -->
-    <string name="onb_display_detected">Écran détecté : %1$d x %2$d px, %3$d dpi, %4$s matériel.</string>
-    <string name="onb_display_size_label">Taille de l\'écran</string>
-    <string name="onb_display_orientation_label">Orientation</string>
-    <string name="onb_display_apply">Appliquer les paramètres recommandés</string>
     <!-- %1$s resolution, %2$d dpi, %3$s codec, %4$s view mode -->
-    <string name="onb_display_result">Appliqué : %1$s, %2$d dpi, %3$s, vue %4$s.</string>
-    <string name="onb_appearance_title">Apparence</string>
-    <string name="onb_appearance_theme_label">Thème de l\'application</string>
-    <string name="onb_theme_auto">Auto</string>
-    <string name="onb_theme_light">Clair</string>
-    <string name="onb_theme_dark">Sombre</string>
-    <string name="onb_appearance_night_label">Mode nuit Android Auto</string>
-    <string name="onb_night_auto">Automatique</string>
-    <string name="onb_night_day">Jour</string>
-    <string name="onb_night_night">Nuit</string>
-    <string name="onb_night_light_sensor_available">Un capteur de luminosité a été détecté, le mode Automatique peut donc suivre la lumière ambiante.</string>
-    <string name="onb_night_no_light_sensor">Aucun capteur de luminosité détecté, le mode Automatique suit donc le lever et le coucher du soleil.</string>
-    <string name="onb_ready_title">Tout est prêt</string>
     <!-- %1$s connection, %2$s resolution, %3$s codec -->
-    <string name="onb_ready_summary">Connexion : %1$s\nRésolution : %2$s\nCodec : %3$s\n\nTu peux tout ajuster dans les Paramètres.</string>
-    <string name="onb_summary_vehicle_format">Véhicule : %1$s</string>
     <!-- %1$d granted, %2$d total -->
-    <string name="onb_summary_permissions_format">Permissions : %1$d sur %2$d accordées</string>
-    <string name="onb_ready_loading_intro">Encore une chose : tu peux maintenant définir un écran de chargement personnalisé, affiché pendant la connexion de la voiture.</string>
-    <string name="onb_ready_loading_button">Configurer un écran de chargement</string>
     <!-- Ready step optional-extras card -->
-    <string name="onb_ready_extras_title">Avant de terminer, tu peux aussi configurer :</string>
-    <string name="onb_extra_loading_desc">Une image personnalisée affichée pendant la connexion de la voiture</string>
 
     <!-- Onboarding wizard: permissions step + Settings > Permissions -->
-    <string name="onb_permissions_title">Activer les permissions</string>
     <string name="onb_permissions_help">Active les permissions dont l\'application a besoin pour que tout fonctionne sans invites surprises plus tard. Tu peux les modifier à tout moment.</string>
     <string name="onb_perms_enable_all">Tout activer</string>
     <string name="perm_allow">Autoriser</string>
@@ -85,43 +47,9 @@
     <string name="perm_storage_help">Nécessaire pour sauvegarder et restaurer tes paramètres et pour choisir une image de chargement personnalisée.</string>
 
     <!-- Onboarding wizard: car brand / vehicle identity -->
-    <string name="onb_vehicle_title">Ta voiture</string>
-    <string name="onb_vehicle_input_hint">Marque ou nom</string>
-    <string name="onb_vehicle_help_aa">Ce nom est envoyé à Android Auto. Il s\'affiche dans l\'historique de connexion de ton téléphone et sur l\'écran d\'accueil d\'Android Auto.</string>
-    <string name="onb_vehicle_help_sideload">Choisir une vraie marque de voiture affiche également le logo de cette marque sur le bouton de sortie d\'Android Auto, mais Android Auto cesse alors de lister les applications que tu as installées en dehors du Play Store. Garde \"Google\" ou \"Song Pro Horizon\" si tu utilises ces applications.</string>
-    <string name="onb_vehicle_help_advanced">Tu peux affiner les détails de ton véhicule dans l\'onglet Avancé. Nous n\'utilisons pas ces données ; elles sont uniquement envoyées à Android Auto car il les requiert.</string>
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
 
     <!-- Onboarding wizard (round 2) -->
-    <string name="onb_language_help">Choisis la langue de l\'application.</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">Téléphone connecté par USB, que ce soit par câble direct ou avec un adaptateur sans fil USB.</string>
-    <string name="onb_conn_usb_label">USB (ou adaptateur)</string>
-    <string name="onb_connection_self_detail">Le Self Mode exécute Android Auto sur cet appareil sans connecter de téléphone.</string>
     <string name="connection_kind_all">Tous</string>
 
     <!-- Resolution recommendation / bandwidth warnings -->
@@ -140,17 +68,6 @@
     <string name="renderer_confirm_yes">Oui</string>
     <string name="renderer_confirm_switch">Changer de moteur de rendu</string>
     <string name="renderer_switched_to">Moteur de rendu : %1$s</string>
-    <string name="onb_connection_all_detail">Affiche à la fois les paramètres USB et WiFi.</string>
-    <string name="onb_connection_warning">Choisir un type de connexion masque les paramètres qui ne s\'y appliquent pas, dans Basique comme dans Avancé. Pour les revoir, choisis un mode différent dans les paramètres de connexion plus tard.</string>
-    <string name="onb_more_appearance">Plus de paramètres d\'apparence</string>
-    <string name="onb_automation_title">Automatisation</string>
-    <string name="onb_automation_help">Choisis comment l\'application démarre et se connecte d\'elle-même. Ouvre les paramètres d\'Auto-connexion pour modifier l\'ordre de priorité.</string>
-    <string name="onb_gps_title">Position</string>
-    <string name="onb_gps_help">Quel GPS Android Auto doit-il utiliser pour la navigation ?</string>
-    <string name="onb_gps_this_device">Cet appareil</string>
-    <string name="onb_gps_phone">Téléphone connecté</string>
-    <string name="onb_do_it_later">Le faire plus tard</string>
-    <string name="onb_display_dpi_label">Taille d\'Android Auto</string>
     <!-- Full-word DPI size names, used as accessibility labels for the S/M/L/XL buttons -->
     <string name="onb_dpi_small">Petit</string>
     <string name="onb_dpi_medium">Moyen</string>
@@ -162,12 +79,8 @@
     <string name="dpi_size_m" translatable="false">M</string>
     <string name="dpi_size_l" translatable="false">L</string>
     <string name="dpi_size_xl" translatable="false">XL</string>
-    <string name="onb_appearance_more_hint">Tu peux trouver plus d\'options pour le mode sombre dans les Paramètres.</string>
-    <string name="onb_automation_more_hint">Tu peux trouver plus d\'options dans les paramètres d\'Auto-connexion et de Démarrage automatique.</string>
     <string name="onb_dpi_help">Un DPI plus élevé agrandit les icônes et le texte d\'Android Auto, affichant moins d\'éléments à l\'écran. Un DPI plus faible les réduit, affichant plus d\'éléments. Cela s\'applique lors de la connexion à Android Auto.</string>
     <!-- %1$d recommended DPI value -->
-    <string name="onb_dpi_recommended">Recommandé pour ton écran : %1$d dpi</string>
-    <string name="onb_change_later">Tu pourras modifier cela plus tard dans les Paramètres.</string>
     <string name="dpi_automatic">Automatique</string>
     <string name="dpi_automatic_desc">Utiliser la densité de l\'appareil</string>
     <string name="dpi_automatic_desc_format">Utilise la densité de l\'appareil (%1$d DPI)</string>
@@ -1086,9 +999,6 @@
     <string name="audio_stream_unnamed_format">Flux %1$d</string>
     <string name="audio_stream_unavailable_format">Flux %1$d (absent de cet appareil)</string>
     <string name="audio_stream_vendor_info">Cet autoradio possède des flux de sortie absents d\'Android standard ; ils figurent ci-dessous sous les noms que lui donne son propre système. Ce sont souvent ceux auxquels l\'amplificateur de la voiture est réellement raccordé : essayez-les avec le bouton haut-parleur si un canal reste muet.</string>
-    <string name="onb_audio_title">Audio</string>
-    <string name="onb_audio_help">Choisissez le flux système sur lequel joue chaque canal Android Auto, puis appuyez sur le haut-parleur pour l\'entendre. Si un canal reste muet dans la voiture, le basculer sur un autre flux règle généralement le problème.</string>
-    <string name="onb_audio_more_hint">Vous pourrez modifier ces réglages plus tard dans Paramètres → Flux audio.</string>
     <string name="key_show_media_toast">Afficher le toast musique sur le HUD</string>
     <string name="key_rotary_left">Molette ← Rotation Gauche (Scroll)</string>
     <string name="key_rotary_right">Molette → Rotation Droite (Scroll)</string>

@@ -22,6 +22,7 @@
     <color name="hz_on_accent">#06121C</color>
     <color name="hz_positive">#4CC38A</color>
     <color name="hz_negative">#E5484D</color>
+    <color name="hz_warning">#F0B24C</color>
     <!-- Power gauge thumbnails take the cluster's own power colour -->
     <color name="hz_power">#F0B24C</color>
 
@@ -35,6 +36,10 @@
     <dimen name="hz_radius_control">10dp</dimen>
     <dimen name="hz_sidebar_width">240dp</dimen>
     <dimen name="hz_icon">24dp</dimen>
+    <!-- Onboarding: a centred column about 1000dp wide on the 1280dp head unit screen -->
+    <dimen name="hz_onb_side">140dp</dimen>
+    <!-- The same column for steps that bring their own page padding -->
+    <dimen name="hz_onb_side_inner">108dp</dimen>
 
     <!-- Text roles: hierarchy from size and colour, weights 400 and 500 only -->
     <style name="HzText">

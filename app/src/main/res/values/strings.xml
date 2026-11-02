@@ -16,51 +16,13 @@
     <string name="connection_kind_unset">Not set</string>
 
     <!-- Onboarding wizard -->
-    <string name="onb_next">Next</string>
-    <string name="onb_skip">Skip</string>
-    <string name="onb_ready_finish">Finish</string>
-    <string name="onb_welcome_title">Welcome to Song Pro Horizon</string>
-    <string name="onb_welcome_body">This quick setup scans your device and picks the best video, display and night mode settings for you. You can change everything later in Settings.</string>
-    <string name="onb_safety_title">Safety first</string>
-    <string name="onb_safety_accept">I have read and accept the terms</string>
-    <string name="onb_connection_title">How do you connect?</string>
-    <string name="onb_connection_help">Pick how your phone connects. This keeps the settings screen focused on what applies to you.</string>
-    <string name="onb_connection_cable_detail">Phone plugged straight into the head unit with a USB cable. Wireless options stay out of the way.</string>
-    <string name="onb_connection_adapter_detail">A USB dongle bridges the cable to a wireless link. Wireless options are shown.</string>
-    <string name="onb_connection_wifi_detail">Phone connects over WiFi.</string>
-    <string name="onb_display_title">Display</string>
     <!-- %1$d width, %2$d height, %3$d dpi, %4$s codec -->
-    <string name="onb_display_detected">Detected panel: %1$d x %2$d px, %3$d dpi, hardware %4$s.</string>
-    <string name="onb_display_size_label">Screen size</string>
-    <string name="onb_display_orientation_label">Orientation</string>
-    <string name="onb_display_apply">Apply recommended settings</string>
     <!-- %1$s resolution, %2$d dpi, %3$s codec, %4$s view mode -->
-    <string name="onb_display_result">Applied: %1$s, %2$d dpi, %3$s, %4$s view.</string>
-    <string name="onb_appearance_title">Appearance</string>
-    <string name="onb_appearance_theme_label">App theme</string>
-    <string name="onb_theme_auto">Auto</string>
-    <string name="onb_theme_light">Light</string>
-    <string name="onb_theme_dark">Dark</string>
-    <string name="onb_appearance_night_label">Android Auto night mode</string>
-    <string name="onb_night_auto">Automatic</string>
-    <string name="onb_night_day">Day</string>
-    <string name="onb_night_night">Night</string>
-    <string name="onb_night_light_sensor_available">A light sensor was detected, so Automatic can follow ambient light.</string>
-    <string name="onb_night_no_light_sensor">No light sensor detected, so Automatic follows sunrise and sunset.</string>
-    <string name="onb_ready_title">You are all set</string>
     <!-- %1$s connection, %2$s resolution, %3$s codec -->
-    <string name="onb_ready_summary">Connection: %1$s\nResolution: %2$s\nCodec: %3$s\n\nYou can fine tune everything in Settings.</string>
-    <string name="onb_summary_vehicle_format">Vehicle: %1$s</string>
     <!-- %1$d granted, %2$d total -->
-    <string name="onb_summary_permissions_format">Permissions: %1$d of %2$d granted</string>
-    <string name="onb_ready_loading_intro">One more thing: you can now set a custom loading screen, shown while the car connects.</string>
-    <string name="onb_ready_loading_button">Set up a loading screen</string>
     <!-- Ready step optional-extras card -->
-    <string name="onb_ready_extras_title">Before you finish, you can also set up:</string>
-    <string name="onb_extra_loading_desc">A custom image shown while the car connects</string>
 
     <!-- Onboarding wizard: permissions step + Settings > Permissions -->
-    <string name="onb_permissions_title">Enable permissions</string>
     <string name="onb_permissions_help">Turn on the permissions the app needs so everything works without surprise prompts later. You can change these any time.</string>
     <string name="onb_perms_enable_all">Enable all</string>
     <string name="perm_allow">Allow</string>
@@ -85,43 +47,9 @@
     <string name="perm_storage_help">Needed to back up and restore your settings and to pick a custom loading image.</string>
 
     <!-- Onboarding wizard: car brand / vehicle identity -->
-    <string name="onb_vehicle_title">Your car</string>
-    <string name="onb_vehicle_input_hint">Brand or name</string>
-    <string name="onb_vehicle_help_aa">This name is sent to Android Auto. It shows in your phone\'s connection history and on the Android Auto welcome screen.</string>
-    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Song Pro Horizon\" if you use those apps.</string>
-    <string name="onb_vehicle_help_advanced">You can fine-tune your vehicle details in the Advanced tab. We do not use this data; it is only sent to Android Auto because it requires it.</string>
-    <string-array name="vehicle_brands">
-        <item>Google</item>
-        <item>Android</item>
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>Honda</item>
-        <item>Hyundai</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Renault</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-    </string-array>
 
     <!-- Onboarding wizard (round 2) -->
-    <string name="onb_language_help">Choose the app language.</string>
     <string name="connection_kind_usb">USB</string>
-    <string name="onb_connection_usb_detail">Phone connected by USB, either a direct cable or a USB wireless adapter.</string>
-    <string name="onb_conn_usb_label">USB (or adapter)</string>
-    <string name="onb_connection_self_detail">Self Mode runs Android Auto on this device without connecting a phone.</string>
     <string name="connection_kind_all">All</string>
 
     <!-- Resolution recommendation / bandwidth warnings -->
@@ -140,17 +68,6 @@
     <string name="renderer_confirm_yes">Yes</string>
     <string name="renderer_confirm_switch">Switch renderer</string>
     <string name="renderer_switched_to">Renderer: %1$s</string>
-    <string name="onb_connection_all_detail">Shows both the USB and WiFi settings.</string>
-    <string name="onb_connection_warning">Choosing a connection type hides the settings that do not apply to it, in both Basic and Advanced. To see them again, pick a different mode in the connection settings later.</string>
-    <string name="onb_more_appearance">More appearance settings</string>
-    <string name="onb_automation_title">Automation</string>
-    <string name="onb_automation_help">Choose how the app starts and connects on its own. Open Auto-connect settings to drag the priority order.</string>
-    <string name="onb_gps_title">Location</string>
-    <string name="onb_gps_help">Which GPS should Android Auto use for navigation?</string>
-    <string name="onb_gps_this_device">This device</string>
-    <string name="onb_gps_phone">Connected phone</string>
-    <string name="onb_do_it_later">Do it later</string>
-    <string name="onb_display_dpi_label">Android Auto size</string>
     <!-- Full-word DPI size names, used as accessibility labels for the S/M/L/XL buttons -->
     <string name="onb_dpi_small">Small</string>
     <string name="onb_dpi_medium">Medium</string>
@@ -162,12 +79,8 @@
     <string name="dpi_size_m" translatable="false">M</string>
     <string name="dpi_size_l" translatable="false">L</string>
     <string name="dpi_size_xl" translatable="false">XL</string>
-    <string name="onb_appearance_more_hint">You can find more dark mode options in Settings.</string>
-    <string name="onb_automation_more_hint">You can find more options in Auto-connect and Auto-start settings.</string>
     <string name="onb_dpi_help">A higher DPI makes Android Auto icons and text larger, so less fits on screen. A lower DPI makes them smaller, so more fits. It applies when you connect Android Auto.</string>
     <!-- %1$d recommended DPI value -->
-    <string name="onb_dpi_recommended">Recommended for your screen: %1$d dpi</string>
-    <string name="onb_change_later">You can change this later in Settings.</string>
     <string name="dpi_automatic">Automatic</string>
     <string name="dpi_automatic_desc">Use the device density</string>
     <string name="dpi_automatic_desc_format">Uses the device density (%1$d DPI)</string>
@@ -569,9 +482,6 @@
     <string name="audio_stream_vendor_info">This head unit has output streams that stock Android does not, listed below under the names its own system gives them. They are often the ones the car\'s amplifier is actually wired to, so try them with the speaker button if a channel stays silent.</string>
 
     <!-- Onboarding: audio step -->
-    <string name="onb_audio_title">Audio</string>
-    <string name="onb_audio_help">Pick the system stream each Android Auto channel plays on, and tap the speaker to hear it. If a channel stays silent in the car, moving it to another stream is usually the fix.</string>
-    <string name="onb_audio_more_hint">You can change these again later under Settings → Audio Streams.</string>
     <string name="use_aac_audio">Use AAC Audio</string>
     <string name="use_aac_audio_description">Use AAC codec for audio to save bandwidth (Experimental).</string>
     <string name="attach_hw_dsp_equalizer">Hardware DSP Equalizer Trigger</string>
@@ -1202,7 +1112,6 @@
     <string name="byd_theme_remove">Back to factory</string>
     <string name="byd_theme_hint">Built on the car from its own factory files (Song Pro 8.8\", firmware SX309 only). It shows after a restart of the cluster and the head unit (about 1 minute): only with the car stopped, in P, parking brake on.</string>
     <string name="byd_theme_install_confirm">The car must be stopped, in P, with the parking brake on. The first time, the app first keeps a copy of the original cluster in SongProHorizon/original (about 290 MB, up to a few minutes). Building the theme takes a few seconds; the cluster changes only after the restart you confirm next.</string>
-    <string name="byd_theme_unsupported">This head unit is not the firmware Horizon was made for (BYD Song Pro 8.8\", SX309), so installing is off.</string>
     <string name="byd_theme_factory">Factory theme</string>
     <string name="byd_theme_installed">Horizon installed (%1$s)</string>
     <string name="byd_adb_unavailable">Local ADB unavailable: turn on wireless ADB debugging on the head unit.</string>
@@ -1285,7 +1194,6 @@
     <string name="hz_theme_installed_hint">On the cluster menu: back, Theme, Horizon · version %1$s</string>
     <string name="hz_theme_factory">Factory cluster</string>
     <string name="hz_theme_factory_hint">Horizon takes the place of the Simple theme; Classic stays the factory\'s</string>
-    <string name="hz_theme_unsupported">Different firmware</string>
     <string name="hz_theme_no_adb">No access to local ADB</string>
     <string name="hz_skin_label">In the Simple slot</string>
     <string name="hz_skin_hint">Original Simple brings back the factory theme without uninstalling Horizon</string>
